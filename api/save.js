@@ -1,8 +1,7 @@
 // Vercel serverless function — guarda registro JCC en Supabase
 const https = require('https');
 
-const SUPA_URL  = 'https://vffmnyjjawvvctcqzkvj.supabase.co';
-const SUPA_KEY  = process.env.SUPABASE_SERVICE_KEY || 'sb_publishable_A1rJIiXHSg6TQYT2gKQHUw_UTwmS76t';
+const SUPA_KEY = process.env.SUPABASE_SERVICE_KEY || 'sb_publishable_A1rJIiXHSg6TQYT2gKQHUw_UTwmS76t';
 
 function supaInsert(record) {
   return new Promise((resolve, reject) => {
@@ -30,6 +29,23 @@ function supaInsert(record) {
   });
 }
 
+// Lee el body crudo y lo parsea — Vercel no siempre auto-parsea
+function readBody(req) {
+  return new Promise((resolve) => {
+    if (req.body && typeof req.body === 'object') {
+      resolve(req.body);
+      return;
+    }
+    let raw = '';
+    req.on('data', chunk => raw += chunk);
+    req.on('end', () => {
+      try { resolve(JSON.parse(raw)); }
+      catch { resolve({}); }
+    });
+    req.on('error', () => resolve({}));
+  });
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -40,9 +56,10 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST')   { res.status(405).json({ error: 'Method not allowed' }); return; }
 
   try {
-    const ser = req.body || {};
-    if (!ser.nombre) {
-      res.status(400).json({ error: 'Nombre requerido' });
+    const ser = await readBody(req);
+
+    if (!ser || !ser.nombre) {
+      res.status(400).json({ ok: false, error: 'Nombre requerido' });
       return;
     }
 
@@ -57,6 +74,7 @@ module.exports = async function handler(req, res) {
 
     if (result.status >= 400) {
       console.error('Supabase error', result.status, result.data);
+      // Devolver ok:false para que el frontend intente el fallback
       res.status(200).json({ ok: false, supaError: result.status, detail: result.data });
       return;
     }
