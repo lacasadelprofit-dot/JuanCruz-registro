@@ -311,24 +311,37 @@ async function enviarRegistro(){
   };
 
   try{
-    const fnResp=await fetch('/.netlify/functions/save-prospecto',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(ser)
-    });
-    let ok=fnResp.ok;
+    // Intentar via función del sitio principal
+    let ok=false;
+    try{
+      const fnResp=await fetch('https://lacasadelprofit.vercel.app/.netlify/functions/save-prospecto',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(ser)
+      });
+      ok=fnResp.ok;
+    }catch(fnErr){ok=false;}
+
+    // Fallback: insertar directo en Supabase
     if(!ok){
       const sb=supabase.createClient(SUPA_URL,SUPA_KEY);
       const {error}=await sb.from('seres').insert({id:ser.id,data:ser,updated_at:new Date().toISOString()});
       ok=!error;
-      if(error)console.warn('Supabase anon insert error:',error.message);
+      if(error)console.warn('Supabase insert error:',error.message);
     }
+
     document.getElementById('loader').style.display='none';
-    document.getElementById('formWrap').style.display='none';
-    document.querySelector('.hero').style.display='none';
-    document.querySelectorAll('.benefits').forEach(el=>el.style.display='none');
-    document.getElementById('successScreen').style.display='block';
-    window.scrollTo(0,0);
+    if(ok){
+      document.getElementById('formWrap').style.display='none';
+      document.querySelector('.hero').style.display='none';
+      document.querySelectorAll('.benefits').forEach(el=>el.style.display='none');
+      document.querySelector('.msg-wrap').style.display='none';
+      document.getElementById('successScreen').style.display='block';
+      window.scrollTo(0,0);
+    } else {
+      errEl.textContent='Error al enviar. Intentá de nuevo en unos segundos.';
+      errEl.style.display='block';
+    }
   }catch(e){
     document.getElementById('loader').style.display='none';
     errEl.textContent='Error al enviar. Intentá de nuevo.';
