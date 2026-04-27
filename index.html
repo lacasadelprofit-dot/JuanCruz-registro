@@ -139,22 +139,6 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
   </div>
 </div>
 
-<!-- PERSONAL MESSAGE -->
-<div class="msg-wrap">
-  <div class="msg-card">
-    <p>Las Barras de Access son <strong>32 puntos en tu cabeza</strong> que, al ser activados, liberan todo lo que acumulaste: el ruido mental, el estrés, las creencias que ya no te sirven.</p>
-    <p>Es como darle un <strong>reseteo profundo a tu sistema</strong>.</p>
-    <p>El resultado es diferente para cada persona. Hay quienes sienten una paz que hacía mucho no encontraban. Otros, claridad. Otros, simplemente un descanso profundo.</p>
-    <p>Si algo en vos resonó con esto, <strong>empezamos por acá</strong>.</p>
-    <div class="msg-sig">
-      <div class="dot">🌿</div>
-      <div>
-        <div class="name">Juan Cruz</div>
-        <div class="role">Facilitador de Barras de Access</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- FORM -->
 <div class="form-wrap" id="formWrap">
@@ -347,7 +331,6 @@ async function enviarRegistro(){
       document.getElementById('formWrap').style.display='none';
       document.querySelector('.hero').style.display='none';
       document.querySelectorAll('.benefits').forEach(el=>el.style.display='none');
-      document.querySelector('.msg-wrap').style.display='none';
       document.getElementById('successScreen').style.display='block';
       window.scrollTo(0,0);
     } else {
