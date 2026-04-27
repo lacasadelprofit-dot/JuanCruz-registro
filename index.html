@@ -311,23 +311,30 @@ async function enviarRegistro(){
   };
 
   try{
-    // Intentar via función del sitio principal
+    // Función serverless propia — sin CORS ni RLS
     let ok=false;
     try{
-      const fnResp=await fetch('https://lacasadelprofit.vercel.app/.netlify/functions/save-prospecto',{
+      const resp=await fetch('/api/save',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify(ser)
       });
-      ok=fnResp.ok;
-    }catch(fnErr){ok=false;}
+      const json=await resp.json().catch(()=>({}));
+      ok=resp.ok && json.ok===true;
+      if(!ok)console.warn('api/save response:',resp.status,json);
+    }catch(fetchErr){
+      console.warn('api/save error:',fetchErr.message);
+      ok=false;
+    }
 
-    // Fallback: insertar directo en Supabase
+    // Fallback: insertar directo en Supabase (cliente)
     if(!ok){
-      const sb=supabase.createClient(SUPA_URL,SUPA_KEY);
-      const {error}=await sb.from('seres').insert({id:ser.id,data:ser,updated_at:new Date().toISOString()});
-      ok=!error;
-      if(error)console.warn('Supabase insert error:',error.message);
+      try{
+        const sb=supabase.createClient(SUPA_URL,SUPA_KEY);
+        const {error}=await sb.from('seres').insert({id:ser.id,data:ser,updated_at:new Date().toISOString()});
+        ok=!error;
+        if(error)console.warn('Supabase fallback error:',error.message);
+      }catch(sbErr){console.warn('Supabase fallback exception:',sbErr.message);}
     }
 
     document.getElementById('loader').style.display='none';
