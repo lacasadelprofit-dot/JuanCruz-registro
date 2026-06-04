@@ -881,6 +881,18 @@ const _sb=supabase.createClient(SUPA_URL,SUPA_KEY);
 const MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const DIM_ICO={Identidad:'🪞',Dinero:'💰',Cuerpo:'🌿',Relaciones:'💛',Propósito:'🌅',Consciencia:'✦'};
 
+/* ── TIEMPO EN PÁGINA ── */
+const _pageStart=Date.now();
+let _trackExited=false;
+function _trackExit(){
+  if(_trackExited)return;
+  _trackExited=true;
+  const dur=Math.round((Date.now()-_pageStart)/1000);
+  track('page_exit',{duracion:dur});
+}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)_trackExit();});
+window.addEventListener('pagehide',_trackExit);
+
 let _diaArea='Consciencia', _featuredArea='Consciencia';
 let _regalosLista=[], _curRegalo=null;
 let allPregsOrig=[], allPregsShuffled=[], filteredPregs=[];
