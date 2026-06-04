@@ -515,9 +515,9 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
   <nav class="header-nav">
     <a href="#preguntas" onclick="track('click_btn',{boton:'nav_preguntas'})">Preguntas</a>
     <a href="#regalos" onclick="track('click_btn',{boton:'nav_regalos'})">Regalos</a>
+    <a href="#quien-soy" onclick="track('click_btn',{boton:'nav_quien_soy'})">Quién Soy</a>
     <a href="#sesiones" onclick="track('click_btn',{boton:'nav_sesiones'})">Sesiones</a>
     <a href="#clases" onclick="track('click_btn',{boton:'nav_clases'})">Clases</a>
-    <a href="#quien-soy" onclick="track('click_btn',{boton:'nav_quien_soy'})">Quién Soy</a>
   </nav>
   <button class="btn-agendar" onclick="openModal();track('click_btn',{boton:'header_agendar'})">Agendá una sesión ↗</button>
 </header>
@@ -529,8 +529,8 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
   <h1>¿Qué sería posible si soltaras todo lo que cargás?</h1>
   <p>Barras de Access, Proceso de Cuerpos y preguntas que abren lo que está cerrado. Un espacio para que algo en vos se mueva.</p>
   <div class="hero-ctas">
-    <a href="#sesiones" class="btn-hero-p" onclick="track('click_btn',{boton:'hero_ver_sesiones'})">Ver sesiones ✦</a>
-    <a href="#preguntas" class="btn-hero-s" onclick="track('click_btn',{boton:'hero_explorar_preguntas'})">Explorar preguntas ↓</a>
+    <a href="#preguntas" class="btn-hero-p" onclick="track('click_btn',{boton:'hero_explorar_preguntas'})">Explorar preguntas ↓</a>
+    <a href="#sesiones" class="btn-hero-s" onclick="track('click_btn',{boton:'hero_ver_sesiones'})">Ver sesiones ✦</a>
   </div>
 </div>
 
@@ -569,10 +569,69 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
 <!-- REGALOS -->
 <section id="regalos" class="sec">
   <div class="sec-label">🎁 Regalos para vos</div>
-  <div class="sec-title">Recursos gratuitos</div>
+  <div class="sec-title">Un regalo antes de seguir</div>
   <div class="sec-sub">Preparé estos materiales para vos. Son completamente gratuitos — descargalos y que te sirvan.</div>
   <div id="regalosWrap">
     <div class="empty"><div class="ei">🎁</div><p>Cargando recursos...</p></div>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- QUIÉN SOY -->
+<section id="quien-soy" class="sec">
+  <div class="sec-label">✦ Quién soy</div>
+
+  <div class="quien-quote">
+    No vine a enseñarte nada.<br>Vine a <em>recordarte</em> lo que ya sabés.
+  </div>
+
+  <div class="quien-stats">
+    <div class="quien-stat">
+      <div class="quien-stat-num">6+</div>
+      <div class="quien-stat-label">años en el camino espiritual</div>
+    </div>
+    <div class="quien-stat">
+      <div class="quien-stat-num">100+</div>
+      <div class="quien-stat-label">sesiones y procesos vividos</div>
+    </div>
+    <div class="quien-stat">
+      <div class="quien-stat-num">✦</div>
+      <div class="quien-stat-label">Certificado Access Consciousness®</div>
+    </div>
+  </div>
+
+  <div class="quien-eyebrow">Mi historia</div>
+  <div class="quien-card">
+    <p>Empecé en octubre de 2020. Lo que arrancó como una búsqueda personal se convirtió en un camino de transformación profunda que no paró más.</p>
+    <p>En estos años pasé por más de 100 sesiones y procesos distintos:</p>
+    <div class="quien-tags">
+      <span class="quien-tag">Registros Akáshicos</span>
+      <span class="quien-tag">Bioexistencia Consciente</span>
+      <span class="quien-tag">Reiki</span>
+      <span class="quien-tag">Cafeomancia</span>
+      <span class="quien-tag">Runas</span>
+      <span class="quien-tag">Constelaciones con Caballos</span>
+      <span class="quien-tag">Flores de Bach</span>
+      <span class="quien-tag">Biodecodificación</span>
+      <span class="quien-tag">Temazcal</span>
+      <span class="quien-tag">Conexiones Pleyadianas</span>
+      <span class="quien-tag">Ceremonias con Medicina Ancestral</span>
+      <span class="quien-tag">y muchas más...</span>
+    </div>
+    <p>Cada una me fue sacando capas. No fue un camino lineal — fue, y sigue siendo, un camino de soltar.</p>
+  </div>
+
+  <div class="quien-eyebrow">El momento que cambió todo</div>
+  <div class="quien-card">
+    <p>En abril de 2022 recibí mis primeras Barras de Access. Sentí algo distinto. Una liviandad que hacía años no experimentaba. A los días me di cuenta de que reaccionaba menos — de que había más espacio entre las cosas que pasaban y lo que yo hacía con eso.</p>
+    <p>Ese mismo año me certifiqué como practicante. Porque cuando algo te transforma tanto, no querés guardártelo. Querés compartirlo.</p>
+  </div>
+
+  <div class="quien-espacio">
+    Un espacio sin juicio, donde no hay nada que hacer — solo recibir.<br>
+    Un espacio en el que te permitas ser exactamente lo que sos.<br><br>
+    <span style="font-size:13px;color:var(--muted);">Sin agenda, sin expectativas. Solo presencia.</span>
   </div>
 </section>
 
@@ -803,78 +862,6 @@ body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<hr class="sec-div">
-
-<!-- QUIÉN SOY -->
-<section id="quien-soy" class="sec">
-  <div class="sec-label">✦ Quién soy</div>
-
-  <div class="quien-quote">
-    No vine a enseñarte nada.<br>Vine a <em>recordarte</em> lo que ya sabés.
-  </div>
-
-  <div class="quien-stats">
-    <div class="quien-stat">
-      <div class="quien-stat-num">6+</div>
-      <div class="quien-stat-label">años en el camino espiritual</div>
-    </div>
-    <div class="quien-stat">
-      <div class="quien-stat-num">100+</div>
-      <div class="quien-stat-label">sesiones y procesos vividos</div>
-    </div>
-    <div class="quien-stat">
-      <div class="quien-stat-num">✦</div>
-      <div class="quien-stat-label">Certificado Access Consciousness®</div>
-    </div>
-  </div>
-
-  <div class="quien-eyebrow">Mi historia</div>
-  <div class="quien-card">
-    <p>Empecé en octubre de 2020. Lo que arrancó como una búsqueda personal se convirtió en un camino de transformación profunda que no paró más.</p>
-    <p>En estos años pasé por más de 100 sesiones y procesos distintos:</p>
-    <div class="quien-tags">
-      <span class="quien-tag">Registros Akáshicos</span>
-      <span class="quien-tag">Bioexistencia Consciente</span>
-      <span class="quien-tag">Reiki</span>
-      <span class="quien-tag">Cafeomancia</span>
-      <span class="quien-tag">Runas</span>
-      <span class="quien-tag">Constelaciones con Caballos</span>
-      <span class="quien-tag">Flores de Bach</span>
-      <span class="quien-tag">Biodecodificación</span>
-      <span class="quien-tag">Temazcal</span>
-      <span class="quien-tag">Conexiones Pleyadianas</span>
-      <span class="quien-tag">Ceremonias con Medicina Ancestral</span>
-      <span class="quien-tag">y muchas más...</span>
-    </div>
-    <p>Cada una me fue sacando capas. No fue un camino lineal — fue, y sigue siendo, un camino de soltar.</p>
-  </div>
-
-  <div class="quien-eyebrow">El momento que cambió todo</div>
-  <div class="quien-card">
-    <p>En abril de 2022 recibí mis primeras Barras de Access. Sentí algo distinto. Una liviandad que hacía años no experimentaba. A los días me di cuenta de que reaccionaba menos — de que había más espacio entre las cosas que pasaban y lo que yo hacía con eso.</p>
-    <p>Ese mismo año me certifiqué como practicante. Porque cuando algo te transforma tanto, no querés guardártelo. Querés compartirlo.</p>
-  </div>
-
-  <div class="quien-eyebrow">La Casa del Profit</div>
-  <div class="quien-card">
-    <p>Así nació La Casa del Profit — una dimensión de expansión espiritual donde convergen herramientas energéticas, mentales y emocionales.</p>
-    <div class="quien-vision">
-      <div class="quien-vision-label">✦ La visión</div>
-      <div class="quien-vision-text">"Creemos que cada ser humano tiene dentro de sí el poder de transformar su vida. Con las herramientas adecuadas podés cambiar toda tu realidad. Cada sesión es un paso. Cada ser que se transforma, transforma su entorno."</div>
-    </div>
-    <div class="quien-mision">
-      <strong>1.000.000 de sesiones</strong>
-      <span>No por el número, sino por lo que representa: un millón de seres que eligieron expandirse.</span>
-    </div>
-  </div>
-
-  <div class="quien-espacio">
-    Un espacio sin juicio, donde no hay nada que hacer — solo recibir.<br>
-    Un espacio en el que te permitas ser exactamente lo que sos.<br><br>
-    <span style="font-size:13px;color:var(--muted);">Sin agenda, sin expectativas. Solo presencia.</span>
   </div>
 </section>
 
