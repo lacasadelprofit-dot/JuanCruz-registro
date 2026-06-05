@@ -244,6 +244,35 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 .ses-cierre{text-align:center;padding:8px 0 4px;}
 .ses-cierre p{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:20px;}
 
+/* ── FEATURED CARD ── */
+.featured-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--terra);color:#fff;padding:3px 12px;border-radius:20px;margin-bottom:14px;}
+.ses-compact.featured{background:var(--text);}
+.ses-compact.featured .ses-nombre{color:#F5EFE4;}
+.ses-compact.featured .ses-tagline{color:var(--terra);}
+.ses-compact.featured .ses-desc-short{color:rgba(245,239,228,.7);}
+.ses-compact.featured .ses-meta-item{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.1);color:rgba(245,239,228,.65);}
+.ses-compact.featured .ses-footer{border-color:rgba(255,255,255,.1);}
+.ses-compact.featured .btn-ver-mas{border-color:rgba(255,255,255,.2);color:rgba(245,239,228,.6);}
+.ses-compact.featured .btn-ver-mas:hover{border-color:var(--terra);color:var(--terra);}
+.ses-compact.featured .ses-sep{border-color:rgba(255,255,255,.1);}
+.ses-compact.featured .ses-sub-title{color:#F5EFE4;}
+.ses-compact.featured .ses-text{color:rgba(245,239,228,.7);}
+.ses-compact.featured .ses-checklist li{color:rgba(245,239,228,.85);}
+.ses-compact.featured .ses-grid-item{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);}
+.ses-compact.featured .gi-title{color:#F5EFE4;}
+.ses-compact.featured .gi-desc{color:rgba(245,239,228,.45);}
+.ses-compact.featured .ses-step{background:rgba(255,255,255,.06);}
+.ses-compact.featured .ses-step-title{color:#F5EFE4;}
+.ses-compact.featured .ses-step-desc{color:rgba(245,239,228,.5);}
+.ses-compact.featured .ses-benefit{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);}
+.ses-compact.featured .ses-benefit-title{color:#F5EFE4;}
+.ses-compact.featured .ses-benefit-desc{color:rgba(245,239,228,.5);}
+.ses-compact.featured .ses-info-row{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);}
+.ses-compact.featured .ses-info-label{color:rgba(245,239,228,.45);}
+.ses-compact.featured .ses-info-val{color:#F5EFE4;}
+.ses-compact.featured .ses-urg{background:rgba(193,122,72,.18);color:var(--terra-l);}
+.ses-compact.featured .ses-cierre p{color:#F5EFE4;}
+
 /* ── QUIÉN SOY ── */
 .quien-quote{font-size:26px;font-weight:800;color:var(--text);line-height:1.35;
   text-align:center;padding:8px 8px 32px;letter-spacing:-.3px;}
@@ -648,9 +677,10 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
   <div class="sec-sub">Cada sesión es una invitación a liberar lo que ya no te sirve y abrirte a más de lo que sos.</div>
 
   <!-- BARRAS DE ACCESS -->
-  <div class="ses-compact" id="barras">
+  <div class="ses-compact featured" id="barras">
     <div class="ses-stripe" style="background:linear-gradient(90deg,#C17A48,#E8A87C)"></div>
     <div class="ses-compact-body">
+      <div class="featured-badge">✦ Más popular</div>
       <div class="ses-head">
         <div class="ses-ico">🌀</div>
         <div class="ses-head-info">
@@ -662,7 +692,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
       <div class="ses-meta">
         <div class="ses-meta-item">⏱ 60 minutos</div>
         <div class="ses-meta-item">📍 Presencial</div>
-        <div class="ses-meta-item">💸 $50.000 ARS</div>
+        <div class="ses-meta-item">💸 $50.000 ARS · USD 50</div>
       </div>
       <div class="ses-footer">
         <button class="btn-ver-mas" onclick="toggleDetail('detail-barras',this)">Ver más ↓</button>
@@ -713,7 +743,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <div class="ses-info">
           <div class="ses-info-row"><div class="ses-info-ico">🕒</div><div class="ses-info-label">Duración</div><div class="ses-info-val">60 minutos</div></div>
           <div class="ses-info-row"><div class="ses-info-ico">📍</div><div class="ses-info-label">Modalidad</div><div class="ses-info-val">Presencial · Lomas de Zamora o Caballito</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label">Inversión</div><div class="ses-info-val">$50.000 ARS</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label">Inversión</div><div class="ses-info-val">$50.000 ARS · USD 50</div></div>
           <div class="ses-info-row"><div class="ses-info-ico">🔐</div><div class="ses-info-label">Reserva</div><div class="ses-info-val">Seña de $25.000</div></div>
         </div>
         <div class="ses-urg">⏳ Solo 10 turnos por semana · ¡Agendá el tuyo ahora!</div>
@@ -739,7 +769,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
       <div class="ses-meta">
         <div class="ses-meta-item">⏱ 60 minutos</div>
         <div class="ses-meta-item">📍 Presencial</div>
-        <div class="ses-meta-item">💸 $60.000 ARS</div>
+        <div class="ses-meta-item">💸 $60.000 ARS · USD 60</div>
       </div>
       <div class="ses-footer">
         <button class="btn-ver-mas" onclick="toggleDetail('detail-proceso',this)">Ver más ↓</button>
@@ -784,7 +814,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <div class="ses-info">
           <div class="ses-info-row"><div class="ses-info-ico">🕒</div><div class="ses-info-label">Duración</div><div class="ses-info-val">60 minutos</div></div>
           <div class="ses-info-row"><div class="ses-info-ico">📍</div><div class="ses-info-label">Modalidad</div><div class="ses-info-val">Presencial · Lomas de Zamora o Caballito</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label">Inversión</div><div class="ses-info-val">$60.000 ARS</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label">Inversión</div><div class="ses-info-val">$60.000 ARS · USD 60</div></div>
           <div class="ses-info-row"><div class="ses-info-ico">🔐</div><div class="ses-info-label">Reserva</div><div class="ses-info-val">Seña de $30.000</div></div>
         </div>
         <div class="ses-urg">⏳ Solo 5 turnos por semana · ¡Agendá el tuyo ahora!</div>
@@ -836,10 +866,10 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <div class="ses-sep"></div>
         <div class="ses-sub-title">🎯 ¿Para quién es?</div>
         <ul class="ses-checklist">
-          <li>Si ya das sesiones y querés <strong>certificarte</strong></li>
+          <li>Si buscás una herramienta que <strong>te quede para toda la vida</strong></li>
           <li>Si sos terapeuta o coach y querés <strong>sumar una herramienta poderosa</strong></li>
           <li>Si sentís que necesitás un <strong>cambio real</strong> en tu vida</li>
-          <li>Si buscás una herramienta que <strong>te quede para toda la vida</strong></li>
+          <li>Si ya das sesiones y querés <strong>certificarte</strong></li>
         </ul>
         <div class="ses-sep"></div>
         <div class="ses-sub-title">💰 Inversión</div>
@@ -849,7 +879,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         </div>
         <div class="ses-price-box warm">
           <div class="ses-price-main">USD 165</div>
-          <div class="ses-price-small">50% OFF si ya hiciste una clase conmigo</div>
+          <div class="ses-price-small">50% OFF si ya hiciste una clase</div>
           <div class="ses-price-badge">🎁 Descuento para alumnos</div>
         </div>
         <div class="ses-price-box green">
