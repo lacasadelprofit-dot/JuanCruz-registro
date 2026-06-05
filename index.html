@@ -929,7 +929,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
     <p>Cada una desde un lugar distinto. Cada una sacando una capa diferente.</p>
   </div>
 
-  <div class="quien-eyebrow">El momento que cambió todo</div>
+  <div class="quien-eyebrow">De buscador a facilitador</div>
   <div class="quien-card">
     <p>En abril de 2022 recibí mis primeras Barras de Access. Sentí algo distinto. Una liviandad que hacía años no experimentaba. A los días me di cuenta de que reaccionaba menos — de que había más espacio entre las cosas que pasaban y lo que yo hacía con eso.</p>
     <p>Ese mismo año me certifiqué como practicante. Porque cuando algo te transforma tanto, no querés guardártelo. Querés compartirlo.</p>
@@ -1128,7 +1128,15 @@ function showFeatured(){
   document.getElementById('featuredQ').textContent=p.texto||'';
   document.getElementById('featuredDim').textContent=(DIM_ICO[p.matiz]||'✦')+' '+(p.matiz||'');
 }
-function nextFeatured(){featIdx=(featIdx+1)%Math.max(1,allPregs.length);showFeatured();}
+function nextFeatured(){
+  if(!allPregs.length)return;
+  const cur=allPregs[featIdx]?.matiz;
+  let pool=allPregs.map((_,i)=>i).filter(i=>i!==featIdx&&allPregs[i].matiz!==cur);
+  if(!pool.length)pool=allPregs.map((_,i)=>i).filter(i=>i!==featIdx);
+  if(!pool.length)return;
+  featIdx=pool[Math.floor(Math.random()*pool.length)];
+  showFeatured();
+}
 function shareFeatured(btn){const texto=document.getElementById('featuredQ').textContent;_doShare(texto,_featuredArea,btn);}
 
 /* ── EXPANDIR SESIONES ── */
@@ -1375,7 +1383,7 @@ async function init(){
   }
   document.getElementById('loader').style.display='none';
   showDia();
-  if(allPregs.length){showFeatured();}
+  if(allPregs.length){featIdx=Math.floor(Math.random()*allPregs.length);showFeatured();}
   else{document.getElementById('featuredQ').textContent='¿Qué elegiría si confiara en mí?';document.getElementById('featuredDim').textContent='🪞 Identidad';}
   await loadRegalos();
 }
