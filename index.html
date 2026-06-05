@@ -356,6 +356,30 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 .empty{text-align:center;padding:48px 20px;color:var(--muted);grid-column:1/-1;}
 .empty .ei{font-size:40px;margin-bottom:12px;}
 
+/* ── PREGUNTAS INTRO ── */
+.pregs-intro{margin-bottom:32px;display:flex;flex-direction:column;gap:16px;}
+.pregs-hook{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:700;
+  color:var(--text);line-height:1.3;letter-spacing:-.2px;}
+.pregs-body{font-size:15px;color:var(--muted);line-height:1.8;}
+.pregs-cuerpo{font-size:15px;font-weight:700;color:var(--text);}
+.pregs-liviano{display:flex;flex-direction:column;gap:8px;margin:4px 0;
+  padding:20px 22px;background:var(--card2);border:1px solid var(--border);border-radius:16px;}
+.pregs-lv-item{display:flex;align-items:center;gap:12px;}
+.pregs-lv-word{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:600;
+  min-width:72px;letter-spacing:.01em;}
+.pregs-lv-light .pregs-lv-word{color:var(--terra);}
+.pregs-lv-heavy .pregs-lv-word{color:var(--text-mid,#4a3f35);}
+.pregs-lv-arrow{font-size:14px;color:var(--muted);opacity:.5;}
+.pregs-lv-desc{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);}
+.pregs-instruccion{font-size:14px;color:var(--muted);line-height:1.75;font-style:italic;
+  padding-left:14px;border-left:2px solid var(--terra-l);}
+.pregs-cta{margin-top:28px;text-align:center;padding:28px 20px;
+  background:var(--card2);border:1px solid var(--border);border-radius:20px;}
+.pregs-cta-text{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-weight:700;
+  color:var(--text);line-height:1.4;margin-bottom:20px;}
+.pregs-cta-text span{display:block;font-size:15px;font-weight:400;font-style:italic;
+  font-family:'DM Sans',system-ui,sans-serif;color:var(--muted);margin-top:4px;}
+
 @media(max-width:600px){
   .hero h1{font-size:28px;}
   .header-nav{display:none;}
@@ -366,6 +390,8 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
   .dia-q{font-size:18px;}
   .dia-card{padding:24px 20px;}
   .quien-stats{flex-direction:column;}
+  .pregs-hook{font-size:19px;}
+  .pregs-liviano{padding:16px 18px;}
 }
 </style>
 </head>
@@ -546,11 +572,11 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 <header class="site-header">
   <div class="brand">Juan Cruz <span>Consciencia</span></div>
   <nav class="header-nav">
-    <a href="#preguntas" onclick="track('click_btn',{boton:'nav_preguntas'})">Preguntas</a>
     <a href="#regalos" onclick="track('click_btn',{boton:'nav_regalos'})">Regalos</a>
-    <a href="#quien-soy" onclick="track('click_btn',{boton:'nav_quien_soy'})">Quién Soy</a>
+    <a href="#preguntas" onclick="track('click_btn',{boton:'nav_preguntas'})">Preguntas</a>
     <a href="#sesiones" onclick="track('click_btn',{boton:'nav_sesiones'})">Sesiones</a>
     <a href="#clases" onclick="track('click_btn',{boton:'nav_clases'})">Clases</a>
+    <a href="#quien-soy" onclick="track('click_btn',{boton:'nav_quien_soy'})">Quién Soy</a>
   </nav>
   <button class="btn-agendar" onclick="openModal();track('click_btn',{boton:'header_agendar'})">Agendá una sesión ↗</button>
 </header>
@@ -569,12 +595,52 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 
 <hr class="sec-div">
 
+<!-- REGALOS -->
+<section id="regalos" class="sec">
+  <div class="sec-label">🎁 Regalos para vos</div>
+  <div class="sec-title">Un regalo antes de seguir</div>
+  <div class="sec-sub">Preparé estos materiales para vos. Son completamente gratuitos — descargalos y que te sirvan.</div>
+  <div id="regalosWrap">
+    <div class="empty"><div class="ei">🎁</div><p>Cargando recursos...</p></div>
+  </div>
+</section>
+
+<hr class="sec-div">
+
 <!-- PREGUNTAS -->
 <section id="preguntas" class="sec">
   <div class="sec-label">✦ Preguntas expansivas</div>
   <div class="sec-title">Preguntas que abren<br>lo que está cerrado</div>
-  <div class="sec-sub">No son para responder — son para sostener. Dejá que algo se mueva adentro.</div>
 
+  <!-- INTRO COPY -->
+  <div class="pregs-intro">
+    <p class="pregs-hook">La programación no se debate — se interrumpe.</p>
+
+    <p class="pregs-body">Una pregunta mantiene el cerebro en modo búsqueda. Mientras la sostenés, tu mente sigue trabajando aunque vos no lo notes.</p>
+
+    <p class="pregs-body">En Access, una pregunta no busca respuesta — busca destruir el punto de vista fijo que te tiene atascado.</p>
+
+    <p class="pregs-body" style="margin-bottom:0">No trabajan en la mente. Trabajan en el cuerpo.</p>
+
+    <div class="pregs-liviano">
+      <div class="pregs-lv-item pregs-lv-light">
+        <span class="pregs-lv-word">liviano</span>
+        <span class="pregs-lv-arrow">→</span>
+        <span class="pregs-lv-desc">expande</span>
+      </div>
+      <div class="pregs-lv-item pregs-lv-heavy">
+        <span class="pregs-lv-word">pesado</span>
+        <span class="pregs-lv-arrow">→</span>
+        <span class="pregs-lv-desc">contrae</span>
+      </div>
+    </div>
+
+    <p class="pregs-body pregs-cuerpo">Tu cuerpo sabe antes que tu mente.</p>
+
+    <p class="pregs-instruccion">No son para responder — son para sostener.<br>Leelas. Llevatelas. Observá qué aparece.</p>
+  </div>
+
+  <!-- CARRUSEL: PREGUNTA DEL DÍA -->
   <div class="dia-card">
     <div class="dia-date" id="diaDate"></div>
     <div class="dia-q" id="diaQ">Cargando...</div>
@@ -595,85 +661,15 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
     </div>
   </div>
 
-</section>
 
-<hr class="sec-div">
-
-<!-- REGALOS -->
-<section id="regalos" class="sec">
-  <div class="sec-label">🎁 Regalos para vos</div>
-  <div class="sec-title">Un regalo antes de seguir</div>
-  <div class="sec-sub">Preparé estos materiales para vos. Son completamente gratuitos — descargalos y que te sirvan.</div>
-  <div id="regalosWrap">
-    <div class="empty"><div class="ei">🎁</div><p>Cargando recursos...</p></div>
-  </div>
-</section>
-
-<hr class="sec-div">
-
-<!-- QUIÉN SOY -->
-<section id="quien-soy" class="sec">
-  <div class="sec-label">✦ Quién soy</div>
-
-  <div class="quien-quote">
-    No vine a enseñarte nada.<br>Vine a <em>recordarte</em> lo que ya sabés.
-  </div>
-
-  <div class="quien-stats">
-    <div class="quien-stat">
-      <div class="quien-stat-num">6+</div>
-      <div class="quien-stat-label">años en el camino espiritual</div>
-    </div>
-    <div class="quien-stat">
-      <div class="quien-stat-num">100+</div>
-      <div class="quien-stat-label">sesiones y procesos vividos</div>
-    </div>
-    <div class="quien-stat">
-      <div class="quien-stat-num">✦</div>
-      <div class="quien-stat-label">Certificado Access Consciousness®</div>
-    </div>
-  </div>
-
-  <div class="quien-eyebrow">Mi historia</div>
-  <div class="quien-card">
-    <p>Empecé en octubre de 2020. Lo que arrancó como una búsqueda personal se convirtió en un camino de transformación profunda que no paró más.</p>
-    <p>En estos años pasé por más de 100 sesiones y procesos distintos:</p>
-    <div class="quien-tags">
-      <span class="quien-tag">Registros Akáshicos</span>
-      <span class="quien-tag">Bioexistencia Consciente</span>
-      <span class="quien-tag">Reiki</span>
-      <span class="quien-tag">Cafeomancia</span>
-      <span class="quien-tag">Runas</span>
-      <span class="quien-tag">Constelaciones con Caballos</span>
-      <span class="quien-tag">Flores de Bach</span>
-      <span class="quien-tag">Biodecodificación</span>
-      <span class="quien-tag">Temazcal</span>
-      <span class="quien-tag">Conexiones Pleyadianas</span>
-      <span class="quien-tag">Ceremonias con Medicina Ancestral</span>
-      <span class="quien-tag">y muchas más...</span>
-    </div>
-    <p>Cada una me fue sacando capas. No fue un camino lineal — fue, y sigue siendo, un camino de soltar.</p>
-  </div>
-
-  <div class="quien-eyebrow">El momento que cambió todo</div>
-  <div class="quien-card">
-    <p>En abril de 2022 recibí mis primeras Barras de Access. Sentí algo distinto. Una liviandad que hacía años no experimentaba. A los días me di cuenta de que reaccionaba menos — de que había más espacio entre las cosas que pasaban y lo que yo hacía con eso.</p>
-    <p>Ese mismo año me certifiqué como practicante. Porque cuando algo te transforma tanto, no querés guardártelo. Querés compartirlo.</p>
-  </div>
-
-  <div class="quien-espacio">
-    Un espacio sin juicio, donde no hay nada que hacer — solo recibir.<br>
-    Un espacio en el que te permitas ser exactamente lo que sos.<br><br>
-    <span style="font-size:13px;color:var(--muted);">Sin agenda, sin expectativas. Solo presencia.</span>
-  </div>
 </section>
 
 <hr class="sec-div">
 
 <!-- SESIONES -->
 <section id="sesiones" class="sec">
-  <div class="sec-label">🌀 Sesiones</div>
-  <div class="sec-title">Un espacio para soltar</div>
+  <div class="sec-label">✦ Lo que ofrezco</div>
+  <div class="sec-title">Un espacio para soltar y elegir</div>
   <div class="sec-sub">Cada sesión es una invitación a liberar lo que ya no te sirve y abrirte a más de lo que sos.</div>
 
   <!-- BARRAS DE ACCESS -->
@@ -896,6 +892,65 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- QUIÉN SOY -->
+<section id="quien-soy" class="sec">
+  <div class="sec-label">✦ Quién soy</div>
+
+  <div class="quien-quote">
+    No vine a enseñarte nada.<br>Vine a <em>recordarte</em> lo que ya sabés.
+  </div>
+
+  <div class="quien-stats">
+    <div class="quien-stat">
+      <div class="quien-stat-num">6+</div>
+      <div class="quien-stat-label">años en el camino espiritual</div>
+    </div>
+    <div class="quien-stat">
+      <div class="quien-stat-num">100+</div>
+      <div class="quien-stat-label">sesiones y procesos vividos</div>
+    </div>
+    <div class="quien-stat">
+      <div class="quien-stat-num">✦</div>
+      <div class="quien-stat-label">Certificado Access Consciousness®</div>
+    </div>
+  </div>
+
+  <div class="quien-eyebrow">Mi historia</div>
+  <div class="quien-card">
+    <p>Empecé en octubre de 2020. Lo que arrancó como una búsqueda personal se convirtió en un camino de transformación profunda que no paró más.</p>
+    <p>En estos años pasé por más de 100 sesiones y procesos distintos:</p>
+    <div class="quien-tags">
+      <span class="quien-tag">Registros Akáshicos</span>
+      <span class="quien-tag">Bioexistencia Consciente</span>
+      <span class="quien-tag">Reiki</span>
+      <span class="quien-tag">Cafeomancia</span>
+      <span class="quien-tag">Runas</span>
+      <span class="quien-tag">Constelaciones con Caballos</span>
+      <span class="quien-tag">Flores de Bach</span>
+      <span class="quien-tag">Biodecodificación</span>
+      <span class="quien-tag">Temazcal</span>
+      <span class="quien-tag">Conexiones Pleyadianas</span>
+      <span class="quien-tag">Ceremonias con Medicina Ancestral</span>
+      <span class="quien-tag">y muchas más...</span>
+    </div>
+    <p>Cada una me fue sacando capas. No fue un camino lineal — fue, y sigue siendo, un camino de soltar.</p>
+  </div>
+
+  <div class="quien-eyebrow">El momento que cambió todo</div>
+  <div class="quien-card">
+    <p>En abril de 2022 recibí mis primeras Barras de Access. Sentí algo distinto. Una liviandad que hacía años no experimentaba. A los días me di cuenta de que reaccionaba menos — de que había más espacio entre las cosas que pasaban y lo que yo hacía con eso.</p>
+    <p>Ese mismo año me certifiqué como practicante. Porque cuando algo te transforma tanto, no querés guardártelo. Querés compartirlo.</p>
+  </div>
+
+  <div class="quien-espacio">
+    Un espacio sin juicio, donde no hay nada que hacer — solo recibir.<br>
+    Un espacio en el que te permitas ser exactamente lo que sos.<br><br>
+    <span style="font-size:13px;color:var(--muted);">Sin agenda, sin expectativas. Solo presencia.</span>
   </div>
 </section>
 
