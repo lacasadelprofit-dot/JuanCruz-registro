@@ -393,6 +393,13 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
   .pregs-hook{font-size:19px;}
   .pregs-liviano{padding:16px 18px;}
 }
+
+/* ── LANG SWITCHER ── */
+.lang-sw{display:flex;align-items:center;gap:2px;flex-shrink:0;}
+.lang-btn{background:none;border:none;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;
+  padding:4px 7px;border-radius:8px;transition:all .18s;letter-spacing:.5px;font-family:inherit;}
+.lang-btn:hover{color:var(--terra-d);background:var(--terra-l);}
+.lang-btn.active{color:var(--terra-d);background:var(--terra-l);}
 </style>
 </head>
 <body>
@@ -407,13 +414,13 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 
     <!-- PASO 1: Elegir sesión -->
     <div id="modalPaso1">
-      <div class="modal-title">¿Qué te llama?</div>
-      <div class="modal-sub">Elegí lo que más resuena con lo que estás buscando ahora.</div>
+      <div class="modal-title" data-i18n="modal1_titulo">¿Qué te llama?</div>
+      <div class="modal-sub" data-i18n="modal1_sub">Elegí lo que más resuena con lo que estás buscando ahora.</div>
       <div class="modal-sesion" onclick="selectSesion('barras','Barras de Access','🌀')">
         <div class="modal-sesion-ico">🌀</div>
         <div class="modal-sesion-info">
           <div class="modal-sesion-nombre">Barras de Access</div>
-          <div class="modal-sesion-desc">Liberar carga mental, relajación profunda, claridad · 60 min</div>
+          <div class="modal-sesion-desc" data-i18n="modal_barras_desc">Liberar carga mental, relajación profunda, claridad · 60 min</div>
         </div>
         <div class="modal-sesion-arr">→</div>
       </div>
@@ -421,7 +428,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <div class="modal-sesion-ico">🌿</div>
         <div class="modal-sesion-info">
           <div class="modal-sesion-nombre">Proceso de Cuerpos</div>
-          <div class="modal-sesion-desc">Conectar con tu cuerpo, liberar bloqueos · 60 min</div>
+          <div class="modal-sesion-desc" data-i18n="modal_proceso_desc">Conectar con tu cuerpo, liberar bloqueos · 60 min</div>
         </div>
         <div class="modal-sesion-arr">→</div>
       </div>
@@ -429,7 +436,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <div class="modal-sesion-ico">📚</div>
         <div class="modal-sesion-info">
           <div class="modal-sesion-nombre">Clase de Barras de Access®</div>
-          <div class="modal-sesion-desc">Aprendé a dar sesiones · 8 horas · Un solo día</div>
+          <div class="modal-sesion-desc" data-i18n="modal_clase_desc">Aprendé a dar sesiones · 8 horas · Un solo día</div>
         </div>
         <div class="modal-sesion-arr">→</div>
       </div>
@@ -437,8 +444,8 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
       <div class="modal-nosé" onclick="selectSesion('no_se','Sin definir','💬')">
         <div style="font-size:22px">💬</div>
         <div class="modal-nosé-text">
-          <strong>No sé cuál elegir</strong>
-          Contame dónde estás y lo vemos juntos
+          <strong data-i18n="modal_nose_strong">No sé cuál elegir</strong>
+          <span data-i18n="modal_nose_text">Contame dónde estás y lo vemos juntos</span>
         </div>
       </div>
     </div>
@@ -449,85 +456,85 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <button onclick="backToStep1()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:0;line-height:1">←</button>
         <div>
           <div id="paso2Titulo" style="font-size:17px;font-weight:800;color:var(--text)"></div>
-          <div style="font-size:12px;color:var(--muted);margin-top:2px">Completá tus datos y te contactamos</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px" data-i18n="modal2_sub">Completá tus datos y te contactamos</div>
         </div>
       </div>
       <input id="regHoney" type="text" tabindex="-1" autocomplete="off" style="position:absolute;opacity:0;height:0;pointer-events:none">
 
       <!-- Campos base: siempre visibles -->
       <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
-        <input id="regNombre" type="text" placeholder="Tu nombre" autocomplete="off"
+        <input id="regNombre" type="text" placeholder="Tu nombre" data-i18n-ph="ph_nombre" autocomplete="off"
           style="padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;background:var(--card);color:var(--text);width:100%;outline:none;font-family:inherit">
-        <input id="regWapp" type="tel" placeholder="WhatsApp (ej: 1134567890)" autocomplete="off"
+        <input id="regWapp" type="tel" placeholder="WhatsApp (ej: 1134567890)" data-i18n-ph="ph_wapp" autocomplete="off"
           style="padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;background:var(--card);color:var(--text);width:100%;outline:none;font-family:inherit">
       </div>
 
       <!-- Campos Barras -->
       <div id="camposBarras" style="display:none;margin-bottom:14px">
-        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">¿Qué sentís?</div>
+        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_que_sentis">¿Qué sentís?</div>
         <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
-          <label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer"><input type="checkbox" id="sintRuido" style="accent-color:var(--terra);width:16px;height:16px"> Mucho ruido mental</label>
-          <label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer"><input type="checkbox" id="sintEstres" style="accent-color:var(--terra);width:16px;height:16px"> Estrés / Ansiedad</label>
-          <label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer"><input type="checkbox" id="sintCansancio" style="accent-color:var(--terra);width:16px;height:16px"> Cansancio general</label>
+          <label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer"><input type="checkbox" id="sintRuido" style="accent-color:var(--terra);width:16px;height:16px"> <span data-i18n="chk_ruido">Mucho ruido mental</span></label>
+          <label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer"><input type="checkbox" id="sintEstres" style="accent-color:var(--terra);width:16px;height:16px"> <span data-i18n="chk_estres">Estrés / Ansiedad</span></label>
+          <label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer"><input type="checkbox" id="sintCansancio" style="accent-color:var(--terra);width:16px;height:16px"> <span data-i18n="chk_cansancio">Cansancio general</span></label>
         </div>
-        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">¿Cuándo lo sentís más?</div>
+        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_cuando_sentis">¿Cuándo lo sentís más?</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="momentoDia" value="En el trabajo" style="accent-color:var(--terra)"> En el trabajo</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="momentoDia" value="Por la noche" style="accent-color:var(--terra)"> Por la noche</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="momentoDia" value="Durante todo el día" style="accent-color:var(--terra)"> Durante todo el día</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="momentoDia" value="En el trabajo" style="accent-color:var(--terra)"> <span data-i18n="rad_trabajo">En el trabajo</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="momentoDia" value="Por la noche" style="accent-color:var(--terra)"> <span data-i18n="rad_noche">Por la noche</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="momentoDia" value="Durante todo el día" style="accent-color:var(--terra)"> <span data-i18n="rad_tododia">Durante todo el día</span></label>
         </div>
-        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">¿Cuándo querés hacerla?</div>
+        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_cuando_hacerla">¿Cuándo querés hacerla?</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuando" value="Esta semana" style="accent-color:var(--terra)"> Esta semana</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuando" value="Próximas 2 semanas" style="accent-color:var(--terra)"> Próximas 2 sem.</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuando" value="Este mes" style="accent-color:var(--terra)"> Este mes</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuando" value="No sé todavía" style="accent-color:var(--terra)"> No sé todavía</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuando" value="Esta semana" style="accent-color:var(--terra)"> <span data-i18n="rad_esta_semana">Esta semana</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuando" value="Próximas 2 semanas" style="accent-color:var(--terra)"> <span data-i18n="rad_proximas2">Próximas 2 sem.</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuando" value="Este mes" style="accent-color:var(--terra)"> <span data-i18n="rad_este_mes">Este mes</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuando" value="No sé todavía" style="accent-color:var(--terra)"> <span data-i18n="rad_nose">No sé todavía</span></label>
         </div>
       </div>
 
       <!-- Campos Proceso de Cuerpos -->
       <div id="camposProceso" style="display:none;margin-bottom:14px">
-        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">¿Hay algún patrón que sentís que se repite?</div>
-        <textarea id="patronProceso" placeholder="Contame brevemente..." rows="2"
+        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_patron">¿Hay algún patrón que sentís que se repite?</div>
+        <textarea id="patronProceso" placeholder="Contame brevemente..." data-i18n-ph="ph_patron" rows="2"
           style="padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;background:var(--card);color:var(--text);width:100%;outline:none;font-family:inherit;resize:none;margin-bottom:14px"></textarea>
-        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">¿Cuándo querés hacerla?</div>
+        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_cuando_hacerla">¿Cuándo querés hacerla?</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoProceso" value="Esta semana" style="accent-color:var(--terra)"> Esta semana</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoProceso" value="Próximas 2 semanas" style="accent-color:var(--terra)"> Próximas 2 sem.</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoProceso" value="Este mes" style="accent-color:var(--terra)"> Este mes</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoProceso" value="No sé todavía" style="accent-color:var(--terra)"> No sé todavía</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoProceso" value="Esta semana" style="accent-color:var(--terra)"> <span data-i18n="rad_esta_semana">Esta semana</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoProceso" value="Próximas 2 semanas" style="accent-color:var(--terra)"> <span data-i18n="rad_proximas2">Próximas 2 sem.</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoProceso" value="Este mes" style="accent-color:var(--terra)"> <span data-i18n="rad_este_mes">Este mes</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoProceso" value="No sé todavía" style="accent-color:var(--terra)"> <span data-i18n="rad_nose">No sé todavía</span></label>
         </div>
       </div>
 
       <!-- Campos Clase -->
       <div id="camposClase" style="display:none;margin-bottom:14px">
-        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">¿Ya recibiste sesiones de Barras?</div>
+        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_recibiste_barras">¿Ya recibiste sesiones de Barras?</div>
         <div style="display:flex;gap:8px;margin-bottom:14px">
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="expClase" value="Sí" style="accent-color:var(--terra)"> Sí</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="expClase" value="No" style="accent-color:var(--terra)"> No</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="expClase" value="Sí" style="accent-color:var(--terra)"> <span data-i18n="rad_si">Sí</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="expClase" value="No" style="accent-color:var(--terra)"> <span data-i18n="rad_no">No</span></label>
         </div>
-        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">¿Para qué querés aprender?</div>
+        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_para_que">¿Para qué querés aprender?</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="paraQueClase" value="Uso personal" style="accent-color:var(--terra)"> Uso personal</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="paraQueClase" value="Ofrecer sesiones" style="accent-color:var(--terra)"> Ofrecer sesiones</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="paraQueClase" value="Los dos" style="accent-color:var(--terra)"> Los dos</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="paraQueClase" value="Uso personal" style="accent-color:var(--terra)"> <span data-i18n="rad_uso_personal">Uso personal</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="paraQueClase" value="Ofrecer sesiones" style="accent-color:var(--terra)"> <span data-i18n="rad_ofrecer">Ofrecer sesiones</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="paraQueClase" value="Los dos" style="accent-color:var(--terra)"> <span data-i18n="rad_los_dos">Los dos</span></label>
         </div>
-        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px">¿Cuándo te gustaría hacer la clase?</div>
+        <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_cuando_clase">¿Cuándo te gustaría hacer la clase?</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoClase" value="Próximas 2 semanas" style="accent-color:var(--terra)"> Próximas 2 sem.</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoClase" value="Este mes" style="accent-color:var(--terra)"> Este mes</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoClase" value="No sé todavía" style="accent-color:var(--terra)"> No sé todavía</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoClase" value="Próximas 2 semanas" style="accent-color:var(--terra)"> <span data-i18n="rad_proximas2">Próximas 2 sem.</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoClase" value="Este mes" style="accent-color:var(--terra)"> <span data-i18n="rad_este_mes">Este mes</span></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoClase" value="No sé todavía" style="accent-color:var(--terra)"> <span data-i18n="rad_nose">No sé todavía</span></label>
         </div>
       </div>
 
       <!-- Mensaje siempre visible -->
       <div style="margin-bottom:14px">
-        <textarea id="regMensaje" placeholder="¿Algo que quieras contarme antes? (opcional)" rows="2"
+        <textarea id="regMensaje" placeholder="¿Algo que quieras contarme antes? (opcional)" data-i18n-ph="ph_mensaje" rows="2"
           style="padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;background:var(--card);color:var(--text);width:100%;outline:none;font-family:inherit;resize:none;line-height:1.5"></textarea>
       </div>
 
       <button id="regSubmitBtn" onclick="submitRegistro()"
-        style="width:100%;padding:14px;background:var(--terra);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit">
+        style="width:100%;padding:14px;background:var(--terra);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit" data-i18n="btn_enviar">
         Enviar ✦
       </button>
       <div id="regMsg" style="text-align:center;font-size:12px;color:var(--muted);margin-top:10px;min-height:16px"></div>
@@ -536,9 +543,9 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
     <!-- PASO 3: Éxito -->
     <div id="modalPaso3" style="display:none;text-align:center;padding:16px 0">
       <div style="font-size:52px;margin-bottom:16px">✨</div>
-      <div style="font-size:19px;font-weight:800;color:var(--text);margin-bottom:8px">¡Listo!</div>
-      <div style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px">Recibimos tu registro. Juan Cruz te contacta pronto para coordinar todo.</div>
-      <button onclick="closeModalBtn()" style="padding:12px 28px;background:var(--terra);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit">Cerrar</button>
+      <div style="font-size:19px;font-weight:800;color:var(--text);margin-bottom:8px" data-i18n="paso3_listo">¡Listo!</div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px" data-i18n="paso3_msg">Recibimos tu registro. Juan Cruz te contacta pronto para coordinar todo.</div>
+      <button onclick="closeModalBtn()" style="padding:12px 28px;background:var(--terra);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit" data-i18n="btn_cerrar">Cerrar</button>
     </div>
 
   </div>
@@ -551,17 +558,17 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
     <div class="modal-handle"></div>
     <div style="font-size:36px;margin-bottom:10px;text-align:center" id="lgIco">🎁</div>
     <div class="modal-title" id="lgNombre">Recibir regalo</div>
-    <div class="modal-sub">Dejá tu nombre y WhatsApp — te llega al instante.</div>
+    <div class="modal-sub" data-i18n="lg_sub">Dejá tu nombre y WhatsApp — te llega al instante.</div>
     <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
-      <input id="lgInputNombre" type="text" placeholder="Tu nombre" autocomplete="off"
+      <input id="lgInputNombre" type="text" placeholder="Tu nombre" data-i18n-ph="ph_nombre" autocomplete="off"
         style="padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;background:var(--card);color:var(--text);width:100%;outline:none;font-family:inherit">
-      <input id="lgInputWapp" type="tel" placeholder="WhatsApp (ej: 1134567890)" autocomplete="off"
+      <input id="lgInputWapp" type="tel" placeholder="WhatsApp (ej: 1134567890)" data-i18n-ph="ph_wapp" autocomplete="off"
         style="padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;background:var(--card);color:var(--text);width:100%;outline:none;font-family:inherit">
       <input id="lgHoney" type="text" tabindex="-1" autocomplete="off"
         style="position:absolute;opacity:0;height:0;pointer-events:none">
     </div>
     <button id="lgSubmitBtn" onclick="submitLeadGate()"
-      style="width:100%;padding:14px;background:var(--terra);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit">
+      style="width:100%;padding:14px;background:var(--terra);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit" data-i18n="lg_btn">
       Recibir regalo ✦
     </button>
     <div id="lgMsg" style="text-align:center;font-size:12px;color:var(--muted);margin-top:10px;min-height:16px"></div>
@@ -572,24 +579,29 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 <header class="site-header">
   <div class="brand">Juan Cruz <span>Consciencia</span></div>
   <nav class="header-nav">
-    <a href="#preguntas" onclick="track('click_btn',{boton:'nav_preguntas'})">Preguntas</a>
-    <a href="#sesiones" onclick="track('click_btn',{boton:'nav_sesiones'})">Sesiones</a>
-    <a href="#regalos" onclick="track('click_btn',{boton:'nav_regalos'})">Regalos</a>
-    <a href="#clases" onclick="track('click_btn',{boton:'nav_clases'})">Clases</a>
-    <a href="#quien-soy" onclick="track('click_btn',{boton:'nav_quien_soy'})">Camino</a>
+    <a href="#preguntas" onclick="track('click_btn',{boton:'nav_preguntas'})" data-i18n="nav_preguntas">Preguntas</a>
+    <a href="#sesiones" onclick="track('click_btn',{boton:'nav_sesiones'})" data-i18n="nav_sesiones">Sesiones</a>
+    <a href="#regalos" onclick="track('click_btn',{boton:'nav_regalos'})" data-i18n="nav_regalos">Regalos</a>
+    <a href="#clases" onclick="track('click_btn',{boton:'nav_clases'})" data-i18n="nav_clases">Clases</a>
+    <a href="#quien-soy" onclick="track('click_btn',{boton:'nav_quien_soy'})" data-i18n="nav_camino">Camino</a>
   </nav>
-  <button class="btn-agendar" onclick="openModal();track('click_btn',{boton:'header_agendar'})">Agendá una sesión ↗</button>
+  <div class="lang-sw">
+    <button class="lang-btn active" data-lang="es" onclick="setLang('es')">🇦🇷 ARG</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">🇺🇸 EN</button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">🇧🇷 BR</button>
+  </div>
+  <button class="btn-agendar" onclick="openModal();track('click_btn',{boton:'header_agendar'})" data-i18n="btn_agendar">Agendá una sesión ↗</button>
 </header>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-deco">✦</div>
-  <h1>¿Qué sería posible si reconocieras el poder que ya existe en vos?</h1>
-  <p>Cada persona tiene dentro suyo todo lo necesario para transformar su realidad.</p>
-  <p style="margin-top:-16px">Juan Cruz Consciencia es un espacio de exploración, transformación y crecimiento donde las herramientas se convierten en puentes hacia una vida más consciente.</p>
+  <h1 data-i18n="hero_h1">¿Qué sería posible si reconocieras el poder que ya existe en vos?</h1>
+  <p data-i18n="hero_p1">Cada persona tiene dentro suyo todo lo necesario para transformar su realidad.</p>
+  <p style="margin-top:-16px" data-i18n="hero_p2">Juan Cruz Consciencia es un espacio de exploración, transformación y crecimiento donde las herramientas se convierten en puentes hacia una vida más consciente.</p>
   <div class="hero-ctas">
-    <a href="#preguntas" class="btn-hero-p" onclick="track('click_btn',{boton:'hero_explorar_preguntas'})">Explorar preguntas ↓</a>
-    <a href="#sesiones" class="btn-hero-s" onclick="track('click_btn',{boton:'hero_ver_sesiones'})">Ver sesiones ✦</a>
+    <a href="#preguntas" class="btn-hero-p" onclick="track('click_btn',{boton:'hero_explorar_preguntas'})" data-i18n="hero_explorar">Explorar preguntas ↓</a>
+    <a href="#sesiones" class="btn-hero-s" onclick="track('click_btn',{boton:'hero_ver_sesiones'})" data-i18n="hero_sesiones">Ver sesiones ✦</a>
   </div>
 </div>
 
@@ -597,56 +609,56 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 
 <!-- PREGUNTAS -->
 <section id="preguntas" class="sec">
-  <div class="sec-label">✦ Preguntas Expansivas</div>
-  <div class="sec-title">Preguntas para abrir nuevas posibilidades</div>
+  <div class="sec-label" data-i18n="sec_preguntas_label">✦ Preguntas Expansivas</div>
+  <div class="sec-title" data-i18n="sec_preguntas_titulo">Preguntas para abrir nuevas posibilidades</div>
 
   <!-- INTRO COPY -->
   <div class="pregs-intro">
-    <p class="pregs-body">Cada vez que concluís algo sobre vos, sobre tu vida o sobre lo que es posible, dejás de explorar.</p>
+    <p class="pregs-body" data-i18n="pregs_p1">Cada vez que concluís algo sobre vos, sobre tu vida o sobre lo que es posible, dejás de explorar.</p>
 
-    <p class="pregs-body">La mayoría de las personas vive desde respuestas que nunca cuestionó.</p>
+    <p class="pregs-body" data-i18n="pregs_p2">La mayoría de las personas vive desde respuestas que nunca cuestionó.</p>
 
     <div class="pregs-liviano">
-      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)">Creencias.</span></div>
-      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)">Conclusiones.</span></div>
-      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)">Juicios.</span></div>
-      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)">Historias sobre quién es.</span></div>
-      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)">Historias sobre lo que puede o no puede crear.</span></div>
+      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_creencias">Creencias.</span></div>
+      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_conclusiones">Conclusiones.</span></div>
+      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_juicios">Juicios.</span></div>
+      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_historias1">Historias sobre quién es.</span></div>
+      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_historias2">Historias sobre lo que puede o no puede crear.</span></div>
     </div>
 
-    <p class="pregs-hook">Una pregunta tiene el poder de interrumpir todo eso.</p>
+    <p class="pregs-hook" data-i18n="pregs_hook">Una pregunta tiene el poder de interrumpir todo eso.</p>
 
-    <p class="pregs-body">No porque te dé una respuesta.</p>
-    <p class="pregs-body">Sino porque abre un espacio diferente.</p>
-    <p class="pregs-body">Un espacio donde aparecen nuevas perspectivas, nuevas elecciones y nuevas posibilidades.</p>
+    <p class="pregs-body" data-i18n="pregs_porque1">No porque te dé una respuesta.</p>
+    <p class="pregs-body" data-i18n="pregs_porque2">Sino porque abre un espacio diferente.</p>
+    <p class="pregs-body" data-i18n="pregs_porque3">Un espacio donde aparecen nuevas perspectivas, nuevas elecciones y nuevas posibilidades.</p>
 
-    <p class="pregs-body">Utilizo las preguntas como herramientas de consciencia.</p>
-    <p class="pregs-body">No para encontrar la respuesta correcta.</p>
-    <p class="pregs-body">Sino para ir más allá de los puntos de vista que limitan lo que podés percibir, elegir y crear.</p>
+    <p class="pregs-body" data-i18n="pregs_uso1">Utilizo las preguntas como herramientas de consciencia.</p>
+    <p class="pregs-body" data-i18n="pregs_uso2">No para encontrar la respuesta correcta.</p>
+    <p class="pregs-body" data-i18n="pregs_uso3">Sino para ir más allá de los puntos de vista que limitan lo que podés percibir, elegir y crear.</p>
 
-    <p class="pregs-instruccion">Tu mente busca respuestas.<br>Tu consciencia descubre posibilidades.</p>
+    <p class="pregs-instruccion" data-i18n-html="pregs_instr1">Tu mente busca respuestas.<br>Tu consciencia descubre posibilidades.</p>
 
-    <p class="pregs-instruccion">No busques responderlas.<br>Permitite habitarlas.<br>Y observá qué se vuelve posible.</p>
+    <p class="pregs-instruccion" data-i18n-html="pregs_instr2">No busques responderlas.<br>Permitite habitarlas.<br>Y observá qué se vuelve posible.</p>
   </div>
 
   <!-- CARRUSEL: PREGUNTA DEL DÍA -->
   <div class="dia-card">
     <div class="dia-date" id="diaDate"></div>
-    <div class="dia-q" id="diaQ">Cargando...</div>
+    <div class="dia-q" id="diaQ" data-i18n="cargando">Cargando...</div>
     <div class="dia-footer">
       <div class="dia-area" id="diaArea"></div>
-      <button class="btn-share-dia" id="btnShareDia" onclick="shareDia(this)">↗ Compartir</button>
+      <button class="btn-share-dia" id="btnShareDia" onclick="shareDia(this)" data-i18n="btn_compartir">↗ Compartir</button>
     </div>
   </div>
 
   <!-- Pregunta del momento -->
   <div class="featured-card">
-    <div class="featured-label">✦ Pregunta del momento</div>
-    <div class="featured-q" id="featuredQ">Cargando...</div>
+    <div class="featured-label" data-i18n="featured_label">✦ Pregunta del momento</div>
+    <div class="featured-q" id="featuredQ" data-i18n="cargando">Cargando...</div>
     <div class="featured-dim" id="featuredDim"></div>
     <div class="featured-next" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;">
-      <button class="btn-next" onclick="nextFeatured();track('click_btn',{boton:'pregunta_siguiente'})">Otra pregunta →</button>
-      <button class="btn-next" id="btnShareFeat" onclick="shareFeatured(this)">↗ Compartir</button>
+      <button class="btn-next" onclick="nextFeatured();track('click_btn',{boton:'pregunta_siguiente'})" data-i18n="btn_siguiente">Otra pregunta →</button>
+      <button class="btn-next" id="btnShareFeat" onclick="shareFeatured(this)" data-i18n="btn_compartir">↗ Compartir</button>
     </div>
   </div>
 
@@ -656,84 +668,84 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 
 <!-- SESIONES -->
 <section id="sesiones" class="sec">
-  <div class="sec-label">✦ Lo que ofrezco</div>
-  <div class="sec-title">Un espacio para soltar y elegir</div>
-  <div class="sec-sub">Cada sesión es una invitación a liberar lo que ya no te sirve y abrirte a más de lo que sos.</div>
+  <div class="sec-label" data-i18n="sec_ses_label">✦ Lo que ofrezco</div>
+  <div class="sec-title" data-i18n="sec_ses_titulo">Un espacio para soltar y elegir</div>
+  <div class="sec-sub" data-i18n="sec_ses_sub">Cada sesión es una invitación a liberar lo que ya no te sirve y abrirte a más de lo que sos.</div>
 
   <!-- BARRAS DE ACCESS -->
   <div class="ses-compact featured" id="barras">
     <div class="ses-stripe" style="background:linear-gradient(90deg,#C17A48,#E8A87C)"></div>
     <div class="ses-compact-body">
-      <div class="featured-badge">✦ Más popular</div>
+      <div class="featured-badge" data-i18n="barras_badge">✦ Más popular</div>
       <div class="ses-head">
         <div class="ses-ico">🌀</div>
         <div class="ses-head-info">
           <div class="ses-nombre">Barras de Access</div>
-          <div class="ses-tagline">"¿Qué pasaría si pudieras soltar todo lo que creés que sabés?"</div>
+          <div class="ses-tagline" data-i18n="barras_tagline">"¿Qué pasaría si pudieras soltar todo lo que creés que sabés?"</div>
         </div>
       </div>
-      <div class="ses-desc-short">Liberá el estrés y la mente sin hablar de tus problemas. Un toque suave en 32 puntos energéticos de tu cabeza que resetea todo lo acumulado: ruido mental, estrés, creencias que ya no te sirven.</div>
+      <div class="ses-desc-short" data-i18n="barras_desc">Liberá el estrés y la mente sin hablar de tus problemas. Un toque suave en 32 puntos energéticos de tu cabeza que resetea todo lo acumulado: ruido mental, estrés, creencias que ya no te sirven.</div>
       <div class="ses-meta">
-        <div class="ses-meta-item">⏱ 60 minutos</div>
-        <div class="ses-meta-item">📍 Presencial</div>
+        <div class="ses-meta-item" data-i18n="meta_duracion_60">⏱ 60 minutos</div>
+        <div class="ses-meta-item" data-i18n="meta_presencial">📍 Presencial</div>
         <div class="ses-meta-item">💸 $50.000 ARS · USD 50</div>
       </div>
       <div class="ses-footer">
-        <button class="btn-ver-mas" onclick="toggleDetail('detail-barras',this)">Ver más ↓</button>
-        <button class="btn-reservar" onclick="reservar('barras','Barras de Access','🌀');track('click_btn',{boton:'reservar_barras'})">Reservar ✦</button>
+        <button class="btn-ver-mas" onclick="toggleDetail('detail-barras',this)" data-i18n="btn_ver_mas">Ver más ↓</button>
+        <button class="btn-reservar" onclick="reservar('barras','Barras de Access','🌀');track('click_btn',{boton:'reservar_barras'})" data-i18n="btn_reservar">Reservar ✦</button>
       </div>
 
       <div class="ses-detail" id="detail-barras">
-        <div class="ses-sub-title">🎯 ¿Es para vos?</div>
+        <div class="ses-sub-title" data-i18n="barras_para_vos_titulo">🎯 ¿Es para vos?</div>
         <ul class="ses-checklist">
-          <li>Pensás demasiado y no podés frenar la mente</li>
-          <li>Sentís estrés, ansiedad o sobrecarga constante</li>
-          <li>Te cuesta relajarte de verdad</li>
-          <li>Querés soltar y resetear tu energía</li>
-          <li>Estás bien, pero sentís que podés estar mejor</li>
+          <li data-i18n="barras_check1">Pensás demasiado y no podés frenar la mente</li>
+          <li data-i18n="barras_check2">Sentís estrés, ansiedad o sobrecarga constante</li>
+          <li data-i18n="barras_check3">Te cuesta relajarte de verdad</li>
+          <li data-i18n="barras_check4">Querés soltar y resetear tu energía</li>
+          <li data-i18n="barras_check5">Estás bien, pero sentís que podés estar mejor</li>
         </ul>
         <div class="ses-sep"></div>
-        <div class="ses-sub-title">🧠 32 puntos energéticos en tu cabeza</div>
-        <p class="ses-text">En estos puntos se almacena todo lo que viviste y aprendiste. Las Barras trabajan directamente sobre ellos.</p>
+        <div class="ses-sub-title" data-i18n="barras_puntos_titulo">🧠 32 puntos energéticos en tu cabeza</div>
+        <p class="ses-text" data-i18n="barras_puntos_desc">En estos puntos se almacena todo lo que viviste y aprendiste. Las Barras trabajan directamente sobre ellos.</p>
         <div class="ses-grid ses-grid-4">
-          <div class="ses-grid-item"><div class="gi-ico">💭</div><div class="gi-title">Pensamientos</div><div class="gi-desc">patrones repetitivos</div></div>
-          <div class="ses-grid-item"><div class="gi-ico">❤️</div><div class="gi-title">Emociones</div><div class="gi-desc">cargas no procesadas</div></div>
-          <div class="ses-grid-item"><div class="gi-ico">🔗</div><div class="gi-title">Creencias</div><div class="gi-desc">limitaciones aprendidas</div></div>
-          <div class="ses-grid-item"><div class="gi-ico">🔄</div><div class="gi-title">Patrones</div><div class="gi-desc">comportamientos automáticos</div></div>
+          <div class="ses-grid-item"><div class="gi-ico">💭</div><div class="gi-title" data-i18n="barras_gi_pens">Pensamientos</div><div class="gi-desc" data-i18n="barras_gi_pens_desc">patrones repetitivos</div></div>
+          <div class="ses-grid-item"><div class="gi-ico">❤️</div><div class="gi-title" data-i18n="barras_gi_emoc">Emociones</div><div class="gi-desc" data-i18n="barras_gi_emoc_desc">cargas no procesadas</div></div>
+          <div class="ses-grid-item"><div class="gi-ico">🔗</div><div class="gi-title" data-i18n="barras_gi_cree">Creencias</div><div class="gi-desc" data-i18n="barras_gi_cree_desc">limitaciones aprendidas</div></div>
+          <div class="ses-grid-item"><div class="gi-ico">🔄</div><div class="gi-title" data-i18n="barras_gi_patr">Patrones</div><div class="gi-desc" data-i18n="barras_gi_patr_desc">comportamientos automáticos</div></div>
         </div>
         <div class="ses-sep"></div>
-        <div class="ses-sub-title">🙌 El proceso</div>
+        <div class="ses-sub-title" data-i18n="titulo_proceso">🙌 El proceso</div>
         <div class="ses-steps">
-          <div class="ses-step"><div class="ses-step-num">1</div><div><div class="ses-step-title">Se activan los puntos</div><div class="ses-step-desc">Toque suave en los 32 puntos energéticos</div></div></div>
-          <div class="ses-step"><div class="ses-step-num">2</div><div><div class="ses-step-title">Se descargan acumulaciones</div><div class="ses-step-desc">Se liberan las cargas energéticas almacenadas</div></div></div>
-          <div class="ses-step"><div class="ses-step-num">3</div><div><div class="ses-step-title">Relajación profunda</div><div class="ses-step-desc">El sistema nervioso entra en calma real</div></div></div>
+          <div class="ses-step"><div class="ses-step-num">1</div><div><div class="ses-step-title" data-i18n="barras_step1_t">Se activan los puntos</div><div class="ses-step-desc" data-i18n="barras_step1_d">Toque suave en los 32 puntos energéticos</div></div></div>
+          <div class="ses-step"><div class="ses-step-num">2</div><div><div class="ses-step-title" data-i18n="barras_step2_t">Se descargan acumulaciones</div><div class="ses-step-desc" data-i18n="barras_step2_d">Se liberan las cargas energéticas almacenadas</div></div></div>
+          <div class="ses-step"><div class="ses-step-num">3</div><div><div class="ses-step-title" data-i18n="barras_step3_t">Relajación profunda</div><div class="ses-step-desc" data-i18n="barras_step3_d">El sistema nervioso entra en calma real</div></div></div>
         </div>
         <div class="ses-sep"></div>
-        <div class="ses-sub-title">⚡ En 60 minutos vas a notar</div>
+        <div class="ses-sub-title" data-i18n="barras_notar_titulo">⚡ En 60 minutos vas a notar</div>
         <div class="ses-benefits">
-          <div class="ses-benefit"><div class="ses-benefit-ico">🧠</div><div><div class="ses-benefit-title">Menos ruido mental</div><div class="ses-benefit-desc">como si alguien bajara el volumen</div></div></div>
-          <div class="ses-benefit"><div class="ses-benefit-ico">🌟</div><div><div class="ses-benefit-title">Apertura a nuevas posibilidades</div><div class="ses-benefit-desc">oportunidades que antes no veías</div></div></div>
-          <div class="ses-benefit"><div class="ses-benefit-ico">😴</div><div><div class="ses-benefit-title">Sueño reparador</div><div class="ses-benefit-desc">dormís como hacía meses</div></div></div>
-          <div class="ses-benefit"><div class="ses-benefit-ico">⚡</div><div><div class="ses-benefit-title">Más energía</div><div class="ses-benefit-desc">menos reactividad ante conflictos</div></div></div>
+          <div class="ses-benefit"><div class="ses-benefit-ico">🧠</div><div><div class="ses-benefit-title" data-i18n="barras_ben1_t">Menos ruido mental</div><div class="ses-benefit-desc" data-i18n="barras_ben1_d">como si alguien bajara el volumen</div></div></div>
+          <div class="ses-benefit"><div class="ses-benefit-ico">🌟</div><div><div class="ses-benefit-title" data-i18n="barras_ben2_t">Apertura a nuevas posibilidades</div><div class="ses-benefit-desc" data-i18n="barras_ben2_d">oportunidades que antes no veías</div></div></div>
+          <div class="ses-benefit"><div class="ses-benefit-ico">😴</div><div><div class="ses-benefit-title" data-i18n="barras_ben3_t">Sueño reparador</div><div class="ses-benefit-desc" data-i18n="barras_ben3_d">dormís como hacía meses</div></div></div>
+          <div class="ses-benefit"><div class="ses-benefit-ico">⚡</div><div><div class="ses-benefit-title" data-i18n="barras_ben4_t">Más energía</div><div class="ses-benefit-desc" data-i18n="barras_ben4_d">menos reactividad ante conflictos</div></div></div>
         </div>
         <div class="ses-sep"></div>
-        <div class="ses-sub-title">📱 Lo que dicen después de una sesión</div>
+        <div class="ses-sub-title" data-i18n="barras_testi_titulo">📱 Lo que dicen después de una sesión</div>
         <div class="ses-testi">
           <div class="ses-testi-img"><img src="https://cdn.shopify.com/s/files/1/0806/4863/4591/files/WhatsAppImage2026-04-22at20.03.36.jpg?v=1776899404" alt="Testimonio" loading="lazy"></div>
           <div class="ses-testi-img"><img src="https://cdn.shopify.com/s/files/1/0806/4863/4591/files/WhatsAppImage2026-04-22at20.04.11.jpg?v=1776899404" alt="Testimonio" loading="lazy"></div>
           <div class="ses-testi-img"><img src="https://cdn.shopify.com/s/files/1/0806/4863/4591/files/WhatsApp_Image_2026-04-22_at_20.13.36.jpg?v=1776899680" alt="Testimonio" loading="lazy"></div>
         </div>
         <div class="ses-sep"></div>
-        <div class="ses-sub-title">📋 Info práctica</div>
+        <div class="ses-sub-title" data-i18n="titulo_info_practica">📋 Info práctica</div>
         <div class="ses-info">
-          <div class="ses-info-row"><div class="ses-info-ico">🕒</div><div class="ses-info-label">Duración</div><div class="ses-info-val">60 minutos</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">📍</div><div class="ses-info-label">Modalidad</div><div class="ses-info-val">Presencial · Lomas de Zamora o Caballito</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label">Inversión</div><div class="ses-info-val">$50.000 ARS · USD 50</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">🔐</div><div class="ses-info-label">Reserva</div><div class="ses-info-val">Seña de $25.000</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">🕒</div><div class="ses-info-label" data-i18n="info_duracion">Duración</div><div class="ses-info-val">60 minutos</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">📍</div><div class="ses-info-label" data-i18n="info_modalidad">Modalidad</div><div class="ses-info-val" data-i18n="info_modalidad_val">Presencial · Lomas de Zamora o Caballito</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label" data-i18n="info_inversion">Inversión</div><div class="ses-info-val">$50.000 ARS · USD 50</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">🔐</div><div class="ses-info-label" data-i18n="info_reserva">Reserva</div><div class="ses-info-val" data-i18n="barras_senia">Seña de $25.000</div></div>
         </div>
-        <div class="ses-urg">⏳ Solo 10 turnos por semana · ¡Agendá el tuyo ahora!</div>
+        <div class="ses-urg" data-i18n="barras_urg">⏳ Solo 10 turnos por semana · ¡Agendá el tuyo ahora!</div>
         <div style="text-align:right">
-          <button class="btn-reservar" onclick="reservar('barras','Barras de Access','🌀');track('click_btn',{boton:'reservar_barras_det'})">Reservar Barras ✦</button>
+          <button class="btn-reservar" onclick="reservar('barras','Barras de Access','🌀');track('click_btn',{boton:'reservar_barras_det'})" data-i18n="barras_btn_det">Reservar Barras ✦</button>
         </div>
       </div>
     </div>
@@ -747,63 +759,63 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <div class="ses-ico">🌿</div>
         <div class="ses-head-info">
           <div class="ses-nombre">Proceso de Cuerpos</div>
-          <div class="ses-tagline">"¿Qué sabe tu cuerpo que vos todavía no estás escuchando?"</div>
+          <div class="ses-tagline" data-i18n="proceso_tagline">"¿Qué sabe tu cuerpo que vos todavía no estás escuchando?"</div>
         </div>
       </div>
-      <div class="ses-desc-short">Soltá lo que tu cuerpo guardó sin permiso. Un proceso de Access Consciousness® para liberar realidades reactivas y presuntivas — a través de la imposición de manos que trabaja a nivel energético.</div>
+      <div class="ses-desc-short" data-i18n="proceso_desc">Soltá lo que tu cuerpo guardó sin permiso. Un proceso de Access Consciousness® para liberar realidades reactivas y presuntivas — a través de la imposición de manos que trabaja a nivel energético.</div>
       <div class="ses-meta">
-        <div class="ses-meta-item">⏱ 60 minutos</div>
-        <div class="ses-meta-item">📍 Presencial</div>
+        <div class="ses-meta-item" data-i18n="meta_duracion_60">⏱ 60 minutos</div>
+        <div class="ses-meta-item" data-i18n="meta_presencial">📍 Presencial</div>
         <div class="ses-meta-item">💸 $60.000 ARS · USD 60</div>
       </div>
       <div class="ses-footer">
-        <button class="btn-ver-mas" onclick="toggleDetail('detail-proceso',this)">Ver más ↓</button>
-        <button class="btn-reservar" onclick="reservar('proceso_cuerpos','Proceso de Cuerpos','🌿');track('click_btn',{boton:'reservar_proceso'})" style="background:#7B9E87">Reservar ✦</button>
+        <button class="btn-ver-mas" onclick="toggleDetail('detail-proceso',this)" data-i18n="btn_ver_mas">Ver más ↓</button>
+        <button class="btn-reservar" onclick="reservar('proceso_cuerpos','Proceso de Cuerpos','🌿');track('click_btn',{boton:'reservar_proceso'})" style="background:#7B9E87" data-i18n="btn_reservar">Reservar ✦</button>
       </div>
 
       <div class="ses-detail" id="detail-proceso">
-        <div class="ses-sub-title">🎯 ¿Es para vos?</div>
+        <div class="ses-sub-title" data-i18n="barras_para_vos_titulo">🎯 ¿Es para vos?</div>
         <ul class="ses-checklist">
-          <li>Siempre te pasa lo mismo en distintas situaciones</li>
-          <li>Reaccionás y después pensás: "¿por qué hice eso?"</li>
-          <li>Querés cambiar pero no sabés cómo empezar</li>
-          <li>Sentís que el cuerpo guarda algo que la mente no puede resolver</li>
+          <li data-i18n="proceso_check1">Siempre te pasa lo mismo en distintas situaciones</li>
+          <li data-i18n="proceso_check2">Reaccionás y después pensás: "¿por qué hice eso?"</li>
+          <li data-i18n="proceso_check3">Querés cambiar pero no sabés cómo empezar</li>
+          <li data-i18n="proceso_check4">Sentís que el cuerpo guarda algo que la mente no puede resolver</li>
         </ul>
         <div class="ses-sep"></div>
-        <div class="ses-sub-title">📖 Realidades Reactivas y Presuntivas</div>
-        <p class="ses-text">Dos formas en que nos limitamos sin darnos cuenta — y que se fijan directamente en el cuerpo.</p>
+        <div class="ses-sub-title" data-i18n="proceso_realidades_titulo">📖 Realidades Reactivas y Presuntivas</div>
+        <p class="ses-text" data-i18n="proceso_realidades_desc">Dos formas en que nos limitamos sin darnos cuenta — y que se fijan directamente en el cuerpo.</p>
         <div class="ses-def-box">
-          <div class="ses-def-title">🔹 Realidad Presuntiva</div>
-          <div class="ses-def-text">Todos los supuestos y creencias que adoptamos como verdades absolutas sin cuestionar: <em>"así son las cosas"</em>, <em>"esto es lo normal"</em>.</div>
+          <div class="ses-def-title" data-i18n="proceso_presuntiva_titulo">🔹 Realidad Presuntiva</div>
+          <div class="ses-def-text" data-i18n-html="proceso_presuntiva_desc">Todos los supuestos y creencias que adoptamos como verdades absolutas sin cuestionar: <em>"así son las cosas"</em>, <em>"esto es lo normal"</em>.</div>
         </div>
         <div class="ses-def-box">
-          <div class="ses-def-title">🔸 Realidad Reactiva</div>
-          <div class="ses-def-text">Reaccionar automáticamente desde el juicio bueno/malo, en lugar de elegir conscientemente.</div>
+          <div class="ses-def-title" data-i18n="proceso_reactiva_titulo">🔸 Realidad Reactiva</div>
+          <div class="ses-def-text" data-i18n="proceso_reactiva_desc">Reaccionar automáticamente desde el juicio bueno/malo, en lugar de elegir conscientemente.</div>
         </div>
         <div class="ses-sep"></div>
-        <div class="ses-sub-title">🙌 El proceso</div>
+        <div class="ses-sub-title" data-i18n="titulo_proceso">🙌 El proceso</div>
         <div class="ses-flow">
-          <div class="ses-flow-item"><div class="ses-flow-ico">🌀</div><div class="ses-flow-label">Liberar</div></div>
-          <div class="ses-flow-item"><div class="ses-flow-ico">✨</div><div class="ses-flow-label">Recuperar elección</div></div>
+          <div class="ses-flow-item"><div class="ses-flow-ico">🌀</div><div class="ses-flow-label" data-i18n="proceso_flow1">Liberar</div></div>
+          <div class="ses-flow-item"><div class="ses-flow-ico">✨</div><div class="ses-flow-label" data-i18n="proceso_flow2">Recuperar elección</div></div>
         </div>
         <div class="ses-sep"></div>
-        <div class="ses-sub-title">⚡ En 60 minutos vas a notar</div>
+        <div class="ses-sub-title" data-i18n="barras_notar_titulo">⚡ En 60 minutos vas a notar</div>
         <div class="ses-benefits">
-          <div class="ses-benefit"><div class="ses-benefit-ico">🔄</div><div><div class="ses-benefit-title">Liberación de realidades reactivas</div><div class="ses-benefit-desc">el cuerpo deja de reaccionar automáticamente</div></div></div>
-          <div class="ses-benefit"><div class="ses-benefit-ico">🧬</div><div><div class="ses-benefit-title">Desprogramación de realidades presuntivas</div><div class="ses-benefit-desc">lo que asumiste como verdad sin cuestionar</div></div></div>
-          <div class="ses-benefit"><div class="ses-benefit-ico">💆</div><div><div class="ses-benefit-title">Mayor conexión corporal</div><div class="ses-benefit-desc">empezás a sentir lo que tu cuerpo necesita</div></div></div>
+          <div class="ses-benefit"><div class="ses-benefit-ico">🔄</div><div><div class="ses-benefit-title" data-i18n="proceso_ben1_t">Liberación de realidades reactivas</div><div class="ses-benefit-desc" data-i18n="proceso_ben1_d">el cuerpo deja de reaccionar automáticamente</div></div></div>
+          <div class="ses-benefit"><div class="ses-benefit-ico">🧬</div><div><div class="ses-benefit-title" data-i18n="proceso_ben2_t">Desprogramación de realidades presuntivas</div><div class="ses-benefit-desc" data-i18n="proceso_ben2_d">lo que asumiste como verdad sin cuestionar</div></div></div>
+          <div class="ses-benefit"><div class="ses-benefit-ico">💆</div><div><div class="ses-benefit-title" data-i18n="proceso_ben3_t">Mayor conexión corporal</div><div class="ses-benefit-desc" data-i18n="proceso_ben3_d">empezás a sentir lo que tu cuerpo necesita</div></div></div>
         </div>
         <div class="ses-sep"></div>
-        <div class="ses-sub-title">📋 Info práctica</div>
+        <div class="ses-sub-title" data-i18n="titulo_info_practica">📋 Info práctica</div>
         <div class="ses-info">
-          <div class="ses-info-row"><div class="ses-info-ico">🕒</div><div class="ses-info-label">Duración</div><div class="ses-info-val">60 minutos</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">📍</div><div class="ses-info-label">Modalidad</div><div class="ses-info-val">Presencial · Lomas de Zamora o Caballito</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label">Inversión</div><div class="ses-info-val">$60.000 ARS · USD 60</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">🔐</div><div class="ses-info-label">Reserva</div><div class="ses-info-val">Seña de $30.000</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">🕒</div><div class="ses-info-label" data-i18n="info_duracion">Duración</div><div class="ses-info-val">60 minutos</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">📍</div><div class="ses-info-label" data-i18n="info_modalidad">Modalidad</div><div class="ses-info-val" data-i18n="info_modalidad_val">Presencial · Lomas de Zamora o Caballito</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label" data-i18n="info_inversion">Inversión</div><div class="ses-info-val">$60.000 ARS · USD 60</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">🔐</div><div class="ses-info-label" data-i18n="info_reserva">Reserva</div><div class="ses-info-val" data-i18n="proceso_senia">Seña de $30.000</div></div>
         </div>
-        <div class="ses-urg">⏳ Solo 5 turnos por semana · ¡Agendá el tuyo ahora!</div>
+        <div class="ses-urg" data-i18n="proceso_urg">⏳ Solo 5 turnos por semana · ¡Agendá el tuyo ahora!</div>
         <div style="text-align:right">
-          <button class="btn-reservar" onclick="reservar('proceso_cuerpos','Proceso de Cuerpos','🌿');track('click_btn',{boton:'reservar_proceso_det'})" style="background:#7B9E87">Reservar Proceso ✦</button>
+          <button class="btn-reservar" onclick="reservar('proceso_cuerpos','Proceso de Cuerpos','🌿');track('click_btn',{boton:'reservar_proceso_det'})" style="background:#7B9E87" data-i18n="proceso_btn_det">Reservar Proceso ✦</button>
         </div>
       </div>
     </div>
@@ -814,9 +826,9 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 
 <!-- REGALOS -->
 <section id="regalos" class="sec">
-  <div class="sec-label">🎁 Regalos para vos</div>
-  <div class="sec-title">¿Cuánta expansión estás dispuesto/a a recibir?</div>
-  <div class="sec-sub">Preparé estas guías para que empieces a trabajar con tu consciencia hoy mismo. Son herramientas que a mí me cambiaron algo.</div>
+  <div class="sec-label" data-i18n="sec_regalos_label">🎁 Regalos para vos</div>
+  <div class="sec-title" data-i18n="sec_regalos_titulo">¿Cuánta expansión estás dispuesto/a a recibir?</div>
+  <div class="sec-sub" data-i18n="sec_regalos_sub">Preparé estas guías para que empieces a trabajar con tu consciencia hoy mismo. Son herramientas que a mí me cambiaron algo.</div>
   <div id="regalosWrap">
     <div class="empty"><div class="ei">🎁</div><p>Cargando recursos...</p></div>
   </div>
@@ -826,9 +838,9 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 
 <!-- CLASES -->
 <section id="clases" class="sec">
-  <div class="sec-label">📚 Clases</div>
-  <div class="sec-title">Aprendé a dar sesiones</div>
-  <div class="sec-sub">Convertite en practicante de Barras de Access® en un solo día.</div>
+  <div class="sec-label" data-i18n="sec_clases_label">📚 Clases</div>
+  <div class="sec-title" data-i18n="sec_clases_titulo">Aprendé a dar sesiones</div>
+  <div class="sec-sub" data-i18n="sec_clases_sub">Convertite en practicante de Barras de Access® en un solo día.</div>
 
   <div class="ses-compact" id="clase-barras">
     <div class="ses-stripe" style="background:linear-gradient(90deg,#4A7FA5,#7BAFD4)"></div>
@@ -837,58 +849,58 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <div class="ses-ico">📚</div>
         <div class="ses-head-info">
           <div class="ses-nombre">Clase de Barras de Access®</div>
-          <div class="ses-tagline">"¿Cuánto espacio, liviandad y claridad podrías crear en tu vida?"</div>
+          <div class="ses-tagline" data-i18n="clase_tagline">"¿Cuánto espacio, liviandad y claridad podrías crear en tu vida?"</div>
         </div>
       </div>
-      <div class="ses-desc-short">Un entrenamiento práctico de 8 horas en un solo día. Aprendés la técnica, la practicás y te vas con la herramienta incorporada. No necesitás experiencia previa.</div>
+      <div class="ses-desc-short" data-i18n="clase_desc">Un entrenamiento práctico de 8 horas en un solo día. Aprendés la técnica, la practicás y te vas con la herramienta incorporada. No necesitás experiencia previa.</div>
       <div class="ses-meta">
-        <div class="ses-meta-item">📅 8 horas · 1 día</div>
-        <div class="ses-meta-item">📍 Presencial</div>
+        <div class="ses-meta-item" data-i18n="meta_clase_dur">📅 8 horas · 1 día</div>
+        <div class="ses-meta-item" data-i18n="meta_presencial">📍 Presencial</div>
         <div class="ses-meta-item">💸 USD 330</div>
       </div>
       <div class="ses-footer">
-        <button class="btn-ver-mas" onclick="toggleDetail('detail-clase',this)">Ver más ↓</button>
-        <button class="btn-reservar" onclick="reservar('clase_barras','Clase de Barras de Access®','📚');track('click_btn',{boton:'reservar_clase'})" style="background:#4A7FA5">Reservar lugar ✦</button>
+        <button class="btn-ver-mas" onclick="toggleDetail('detail-clase',this)" data-i18n="btn_ver_mas">Ver más ↓</button>
+        <button class="btn-reservar" onclick="reservar('clase_barras','Clase de Barras de Access®','📚');track('click_btn',{boton:'reservar_clase'})" style="background:#4A7FA5" data-i18n="clase_btn_lugar">Reservar lugar ✦</button>
       </div>
 
       <div class="ses-detail" id="detail-clase">
-        <div class="ses-sub-title">🌟 ¿Qué vas a vivir?</div>
+        <div class="ses-sub-title" data-i18n="clase_det_que_vivir">🌟 ¿Qué vas a vivir?</div>
         <ul class="ses-checklist">
-          <li><strong>Parte teórica</strong> — entendé la base de las Barras</li>
-          <li><strong>Herramientas de Access Consciousness®</strong> — aplicables desde el primer día</li>
-          <li><strong>Práctica completa</strong> — todos dan 2 sesiones y reciben 2</li>
-          <li><strong>Te vas con la técnica incorporada y súper relajado/a</strong></li>
+          <li data-i18n-html="clase_det_li1"><strong>Parte teórica</strong> — entendé la base de las Barras</li>
+          <li data-i18n-html="clase_det_li2"><strong>Herramientas de Access Consciousness®</strong> — aplicables desde el primer día</li>
+          <li data-i18n-html="clase_det_li3"><strong>Práctica completa</strong> — todos dan 2 sesiones y reciben 2</li>
+          <li data-i18n-html="clase_det_li4"><strong>Te vas con la técnica incorporada y súper relajado/a</strong></li>
         </ul>
         <div class="ses-sep"></div>
-        <div class="ses-sub-title">🎯 ¿Para quién es?</div>
+        <div class="ses-sub-title" data-i18n="clase_det_para_quien">🎯 ¿Para quién es?</div>
         <ul class="ses-checklist">
-          <li>Si buscás una herramienta que <strong>te quede para toda la vida</strong></li>
-          <li>Si sos terapeuta o coach y querés <strong>sumar una herramienta poderosa</strong></li>
-          <li>Si sentís que necesitás un <strong>cambio real</strong> en tu vida</li>
-          <li>Si ya das sesiones y querés <strong>certificarte</strong></li>
+          <li data-i18n-html="clase_det_pq1">Si buscás una herramienta que <strong>te quede para toda la vida</strong></li>
+          <li data-i18n-html="clase_det_pq2">Si sos terapeuta o coach y querés <strong>sumar una herramienta poderosa</strong></li>
+          <li data-i18n-html="clase_det_pq3">Si sentís que necesitás un <strong>cambio real</strong> en tu vida</li>
+          <li data-i18n-html="clase_det_pq4">Si ya das sesiones y querés <strong>certificarte</strong></li>
         </ul>
         <div class="ses-sep"></div>
-        <div class="ses-sub-title">💰 Inversión</div>
+        <div class="ses-sub-title" data-i18n="clase_det_inversion">💰 Inversión</div>
         <div class="ses-price-box">
           <div class="ses-price-main">USD 330</div>
-          <div class="ses-price-small">o equivalente en pesos argentinos · tipo de cambio BNA</div>
+          <div class="ses-price-small" data-i18n="clase_det_precio_nota">o equivalente en pesos argentinos · tipo de cambio BNA</div>
         </div>
         <div class="ses-price-box warm">
           <div class="ses-price-main">USD 165</div>
-          <div class="ses-price-small">50% OFF si ya hiciste una clase</div>
-          <div class="ses-price-badge">🎁 Descuento para alumnos</div>
+          <div class="ses-price-small" data-i18n="clase_det_descuento">50% OFF si ya hiciste una clase</div>
+          <div class="ses-price-badge" data-i18n="clase_det_descuento_badge">🎁 Descuento para alumnos</div>
         </div>
         <div class="ses-price-box green">
-          <div class="ses-price-main">Menores de 15 años</div>
-          <div class="ses-price-small">Sin costo · Acompañando a un mayor</div>
-          <div class="ses-price-badge" style="background:#d4ecd4;border-color:#7aa87a;color:#3a6b3a;">👨‍👩‍👧‍👦 Familia</div>
+          <div class="ses-price-main" data-i18n="clase_det_menores">Menores de 15 años</div>
+          <div class="ses-price-small" data-i18n="clase_det_menores_nota">Sin costo · Acompañando a un mayor</div>
+          <div class="ses-price-badge" style="background:#d4ecd4;border-color:#7aa87a;color:#3a6b3a;" data-i18n="clase_det_familia_badge">👨‍👩‍👧‍👦 Familia</div>
         </div>
         <div class="ses-sep"></div>
         <div class="ses-cierre">
-          <p>Si sentís que es momento de un cambio real…<br><strong>Esta clase puede ser el inicio de algo mucho más grande.</strong></p>
+          <p data-i18n-html="clase_det_cierre">Si sentís que es momento de un cambio real…<br><strong>Esta clase puede ser el inicio de algo mucho más grande.</strong></p>
         </div>
         <div style="text-align:right">
-          <button class="btn-reservar" onclick="reservar('clase_barras','Clase de Barras de Access®','📚');track('click_btn',{boton:'reservar_clase_det'})" style="background:#4A7FA5">Reservar lugar ✦</button>
+          <button class="btn-reservar" onclick="reservar('clase_barras','Clase de Barras de Access®','📚');track('click_btn',{boton:'reservar_clase_det'})" style="background:#4A7FA5" data-i18n="clase_btn_lugar">Reservar lugar ✦</button>
         </div>
       </div>
     </div>
@@ -899,54 +911,54 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 
 <!-- QUIÉN SOY -->
 <section id="quien-soy" class="sec">
-  <div class="sec-label">✦ Camino</div>
+  <div class="sec-label" data-i18n="sec_quien_label">✦ Camino</div>
 
-  <div class="quien-quote">
+  <div class="quien-quote" data-i18n-html="quien_quote">
     No vine a enseñarte nada.<br>Vine a <em>recordarte</em> lo que ya sabés.
   </div>
 
   <div class="quien-stats">
     <div class="quien-stat">
       <div class="quien-stat-num">5</div>
-      <div class="quien-stat-label">años de camino espiritual</div>
+      <div class="quien-stat-label" data-i18n="stat_anos">años de camino espiritual</div>
     </div>
     <div class="quien-stat">
       <div class="quien-stat-num">+100</div>
-      <div class="quien-stat-label">sesiones experimentadas</div>
+      <div class="quien-stat-label" data-i18n="stat_exp">sesiones experimentadas</div>
     </div>
     <div class="quien-stat">
       <div class="quien-stat-num">+300</div>
-      <div class="quien-stat-label">sesiones facilitadas</div>
+      <div class="quien-stat-label" data-i18n="stat_fac">sesiones facilitadas</div>
     </div>
   </div>
 
-  <div class="quien-eyebrow">Manifiesto</div>
+  <div class="quien-eyebrow" data-i18n="eyebrow_manifiesto">Manifiesto</div>
   <div class="quien-card">
-    <p>No vine a darte poder.<br>Vine a recordarte que ya lo tenés.</p>
-    <p>Creo que cada persona tiene dentro suyo todo lo necesario para transformar su realidad.</p>
-    <p>Muchas veces buscamos afuera respuestas, cambios o soluciones que en realidad comienzan dentro nuestro.</p>
-    <p>Las herramientas no crean el cambio.</p>
-    <p>Nos ayudan a ver nuevas posibilidades, recuperar nuestra claridad y recordar el poder que siempre estuvo ahí.</p>
-    <p>Juan Cruz Consciencia existe para acompañar ese proceso.</p>
+    <p data-i18n-html="manif_p1">No vine a darte poder.<br>Vine a recordarte que ya lo tenés.</p>
+    <p data-i18n="manif_p2">Creo que cada persona tiene dentro suyo todo lo necesario para transformar su realidad.</p>
+    <p data-i18n="manif_p3">Muchas veces buscamos afuera respuestas, cambios o soluciones que en realidad comienzan dentro nuestro.</p>
+    <p data-i18n="manif_p4">Las herramientas no crean el cambio.</p>
+    <p data-i18n="manif_p5">Nos ayudan a ver nuevas posibilidades, recuperar nuestra claridad y recordar el poder que siempre estuvo ahí.</p>
+    <p data-i18n="manif_p6">Juan Cruz Consciencia existe para acompañar ese proceso.</p>
   </div>
 
-  <div class="quien-eyebrow">Visión de mundo</div>
+  <div class="quien-eyebrow" data-i18n="eyebrow_vision">Visión de mundo</div>
   <div class="quien-card">
-    <p>Veo la transformación humana como un proceso de recuerdo.</p>
-    <p>Un regreso a nuestra capacidad natural de elegir, crear y vivir conscientemente.</p>
-    <p>Por eso trabajo con herramientas energéticas, mentales y emocionales que llevan la consciencia a la acción.</p>
-    <p>Porque cuando el ser, la mente y el cuerpo actúan en unidad, se transforma tu vida.</p>
+    <p data-i18n="vision_p1">Veo la transformación humana como un proceso de recuerdo.</p>
+    <p data-i18n="vision_p2">Un regreso a nuestra capacidad natural de elegir, crear y vivir conscientemente.</p>
+    <p data-i18n="vision_p3">Por eso trabajo con herramientas energéticas, mentales y emocionales que llevan la consciencia a la acción.</p>
+    <p data-i18n="vision_p4">Porque cuando el ser, la mente y el cuerpo actúan en unidad, se transforma tu vida.</p>
   </div>
 
-  <div class="quien-eyebrow">Propósito</div>
+  <div class="quien-eyebrow" data-i18n="eyebrow_proposito">Propósito</div>
   <div class="quien-card">
-    <p>Mi camino comenzó buscando respuestas y me llevó a descubrir herramientas que transformaron mi forma de percibir la vida.</p>
-    <p>Hoy comparto esas herramientas con una convicción simple:</p>
-    <p>Cada persona tiene dentro suyo el poder de crear una realidad diferente.</p>
-    <p>Mi propósito es acompañarte a descubrirlo.</p>
+    <p data-i18n="prop_p1">Mi camino comenzó buscando respuestas y me llevó a descubrir herramientas que transformaron mi forma de percibir la vida.</p>
+    <p data-i18n="prop_p2">Hoy comparto esas herramientas con una convicción simple:</p>
+    <p data-i18n="prop_p3">Cada persona tiene dentro suyo el poder de crear una realidad diferente.</p>
+    <p data-i18n="prop_p4">Mi propósito es acompañarte a descubrirlo.</p>
   </div>
 
-  <div class="quien-espacio">
+  <div class="quien-espacio" data-i18n-html="quien_espacio">
     Un espacio sin juicio, donde no hay nada que hacer — solo recibir.<br>
     Un espacio en el que te permitas ser exactamente lo que sos.<br><br>
     <span style="font-size:13px;color:var(--muted);">Sin expectativas. Solo presencia.</span>
@@ -956,9 +968,9 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 <!-- CTA FINAL -->
 <div class="cta-section">
   <div class="cta-card">
-    <h2>¿No sabés por dónde empezar?</h2>
-    <p>Contame dónde estás y juntos elegimos lo que más te sirve en este momento.</p>
-    <button class="btn-cta" onclick="openModal();track('click_btn',{boton:'cta_final'})" style="border:none;cursor:pointer;">Agendá una sesión ✨</button>
+    <h2 data-i18n="cta_h2">¿No sabés por dónde empezar?</h2>
+    <p data-i18n="cta_p">Contame dónde estás y juntos elegimos lo que más te sirve en este momento.</p>
+    <button class="btn-cta" onclick="openModal();track('click_btn',{boton:'cta_final'})" style="border:none;cursor:pointer;" data-i18n="cta_btn">Agendá una sesión ✨</button>
   </div>
 </div>
 
@@ -987,7 +999,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 </footer>
 
 <!-- WHATSAPP FLOTANTE -->
-<a href="https://wa.me/541151758653?text=Hola%20Juan%20Cruz%2C%20quiero%20saber%20m%C3%A1s%20sobre%20las%20sesiones" target="_blank" aria-label="Contactar por WhatsApp"
+<a id="waFlotante" href="https://wa.me/541151758653?text=Hola%20Juan%20Cruz%2C%20quiero%20saber%20m%C3%A1s%20sobre%20las%20sesiones" target="_blank" aria-label="Contactar por WhatsApp"
   style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:300;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.35);text-decoration:none;transition:transform .2s,box-shadow .2s;"
   onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(37,211,102,.45)'"
   onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(37,211,102,.35)'"
@@ -998,10 +1010,421 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 </a>
 
 <script>
+/* ── i18n ── */
+const LANGS={
+es:{
+  nav_preguntas:'Preguntas',nav_sesiones:'Sesiones',nav_regalos:'Regalos',nav_clases:'Clases',nav_camino:'Camino',
+  btn_agendar:'Agendá una sesión ↗',
+  hero_h1:'¿Qué sería posible si reconocieras el poder que ya existe en vos?',
+  hero_p1:'Cada persona tiene dentro suyo todo lo necesario para transformar su realidad.',
+  hero_p2:'Juan Cruz Consciencia es un espacio de exploración, transformación y crecimiento donde las herramientas se convierten en puentes hacia una vida más consciente.',
+  hero_explorar:'Explorar preguntas ↓',hero_sesiones:'Ver sesiones ✦',
+  sec_preguntas_label:'✦ Preguntas Expansivas',sec_preguntas_titulo:'Preguntas para abrir nuevas posibilidades',
+  pregs_p1:'Cada vez que concluís algo sobre vos, sobre tu vida o sobre lo que es posible, dejás de explorar.',
+  pregs_p2:'La mayoría de las personas vive desde respuestas que nunca cuestionó.',
+  pregs_creencias:'Creencias.',pregs_conclusiones:'Conclusiones.',pregs_juicios:'Juicios.',
+  pregs_historias1:'Historias sobre quién es.',pregs_historias2:'Historias sobre lo que puede o no puede crear.',
+  pregs_hook:'Una pregunta tiene el poder de interrumpir todo eso.',
+  pregs_porque1:'No porque te dé una respuesta.',pregs_porque2:'Sino porque abre un espacio diferente.',
+  pregs_porque3:'Un espacio donde aparecen nuevas perspectivas, nuevas elecciones y nuevas posibilidades.',
+  pregs_uso1:'Utilizo las preguntas como herramientas de consciencia.',pregs_uso2:'No para encontrar la respuesta correcta.',
+  pregs_uso3:'Sino para ir más allá de los puntos de vista que limitan lo que podés percibir, elegir y crear.',
+  pregs_instr1:'Tu mente busca respuestas.<br>Tu consciencia descubre posibilidades.',
+  pregs_instr2:'No busques responderlas.<br>Permitite habitarlas.<br>Y observá qué se vuelve posible.',
+  cargando:'Cargando...',featured_label:'✦ Pregunta del momento',
+  btn_siguiente:'Otra pregunta →',btn_compartir:'↗ Compartir',
+  sec_ses_label:'✦ Lo que ofrezco',sec_ses_titulo:'Un espacio para soltar y elegir',
+  sec_ses_sub:'Cada sesión es una invitación a liberar lo que ya no te sirve y abrirte a más de lo que sos.',
+  barras_badge:'✦ Más popular',
+  barras_tagline:'"¿Qué pasaría si pudieras soltar todo lo que creés que sabés?"',
+  barras_desc:'Liberá el estrés y la mente sin hablar de tus problemas. Un toque suave en 32 puntos energéticos de tu cabeza que resetea todo lo acumulado: ruido mental, estrés, creencias que ya no te sirven.',
+  meta_duracion_60:'⏱ 60 minutos',meta_presencial:'📍 Presencial',meta_clase_dur:'📅 8 horas · 1 día',
+  btn_ver_mas:'Ver más ↓',btn_ver_menos:'Ver menos ↑',btn_reservar:'Reservar ✦',
+  barras_para_vos_titulo:'🎯 ¿Es para vos?',
+  barras_check1:'Pensás demasiado y no podés frenar la mente',barras_check2:'Sentís estrés, ansiedad o sobrecarga constante',
+  barras_check3:'Te cuesta relajarte de verdad',barras_check4:'Querés soltar y resetear tu energía',barras_check5:'Estás bien, pero sentís que podés estar mejor',
+  barras_puntos_titulo:'🧠 32 puntos energéticos en tu cabeza',
+  barras_puntos_desc:'En estos puntos se almacena todo lo que viviste y aprendiste. Las Barras trabajan directamente sobre ellos.',
+  barras_gi_pens:'Pensamientos',barras_gi_pens_desc:'patrones repetitivos',barras_gi_emoc:'Emociones',barras_gi_emoc_desc:'cargas no procesadas',
+  barras_gi_cree:'Creencias',barras_gi_cree_desc:'limitaciones aprendidas',barras_gi_patr:'Patrones',barras_gi_patr_desc:'comportamientos automáticos',
+  titulo_proceso:'🙌 El proceso',
+  barras_step1_t:'Se activan los puntos',barras_step1_d:'Toque suave en los 32 puntos energéticos',
+  barras_step2_t:'Se descargan acumulaciones',barras_step2_d:'Se liberan las cargas energéticas almacenadas',
+  barras_step3_t:'Relajación profunda',barras_step3_d:'El sistema nervioso entra en calma real',
+  barras_notar_titulo:'⚡ En 60 minutos vas a notar',
+  barras_ben1_t:'Menos ruido mental',barras_ben1_d:'como si alguien bajara el volumen',
+  barras_ben2_t:'Apertura a nuevas posibilidades',barras_ben2_d:'oportunidades que antes no veías',
+  barras_ben3_t:'Sueño reparador',barras_ben3_d:'dormís como hacía meses',
+  barras_ben4_t:'Más energía',barras_ben4_d:'menos reactividad ante conflictos',
+  barras_testi_titulo:'📱 Lo que dicen después de una sesión',
+  titulo_info_practica:'📋 Info práctica',info_duracion:'Duración',info_modalidad:'Modalidad',
+  info_modalidad_val:'Presencial · Lomas de Zamora o Caballito',info_inversion:'Inversión',info_reserva:'Reserva',
+  barras_senia:'Seña de $25.000',barras_urg:'⏳ Solo 10 turnos por semana · ¡Agendá el tuyo ahora!',barras_btn_det:'Reservar Barras ✦',
+  proceso_tagline:'"¿Qué sabe tu cuerpo que vos todavía no estás escuchando?"',
+  proceso_desc:'Soltá lo que tu cuerpo guardó sin permiso. Un proceso de Access Consciousness® para liberar realidades reactivas y presuntivas — a través de la imposición de manos que trabaja a nivel energético.',
+  proceso_check1:'Siempre te pasa lo mismo en distintas situaciones',proceso_check2:'Reaccionás y después pensás: "¿por qué hice eso?"',
+  proceso_check3:'Querés cambiar pero no sabés cómo empezar',proceso_check4:'Sentís que el cuerpo guarda algo que la mente no puede resolver',
+  proceso_realidades_titulo:'📖 Realidades Reactivas y Presuntivas',
+  proceso_realidades_desc:'Dos formas en que nos limitamos sin darnos cuenta — y que se fijan directamente en el cuerpo.',
+  proceso_presuntiva_titulo:'🔹 Realidad Presuntiva',
+  proceso_presuntiva_desc:'Todos los supuestos y creencias que adoptamos como verdades absolutas sin cuestionar: <em>"así son las cosas"</em>, <em>"esto es lo normal"</em>.',
+  proceso_reactiva_titulo:'🔸 Realidad Reactiva',proceso_reactiva_desc:'Reaccionar automáticamente desde el juicio bueno/malo, en lugar de elegir conscientemente.',
+  proceso_flow1:'Liberar',proceso_flow2:'Recuperar elección',
+  proceso_ben1_t:'Liberación de realidades reactivas',proceso_ben1_d:'el cuerpo deja de reaccionar automáticamente',
+  proceso_ben2_t:'Desprogramación de realidades presuntivas',proceso_ben2_d:'lo que asumiste como verdad sin cuestionar',
+  proceso_ben3_t:'Mayor conexión corporal',proceso_ben3_d:'empezás a sentir lo que tu cuerpo necesita',
+  proceso_senia:'Seña de $30.000',proceso_urg:'⏳ Solo 5 turnos por semana · ¡Agendá el tuyo ahora!',proceso_btn_det:'Reservar Proceso ✦',
+  sec_regalos_label:'🎁 Regalos para vos',sec_regalos_titulo:'¿Cuánta expansión estás dispuesto/a a recibir?',
+  sec_regalos_sub:'Preparé estas guías para que empieces a trabajar con tu consciencia hoy mismo. Son herramientas que a mí me cambiaron algo.',
+  sec_clases_label:'📚 Clases',sec_clases_titulo:'Aprendé a dar sesiones',sec_clases_sub:'Convertite en practicante de Barras de Access® en un solo día.',
+  clase_tagline:'"¿Cuánto espacio, liviandad y claridad podrías crear en tu vida?"',
+  clase_desc:'Un entrenamiento práctico de 8 horas en un solo día. Aprendés la técnica, la practicás y te vas con la herramienta incorporada. No necesitás experiencia previa.',
+  clase_btn_lugar:'Reservar lugar ✦',
+  clase_det_que_vivir:'🌟 ¿Qué vas a vivir?',
+  clase_det_li1:'<strong>Parte teórica</strong> — entendé la base de las Barras',
+  clase_det_li2:'<strong>Herramientas de Access Consciousness®</strong> — aplicables desde el primer día',
+  clase_det_li3:'<strong>Práctica completa</strong> — todos dan 2 sesiones y reciben 2',
+  clase_det_li4:'<strong>Te vas con la técnica incorporada y súper relajado/a</strong>',
+  clase_det_para_quien:'🎯 ¿Para quién es?',
+  clase_det_pq1:'Si buscás una herramienta que <strong>te quede para toda la vida</strong>',
+  clase_det_pq2:'Si sos terapeuta o coach y querés <strong>sumar una herramienta poderosa</strong>',
+  clase_det_pq3:'Si sentís que necesitás un <strong>cambio real</strong> en tu vida',
+  clase_det_pq4:'Si ya das sesiones y querés <strong>certificarte</strong>',
+  clase_det_inversion:'💰 Inversión',
+  clase_det_precio_nota:'o equivalente en pesos argentinos · tipo de cambio BNA',
+  clase_det_descuento:'50% OFF si ya hiciste una clase',
+  clase_det_descuento_badge:'🎁 Descuento para alumnos',
+  clase_det_menores:'Menores de 15 años',
+  clase_det_menores_nota:'Sin costo · Acompañando a un mayor',
+  clase_det_familia_badge:'👨‍👩‍👧‍👦 Familia',
+  clase_det_cierre:'Si sentís que es momento de un cambio real…<br><strong>Esta clase puede ser el inicio de algo mucho más grande.</strong>',
+  sec_quien_label:'✦ Camino',
+  quien_quote:'No vine a enseñarte nada.<br>Vine a <em>recordarte</em> lo que ya sabés.',
+  stat_anos:'años de camino espiritual',stat_exp:'sesiones experimentadas',stat_fac:'sesiones facilitadas',
+  eyebrow_manifiesto:'Manifiesto',eyebrow_vision:'Visión de mundo',eyebrow_proposito:'Propósito',
+  manif_p1:'No vine a darte poder.<br>Vine a recordarte que ya lo tenés.',
+  manif_p2:'Creo que cada persona tiene dentro suyo todo lo necesario para transformar su realidad.',
+  manif_p3:'Muchas veces buscamos afuera respuestas, cambios o soluciones que en realidad comienzan dentro nuestro.',
+  manif_p4:'Las herramientas no crean el cambio.',
+  manif_p5:'Nos ayudan a ver nuevas posibilidades, recuperar nuestra claridad y recordar el poder que siempre estuvo ahí.',
+  manif_p6:'Juan Cruz Consciencia existe para acompañar ese proceso.',
+  vision_p1:'Veo la transformación humana como un proceso de recuerdo.',
+  vision_p2:'Un regreso a nuestra capacidad natural de elegir, crear y vivir conscientemente.',
+  vision_p3:'Por eso trabajo con herramientas energéticas, mentales y emocionales que llevan la consciencia a la acción.',
+  vision_p4:'Porque cuando el ser, la mente y el cuerpo actúan en unidad, se transforma tu vida.',
+  prop_p1:'Mi camino comenzó buscando respuestas y me llevó a descubrir herramientas que transformaron mi forma de percibir la vida.',
+  prop_p2:'Hoy comparto esas herramientas con una convicción simple:',
+  prop_p3:'Cada persona tiene dentro suyo el poder de crear una realidad diferente.',
+  prop_p4:'Mi propósito es acompañarte a descubrirlo.',
+  quien_espacio:'Un espacio sin juicio, donde no hay nada que hacer — solo recibir.<br>Un espacio en el que te permitas ser exactamente lo que sos.<br><br><span style="font-size:13px;color:var(--muted);">Sin expectativas. Solo presencia.</span>',
+  cta_h2:'¿No sabés por dónde empezar?',cta_p:'Contame dónde estás y juntos elegimos lo que más te sirve en este momento.',cta_btn:'Agendá una sesión ✨',
+  modal1_titulo:'¿Qué te llama?',modal1_sub:'Elegí lo que más resuena con lo que estás buscando ahora.',
+  modal_barras_desc:'Liberar carga mental, relajación profunda, claridad · 60 min',
+  modal_proceso_desc:'Conectar con tu cuerpo, liberar bloqueos · 60 min',
+  modal_clase_desc:'Aprendé a dar sesiones · 8 horas · Un solo día',
+  modal_nose_strong:'No sé cuál elegir',modal_nose_text:'Contame dónde estás y lo vemos juntos',
+  modal2_sub:'Completá tus datos y te contactamos',
+  wa_msg:'Hola Juan Cruz, quiero saber más sobre las sesiones',
+  ph_nombre:'Tu nombre',ph_wapp:'WhatsApp (ej: 1134567890)',
+  btn_enviar:'Enviar ✦',paso3_listo:'¡Listo!',
+  paso3_msg:'Recibimos tu registro. Juan Cruz te contacta pronto para coordinar todo.',
+  btn_cerrar:'Cerrar',lg_sub:'Dejá tu nombre y WhatsApp — te llega al instante.',lg_btn:'Recibir regalo ✦',
+  err_nombre:'Poné tu nombre para continuar.',err_wapp:'Poné un WhatsApp válido.',
+  cargando_spinner:'⏳ Un momento...',msg_descargando:'✦ Descargando...',err_generico:'Hubo un error. Intentá de nuevo.',
+  proximamente:'Próximamente habrá recursos especiales para vos.',
+  form_que_sentis:'¿Qué sentís?',form_cuando_sentis:'¿Cuándo lo sentís más?',form_cuando_hacerla:'¿Cuándo querés hacerla?',
+  chk_ruido:'Mucho ruido mental',chk_estres:'Estrés / Ansiedad',chk_cansancio:'Cansancio general',
+  rad_trabajo:'En el trabajo',rad_noche:'Por la noche',rad_tododia:'Durante todo el día',
+  rad_esta_semana:'Esta semana',rad_proximas2:'Próximas 2 sem.',rad_este_mes:'Este mes',rad_nose:'No sé todavía',
+  form_patron:'¿Hay algún patrón que sentís que se repite?',ph_patron:'Contame brevemente...',
+  form_recibiste_barras:'¿Ya recibiste sesiones de Barras?',form_para_que:'¿Para qué querés aprender?',form_cuando_clase:'¿Cuándo te gustaría hacer la clase?',
+  rad_si:'Sí',rad_no:'No',rad_uso_personal:'Uso personal',rad_ofrecer:'Ofrecer sesiones',rad_los_dos:'Los dos',
+  ph_mensaje:'¿Algo que quieras contarme antes? (opcional)',
+  months:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
+},
+en:{
+  nav_preguntas:'Questions',nav_sesiones:'Sessions',nav_regalos:'Gifts',nav_clases:'Classes',nav_camino:'Journey',
+  btn_agendar:'Book a session ↗',
+  hero_h1:'What would be possible if you recognized the power that already exists in you?',
+  hero_p1:'Every person has within them everything needed to transform their reality.',
+  hero_p2:'Juan Cruz Consciencia is a space for exploration, transformation and growth where tools become bridges toward a more conscious life.',
+  hero_explorar:'Explore questions ↓',hero_sesiones:'View sessions ✦',
+  sec_preguntas_label:'✦ Expansive Questions',sec_preguntas_titulo:'Questions to open new possibilities',
+  pregs_p1:'Every time you conclude something about yourself, your life, or what is possible, you stop exploring.',
+  pregs_p2:'Most people live from answers they never questioned.',
+  pregs_creencias:'Beliefs.',pregs_conclusiones:'Conclusions.',pregs_juicios:'Judgments.',
+  pregs_historias1:'Stories about who they are.',pregs_historias2:'Stories about what they can or cannot create.',
+  pregs_hook:'A question has the power to interrupt all of that.',
+  pregs_porque1:'Not because it gives you an answer.',pregs_porque2:'But because it opens a different space.',
+  pregs_porque3:'A space where new perspectives, new choices and new possibilities appear.',
+  pregs_uso1:'I use questions as tools of consciousness.',pregs_uso2:'Not to find the right answer.',
+  pregs_uso3:'But to go beyond the points of view that limit what you can perceive, choose and create.',
+  pregs_instr1:'Your mind seeks answers.<br>Your consciousness discovers possibilities.',
+  pregs_instr2:"Don't try to answer them.<br>Allow yourself to inhabit them.<br>And observe what becomes possible.",
+  cargando:'Loading...',featured_label:'✦ Question of the moment',
+  btn_siguiente:'Next question →',btn_compartir:'↗ Share',
+  sec_ses_label:'✦ What I offer',sec_ses_titulo:'A space to release and choose',
+  sec_ses_sub:'Each session is an invitation to release what no longer serves you and open up to more of who you are.',
+  barras_badge:'✦ Most popular',
+  barras_tagline:'"What if you could let go of everything you think you know?"',
+  barras_desc:'Release stress and mental noise without talking about your problems. A gentle touch on 32 energetic points on your head that resets everything accumulated: mental noise, stress, beliefs that no longer serve you.',
+  meta_duracion_60:'⏱ 60 minutes',meta_presencial:'📍 In-person',meta_clase_dur:'📅 8 hours · 1 day',
+  btn_ver_mas:'See more ↓',btn_ver_menos:'See less ↑',btn_reservar:'Book ✦',
+  barras_para_vos_titulo:'🎯 Is this for you?',
+  barras_check1:"You overthink and can't quiet your mind",barras_check2:'You feel stress, anxiety or constant overwhelm',
+  barras_check3:"It's hard for you to truly relax",barras_check4:'You want to let go and reset your energy',barras_check5:"You're doing fine, but feel you could be better",
+  barras_puntos_titulo:'🧠 32 energetic points on your head',
+  barras_puntos_desc:'These points store everything you have lived and learned. The Bars work directly on them.',
+  barras_gi_pens:'Thoughts',barras_gi_pens_desc:'repetitive patterns',barras_gi_emoc:'Emotions',barras_gi_emoc_desc:'unprocessed loads',
+  barras_gi_cree:'Beliefs',barras_gi_cree_desc:'learned limitations',barras_gi_patr:'Patterns',barras_gi_patr_desc:'automatic behaviors',
+  titulo_proceso:'🙌 The process',
+  barras_step1_t:'Points are activated',barras_step1_d:'Gentle touch on the 32 energetic points',
+  barras_step2_t:'Accumulated loads are discharged',barras_step2_d:'Stored energetic charges are released',
+  barras_step3_t:'Deep relaxation',barras_step3_d:'The nervous system enters real calm',
+  barras_notar_titulo:'⚡ In 60 minutes you will notice',
+  barras_ben1_t:'Less mental noise',barras_ben1_d:"as if someone turned down the volume",
+  barras_ben2_t:'Opening to new possibilities',barras_ben2_d:'opportunities you could not see before',
+  barras_ben3_t:'Restful sleep',barras_ben3_d:'you sleep like you have not in months',
+  barras_ben4_t:'More energy',barras_ben4_d:'less reactivity in conflicts',
+  barras_testi_titulo:'📱 What people say after a session',
+  titulo_info_practica:'📋 Practical info',info_duracion:'Duration',info_modalidad:'Format',
+  info_modalidad_val:'In-person · Lomas de Zamora or Caballito',info_inversion:'Investment',info_reserva:'Deposit',
+  barras_senia:'Deposit of $25.000',barras_urg:'⏳ Only 10 slots per week · Book yours now!',barras_btn_det:'Book Bars ✦',
+  proceso_tagline:'"What does your body know that you are not yet listening to?"',
+  proceso_desc:'Release what your body held without permission. An Access Consciousness® process to free reactive and assumptive realities — through hands-on work at an energetic level.',
+  proceso_check1:'The same thing always happens to you in different situations',proceso_check2:'You react and then think: "why did I do that?"',
+  proceso_check3:"You want to change but don't know where to start",proceso_check4:"You feel your body holds something your mind can't resolve",
+  proceso_realidades_titulo:'📖 Reactive and Assumptive Realities',
+  proceso_realidades_desc:'Two ways we limit ourselves without realizing — and that become fixed directly in the body.',
+  proceso_presuntiva_titulo:'🔹 Assumptive Reality',
+  proceso_presuntiva_desc:'All the assumptions and beliefs we adopt as absolute truths without questioning: <em>"that\'s just how things are"</em>, <em>"this is normal"</em>.',
+  proceso_reactiva_titulo:'🔸 Reactive Reality',proceso_reactiva_desc:'Reacting automatically from good/bad judgment instead of choosing consciously.',
+  proceso_flow1:'Release',proceso_flow2:'Recover choice',
+  proceso_ben1_t:'Liberation from reactive realities',proceso_ben1_d:'the body stops reacting automatically',
+  proceso_ben2_t:'Deprogramming of assumptive realities',proceso_ben2_d:'what you assumed as truth without questioning',
+  proceso_ben3_t:'Greater body connection',proceso_ben3_d:'you start feeling what your body needs',
+  proceso_senia:'Deposit of $30.000',proceso_urg:'⏳ Only 5 slots per week · Book yours now!',proceso_btn_det:'Book Body Process ✦',
+  sec_regalos_label:'🎁 Gifts for you',sec_regalos_titulo:'How much expansion are you willing to receive?',
+  sec_regalos_sub:'I prepared these guides so you can start working with your consciousness today. These are tools that changed something in me.',
+  sec_clases_label:'📚 Classes',sec_clases_titulo:'Learn to give sessions',sec_clases_sub:'Become a Bars of Access® practitioner in a single day.',
+  clase_tagline:'"How much space, lightness and clarity could you create in your life?"',
+  clase_desc:'A practical 8-hour training in a single day. You learn the technique, practice it, and leave with the tool incorporated. No prior experience needed.',
+  clase_btn_lugar:'Reserve your spot ✦',
+  clase_det_que_vivir:'🌟 What will you experience?',
+  clase_det_li1:'<strong>Theory</strong> — understand the foundation of the Bars',
+  clase_det_li2:'<strong>Access Consciousness® tools</strong> — applicable from day one',
+  clase_det_li3:'<strong>Full practice</strong> — everyone gives 2 sessions and receives 2',
+  clase_det_li4:'<strong>You leave with the technique embodied and deeply relaxed</strong>',
+  clase_det_para_quien:'🎯 Who is it for?',
+  clase_det_pq1:'If you\'re looking for a tool that <strong>stays with you for life</strong>',
+  clase_det_pq2:'If you\'re a therapist or coach and want to <strong>add a powerful tool</strong>',
+  clase_det_pq3:'If you feel you need a <strong>real change</strong> in your life',
+  clase_det_pq4:'If you already give sessions and want to <strong>get certified</strong>',
+  clase_det_inversion:'💰 Investment',
+  clase_det_precio_nota:'or equivalent in Argentine pesos · BNA exchange rate',
+  clase_det_descuento:'50% OFF if you\'ve already taken a class',
+  clase_det_descuento_badge:'🎁 Alumni discount',
+  clase_det_menores:'Under 15 years old',
+  clase_det_menores_nota:'Free · Accompanying an adult',
+  clase_det_familia_badge:'👨‍👩‍👧‍👦 Family',
+  clase_det_cierre:'If you feel it\'s time for a real change…<br><strong>This class could be the beginning of something much greater.</strong>',
+  sec_quien_label:'✦ Journey',
+  quien_quote:'I did not come to teach you anything.<br>I came to <em>remind you</em> of what you already know.',
+  stat_anos:'years of spiritual journey',stat_exp:'sessions experienced',stat_fac:'sessions facilitated',
+  eyebrow_manifiesto:'Manifesto',eyebrow_vision:'World View',eyebrow_proposito:'Purpose',
+  manif_p1:'I did not come to give you power.<br>I came to remind you that you already have it.',
+  manif_p2:'I believe every person has within them everything necessary to transform their reality.',
+  manif_p3:'Many times we look outside for answers, changes or solutions that actually begin within.',
+  manif_p4:'Tools do not create change.',
+  manif_p5:'They help us see new possibilities, recover our clarity and remember the power that was always there.',
+  manif_p6:'Juan Cruz Consciencia exists to accompany that process.',
+  vision_p1:'I see human transformation as a process of remembering.',
+  vision_p2:'A return to our natural capacity to choose, create and live consciously.',
+  vision_p3:'That is why I work with energetic, mental and emotional tools that bring consciousness into action.',
+  vision_p4:'Because when being, mind and body act in unity, your life transforms.',
+  prop_p1:'My journey began searching for answers and led me to discover tools that transformed the way I perceive life.',
+  prop_p2:'Today I share those tools with a simple conviction:',
+  prop_p3:'Every person has within them the power to create a different reality.',
+  prop_p4:'My purpose is to accompany you in discovering it.',
+  quien_espacio:'A space without judgment, where there is nothing to do — just receive.<br>A space where you allow yourself to be exactly who you are.<br><br><span style="font-size:13px;color:var(--muted);">No expectations. Just presence.</span>',
+  cta_h2:"Don't know where to start?",cta_p:'Tell me where you are and together we choose what serves you most right now.',cta_btn:'Book a session ✨',
+  modal1_titulo:'What calls to you?',modal1_sub:'Choose what resonates most with what you are looking for now.',
+  modal_barras_desc:'Release mental load, deep relaxation, clarity · 60 min',
+  modal_proceso_desc:'Connect with your body, release blocks · 60 min',
+  modal_clase_desc:'Learn to give sessions · 8 hours · One day only',
+  modal_nose_strong:"I don't know which to choose",modal_nose_text:'Tell me where you are and we figure it out together',
+  modal2_sub:'Fill in your details and we will contact you',
+  wa_msg:'Hi Juan Cruz, I want to know more about the sessions',
+  ph_nombre:'Your name',ph_wapp:'WhatsApp (e.g. 1134567890)',
+  btn_enviar:'Send ✦',paso3_listo:'Done!',
+  paso3_msg:'We received your registration. Juan Cruz will contact you soon to coordinate everything.',
+  btn_cerrar:'Close',lg_sub:'Leave your name and WhatsApp — you will get it instantly.',lg_btn:'Receive gift ✦',
+  err_nombre:'Please enter your name to continue.',err_wapp:'Please enter a valid WhatsApp number.',
+  cargando_spinner:'⏳ One moment...',msg_descargando:'✦ Downloading...',err_generico:'An error occurred. Please try again.',
+  proximamente:'Special resources for you coming soon.',
+  form_que_sentis:'What do you feel?',form_cuando_sentis:'When do you feel it most?',form_cuando_hacerla:'When would you like to have it?',
+  chk_ruido:'A lot of mental noise',chk_estres:'Stress / Anxiety',chk_cansancio:'General fatigue',
+  rad_trabajo:'At work',rad_noche:'At night',rad_tododia:'Throughout the day',
+  rad_esta_semana:'This week',rad_proximas2:'Next 2 weeks',rad_este_mes:'This month',rad_nose:'Not sure yet',
+  form_patron:'Is there a pattern you feel keeps repeating?',ph_patron:'Tell me briefly...',
+  form_recibiste_barras:'Have you received Bars sessions before?',form_para_que:'Why do you want to learn?',form_cuando_clase:'When would you like to take the class?',
+  rad_si:'Yes',rad_no:'No',rad_uso_personal:'Personal use',rad_ofrecer:'Offer sessions',rad_los_dos:'Both',
+  ph_mensaje:'Anything you\'d like to share first? (optional)',
+  months:['January','February','March','April','May','June','July','August','September','October','November','December']
+},
+pt:{
+  nav_preguntas:'Perguntas',nav_sesiones:'Sessões',nav_regalos:'Presentes',nav_clases:'Aulas',nav_camino:'Caminho',
+  btn_agendar:'Agende uma sessão ↗',
+  hero_h1:'O que seria possível se você reconhecesse o poder que já existe em você?',
+  hero_p1:'Cada pessoa tem dentro de si tudo o que é necessário para transformar sua realidade.',
+  hero_p2:'Juan Cruz Consciencia é um espaço de exploração, transformação e crescimento onde as ferramentas se tornam pontes para uma vida mais consciente.',
+  hero_explorar:'Explorar perguntas ↓',hero_sesiones:'Ver sessões ✦',
+  sec_preguntas_label:'✦ Perguntas Expansivas',sec_preguntas_titulo:'Perguntas para abrir novas possibilidades',
+  pregs_p1:'Cada vez que você conclui algo sobre si mesmo, sobre sua vida ou sobre o que é possível, você para de explorar.',
+  pregs_p2:'A maioria das pessoas vive a partir de respostas que nunca questionou.',
+  pregs_creencias:'Crenças.',pregs_conclusiones:'Conclusões.',pregs_juicios:'Julgamentos.',
+  pregs_historias1:'Histórias sobre quem ela é.',pregs_historias2:'Histórias sobre o que podem ou não criar.',
+  pregs_hook:'Uma pergunta tem o poder de interromper tudo isso.',
+  pregs_porque1:'Não porque te dê uma resposta.',pregs_porque2:'Mas porque abre um espaço diferente.',
+  pregs_porque3:'Um espaço onde surgem novas perspectivas, novas escolhas e novas possibilidades.',
+  pregs_uso1:'Uso as perguntas como ferramentas de consciência.',pregs_uso2:'Não para encontrar a resposta certa.',
+  pregs_uso3:'Mas para ir além dos pontos de vista que limitam o que você pode perceber, escolher e criar.',
+  pregs_instr1:'Sua mente busca respostas.<br>Sua consciência descobre possibilidades.',
+  pregs_instr2:'Não tente respondê-las.<br>Permita-se habitá-las.<br>E observe o que se torna possível.',
+  cargando:'Carregando...',featured_label:'✦ Pergunta do momento',
+  btn_siguiente:'Próxima pergunta →',btn_compartir:'↗ Compartilhar',
+  sec_ses_label:'✦ O que ofereço',sec_ses_titulo:'Um espaço para soltar e escolher',
+  sec_ses_sub:'Cada sessão é um convite para liberar o que já não te serve e abrir-se para mais do que você é.',
+  barras_badge:'✦ Mais popular',
+  barras_tagline:'"E se você pudesse soltar tudo o que acha que sabe?"',
+  barras_desc:'Libere o estresse e a mente sem falar dos seus problemas. Um toque suave em 32 pontos energéticos da sua cabeça que reseta tudo o que acumulou: ruído mental, estresse, crenças que já não te servem.',
+  meta_duracion_60:'⏱ 60 minutos',meta_presencial:'📍 Presencial',meta_clase_dur:'📅 8 horas · 1 dia',
+  btn_ver_mas:'Ver mais ↓',btn_ver_menos:'Ver menos ↑',btn_reservar:'Reservar ✦',
+  barras_para_vos_titulo:'🎯 É para você?',
+  barras_check1:'Você pensa demais e não consegue parar a mente',barras_check2:'Sente estresse, ansiedade ou sobrecarga constante',
+  barras_check3:'É difícil se relaxar de verdade',barras_check4:'Quer soltar e resetar sua energia',barras_check5:'Está bem, mas sente que poderia estar melhor',
+  barras_puntos_titulo:'🧠 32 pontos energéticos na sua cabeça',
+  barras_puntos_desc:'Nesses pontos se armazena tudo o que você viveu e aprendeu. As Barras trabalham diretamente sobre eles.',
+  barras_gi_pens:'Pensamentos',barras_gi_pens_desc:'padrões repetitivos',barras_gi_emoc:'Emoções',barras_gi_emoc_desc:'cargas não processadas',
+  barras_gi_cree:'Crenças',barras_gi_cree_desc:'limitações aprendidas',barras_gi_patr:'Padrões',barras_gi_patr_desc:'comportamentos automáticos',
+  titulo_proceso:'🙌 O processo',
+  barras_step1_t:'Os pontos são ativados',barras_step1_d:'Toque suave nos 32 pontos energéticos',
+  barras_step2_t:'As acumulações são descarregadas',barras_step2_d:'As cargas energéticas armazenadas são liberadas',
+  barras_step3_t:'Relaxamento profundo',barras_step3_d:'O sistema nervoso entra em calma real',
+  barras_notar_titulo:'⚡ Em 60 minutos você vai notar',
+  barras_ben1_t:'Menos ruído mental',barras_ben1_d:'como se alguém tivesse baixado o volume',
+  barras_ben2_t:'Abertura a novas possibilidades',barras_ben2_d:'oportunidades que antes não via',
+  barras_ben3_t:'Sono reparador',barras_ben3_d:'você dorme como faz meses',
+  barras_ben4_t:'Mais energia',barras_ben4_d:'menos reatividade diante de conflitos',
+  barras_testi_titulo:'📱 O que dizem após uma sessão',
+  titulo_info_practica:'📋 Informações práticas',info_duracion:'Duração',info_modalidad:'Modalidade',
+  info_modalidad_val:'Presencial · Lomas de Zamora ou Caballito',info_inversion:'Investimento',info_reserva:'Sinal',
+  barras_senia:'Sinal de $25.000',barras_urg:'⏳ Apenas 10 vagas por semana · Agende a sua agora!',barras_btn_det:'Reservar Barras ✦',
+  proceso_tagline:'"O que seu corpo sabe que você ainda não está ouvindo?"',
+  proceso_desc:'Solte o que seu corpo guardou sem permissão. Um processo de Access Consciousness® para liberar realidades reativas e presuntivas — através da imposição de mãos que trabalha no nível energético.',
+  proceso_check1:'A mesma coisa sempre acontece com você em situações diferentes',proceso_check2:'"Você reage e depois pensa: por que fiz isso?"',
+  proceso_check3:'Quer mudar mas não sabe por onde começar',proceso_check4:'Sente que o corpo guarda algo que a mente não consegue resolver',
+  proceso_realidades_titulo:'📖 Realidades Reativas e Presuntivas',
+  proceso_realidades_desc:'Duas formas pelas quais nos limitamos sem perceber — e que se fixam diretamente no corpo.',
+  proceso_presuntiva_titulo:'🔹 Realidade Presuntiva',
+  proceso_presuntiva_desc:'Todos os pressupostos e crenças que adotamos como verdades absolutas sem questionar: <em>"é assim que as coisas são"</em>, <em>"isso é normal"</em>.',
+  proceso_reactiva_titulo:'🔸 Realidade Reativa',proceso_reactiva_desc:'Reagir automaticamente a partir do julgamento bom/mau, em vez de escolher conscientemente.',
+  proceso_flow1:'Liberar',proceso_flow2:'Recuperar a escolha',
+  proceso_ben1_t:'Liberação de realidades reativas',proceso_ben1_d:'o corpo para de reagir automaticamente',
+  proceso_ben2_t:'Desprogramação de realidades presuntivas',proceso_ben2_d:'o que você assumiu como verdade sem questionar',
+  proceso_ben3_t:'Maior conexão corporal',proceso_ben3_d:'você começa a sentir o que seu corpo precisa',
+  proceso_senia:'Sinal de $30.000',proceso_urg:'⏳ Apenas 5 vagas por semana · Agende a sua agora!',proceso_btn_det:'Reservar Processo ✦',
+  sec_regalos_label:'🎁 Presentes para você',sec_regalos_titulo:'Quanta expansão você está disposto/a a receber?',
+  sec_regalos_sub:'Preparei estes guias para que você comece a trabalhar com sua consciência hoje mesmo. São ferramentas que mudaram algo em mim.',
+  sec_clases_label:'📚 Aulas',sec_clases_titulo:'Aprenda a dar sessões',sec_clases_sub:'Torne-se praticante de Barras de Access® em um único dia.',
+  clase_tagline:'"Quanto espaço, leveza e clareza você poderia criar na sua vida?"',
+  clase_desc:'Um treinamento prático de 8 horas em um único dia. Você aprende a técnica, pratica e sai com a ferramenta incorporada. Sem experiência prévia necessária.',
+  clase_btn_lugar:'Reservar vaga ✦',
+  clase_det_que_vivir:'🌟 O que você vai vivenciar?',
+  clase_det_li1:'<strong>Parte teórica</strong> — entenda a base das Barras',
+  clase_det_li2:'<strong>Ferramentas do Access Consciousness®</strong> — aplicáveis desde o primeiro dia',
+  clase_det_li3:'<strong>Prática completa</strong> — todos dão 2 sessões e recebem 2',
+  clase_det_li4:'<strong>Você sai com a técnica incorporada e super relaxado/a</strong>',
+  clase_det_para_quien:'🎯 Para quem é?',
+  clase_det_pq1:'Se você busca uma ferramenta que <strong>fique com você para sempre</strong>',
+  clase_det_pq2:'Se você é terapeuta ou coach e quer <strong>adicionar uma ferramenta poderosa</strong>',
+  clase_det_pq3:'Se você sente que precisa de uma <strong>mudança real</strong> na sua vida',
+  clase_det_pq4:'Se você já dá sessões e quer <strong>se certificar</strong>',
+  clase_det_inversion:'💰 Investimento',
+  clase_det_precio_nota:'ou equivalente em pesos argentinos · câmbio BNA',
+  clase_det_descuento:'50% OFF se você já fez uma aula',
+  clase_det_descuento_badge:'🎁 Desconto para alunos',
+  clase_det_menores:'Menores de 15 anos',
+  clase_det_menores_nota:'Sem custo · Acompanhando um adulto',
+  clase_det_familia_badge:'👨‍👩‍👧‍👦 Família',
+  clase_det_cierre:'Se você sente que é hora de uma mudança real…<br><strong>Esta aula pode ser o início de algo muito maior.</strong>',
+  sec_quien_label:'✦ Caminho',
+  quien_quote:'Não vim te ensinar nada.<br>Vim te <em>lembrar</em> do que você já sabe.',
+  stat_anos:'anos de caminho espiritual',stat_exp:'sessões vivenciadas',stat_fac:'sessões facilitadas',
+  eyebrow_manifiesto:'Manifesto',eyebrow_vision:'Visão de mundo',eyebrow_proposito:'Propósito',
+  manif_p1:'Não vim te dar poder.<br>Vim te lembrar que você já o tem.',
+  manif_p2:'Acredito que cada pessoa tem dentro de si tudo o que é necessário para transformar sua realidade.',
+  manif_p3:'Muitas vezes buscamos fora respostas, mudanças ou soluções que na verdade começam dentro de nós.',
+  manif_p4:'As ferramentas não criam a mudança.',
+  manif_p5:'Elas nos ajudam a ver novas possibilidades, recuperar nossa clareza e lembrar o poder que sempre esteve lá.',
+  manif_p6:'Juan Cruz Consciencia existe para acompanhar esse processo.',
+  vision_p1:'Vejo a transformação humana como um processo de lembrança.',
+  vision_p2:'Um retorno à nossa capacidade natural de escolher, criar e viver conscientemente.',
+  vision_p3:'Por isso trabalho com ferramentas energéticas, mentais e emocionais que levam a consciência à ação.',
+  vision_p4:'Porque quando o ser, a mente e o corpo agem em unidade, sua vida se transforma.',
+  prop_p1:'Meu caminho começou buscando respostas e me levou a descobrir ferramentas que transformaram minha forma de perceber a vida.',
+  prop_p2:'Hoje compartilho essas ferramentas com uma convicção simples:',
+  prop_p3:'Cada pessoa tem dentro de si o poder de criar uma realidade diferente.',
+  prop_p4:'Meu propósito é te acompanhar a descobrir isso.',
+  quien_espacio:'Um espaço sem julgamento, onde não há nada a fazer — só receber.<br>Um espaço onde você se permite ser exatamente o que é.<br><br><span style="font-size:13px;color:var(--muted);">Sem expectativas. Só presença.</span>',
+  cta_h2:'Não sabe por onde começar?',cta_p:'Me conta onde você está e juntos escolhemos o que mais te serve neste momento.',cta_btn:'Agende uma sessão ✨',
+  modal1_titulo:'O que te chama?',modal1_sub:'Escolha o que mais ressoa com o que você está buscando agora.',
+  modal_barras_desc:'Liberar carga mental, relaxamento profundo, clareza · 60 min',
+  modal_proceso_desc:'Conectar com seu corpo, liberar bloqueios · 60 min',
+  modal_clase_desc:'Aprenda a dar sessões · 8 horas · Um único dia',
+  modal_nose_strong:'Não sei qual escolher',modal_nose_text:'Me conta onde você está e vemos juntos',
+  modal2_sub:'Preencha seus dados e entraremos em contato',
+  wa_msg:'Olá Juan Cruz, quero saber mais sobre as sessões',
+  ph_nombre:'Seu nome',ph_wapp:'WhatsApp (ex: 1134567890)',
+  btn_enviar:'Enviar ✦',paso3_listo:'Pronto!',
+  paso3_msg:'Recebemos seu registro. Juan Cruz entrará em contato em breve para coordenar tudo.',
+  btn_cerrar:'Fechar',lg_sub:'Deixe seu nome e WhatsApp — você recebe na hora.',lg_btn:'Receber presente ✦',
+  err_nombre:'Digite seu nome para continuar.',err_wapp:'Digite um WhatsApp válido.',
+  cargando_spinner:'⏳ Um momento...',msg_descargando:'✦ Baixando...',err_generico:'Ocorreu um erro. Tente novamente.',
+  proximamente:'Em breve haverá recursos especiais para você.',
+  form_que_sentis:'O que você sente?',form_cuando_sentis:'Quando você sente mais?',form_cuando_hacerla:'Quando quer fazer?',
+  chk_ruido:'Muito ruído mental',chk_estres:'Estresse / Ansiedade',chk_cansancio:'Cansaço geral',
+  rad_trabajo:'No trabalho',rad_noche:'À noite',rad_tododia:'Durante todo o dia',
+  rad_esta_semana:'Esta semana',rad_proximas2:'Próximas 2 sem.',rad_este_mes:'Este mês',rad_nose:'Ainda não sei',
+  form_patron:'Há algum padrão que você sente que se repete?',ph_patron:'Me conta brevemente...',
+  form_recibiste_barras:'Você já recebeu sessões de Barras?',form_para_que:'Para que você quer aprender?',form_cuando_clase:'Quando gostaria de fazer a aula?',
+  rad_si:'Sim',rad_no:'Não',rad_uso_personal:'Uso pessoal',rad_ofrecer:'Oferecer sessões',rad_los_dos:'Os dois',
+  ph_mensaje:'Algo que queira me contar antes? (opcional)',
+  months:['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro']
+}
+};
+
+let _lang=localStorage.getItem('jcc_lang')||'es';
+
+function setLang(code){
+  if(!LANGS[code])return;
+  _lang=code;
+  localStorage.setItem('jcc_lang',code);
+  document.documentElement.lang=code;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===code));
+  const t=LANGS[code];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(t[k]!==undefined)el.textContent=t[k];});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml;if(t[k]!==undefined)el.innerHTML=t[k];});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.dataset.i18nPh;if(t[k]!==undefined)el.placeholder=t[k];});
+  const wa=document.getElementById('waFlotante');
+  if(wa&&t.wa_msg)wa.href=`https://wa.me/541151758653?text=${encodeURIComponent(t.wa_msg)}`;
+  if(typeof allPregs!=='undefined'&&allPregs.length){showFeatured();showDia();renderGrid(true);}
+}
+
 const SUPA_URL='https://vffmnyjjawvvctcqzkvj.supabase.co';
 const SUPA_KEY='sb_publishable_A1rJIiXHSg6TQYT2gKQHUw_UTwmS76t';
 const _sb=supabase.createClient(SUPA_URL,SUPA_KEY);
-const MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const MONTHS=()=>LANGS[_lang].months;
 const DIM_ICO={Identidad:'🪞',Dinero:'💰',Cuerpo:'🌿',Relaciones:'💛',Propósito:'🌅',Consciencia:'✦'};
 
 /* ── TIEMPO EN PÁGINA ── */
@@ -1076,9 +1499,10 @@ async function submitRegistro(){
   const msg=document.getElementById('regMsg');
   const btn=document.getElementById('regSubmitBtn');
   if(document.getElementById('regHoney').value){return;}
-  if(!nombre||nombre.length<2){msg.textContent='Poné tu nombre para continuar.';return;}
-  if(celular.length<8||celular.length>15){msg.textContent='Poné un WhatsApp válido.';return;}
-  btn.textContent='⏳ Un momento...';btn.disabled=true;
+  const t=LANGS[_lang];
+  if(!nombre||nombre.length<2){msg.textContent=t.err_nombre;return;}
+  if(celular.length<8||celular.length>15){msg.textContent=t.err_wapp;return;}
+  btn.textContent=t.cargando_spinner;btn.disabled=true;
   const SESION_MAP={barras:'Barras de Access',proceso_cuerpos:'Proceso de Cuerpos',clase_barras:'Clase de Barras de Access®',no_se:'Sin definir'};
   const sesionInteres=SESION_MAP[_sesionKey]||_sesionNombre;
   // Recolectar campos extra según sesión
@@ -1119,8 +1543,8 @@ async function submitRegistro(){
     document.getElementById('modalPaso3').style.display='';
   }catch(e){
     console.warn(e);
-    msg.textContent='Hubo un error. Intentá de nuevo.';
-    btn.textContent='Enviar ✦';btn.disabled=false;
+    msg.textContent=LANGS[_lang].err_generico;
+    btn.textContent=LANGS[_lang].btn_enviar;btn.disabled=false;
   }
 }
 
@@ -1136,7 +1560,7 @@ function showFeatured(){
   if(!allPregs.length)return;
   const p=allPregs[featIdx%allPregs.length];
   _featuredArea=p.matiz||'Consciencia';
-  document.getElementById('featuredQ').textContent=p.texto||'';
+  document.getElementById('featuredQ').textContent=p[`texto_${_lang}`]||p.texto||'';
   document.getElementById('featuredDim').textContent=(DIM_ICO[p.matiz]||'✦')+' '+(p.matiz||'');
 }
 function nextFeatured(){
@@ -1154,7 +1578,8 @@ function shareFeatured(btn){const texto=document.getElementById('featuredQ').tex
 function toggleDetail(id,btn){
   const el=document.getElementById(id);
   const isOpen=el.classList.toggle('open');
-  btn.textContent=isOpen?'Ver menos ↑':'Ver más ↓';
+  const t=LANGS[_lang];
+  btn.textContent=isOpen?(t.btn_ver_menos||'Ver menos ↑'):(t.btn_ver_mas||'Ver más ↓');
   if(isOpen)track('click_btn',{boton:'ver_mas_'+id});
 }
 
@@ -1162,7 +1587,8 @@ function toggleDetail(id,btn){
 function showDia(){
   const now=new Date();
   const doy=Math.floor((now-new Date(now.getFullYear(),0,0))/86400000);
-  document.getElementById('diaDate').textContent=`📅 ${now.getDate()} de ${MONTHS[now.getMonth()]}`;
+  const months=MONTHS();
+  document.getElementById('diaDate').textContent=`📅 ${now.getDate()} de ${months[now.getMonth()]}`;
   const p=allPregsOrig.length?allPregsOrig[doy%allPregsOrig.length]:null;
   if(!p){
     document.getElementById('diaQ').textContent='¿Qué estoy eligiendo hoy que me expande?';
@@ -1170,7 +1596,7 @@ function showDia(){
     return;
   }
   _diaArea=p.matiz||'Consciencia';
-  document.getElementById('diaQ').textContent=p.texto||'';
+  document.getElementById('diaQ').textContent=p[`texto_${_lang}`]||p.texto||'';
   document.getElementById('diaArea').textContent=`${DIM_ICO[p.matiz]||'✦'} ${p.matiz||'Consciencia'}`;
 }
 
@@ -1187,7 +1613,7 @@ function setFilter(area,el){
 function qCardHTML(p){
   const ico=DIM_ICO[p.matiz]||'✦';
   const area=p.matiz||'Consciencia';
-  const texto=p.texto||'';
+  const texto=p[`texto_${_lang}`]||p.texto||'';
   return`<div class="q-card" data-area="${area}">
     <div class="q-area-tag">${ico} ${area}</div>
     <div class="q-text">${texto}</div>
@@ -1329,9 +1755,10 @@ async function submitLeadGate(){
   const msg=document.getElementById('lgMsg');
   const btn=document.getElementById('lgSubmitBtn');
   if(document.getElementById('lgHoney').value){return;}
-  if(!nombre||nombre.length<2){msg.textContent='Poné tu nombre para continuar.';return;}
-  if(celular.length<8||celular.length>15){msg.textContent='Poné un WhatsApp válido (sin espacios ni guiones).';return;}
-  btn.textContent='⏳ Un momento...';btn.disabled=true;
+  const tLG=LANGS[_lang];
+  if(!nombre||nombre.length<2){msg.textContent=tLG.err_nombre;return;}
+  if(celular.length<8||celular.length>15){msg.textContent=tLG.err_wapp;return;}
+  btn.textContent=tLG.cargando_spinner;btn.disabled=true;
   try{
     const {data:existing}=await _sb.from('seres').select('id,data').filter('data->>celular','eq',celular).limit(1);
     if(existing&&existing.length){
@@ -1346,7 +1773,7 @@ async function submitLeadGate(){
       }});
     }
     localStorage.setItem('jcc_lead',JSON.stringify({nombre,celular}));
-    msg.textContent='✦ Descargando...';
+    msg.textContent=LANGS[_lang].msg_descargando;
     setTimeout(()=>{_dlRegalo(_curRegalo,{serNombre:nombre,serEmail:celular});closeLGBtn();},700);
   }catch(e){console.warn(e);_dlRegalo(_curRegalo);closeLGBtn();}
   btn.textContent='Recibir regalo ✦';btn.disabled=false;
@@ -1360,7 +1787,7 @@ async function loadRegalos(){
       .or('data->>activo.is.null,data->>activo.eq.true');
     const lista=(error||!data?.length)?[]:data.map(r=>({id:r.id,...r.data})).filter(r=>r.activo!==false).sort((a,b)=>(a.orden??9999)-(b.orden??9999));
     if(!lista.length){
-      document.getElementById('regalosWrap').innerHTML='<div class="empty"><div class="ei">✦</div><p>Próximamente habrá recursos especiales para vos.</p></div>';return;
+      document.getElementById('regalosWrap').innerHTML=`<div class="empty"><div class="ei">✦</div><p>${LANGS[_lang].proximamente}</p></div>`;return;
     }
     _regalosLista=lista;
     document.getElementById('regalosWrap').innerHTML=`<div class="regalos-grid">${lista.map(r=>{
@@ -1376,7 +1803,7 @@ async function loadRegalos(){
       </div></div>`;
     }).join('')}</div>`;
   }catch(e){
-    document.getElementById('regalosWrap').innerHTML='<div class="empty"><div class="ei">✦</div><p>Próximamente habrá recursos especiales para vos.</p></div>';
+    document.getElementById('regalosWrap').innerHTML=`<div class="empty"><div class="ei">✦</div><p>${LANGS[_lang].proximamente}</p></div>`;
   }
 }
 
@@ -1393,6 +1820,7 @@ async function init(){
     console.warn(e);
   }
   document.getElementById('loader').style.display='none';
+  setLang(_lang);
   showDia();
   if(allPregs.length){featIdx=Math.floor(Math.random()*allPregs.length);showFeatured();}
   else{document.getElementById('featuredQ').textContent='¿Qué elegiría si confiara en mí?';document.getElementById('featuredDim').textContent='🪞 Identidad';}
