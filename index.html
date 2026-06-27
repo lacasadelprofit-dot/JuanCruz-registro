@@ -20,7 +20,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:opacity .15s ease;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:opacity .1s ease;}
 h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses-nombre,.ses-tagline,.cta-card h2{font-family:'Cormorant Garamond',Georgia,serif;}
 
 /* ── HEADER ── */
@@ -1423,12 +1423,15 @@ function setLang(code){
     document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.dataset.i18nPh;if(t[k]!==undefined)el.placeholder=t[k];});
     const wa=document.getElementById('waFlotante');
     if(wa&&t.wa_msg)wa.href=`https://wa.me/541151758653?text=${encodeURIComponent(t.wa_msg)}`;
-    if(typeof allPregs!=='undefined'&&allPregs.length){showFeatured();showDia();renderGrid(true);}
+    if(typeof allPregs!=='undefined'&&allPregs.length){
+      showFeatured();showDia();
+      if(!isInit)renderGrid(true);
+    }
     if(!isInit)document.body.style.opacity='1';
   }
   if(isInit){_applyLang();return;}
   document.body.style.opacity='0';
-  setTimeout(_applyLang,150);
+  setTimeout(_applyLang,100);
 }
 
 const SUPA_URL='https://vffmnyjjawvvctcqzkvj.supabase.co';
