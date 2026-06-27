@@ -20,7 +20,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:opacity .15s ease;}
 h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses-nombre,.ses-tagline,.cta-card h2{font-family:'Cormorant Garamond',Georgia,serif;}
 
 /* ── HEADER ── */
@@ -586,9 +586,9 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
     <a href="#quien-soy" onclick="track('click_btn',{boton:'nav_quien_soy'})" data-i18n="nav_camino">Camino</a>
   </nav>
   <div class="lang-sw">
-    <button class="lang-btn active" data-lang="es" onclick="setLang('es')">🇦🇷 ARG</button>
-    <button class="lang-btn" data-lang="en" onclick="setLang('en')">🇺🇸 EN</button>
-    <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">🇧🇷 BR</button>
+    <button class="lang-btn active" data-lang="es" onclick="setLang('es')">🇦🇷 <span class="lang-label">ARG</span></button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')">🇺🇸 <span class="lang-label">EN</span></button>
+    <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">🇧🇷 <span class="lang-label">BR</span></button>
   </div>
   <button class="btn-agendar" onclick="openModal();track('click_btn',{boton:'header_agendar'})" data-i18n="btn_agendar">Agendá una sesión ↗</button>
 </header>
@@ -1408,17 +1408,24 @@ let _lang=localStorage.getItem('jcc_lang')||'es';
 
 function setLang(code){
   if(!LANGS[code])return;
+  const isInit=_lang===code;
   _lang=code;
   localStorage.setItem('jcc_lang',code);
   document.documentElement.lang=code;
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===code));
-  const t=LANGS[code];
-  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(t[k]!==undefined)el.textContent=t[k];});
-  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml;if(t[k]!==undefined)el.innerHTML=t[k];});
-  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.dataset.i18nPh;if(t[k]!==undefined)el.placeholder=t[k];});
-  const wa=document.getElementById('waFlotante');
-  if(wa&&t.wa_msg)wa.href=`https://wa.me/541151758653?text=${encodeURIComponent(t.wa_msg)}`;
-  if(typeof allPregs!=='undefined'&&allPregs.length){showFeatured();showDia();renderGrid(true);}
+  function _applyLang(){
+    const t=LANGS[code];
+    document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(t[k]!==undefined)el.textContent=t[k];});
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml;if(t[k]!==undefined)el.innerHTML=t[k];});
+    document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.dataset.i18nPh;if(t[k]!==undefined)el.placeholder=t[k];});
+    const wa=document.getElementById('waFlotante');
+    if(wa&&t.wa_msg)wa.href=`https://wa.me/541151758653?text=${encodeURIComponent(t.wa_msg)}`;
+    if(typeof allPregs!=='undefined'&&allPregs.length){showFeatured();showDia();renderGrid(true);}
+    if(!isInit)document.body.style.opacity='1';
+  }
+  if(isInit){_applyLang();return;}
+  document.body.style.opacity='0';
+  setTimeout(_applyLang,150);
 }
 
 const SUPA_URL='https://vffmnyjjawvvctcqzkvj.supabase.co';
