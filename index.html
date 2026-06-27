@@ -37,6 +37,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
   padding:7px 16px;border:1.5px solid var(--terra);border-radius:20px;transition:all .2s;
   background:none;cursor:pointer;white-space:nowrap;flex-shrink:0;}
 .btn-agendar:hover{background:var(--terra);color:#fff;}
+.agendar-short{display:none;}
 
 /* ── HERO ── */
 .hero{text-align:center;padding:72px 20px 56px;max-width:640px;margin:0 auto;position:relative;}
@@ -384,10 +385,11 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
   .hero h1{font-size:28px;}
   .header-nav{display:none;}
   .site-header{padding:14px 16px;}
-  .site-header{flex-wrap:wrap;}
   .lang-label{display:none;}
   .lang-btn{font-size:18px;padding:3px 5px;}
-  .btn-agendar{width:100%;text-align:center;margin-top:6px;}
+  .btn-agendar{font-size:11px;padding:5px 10px;}
+  .agendar-label{display:none;}
+  .agendar-short{display:inline;}
   .cta-card{padding:32px 20px;}
   .ses-compact-body{padding:22px 18px;}
   .ses-nombre{font-size:18px;}
@@ -594,7 +596,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
     <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">🇧🇷 <span class="lang-label">BR</span></button>
     <button class="lang-btn" data-lang="en" onclick="setLang('en')">🇺🇸 <span class="lang-label">EN</span></button>
   </div>
-  <button class="btn-agendar" onclick="openModal();track('click_btn',{boton:'header_agendar'})" data-i18n="btn_agendar">Agendá una sesión ↗</button>
+  <button class="btn-agendar" onclick="openModal();track('click_btn',{boton:'header_agendar'})"><span class="agendar-label" data-i18n="btn_agendar">Agendá una sesión</span><span class="agendar-short">Agendar ↗</span></button>
 </header>
 
 <!-- HERO -->
