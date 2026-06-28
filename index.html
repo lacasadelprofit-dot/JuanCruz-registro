@@ -1582,7 +1582,7 @@ function nextFeatured(){
   featIdx=pool[Math.floor(Math.random()*pool.length)];
   showFeatured();
 }
-function shareFeatured(btn){const texto=document.getElementById('featuredQ').textContent;_doShare(texto,_featuredArea,btn);}
+function shareFeatured(btn){const texto=document.getElementById('featuredQ').textContent;_doShare(texto,_featuredArea,btn,{mode:'featured'});}
 
 /* ── EXPANDIR SESIONES ── */
 function toggleDetail(id,btn){
@@ -1710,10 +1710,15 @@ function generateStoryImage(texto,area,opts){
       c.fillStyle=g;c.fillRect(0,0,W,H);
       c.font='bold 400px Georgia,serif';c.fillStyle='rgba(193,122,72,.05)';
       c.textAlign='center';c.textBaseline='middle';c.fillText('✦',W/2,H*.44);
-      const ico=DIM_ICO[area]||'✦';
+      const isFeatured=opts&&opts.mode==='featured';
       c.font='bold 26px "Segoe UI",system-ui,sans-serif';c.fillStyle='rgba(193,122,72,.85)';
       c.textAlign='center';c.textBaseline='alphabetic';
-      c.fillText((ico+'  '+(area||'Consciencia')).toUpperCase(),W/2,330);
+      if(isFeatured){
+        c.fillText('✦  PREGUNTA DEL MOMENTO  ✦',W/2,330);
+      } else {
+        const ico=DIM_ICO[area]||'✦';
+        c.fillText((ico+'  '+(area||'Consciencia')).toUpperCase(),W/2,330);
+      }
       c.strokeStyle='rgba(193,122,72,.3)';c.lineWidth=1;
       c.beginPath();c.moveTo(W/2-60,358);c.lineTo(W/2+60,358);c.stroke();
       const PAD=130;let fs=52;
