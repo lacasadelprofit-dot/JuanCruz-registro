@@ -1064,7 +1064,7 @@ es:{
   barras_ben4_t:'Más energía',barras_ben4_d:'menos reactividad ante conflictos',
   barras_testi_titulo:'📱 Lo que dicen después de una sesión',
   titulo_info_practica:'📋 Info práctica',info_duracion:'Duración',info_modalidad:'Modalidad',
-  info_modalidad_val:'Presencial · Lomas de Zamora o Caballito',info_inversion:'Inversión',info_reserva:'Reserva',
+  info_modalidad_val:'Presencial · Búzios, Brasil',info_inversion:'Inversión',info_reserva:'Reserva',
   barras_senia:'Seña de $25.000',barras_urg:'⏳ Solo 10 turnos por semana · ¡Agendá el tuyo ahora!',barras_btn_det:'Reservar Barras ✦',
   proceso_tagline:'"¿Qué sabe tu cuerpo que vos todavía no estás escuchando?"',
   proceso_desc:'Soltá lo que tu cuerpo guardó sin permiso. Un proceso de Access Consciousness® para liberar realidades reactivas y presuntivas — a través de la imposición de manos que trabaja a nivel energético.',
@@ -1194,7 +1194,7 @@ en:{
   barras_ben4_t:'More energy',barras_ben4_d:'less reactivity in conflicts',
   barras_testi_titulo:'📱 What people say after a session',
   titulo_info_practica:'📋 Practical info',info_duracion:'Duration',info_modalidad:'Format',
-  info_modalidad_val:'In-person · Lomas de Zamora or Caballito',info_inversion:'Investment',info_reserva:'Deposit',
+  info_modalidad_val:'In-person · Búzios, Brazil',info_inversion:'Investment',info_reserva:'Deposit',
   barras_senia:'Deposit of $25.000',barras_urg:'⏳ Only 10 slots per week · Book yours now!',barras_btn_det:'Book Bars ✦',
   proceso_tagline:'"What does your body know that you are not yet listening to?"',
   proceso_desc:'Release what your body held without permission. An Access Consciousness® process to free reactive and assumptive realities — through hands-on work at an energetic level.',
@@ -1324,7 +1324,7 @@ pt:{
   barras_ben4_t:'Mais energia',barras_ben4_d:'menos reatividade diante de conflitos',
   barras_testi_titulo:'📱 O que dizem após uma sessão',
   titulo_info_practica:'📋 Informações práticas',info_duracion:'Duração',info_modalidad:'Modalidade',
-  info_modalidad_val:'Presencial · Lomas de Zamora ou Caballito',info_inversion:'Investimento',info_reserva:'Sinal',
+  info_modalidad_val:'Presencial · Búzios, Brasil',info_inversion:'Investimento',info_reserva:'Sinal',
   barras_senia:'Sinal de $25.000',barras_urg:'⏳ Apenas 10 vagas por semana · Agende a sua agora!',barras_btn_det:'Reservar Barras ✦',
   proceso_tagline:'"O que seu corpo sabe que você ainda não está ouvindo?"',
   proceso_desc:'Solte o que seu corpo guardou sem permissão. Um processo de Access Consciousness® para liberar realidades reativas e presuntivas — através da imposição de mãos que trabalha no nível energético.',
@@ -1660,47 +1660,89 @@ function getWrappedLines(ctx,text,maxW){
   return lines;
 }
 
-function generateStoryImage(texto,area){
+function generateStoryImage(texto,area,opts){
   return new Promise(resolve=>{
     const W=900,H=1600;
     const cv=document.createElement('canvas');cv.width=W;cv.height=H;
     const c=cv.getContext('2d');
-    c.fillStyle='#1C1200';c.fillRect(0,0,W,H);
-    const g=c.createRadialGradient(W/2,H*.42,0,W/2,H*.42,520);
-    g.addColorStop(0,'rgba(193,122,72,.18)');g.addColorStop(1,'rgba(0,0,0,0)');
-    c.fillStyle=g;c.fillRect(0,0,W,H);
-    c.font='bold 400px Georgia,serif';c.fillStyle='rgba(193,122,72,.05)';
-    c.textAlign='center';c.textBaseline='middle';c.fillText('✦',W/2,H*.44);
-    const ico=DIM_ICO[area]||'✦';
-    c.font='bold 26px "Segoe UI",system-ui,sans-serif';c.fillStyle='rgba(193,122,72,.85)';
-    c.textAlign='center';c.textBaseline='alphabetic';
-    c.fillText((ico+'  '+(area||'Consciencia')).toUpperCase(),W/2,330);
-    c.strokeStyle='rgba(193,122,72,.3)';c.lineWidth=1;
-    c.beginPath();c.moveTo(W/2-60,358);c.lineTo(W/2+60,358);c.stroke();
-    const PAD=130;let fs=52;
-    c.font=`bold ${fs}px "Segoe UI",system-ui,sans-serif`;
-    let lines=getWrappedLines(c,texto,W-PAD);
-    if(lines.length>6){fs=42;c.font=`bold ${fs}px "Segoe UI",system-ui,sans-serif`;lines=getWrappedLines(c,texto,W-PAD);}
-    if(lines.length>8){fs=34;c.font=`bold ${fs}px "Segoe UI",system-ui,sans-serif`;lines=getWrappedLines(c,texto,W-PAD);}
-    const lh=fs*1.44;const startY=H/2-lines.length*lh/2-20;
-    c.fillStyle='#F5F0E8';c.textAlign='center';c.textBaseline='top';
-    lines.forEach((l,i)=>c.fillText(l,W/2,startY+i*lh));
-    c.strokeStyle='rgba(193,122,72,.4)';c.lineWidth=1;
-    c.beginPath();c.moveTo(100,H-270);c.lineTo(W-100,H-270);c.stroke();
-    c.font='18px Georgia,serif';c.fillStyle='rgba(193,122,72,.6)';
-    c.textAlign='center';c.textBaseline='middle';c.fillText('✦',W/2,H-270);
-    c.font='bold 36px "Segoe UI",system-ui,sans-serif';c.fillStyle='#F5F0E8';c.textBaseline='alphabetic';
-    c.fillText('Juan Cruz Consciencia',W/2,H-200);
-    c.font='22px "Segoe UI",system-ui,sans-serif';c.fillStyle='rgba(193,122,72,.7)';
-    c.fillText('juancruzconsciencia.lat',W/2,H-160);
+    const isDia=opts&&opts.mode==='dia';
+
+    if(isDia){
+      // Fondo claro crema
+      c.fillStyle='#FEF4E8';c.fillRect(0,0,W,H);
+      const g=c.createRadialGradient(W/2,H*.42,0,W/2,H*.42,560);
+      g.addColorStop(0,'rgba(193,122,72,.12)');g.addColorStop(1,'rgba(254,244,232,0)');
+      c.fillStyle=g;c.fillRect(0,0,W,H);
+      c.font='bold 420px Georgia,serif';c.fillStyle='rgba(193,122,72,.06)';
+      c.textAlign='center';c.textBaseline='middle';c.fillText('✦',W/2,H*.44);
+      // Badge "PREGUNTA DEL DÍA" + fecha
+      const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+      const hoy=new Date();
+      const fechaStr=`${hoy.getDate()} de ${MESES[hoy.getMonth()]}`;
+      c.font='bold 28px "Segoe UI",system-ui,sans-serif';c.fillStyle='#C17A48';
+      c.textAlign='center';c.textBaseline='alphabetic';
+      c.fillText('✦  PREGUNTA DEL DÍA  ✦',W/2,300);
+      c.font='500 26px "Segoe UI",system-ui,sans-serif';c.fillStyle='rgba(193,122,72,.75)';
+      c.fillText(fechaStr,W/2,340);
+      c.strokeStyle='rgba(193,122,72,.35)';c.lineWidth=1;
+      c.beginPath();c.moveTo(W/2-70,368);c.lineTo(W/2+70,368);c.stroke();
+      // Texto pregunta oscuro sobre fondo claro
+      const PAD=130;let fs=52;
+      c.font=`bold ${fs}px "Segoe UI",system-ui,sans-serif`;
+      let lines=getWrappedLines(c,texto,W-PAD);
+      if(lines.length>6){fs=42;c.font=`bold ${fs}px "Segoe UI",system-ui,sans-serif`;lines=getWrappedLines(c,texto,W-PAD);}
+      if(lines.length>8){fs=34;c.font=`bold ${fs}px "Segoe UI",system-ui,sans-serif`;lines=getWrappedLines(c,texto,W-PAD);}
+      const lh=fs*1.44;const startY=H/2-lines.length*lh/2-20;
+      c.fillStyle='#2A1A08';c.textAlign='center';c.textBaseline='top';
+      lines.forEach((l,i)=>c.fillText(l,W/2,startY+i*lh));
+      // Footer
+      c.strokeStyle='rgba(193,122,72,.4)';c.lineWidth=1;
+      c.beginPath();c.moveTo(100,H-270);c.lineTo(W-100,H-270);c.stroke();
+      c.font='18px Georgia,serif';c.fillStyle='rgba(193,122,72,.7)';
+      c.textAlign='center';c.textBaseline='middle';c.fillText('✦',W/2,H-248);
+      c.font='bold 36px "Segoe UI",system-ui,sans-serif';c.fillStyle='#2A1A08';c.textBaseline='alphabetic';
+      c.fillText('Juan Cruz Consciencia',W/2,H-200);
+      c.font='22px "Segoe UI",system-ui,sans-serif';c.fillStyle='#C17A48';
+      c.fillText('juancruzconsciencia.lat',W/2,H-160);
+    } else {
+      // Fondo oscuro (default — pregunta del momento + grilla)
+      c.fillStyle='#1C1200';c.fillRect(0,0,W,H);
+      const g=c.createRadialGradient(W/2,H*.42,0,W/2,H*.42,520);
+      g.addColorStop(0,'rgba(193,122,72,.18)');g.addColorStop(1,'rgba(0,0,0,0)');
+      c.fillStyle=g;c.fillRect(0,0,W,H);
+      c.font='bold 400px Georgia,serif';c.fillStyle='rgba(193,122,72,.05)';
+      c.textAlign='center';c.textBaseline='middle';c.fillText('✦',W/2,H*.44);
+      const ico=DIM_ICO[area]||'✦';
+      c.font='bold 26px "Segoe UI",system-ui,sans-serif';c.fillStyle='rgba(193,122,72,.85)';
+      c.textAlign='center';c.textBaseline='alphabetic';
+      c.fillText((ico+'  '+(area||'Consciencia')).toUpperCase(),W/2,330);
+      c.strokeStyle='rgba(193,122,72,.3)';c.lineWidth=1;
+      c.beginPath();c.moveTo(W/2-60,358);c.lineTo(W/2+60,358);c.stroke();
+      const PAD=130;let fs=52;
+      c.font=`bold ${fs}px "Segoe UI",system-ui,sans-serif`;
+      let lines=getWrappedLines(c,texto,W-PAD);
+      if(lines.length>6){fs=42;c.font=`bold ${fs}px "Segoe UI",system-ui,sans-serif`;lines=getWrappedLines(c,texto,W-PAD);}
+      if(lines.length>8){fs=34;c.font=`bold ${fs}px "Segoe UI",system-ui,sans-serif`;lines=getWrappedLines(c,texto,W-PAD);}
+      const lh=fs*1.44;const startY=H/2-lines.length*lh/2-20;
+      c.fillStyle='#F5F0E8';c.textAlign='center';c.textBaseline='top';
+      lines.forEach((l,i)=>c.fillText(l,W/2,startY+i*lh));
+      c.strokeStyle='rgba(193,122,72,.4)';c.lineWidth=1;
+      c.beginPath();c.moveTo(100,H-270);c.lineTo(W-100,H-270);c.stroke();
+      c.font='18px Georgia,serif';c.fillStyle='rgba(193,122,72,.6)';
+      c.textAlign='center';c.textBaseline='middle';c.fillText('✦',W/2,H-270);
+      c.font='bold 36px "Segoe UI",system-ui,sans-serif';c.fillStyle='#F5F0E8';c.textBaseline='alphabetic';
+      c.fillText('Juan Cruz Consciencia',W/2,H-200);
+      c.font='22px "Segoe UI",system-ui,sans-serif';c.fillStyle='rgba(193,122,72,.7)';
+      c.fillText('juancruzconsciencia.lat',W/2,H-160);
+    }
     resolve(cv);
   });
 }
 
-async function _doShare(texto,area,btn){
+async function _doShare(texto,area,btn,opts){
   const orig=btn.innerHTML;btn.textContent='⏳';btn.disabled=true;
   try{
-    const cv=await generateStoryImage(texto,area);
+    const cv=await generateStoryImage(texto,area,opts);
     const blob=await new Promise(r=>cv.toBlob(r,'image/png'));
     const file=new File([blob],'pregunta-expansiva.png',{type:'image/png'});
     if(navigator.canShare&&navigator.canShare({files:[file]})){
@@ -1715,7 +1757,7 @@ async function _doShare(texto,area,btn){
   btn.innerHTML=orig;btn.disabled=false;
 }
 
-function shareDia(btn){const texto=document.getElementById('diaQ').textContent;_doShare(texto,_diaArea,btn);}
+function shareDia(btn){const texto=document.getElementById('diaQ').textContent;_doShare(texto,_diaArea,btn,{mode:'dia'});}
 function shareQ(btn){
   const card=btn.closest('.q-card');
   const texto=card.querySelector('.q-text').textContent;
