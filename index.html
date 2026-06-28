@@ -1594,17 +1594,28 @@ function toggleDetail(id,btn){
 }
 
 /* ── PREGUNTA DEL DÍA ── */
+function _seedRand(seed){
+  return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};
+}
+function _shuffledIdx(len,year){
+  const rand=_seedRand(year);
+  const arr=Array.from({length:len},(_,i)=>i);
+  for(let i=arr.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
+  return arr;
+}
 function showDia(){
   const now=new Date();
-  const doy=Math.floor((now-new Date(now.getFullYear(),0,0))/86400000);
+  const year=now.getFullYear();
+  const doy=Math.floor((now-new Date(year,0,0))/86400000);
   const months=MONTHS();
   document.getElementById('diaDate').textContent=`📅 ${now.getDate()} de ${months[now.getMonth()]}`;
-  const p=allPregsOrig.length?allPregsOrig[doy%allPregsOrig.length]:null;
-  if(!p){
+  if(!allPregsOrig.length){
     document.getElementById('diaQ').textContent='¿Qué estoy eligiendo hoy que me expande?';
     document.getElementById('diaArea').textContent='✦ Consciencia';
     return;
   }
+  const idx=_shuffledIdx(allPregsOrig.length,year)[doy%allPregsOrig.length];
+  const p=allPregsOrig[idx];
   _diaArea=p.matiz||'Consciencia';
   document.getElementById('diaQ').textContent=p[`texto_${_lang}`]||p.texto||'';
   document.getElementById('diaArea').textContent=`${DIM_ICO[p.matiz]||'✦'} ${p.matiz||'Consciencia'}`;
@@ -1866,7 +1877,8 @@ async function init(){
   try{
     const {data,error}=await _sb.from('comunidad_contenido').select('id,data')
       .filter('data->>tipo','eq','pregunta')
-      .or('data->>activo.is.null,data->>activo.eq.true');
+      .or('data->>activo.is.null,data->>activo.eq.true')
+      .order('id');
     allPregsOrig=(error||!data?.length)?[]:data.map(r=>r.data||{}).filter(p=>p.activo!==false);
     allPregs=[...allPregsOrig];
   }catch(e){
