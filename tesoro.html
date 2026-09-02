@@ -35,6 +35,11 @@ h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;}
   border-radius:20px;background:var(--terra);color:#fff;font-size:12.5px;font-weight:600;}
 .edicion-badge b{font-weight:800;}
 
+.ig-follow{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:8px 18px;
+  border-radius:20px;border:1.5px solid var(--terra);color:var(--terra-d);font-size:13px;
+  font-weight:700;text-decoration:none;transition:all .15s;}
+.ig-follow:hover{background:var(--terra);color:#fff;}
+
 /* CARD base */
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:16px;}
 
@@ -358,6 +363,7 @@ async function renderTablero(){
       <h1>Preguntas que <span>abren</span> premios</h1>
       <p>Encontrá los stickers, subí la pregunta a tu historia mencionando a @juancruzconsciencia, y reclamá tu premio antes que nadie.</p>
       ${edicionActual?`<div class="edicion-badge">📍 Edición activa ahora en <b>${esc(edicionActual)}</b></div>`:''}
+      <a class="ig-follow" href="https://www.instagram.com/juancruzconsciencia/" target="_blank" rel="noopener">📸 Ver Instagram de @juancruzconsciencia</a>
     </div>
 
     <div class="card counter">
