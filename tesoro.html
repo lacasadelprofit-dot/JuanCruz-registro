@@ -67,9 +67,9 @@ h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;}
 .wheel{width:100%;height:100%;border-radius:50%;position:relative;border:4px solid #fff;
   box-shadow:0 4px 24px rgba(193,122,72,.35),0 0 0 1px var(--border);
   transform:rotate(0deg);transition:transform 4s cubic-bezier(.17,.67,.1,1);}
-.wheel-label{position:absolute;top:50%;left:50%;width:90px;margin-left:-45px;text-align:center;
+.wheel-label{position:absolute;top:50%;left:50%;width:72px;margin-left:-36px;text-align:center;
   font-size:9.5px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);
-  line-height:1.15;transform-origin:center;pointer-events:none;}
+  line-height:1.15;transform-origin:center top;pointer-events:none;}
 .wheel-center{position:absolute;top:50%;left:50%;width:26px;height:26px;margin:-13px;
   border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.25);}
 .wheel-spin-hint{text-align:center;font-size:12px;color:var(--muted);margin-bottom:14px;}
@@ -180,7 +180,7 @@ function buildWheelHTML(pool){
   const gradient=pool.map((r,i)=>`${WHEEL_COLORS[i%WHEEL_COLORS.length]} ${i*slice}deg ${(i+1)*slice}deg`).join(',');
   const labels=pool.map((r,i)=>{
     const mid=i*slice+slice/2;
-    return `<div class="wheel-label" style="transform:rotate(${mid}deg) translateY(-78px) rotate(${-mid}deg)">${esc(r.data.nombre)}</div>`;
+    return `<div class="wheel-label" style="transform:rotate(${mid}deg) translateY(-72px) rotate(${-mid}deg)">${esc(r.data.nombre)}</div>`;
   }).join('');
   return `<div class="wheel-outer">
     <div class="wheel-pointer">▼</div>
