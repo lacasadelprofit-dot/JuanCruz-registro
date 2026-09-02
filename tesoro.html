@@ -40,6 +40,10 @@ h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;}
   font-weight:700;text-decoration:none;transition:all .15s;}
 .ig-follow:hover{background:var(--terra);color:#fff;}
 
+.cta-card{text-align:center;background:linear-gradient(135deg,#FBF0E6 0%,#F5E8D4 60%,var(--terra-l) 100%);}
+.cta-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--text);}
+.cta-text{font-size:13px;color:var(--muted);margin:8px 0 16px;line-height:1.5;}
+
 /* CARD base */
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:16px;}
 
@@ -385,6 +389,12 @@ async function renderTablero(){
     <div class="card">
       <div class="sec-title">Últimos en ganar</div>
       ${ganadoresHtml}
+    </div>
+
+    <div class="card cta-card">
+      <div class="cta-title">✨ ¿No querés esperar a ganar?</div>
+      <p class="cta-text">Agendá tu sesión de Barras de Access o Proceso de Cuerpos cuando quieras, sin depender del tesoro.</p>
+      <a class="btn btn-terra" style="display:block;text-align:center;text-decoration:none" href="https://wa.me/${WA_NUM}?text=${encodeURIComponent('Hola! Vi la Búsqueda del Tesoro y quiero agendar una sesión. ✨')}" target="_blank">Agendar por WhatsApp →</a>
     </div>
 
   `;
