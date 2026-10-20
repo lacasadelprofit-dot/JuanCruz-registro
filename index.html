@@ -340,6 +340,34 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 .modal-sesion-desc{font-size:12px;color:var(--muted);line-height:1.5;}
 .modal-sesion-arr{font-size:18px;color:var(--terra);flex-shrink:0;opacity:.6;}
 .modal-divider{border:none;border-top:1px solid var(--border);margin:14px 0;}
+/* Agenda de turnos */
+.ag-label{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;}
+.ag-dias{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 10px;margin-bottom:12px;scrollbar-width:thin;-webkit-overflow-scrolling:touch;}
+.ag-dia{flex:0 0 auto;width:62px;padding:8px 4px;border:1.5px solid var(--border);border-radius:12px;background:var(--card);
+  text-align:center;cursor:pointer;font-family:inherit;color:var(--text);transition:border-color .15s,background .15s;}
+.ag-dia .d1{font-size:11px;color:var(--muted);text-transform:capitalize;}
+.ag-dia .d2{font-size:19px;font-weight:800;line-height:1.2;}
+.ag-dia .d3{font-size:10px;color:var(--muted);text-transform:capitalize;}
+.ag-dia:hover:not(:disabled){border-color:var(--terra);}
+.ag-dia.sel{background:var(--terra);border-color:var(--terra);color:#fff;}
+.ag-dia.sel .d1,.ag-dia.sel .d3{color:rgba(255,255,255,.85);}
+.ag-dia:disabled{opacity:.4;cursor:not-allowed;text-decoration:line-through;}
+.ag-horas{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;min-height:40px;}
+.ag-hora{padding:9px 14px;border:1.5px solid var(--border);border-radius:20px;background:var(--card2);font-size:13px;font-weight:700;
+  cursor:pointer;font-family:inherit;color:var(--text);transition:border-color .15s,background .15s;}
+.ag-hora:hover:not(:disabled){border-color:var(--terra);}
+.ag-hora.sel{background:var(--terra);border-color:var(--terra);color:#fff;}
+.ag-hora:disabled{opacity:.4;cursor:not-allowed;text-decoration:line-through;}
+.ag-vacio{font-size:13px;color:var(--muted);padding:8px 0;}
+.ag-nota{font-size:11px;color:var(--muted);line-height:1.5;}
+.ag-resumen{background:var(--terra-l);border:1px solid rgba(193,122,72,.3);border-radius:14px;padding:14px 16px;margin-bottom:12px;font-size:14px;line-height:1.6;}
+.ag-resumen strong{color:var(--terra-d);}
+.ag-pago{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:12px;font-size:13px;line-height:1.6;}
+.ag-pago-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--border);}
+.ag-pago-row:first-of-type{border-top:none;}
+.ag-pago-row code{font-family:inherit;font-weight:800;font-size:14px;word-break:break-all;}
+.ag-copy{flex:0 0 auto;padding:6px 12px;border:1px solid var(--terra);border-radius:20px;background:none;color:var(--terra-d);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
+.ag-wa{display:block;text-align:center;padding:13px;background:#25D366;border-radius:12px;color:#fff;font-size:14px;font-weight:800;text-decoration:none;}
 .modal-nosé{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;
   background:var(--card2);cursor:pointer;text-decoration:none;transition:background .18s;}
 .modal-nosé:hover{background:var(--terra-l);}
@@ -462,10 +490,26 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <button onclick="backToStep1()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:0;line-height:1">←</button>
         <div>
           <div id="paso2Titulo" style="font-size:17px;font-weight:800;color:var(--text)"></div>
-          <div style="font-size:12px;color:var(--muted);margin-top:2px" data-i18n="modal2_sub">Completá tus datos y te contactamos</div>
+          <div id="paso2Sub" style="font-size:12px;color:var(--muted);margin-top:2px">Completá tus datos y te contactamos</div>
         </div>
       </div>
       <input id="regHoney" type="text" tabindex="-1" autocomplete="off" style="position:absolute;opacity:0;height:0;pointer-events:none">
+
+      <!-- Agenda: sesiones individuales -->
+      <div id="agendaBox" style="display:none;margin-bottom:16px">
+        <div class="ag-label" data-i18n="ag_dia">1 · Elegí el día</div>
+        <div class="ag-dias" id="agDias"></div>
+        <div class="ag-label" data-i18n="ag_hora">2 · Elegí el horario</div>
+        <div class="ag-horas" id="agHoras"></div>
+        <div class="ag-nota" data-i18n="ag_nota">📍 Posada Luz y Brillo, Búzios · Horario de Brasil (igual que Argentina)</div>
+        <div class="ag-label" style="margin-top:16px" data-i18n="ag_datos">3 · Tus datos</div>
+      </div>
+
+      <!-- Agenda: fechas de la clase -->
+      <div id="claseFechasBox" style="display:none;margin-bottom:16px">
+        <div class="ag-label" data-i18n="ag_clase_fecha">Elegí la fecha</div>
+        <div class="ag-horas" id="agClaseFechas"></div>
+      </div>
 
       <!-- Campos base: siempre visibles -->
       <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
@@ -489,12 +533,14 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="momentoDia" value="Por la noche" style="accent-color:var(--terra)"> <span data-i18n="rad_noche">Por la noche</span></label>
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="momentoDia" value="Durante todo el día" style="accent-color:var(--terra)"> <span data-i18n="rad_tododia">Durante todo el día</span></label>
         </div>
+        <div class="cuando-wrap">
         <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_cuando_hacerla">¿Cuándo querés hacerla?</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuando" value="Esta semana" style="accent-color:var(--terra)"> <span data-i18n="rad_esta_semana">Esta semana</span></label>
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuando" value="Próximas 2 semanas" style="accent-color:var(--terra)"> <span data-i18n="rad_proximas2">Próximas 2 sem.</span></label>
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuando" value="Este mes" style="accent-color:var(--terra)"> <span data-i18n="rad_este_mes">Este mes</span></label>
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuando" value="No sé todavía" style="accent-color:var(--terra)"> <span data-i18n="rad_nose">No sé todavía</span></label>
+        </div>
         </div>
       </div>
 
@@ -503,12 +549,14 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_patron">¿Hay algún patrón que sentís que se repite?</div>
         <textarea id="patronProceso" placeholder="Contame brevemente..." data-i18n-ph="ph_patron" rows="2"
           style="padding:12px 14px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;background:var(--card);color:var(--text);width:100%;outline:none;font-family:inherit;resize:none;margin-bottom:14px"></textarea>
+        <div class="cuando-wrap">
         <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_cuando_hacerla">¿Cuándo querés hacerla?</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoProceso" value="Esta semana" style="accent-color:var(--terra)"> <span data-i18n="rad_esta_semana">Esta semana</span></label>
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoProceso" value="Próximas 2 semanas" style="accent-color:var(--terra)"> <span data-i18n="rad_proximas2">Próximas 2 sem.</span></label>
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoProceso" value="Este mes" style="accent-color:var(--terra)"> <span data-i18n="rad_este_mes">Este mes</span></label>
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoProceso" value="No sé todavía" style="accent-color:var(--terra)"> <span data-i18n="rad_nose">No sé todavía</span></label>
+        </div>
         </div>
       </div>
 
@@ -525,11 +573,13 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="paraQueClase" value="Ofrecer sesiones" style="accent-color:var(--terra)"> <span data-i18n="rad_ofrecer">Ofrecer sesiones</span></label>
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="paraQueClase" value="Los dos" style="accent-color:var(--terra)"> <span data-i18n="rad_los_dos">Los dos</span></label>
         </div>
+        <div class="cuando-wrap">
         <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_cuando_clase">¿Cuándo te gustaría hacer la clase?</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoClase" value="Próximas 2 semanas" style="accent-color:var(--terra)"> <span data-i18n="rad_proximas2">Próximas 2 sem.</span></label>
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoClase" value="Este mes" style="accent-color:var(--terra)"> <span data-i18n="rad_este_mes">Este mes</span></label>
           <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:6px 12px"><input type="radio" name="cuandoClase" value="No sé todavía" style="accent-color:var(--terra)"> <span data-i18n="rad_nose">No sé todavía</span></label>
+        </div>
         </div>
       </div>
 
@@ -550,7 +600,8 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
     <div id="modalPaso3" style="display:none;text-align:center;padding:16px 0">
       <div style="font-size:52px;margin-bottom:16px">✨</div>
       <div style="font-size:19px;font-weight:800;color:var(--text);margin-bottom:8px" data-i18n="paso3_listo">¡Listo!</div>
-      <div style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px" data-i18n="paso3_msg">Recibimos tu registro. Juan Cruz te contacta pronto para coordinar todo.</div>
+      <div id="paso3Msg" style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px">Recibimos tu registro. Juan Cruz te contacta pronto para coordinar todo.</div>
+      <div id="paso3Turno" style="display:none;text-align:left;margin-bottom:20px"></div>
       <button onclick="closeModalBtn()" style="padding:12px 28px;background:var(--terra);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit" data-i18n="btn_cerrar">Cerrar</button>
     </div>
 
@@ -694,7 +745,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
       <div class="ses-meta">
         <div class="ses-meta-item" data-i18n="meta_duracion_60">⏱ 60 minutos</div>
         <div class="ses-meta-item" data-i18n="meta_presencial">📍 Presencial</div>
-        <div class="ses-meta-item">💸 $50.000 ARS · USD 50</div>
+        <div class="ses-meta-item">💸 R$ 200 · USD 60</div>
       </div>
       <div class="ses-footer">
         <button class="btn-ver-mas" onclick="toggleDetail('detail-barras',this)" data-i18n="btn_ver_mas">Ver más ↓</button>
@@ -745,11 +796,11 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <div class="ses-sub-title" data-i18n="titulo_info_practica">📋 Info práctica</div>
         <div class="ses-info">
           <div class="ses-info-row"><div class="ses-info-ico">🕒</div><div class="ses-info-label" data-i18n="info_duracion">Duración</div><div class="ses-info-val">60 minutos</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">📍</div><div class="ses-info-label" data-i18n="info_modalidad">Modalidad</div><div class="ses-info-val" data-i18n="info_modalidad_val">Presencial · Lomas de Zamora o Caballito</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label" data-i18n="info_inversion">Inversión</div><div class="ses-info-val">$50.000 ARS · USD 50</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">🔐</div><div class="ses-info-label" data-i18n="info_reserva">Reserva</div><div class="ses-info-val" data-i18n="barras_senia">Seña de $25.000</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">📍</div><div class="ses-info-label" data-i18n="info_modalidad">Modalidad</div><div class="ses-info-val" data-i18n="info_modalidad_val">Presencial · Posada Luz y Brillo, Búzios</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label" data-i18n="info_inversion">Inversión</div><div class="ses-info-val">R$ 200 · USD 60</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">🔐</div><div class="ses-info-label" data-i18n="info_reserva">Reserva</div><div class="ses-info-val" data-i18n="barras_senia">Seña de R$ 100 · USD 30</div></div>
         </div>
-        <div class="ses-urg" data-i18n="barras_urg">⏳ Solo 10 turnos por semana · ¡Agendá el tuyo ahora!</div>
+        <div class="ses-urg" data-i18n="barras_urg">⏳ Solo 3 turnos por día · Elegí el tuyo en la agenda</div>
         <div style="text-align:right">
           <button class="btn-reservar" onclick="reservar('barras','Barras de Access','🌀');track('click_btn',{boton:'reservar_barras_det'})" data-i18n="barras_btn_det">Reservar Barras ✦</button>
         </div>
@@ -772,7 +823,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
       <div class="ses-meta">
         <div class="ses-meta-item" data-i18n="meta_duracion_60">⏱ 60 minutos</div>
         <div class="ses-meta-item" data-i18n="meta_presencial">📍 Presencial</div>
-        <div class="ses-meta-item">💸 $60.000 ARS · USD 60</div>
+        <div class="ses-meta-item">💸 R$ 300 · USD 70</div>
       </div>
       <div class="ses-footer">
         <button class="btn-ver-mas" onclick="toggleDetail('detail-proceso',this)" data-i18n="btn_ver_mas">Ver más ↓</button>
@@ -815,11 +866,11 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <div class="ses-sub-title" data-i18n="titulo_info_practica">📋 Info práctica</div>
         <div class="ses-info">
           <div class="ses-info-row"><div class="ses-info-ico">🕒</div><div class="ses-info-label" data-i18n="info_duracion">Duración</div><div class="ses-info-val">60 minutos</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">📍</div><div class="ses-info-label" data-i18n="info_modalidad">Modalidad</div><div class="ses-info-val" data-i18n="info_modalidad_val">Presencial · Lomas de Zamora o Caballito</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label" data-i18n="info_inversion">Inversión</div><div class="ses-info-val">$60.000 ARS · USD 60</div></div>
-          <div class="ses-info-row"><div class="ses-info-ico">🔐</div><div class="ses-info-label" data-i18n="info_reserva">Reserva</div><div class="ses-info-val" data-i18n="proceso_senia">Seña de $30.000</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">📍</div><div class="ses-info-label" data-i18n="info_modalidad">Modalidad</div><div class="ses-info-val" data-i18n="info_modalidad_val">Presencial · Posada Luz y Brillo, Búzios</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label" data-i18n="info_inversion">Inversión</div><div class="ses-info-val">R$ 300 · USD 70</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">🔐</div><div class="ses-info-label" data-i18n="info_reserva">Reserva</div><div class="ses-info-val" data-i18n="proceso_senia">Seña de R$ 150 · USD 35</div></div>
         </div>
-        <div class="ses-urg" data-i18n="proceso_urg">⏳ Solo 5 turnos por semana · ¡Agendá el tuyo ahora!</div>
+        <div class="ses-urg" data-i18n="proceso_urg">⏳ Solo 3 turnos por día · Elegí el tuyo en la agenda</div>
         <div style="text-align:right">
           <button class="btn-reservar" onclick="reservar('proceso_cuerpos','Proceso de Cuerpos','🌿');track('click_btn',{boton:'reservar_proceso_det'})" style="background:#7B9E87" data-i18n="proceso_btn_det">Reservar Proceso ✦</button>
         </div>
@@ -889,12 +940,10 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
         <div class="ses-sub-title" data-i18n="clase_det_inversion">💰 Inversión</div>
         <div class="ses-price-box">
           <div class="ses-price-main">USD 330</div>
-          <div class="ses-price-small" data-i18n="clase_det_precio_nota">o equivalente en pesos argentinos · tipo de cambio BNA</div>
         </div>
         <div class="ses-price-box warm">
           <div class="ses-price-main">USD 165</div>
-          <div class="ses-price-small" data-i18n="clase_det_descuento">50% OFF si ya hiciste una clase</div>
-          <div class="ses-price-badge" data-i18n="clase_det_descuento_badge">🎁 Descuento para alumnos</div>
+          <div class="ses-price-small" data-i18n="clase_det_descuento">si tomaste una clase</div>
         </div>
         <div class="ses-price-box green">
           <div class="ses-price-main" data-i18n="clase_det_menores">Menores de 15 años</div>
@@ -1064,8 +1113,8 @@ es:{
   barras_ben4_t:'Más energía',barras_ben4_d:'menos reactividad ante conflictos',
   barras_testi_titulo:'📱 Lo que dicen después de una sesión',
   titulo_info_practica:'📋 Info práctica',info_duracion:'Duración',info_modalidad:'Modalidad',
-  info_modalidad_val:'Presencial · Búzios, Brasil',info_inversion:'Inversión',info_reserva:'Reserva',
-  barras_senia:'Seña de $25.000',barras_urg:'⏳ Solo 10 turnos por semana · ¡Agendá el tuyo ahora!',barras_btn_det:'Reservar Barras ✦',
+  info_modalidad_val:'Presencial · Posada Luz y Brillo, Búzios',info_inversion:'Inversión',info_reserva:'Reserva',
+  barras_senia:'Seña de R$ 100 · USD 30',barras_urg:'⏳ Solo 3 turnos por día · Elegí el tuyo en la agenda',barras_btn_det:'Reservar Barras ✦',
   proceso_tagline:'"¿Qué sabe tu cuerpo que vos todavía no estás escuchando?"',
   proceso_desc:'Soltá lo que tu cuerpo guardó sin permiso. Un proceso de Access Consciousness® para liberar realidades reactivas y presuntivas — a través de la imposición de manos que trabaja a nivel energético.',
   proceso_check1:'Siempre te pasa lo mismo en distintas situaciones',proceso_check2:'Reaccionás y después pensás: "¿por qué hice eso?"',
@@ -1079,7 +1128,7 @@ es:{
   proceso_ben1_t:'Liberación de realidades reactivas',proceso_ben1_d:'el cuerpo deja de reaccionar automáticamente',
   proceso_ben2_t:'Desprogramación de realidades presuntivas',proceso_ben2_d:'lo que asumiste como verdad sin cuestionar',
   proceso_ben3_t:'Mayor conexión corporal',proceso_ben3_d:'empezás a sentir lo que tu cuerpo necesita',
-  proceso_senia:'Seña de $30.000',proceso_urg:'⏳ Solo 5 turnos por semana · ¡Agendá el tuyo ahora!',proceso_btn_det:'Reservar Proceso ✦',
+  proceso_senia:'Seña de R$ 150 · USD 35',proceso_urg:'⏳ Solo 3 turnos por día · Elegí el tuyo en la agenda',proceso_btn_det:'Reservar Proceso ✦',
   sec_regalos_label:'🎁 Regalos para vos',sec_regalos_titulo:'¿Cuánta expansión estás dispuesto/a a recibir?',
   sec_regalos_sub:'Preparé estas guías para que empieces a trabajar con tu consciencia hoy mismo. Son herramientas que a mí me cambiaron algo.',
   sec_clases_label:'📚 Clases',sec_clases_titulo:'Aprendé a dar sesiones',sec_clases_sub:'Convertite en practicante de Barras de Access® en un solo día.',
@@ -1097,9 +1146,7 @@ es:{
   clase_det_pq3:'Si sentís que necesitás un <strong>cambio real</strong> en tu vida',
   clase_det_pq4:'Si ya das sesiones y querés <strong>certificarte</strong>',
   clase_det_inversion:'💰 Inversión',
-  clase_det_precio_nota:'o equivalente en pesos argentinos · tipo de cambio BNA',
-  clase_det_descuento:'50% OFF si ya hiciste una clase',
-  clase_det_descuento_badge:'🎁 Descuento para alumnos',
+  clase_det_descuento:'si tomaste una clase',
   clase_det_menores:'Menores de 15 años',
   clase_det_menores_nota:'Sin costo · Acompañando a un mayor',
   clase_det_familia_badge:'👨‍👩‍👧‍👦 Familia',
@@ -1146,6 +1193,19 @@ es:{
   form_recibiste_barras:'¿Ya recibiste sesiones de Barras?',form_para_que:'¿Para qué querés aprender?',form_cuando_clase:'¿Cuándo te gustaría hacer la clase?',
   rad_si:'Sí',rad_no:'No',rad_uso_personal:'Uso personal',rad_ofrecer:'Ofrecer sesiones',rad_los_dos:'Los dos',
   ph_mensaje:'¿Algo que quieras contarme antes? (opcional)',
+  ag_dia:'1 · Elegí el día',ag_hora:'2 · Elegí el horario',ag_datos:'3 · Tus datos',ag_clase_fecha:'Elegí la fecha',
+  ag_nota:'📍 Posada Luz y Brillo, Búzios · Horario de Brasil (igual que Argentina)',
+  ag_sub:'Elegí día y horario · Turnos de 1h30',ag_sub_clase:'Elegí la fecha y completá tus datos',
+  ag_elegi_dia:'Elegí un día para ver los horarios',ag_sin_turnos:'Ese día ya no quedan turnos',ag_cargando:'Cargando turnos...',
+  ag_err_slot:'Elegí día y horario para tu sesión',ag_err_ocupado:'Ese horario se acaba de ocupar. Elegí otro 🙏',
+  ag_err_limite:'Ya tenés 3 turnos reservados. Escribinos por WhatsApp si necesitás otro.',ag_err_pronto:'Ese horario ya no está disponible. Elegí otro.',
+  btn_reservar_turno:'Reservar turno ✦',ag_ok_titulo:'¡Tu turno está reservado!',
+  ag_ok_msg:'Para confirmarlo, transferí la seña y mandá el comprobante por WhatsApp.',
+  ag_cuando:'Cuándo',ag_lugar:'Lugar',ag_senia:'Seña',ag_pix:'Pix',ag_copiar:'Copiar',ag_copiado:'¡Copiado!',
+  ag_wa_btn:'Enviar comprobante por WhatsApp',
+  ag_wa_msg:'¡Hola Juan Cruz! Soy {n}. Reservé {s} para el {f} a las {h}. Te envío el comprobante de la seña.',
+  ag_clase_ninguna:'Ninguna me sirve',ag_clase_ok:'Quedaste anotado/a en la clase del {f}. Juan Cruz te escribe para coordinar todo.',
+  ag_clase_ya:'Ya estabas anotado/a en esa fecha. Juan Cruz te escribe pronto.',
   months:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
 },
 en:{
@@ -1194,8 +1254,8 @@ en:{
   barras_ben4_t:'More energy',barras_ben4_d:'less reactivity in conflicts',
   barras_testi_titulo:'📱 What people say after a session',
   titulo_info_practica:'📋 Practical info',info_duracion:'Duration',info_modalidad:'Format',
-  info_modalidad_val:'In-person · Búzios, Brazil',info_inversion:'Investment',info_reserva:'Deposit',
-  barras_senia:'Deposit of $25.000',barras_urg:'⏳ Only 10 slots per week · Book yours now!',barras_btn_det:'Book Bars ✦',
+  info_modalidad_val:'In-person · Posada Luz y Brillo, Búzios',info_inversion:'Investment',info_reserva:'Deposit',
+  barras_senia:'Deposit of R$ 100 · USD 30',barras_urg:'⏳ Only 3 slots per day · Pick yours in the calendar',barras_btn_det:'Book Bars ✦',
   proceso_tagline:'"What does your body know that you are not yet listening to?"',
   proceso_desc:'Release what your body held without permission. An Access Consciousness® process to free reactive and assumptive realities — through hands-on work at an energetic level.',
   proceso_check1:'The same thing always happens to you in different situations',proceso_check2:'You react and then think: "why did I do that?"',
@@ -1209,7 +1269,7 @@ en:{
   proceso_ben1_t:'Liberation from reactive realities',proceso_ben1_d:'the body stops reacting automatically',
   proceso_ben2_t:'Deprogramming of assumptive realities',proceso_ben2_d:'what you assumed as truth without questioning',
   proceso_ben3_t:'Greater body connection',proceso_ben3_d:'you start feeling what your body needs',
-  proceso_senia:'Deposit of $30.000',proceso_urg:'⏳ Only 5 slots per week · Book yours now!',proceso_btn_det:'Book Body Process ✦',
+  proceso_senia:'Deposit of R$ 150 · USD 35',proceso_urg:'⏳ Only 3 slots per day · Pick yours in the calendar',proceso_btn_det:'Book Body Process ✦',
   sec_regalos_label:'🎁 Gifts for you',sec_regalos_titulo:'How much expansion are you willing to receive?',
   sec_regalos_sub:'I prepared these guides so you can start working with your consciousness today. These are tools that changed something in me.',
   sec_clases_label:'📚 Classes',sec_clases_titulo:'Learn to give sessions',sec_clases_sub:'Become a Bars of Access® practitioner in a single day.',
@@ -1227,9 +1287,7 @@ en:{
   clase_det_pq3:'If you feel you need a <strong>real change</strong> in your life',
   clase_det_pq4:'If you already give sessions and want to <strong>get certified</strong>',
   clase_det_inversion:'💰 Investment',
-  clase_det_precio_nota:'or equivalent in Argentine pesos · BNA exchange rate',
-  clase_det_descuento:'50% OFF if you\'ve already taken a class',
-  clase_det_descuento_badge:'🎁 Alumni discount',
+  clase_det_descuento:'if you\'ve taken a class',
   clase_det_menores:'Under 15 years old',
   clase_det_menores_nota:'Free · Accompanying an adult',
   clase_det_familia_badge:'👨‍👩‍👧‍👦 Family',
@@ -1276,6 +1334,19 @@ en:{
   form_recibiste_barras:'Have you received Bars sessions before?',form_para_que:'Why do you want to learn?',form_cuando_clase:'When would you like to take the class?',
   rad_si:'Yes',rad_no:'No',rad_uso_personal:'Personal use',rad_ofrecer:'Offer sessions',rad_los_dos:'Both',
   ph_mensaje:'Anything you\'d like to share first? (optional)',
+  ag_dia:'1 · Pick a day',ag_hora:'2 · Pick a time',ag_datos:'3 · Your details',ag_clase_fecha:'Pick a date',
+  ag_nota:'📍 Posada Luz y Brillo, Búzios · Brazil time (UTC-3)',
+  ag_sub:'Pick a day and time · 1h30 slots',ag_sub_clase:'Pick a date and fill in your details',
+  ag_elegi_dia:'Pick a day to see available times',ag_sin_turnos:'No slots left that day',ag_cargando:'Loading slots...',
+  ag_err_slot:'Pick a day and time for your session',ag_err_ocupado:'That time was just taken. Please pick another 🙏',
+  ag_err_limite:'You already have 3 bookings. Message us on WhatsApp if you need another.',ag_err_pronto:'That time is no longer available. Please pick another.',
+  btn_reservar_turno:'Book slot ✦',ag_ok_titulo:'Your slot is booked!',
+  ag_ok_msg:'To confirm it, send the deposit and share the receipt on WhatsApp.',
+  ag_cuando:'When',ag_lugar:'Place',ag_senia:'Deposit',ag_pix:'Pix',ag_copiar:'Copy',ag_copiado:'Copied!',
+  ag_wa_btn:'Send receipt on WhatsApp',
+  ag_wa_msg:'Hi Juan Cruz! I’m {n}. I booked {s} on {f} at {h}. Here is the deposit receipt.',
+  ag_clase_ninguna:'None of these work',ag_clase_ok:'You’re signed up for the class on {f}. Juan Cruz will message you to coordinate.',
+  ag_clase_ya:'You were already signed up for that date. Juan Cruz will message you soon.',
   months:['January','February','March','April','May','June','July','August','September','October','November','December']
 },
 pt:{
@@ -1324,8 +1395,8 @@ pt:{
   barras_ben4_t:'Mais energia',barras_ben4_d:'menos reatividade diante de conflitos',
   barras_testi_titulo:'📱 O que dizem após uma sessão',
   titulo_info_practica:'📋 Informações práticas',info_duracion:'Duração',info_modalidad:'Modalidade',
-  info_modalidad_val:'Presencial · Búzios, Brasil',info_inversion:'Investimento',info_reserva:'Sinal',
-  barras_senia:'Sinal de $25.000',barras_urg:'⏳ Apenas 10 vagas por semana · Agende a sua agora!',barras_btn_det:'Reservar Barras ✦',
+  info_modalidad_val:'Presencial · Posada Luz y Brillo, Búzios',info_inversion:'Investimento',info_reserva:'Sinal',
+  barras_senia:'Sinal de R$ 100 · USD 30',barras_urg:'⏳ Apenas 3 horários por dia · Escolha o seu na agenda',barras_btn_det:'Reservar Barras ✦',
   proceso_tagline:'"O que seu corpo sabe que você ainda não está ouvindo?"',
   proceso_desc:'Solte o que seu corpo guardou sem permissão. Um processo de Access Consciousness® para liberar realidades reativas e presuntivas — através da imposição de mãos que trabalha no nível energético.',
   proceso_check1:'A mesma coisa sempre acontece com você em situações diferentes',proceso_check2:'"Você reage e depois pensa: por que fiz isso?"',
@@ -1339,7 +1410,7 @@ pt:{
   proceso_ben1_t:'Liberação de realidades reativas',proceso_ben1_d:'o corpo para de reagir automaticamente',
   proceso_ben2_t:'Desprogramação de realidades presuntivas',proceso_ben2_d:'o que você assumiu como verdade sem questionar',
   proceso_ben3_t:'Maior conexão corporal',proceso_ben3_d:'você começa a sentir o que seu corpo precisa',
-  proceso_senia:'Sinal de $30.000',proceso_urg:'⏳ Apenas 5 vagas por semana · Agende a sua agora!',proceso_btn_det:'Reservar Processo ✦',
+  proceso_senia:'Sinal de R$ 150 · USD 35',proceso_urg:'⏳ Apenas 3 horários por dia · Escolha o seu na agenda',proceso_btn_det:'Reservar Processo ✦',
   sec_regalos_label:'🎁 Presentes para você',sec_regalos_titulo:'Quanta expansão você está disposto/a a receber?',
   sec_regalos_sub:'Preparei estes guias para que você comece a trabalhar com sua consciência hoje mesmo. São ferramentas que mudaram algo em mim.',
   sec_clases_label:'📚 Aulas',sec_clases_titulo:'Aprenda a dar sessões',sec_clases_sub:'Torne-se praticante de Barras de Access® em um único dia.',
@@ -1357,9 +1428,7 @@ pt:{
   clase_det_pq3:'Se você sente que precisa de uma <strong>mudança real</strong> na sua vida',
   clase_det_pq4:'Se você já dá sessões e quer <strong>se certificar</strong>',
   clase_det_inversion:'💰 Investimento',
-  clase_det_precio_nota:'ou equivalente em pesos argentinos · câmbio BNA',
-  clase_det_descuento:'50% OFF se você já fez uma aula',
-  clase_det_descuento_badge:'🎁 Desconto para alunos',
+  clase_det_descuento:'se você já fez uma aula',
   clase_det_menores:'Menores de 15 anos',
   clase_det_menores_nota:'Sem custo · Acompanhando um adulto',
   clase_det_familia_badge:'👨‍👩‍👧‍👦 Família',
@@ -1406,6 +1475,19 @@ pt:{
   form_recibiste_barras:'Você já recebeu sessões de Barras?',form_para_que:'Para que você quer aprender?',form_cuando_clase:'Quando gostaria de fazer a aula?',
   rad_si:'Sim',rad_no:'Não',rad_uso_personal:'Uso pessoal',rad_ofrecer:'Oferecer sessões',rad_los_dos:'Os dois',
   ph_mensaje:'Algo que queira me contar antes? (opcional)',
+  ag_dia:'1 · Escolha o dia',ag_hora:'2 · Escolha o horário',ag_datos:'3 · Seus dados',ag_clase_fecha:'Escolha a data',
+  ag_nota:'📍 Posada Luz y Brillo, Búzios · Horário de Brasília',
+  ag_sub:'Escolha dia e horário · Horários de 1h30',ag_sub_clase:'Escolha a data e preencha seus dados',
+  ag_elegi_dia:'Escolha um dia para ver os horários',ag_sin_turnos:'Não há mais horários nesse dia',ag_cargando:'Carregando horários...',
+  ag_err_slot:'Escolha dia e horário para sua sessão',ag_err_ocupado:'Esse horário acabou de ser ocupado. Escolha outro 🙏',
+  ag_err_limite:'Você já tem 3 horários reservados. Fale com a gente pelo WhatsApp se precisar de outro.',ag_err_pronto:'Esse horário não está mais disponível. Escolha outro.',
+  btn_reservar_turno:'Reservar horário ✦',ag_ok_titulo:'Seu horário está reservado!',
+  ag_ok_msg:'Para confirmar, faça o sinal e envie o comprovante pelo WhatsApp.',
+  ag_cuando:'Quando',ag_lugar:'Local',ag_senia:'Sinal',ag_pix:'Pix',ag_copiar:'Copiar',ag_copiado:'Copiado!',
+  ag_wa_btn:'Enviar comprovante pelo WhatsApp',
+  ag_wa_msg:'Olá Juan Cruz! Sou {n}. Reservei {s} para {f} às {h}. Segue o comprovante do sinal.',
+  ag_clase_ninguna:'Nenhuma serve',ag_clase_ok:'Você está inscrito/a na aula de {f}. Juan Cruz vai te escrever para combinar tudo.',
+  ag_clase_ya:'Você já estava inscrito/a nessa data. Juan Cruz vai te escrever em breve.',
   months:['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro']
 }
 };
@@ -1475,15 +1557,20 @@ function reservar(key,nombre,ico){
   selectSesion(key,nombre,ico);
 }
 function backToStep1(){
+  const t=LANGS[_lang];
   document.getElementById('modalPaso1').style.display='';
   document.getElementById('modalPaso2').style.display='none';
   document.getElementById('modalPaso3').style.display='none';
   document.getElementById('regMsg').textContent='';
-  document.getElementById('regSubmitBtn').textContent='Enviar ✦';
+  document.getElementById('regSubmitBtn').textContent=t.btn_enviar;
   document.getElementById('regSubmitBtn').disabled=false;
+  document.querySelector('#modalPaso3 [data-i18n="paso3_listo"]').textContent=t.paso3_listo;
+  document.getElementById('paso3Msg').textContent=t.paso3_msg;
+  document.getElementById('paso3Turno').style.display='none';
 }
 
 function selectSesion(key, nombre, ico){
+  const t=LANGS[_lang];
   _sesionKey=key; _sesionNombre=nombre;
   document.getElementById('paso2Titulo').textContent=ico+' '+nombre;
   document.getElementById('regNombre').value='';
@@ -1496,10 +1583,141 @@ function selectSesion(key, nombre, ico){
   // Reset checkboxes y radios
   ['sintRuido','sintEstres','sintCansancio'].forEach(id=>{const el=document.getElementById(id);if(el)el.checked=false;});
   document.querySelectorAll('input[type=radio]').forEach(r=>r.checked=false);
+  // Agenda: las sesiones individuales eligen día y horario; la clase, una fecha
+  const conAgenda=SESIONES_AGENDA.includes(key);
+  _agDia='';_agHora='';_agOk=false;_claseSel='';
+  document.getElementById('agendaBox').style.display=conAgenda?'':'none';
+  document.getElementById('claseFechasBox').style.display='none';
+  document.querySelectorAll('.cuando-wrap').forEach(el=>el.style.display=conAgenda?'none':'');
+  document.getElementById('paso2Sub').textContent=conAgenda?t.ag_sub:t.modal2_sub;
+  document.getElementById('regSubmitBtn').textContent=conAgenda?t.btn_reservar_turno:t.btn_enviar;
+  if(conAgenda)cargarAgenda();
+  else if(key==='clase_barras')cargarClaseFechas();
   document.getElementById('modalPaso1').style.display='none';
   document.getElementById('modalPaso2').style.display='';
   track('click_btn',{boton:'modal_elegir_'+key});
-  setTimeout(()=>document.getElementById('regNombre').focus(),100);
+  // Con agenda no se enfoca el nombre: en mobile el teclado taparía los horarios
+  if(!conAgenda)setTimeout(()=>document.getElementById('regNombre').focus(),100);
+}
+
+/* ── AGENDA DE TURNOS ──
+   Si cambian los horarios, actualizar también 4_BASE_DE_DATOS/29_agenda_turnos.sql */
+const AGENDA={
+  horas:['09:00','10:30','19:00'],
+  diasHabiles:[1,2,3,4,5],          // lunes a viernes
+  diasVista:21,                     // días hacia adelante que se muestran
+  anticipacionHs:2,                 // no se puede reservar con menos de 2 hs
+  lugar:'Posada Luz y Brillo · Búzios',
+  pix:'04572950741',
+  wa:'541151758653',
+  senia:{barras:'R$ 100 · USD 30',proceso_cuerpos:'R$ 150 · USD 35'}
+};
+const SESIONES_AGENDA=['barras','proceso_cuerpos'];
+let _agOcupados=new Set(), _agDia='', _agHora='', _agOk=false, _claseFechas=[], _claseSel='';
+
+// Fechas en hora de Búzios (UTC-3, sin horario de verano)
+function _hoyBR(){return new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo'}).format(new Date());}
+function _sumarDias(iso,n){const d=new Date(iso+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10);}
+function _slotTs(iso,hora){return new Date(`${iso}T${hora}:00-03:00`).getTime();}
+function _slotLibre(iso,hora){
+  return !_agOcupados.has(iso+'|'+hora)&&!_agOcupados.has(iso+'|todo')
+    &&_slotTs(iso,hora)>Date.now()+AGENDA.anticipacionHs*3600e3;
+}
+function _locale(){return {es:'es-AR',en:'en-US',pt:'pt-BR'}[_lang]||'es-AR';}
+function _fmtFecha(iso,opts){return new Date(iso+'T12:00:00Z').toLocaleDateString(_locale(),{timeZone:'UTC',...opts});}
+function _diasAgenda(){
+  const hoy=_hoyBR(),out=[];
+  for(let i=0;i<AGENDA.diasVista;i++){
+    const iso=_sumarDias(hoy,i);
+    if(AGENDA.diasHabiles.includes(new Date(iso+'T12:00:00Z').getUTCDay()))out.push(iso);
+  }
+  return out;
+}
+
+async function cargarAgenda(){
+  const t=LANGS[_lang];
+  document.getElementById('agDias').innerHTML=`<div class="ag-vacio">${t.ag_cargando}</div>`;
+  document.getElementById('agHoras').innerHTML='';
+  const dias=_diasAgenda();
+  const {data,error}=await _sb.rpc('agenda_ocupados',{desde:dias[0],hasta:dias[dias.length-1]});
+  if(!SESIONES_AGENDA.includes(_sesionKey))return;
+  if(error){console.warn('agenda',error);_agOk=false;_modoSinAgenda();return;}
+  _agOk=true;
+  _agOcupados=new Set((data||[]).map(r=>r.fecha+'|'+r.hora));
+  if(_agDia&&!AGENDA.horas.some(h=>_slotLibre(_agDia,h)))_agDia='';
+  if(_agHora&&!_slotLibre(_agDia,_agHora))_agHora='';
+  renderAgenda();
+}
+function renderAgenda(){
+  const t=LANGS[_lang];
+  document.getElementById('agDias').innerHTML=_diasAgenda().map(iso=>{
+    const libre=AGENDA.horas.some(h=>_slotLibre(iso,h));
+    return `<button type="button" class="ag-dia${iso===_agDia?' sel':''}" ${libre?'':'disabled'} onclick="elegirDia('${iso}')">`
+      +`<div class="d1">${_fmtFecha(iso,{weekday:'short'})}</div><div class="d2">${_fmtFecha(iso,{day:'numeric'})}</div><div class="d3">${_fmtFecha(iso,{month:'short'})}</div></button>`;
+  }).join('');
+  const horas=document.getElementById('agHoras');
+  if(!_agDia){horas.innerHTML=`<div class="ag-vacio">${t.ag_elegi_dia}</div>`;return;}
+  horas.innerHTML=AGENDA.horas.map(h=>
+    `<button type="button" class="ag-hora${h===_agHora?' sel':''}" ${_slotLibre(_agDia,h)?'':'disabled'} onclick="elegirHora('${h}')">${h}</button>`
+  ).join('');
+}
+function elegirDia(iso){_agDia=iso;_agHora='';renderAgenda();document.getElementById('regMsg').textContent='';}
+function elegirHora(h){_agHora=h;renderAgenda();document.getElementById('regMsg').textContent='';}
+
+// Si el SQL de la agenda no está corrido o falla, vuelve al formulario de siempre
+function _modoSinAgenda(){
+  const t=LANGS[_lang];
+  document.getElementById('agendaBox').style.display='none';
+  document.getElementById('claseFechasBox').style.display='none';
+  document.querySelectorAll('.cuando-wrap').forEach(el=>el.style.display='');
+  document.getElementById('paso2Sub').textContent=t.modal2_sub;
+  document.getElementById('regSubmitBtn').textContent=t.btn_enviar;
+}
+
+async function cargarClaseFechas(){
+  const {data,error}=await _sb.rpc('clase_fechas_publicas');
+  if(_sesionKey!=='clase_barras')return;
+  if(error||!data||!data.length){_claseFechas=[];return;}
+  _claseFechas=data;
+  document.getElementById('claseFechasBox').style.display='';
+  document.querySelectorAll('#camposClase .cuando-wrap').forEach(el=>el.style.display='none');
+  document.getElementById('paso2Sub').textContent=LANGS[_lang].ag_sub_clase;
+  renderClaseFechas();
+}
+function renderClaseFechas(){
+  const t=LANGS[_lang];
+  document.getElementById('agClaseFechas').innerHTML=_claseFechas.map((c,i)=>
+    `<button type="button" class="ag-hora${c.id===_claseSel?' sel':''}" onclick="elegirClase(${i})">${_fmtFecha(c.fecha,{weekday:'short',day:'numeric',month:'short'})} · ${c.hora}</button>`
+  ).join('')+`<button type="button" class="ag-hora${_claseSel==='ninguna'?' sel':''}" onclick="elegirClase(-1)">${t.ag_clase_ninguna}</button>`;
+}
+function elegirClase(i){_claseSel=i<0?'ninguna':_claseFechas[i].id;renderClaseFechas();}
+
+function copiarDato(v,btn){
+  const t=LANGS[_lang];
+  const ok=()=>{btn.textContent=t.ag_copiado;setTimeout(()=>btn.textContent=t.ag_copiar,1800);};
+  if(navigator.clipboard)navigator.clipboard.writeText(v).then(ok).catch(()=>{});
+  else{const a=document.createElement('textarea');a.value=v;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok();}catch(e){}a.remove();}
+}
+
+function _mostrarTurnoOk(nombre){
+  const t=LANGS[_lang];
+  const fechaTxt=_fmtFecha(_agDia,{weekday:'long',day:'numeric',month:'long'});
+  const waMsg=t.ag_wa_msg.replace('{n}',nombre).replace('{s}',_sesionNombre).replace('{f}',fechaTxt).replace('{h}',_agHora);
+  document.querySelector('#modalPaso3 [data-i18n="paso3_listo"]').textContent=t.ag_ok_titulo;
+  document.getElementById('paso3Msg').textContent=t.ag_ok_msg;
+  const box=document.getElementById('paso3Turno');
+  box.innerHTML=`<div class="ag-resumen">
+      <div style="font-weight:800;margin-bottom:4px">${_sesionNombre}</div>
+      <div><strong>${t.ag_cuando}:</strong> ${fechaTxt} · ${_agHora} hs</div>
+      <div><strong>${t.ag_lugar}:</strong> ${AGENDA.lugar}</div>
+      <div><strong>${t.ag_senia}:</strong> ${AGENDA.senia[_sesionKey]||''}</div>
+    </div>
+    <div class="ag-pago">
+      <div class="ag-pago-row"><div><div style="font-size:11px;color:var(--muted)">${t.ag_pix}</div><code>${AGENDA.pix}</code></div>
+        <button type="button" class="ag-copy" onclick="copiarDato('${AGENDA.pix}',this)">${t.ag_copiar}</button></div>
+    </div>
+    <a class="ag-wa" href="https://wa.me/${AGENDA.wa}?text=${encodeURIComponent(waMsg)}" target="_blank" onclick="track('click_btn',{boton:'turno_enviar_comprobante'})">${t.ag_wa_btn}</a>`;
+  box.style.display='';
 }
 
 async function submitRegistro(){
@@ -1510,8 +1728,12 @@ async function submitRegistro(){
   const btn=document.getElementById('regSubmitBtn');
   if(document.getElementById('regHoney').value){return;}
   const t=LANGS[_lang];
+  const conAgenda=_agOk&&SESIONES_AGENDA.includes(_sesionKey);
+  const claseFecha=_sesionKey==='clase_barras'?_claseFechas.find(c=>c.id===_claseSel):null;
+  if(conAgenda&&(!_agDia||!_agHora)){msg.textContent=t.ag_err_slot;return;}
   if(!nombre||nombre.length<2){msg.textContent=t.err_nombre;return;}
   if(celular.length<8||celular.length>15){msg.textContent=t.err_wapp;return;}
+  const btnTxt=btn.textContent;
   btn.textContent=t.cargando_spinner;btn.disabled=true;
   const SESION_MAP={barras:'Barras de Access',proceso_cuerpos:'Proceso de Cuerpos',clase_barras:'Clase de Barras de Access®',no_se:'Sin definir'};
   const sesionInteres=SESION_MAP[_sesionKey]||_sesionNombre;
@@ -1533,29 +1755,70 @@ async function submitRegistro(){
     extras.paraQue=document.querySelector('input[name=paraQueClase]:checked')?.value||'';
     extras.cuando=document.querySelector('input[name=cuandoClase]:checked')?.value||'';
   }
+
+  // 1) Reservar el turno / anotarse en la clase (lo importante: si falla, no se sigue)
+  let claseRes=null;
+  if(conAgenda){
+    const {data,error}=await _sb.rpc('reservar_turno',{p_fecha:_agDia,p_hora:_agHora,p_servicio:_sesionKey,
+      p_nombre:nombre,p_celular:celular,p_datos:{sesion:sesionInteres,mensaje,lang:_lang,...extras}});
+    if(error){
+      const m=error.message||'';
+      const libre=m.includes('ocupado')||m.includes('muy_pronto');
+      msg.textContent=m.includes('ocupado')?t.ag_err_ocupado:m.includes('limite')?t.ag_err_limite:m.includes('muy_pronto')?t.ag_err_pronto:t.err_generico;
+      btn.textContent=btnTxt;btn.disabled=false;
+      track('turno_error',{sesion:sesionInteres,error:m.slice(0,60)});
+      if(libre){_agHora='';cargarAgenda();}
+      return;
+    }
+    extras.cuando=`${_agDia} ${_agHora}`;
+    extras.turno={id:data,fecha:_agDia,hora:_agHora,estado:'pendiente_senia'};
+  } else if(claseFecha){
+    const {data,error}=await _sb.rpc('inscribir_clase',{p_clase_id:claseFecha.id,p_nombre:nombre,p_celular:celular,
+      p_datos:{sesion:sesionInteres,mensaje,lang:_lang,...extras}});
+    if(error){console.warn(error);msg.textContent=t.err_generico;btn.textContent=btnTxt;btn.disabled=false;return;}
+    claseRes=data;
+    extras.cuando=claseFecha.fecha;
+    extras.claseFecha=claseFecha.fecha;
+  }
+  const reservado=conAgenda||!!claseFecha;
+
+  // 2) Registrar / actualizar el prospecto en el CRM
   try{
     const {data:existing}=await _sb.from('seres').select('id,data').filter('data->>celular','eq',celular).limit(1);
     if(existing&&existing.length){
       const d=existing[0].data||{};
+      const etapa=reservado&&d.etapaProsp!=='Convertido'?'Agendado':(d.etapaProsp||'Nuevo');
       await _sb.from('seres').update({data:{...d,herramientaInteres:sesionInteres,sesionInteres,
         mensajeRegistro:mensaje||d.mensajeRegistro||'',
-        nombre:d.nombre||nombre,etapaProsp:d.etapaProsp||'Nuevo',...extras},updated_at:new Date().toISOString()}).eq('id',existing[0].id);
+        nombre:d.nombre||nombre,etapaProsp:etapa,...extras},updated_at:new Date().toISOString()}).eq('id',existing[0].id);
     } else {
       await _sb.from('seres').insert({id:crypto.randomUUID(),data:{
         nombre,celular,prospecto:true,fuente:'recursos_jcc',
         herramientaInteres:sesionInteres,sesionInteres,
-        mensajeRegistro:mensaje,etapaProsp:'Nuevo',...extras,
+        mensajeRegistro:mensaje,etapaProsp:reservado?'Agendado':'Nuevo',...extras,
         fechaAlta:new Date().toISOString().split('T')[0],ts:new Date().toISOString()
       }});
     }
-    track('registro',{sesion:sesionInteres,canal:'recursos_jcc'});
-    document.getElementById('modalPaso2').style.display='none';
-    document.getElementById('modalPaso3').style.display='';
   }catch(e){
     console.warn(e);
-    msg.textContent=LANGS[_lang].err_generico;
-    btn.textContent=LANGS[_lang].btn_enviar;btn.disabled=false;
+    // Si el turno ya quedó reservado, igual se muestra el éxito
+    if(!reservado){
+      msg.textContent=t.err_generico;
+      btn.textContent=btnTxt;btn.disabled=false;
+      return;
+    }
   }
+  track('registro',{sesion:sesionInteres,canal:'recursos_jcc'});
+  if(conAgenda){
+    track('turno_reservado',{sesion:sesionInteres,fecha:_agDia,hora:_agHora});
+    _mostrarTurnoOk(nombre);
+  } else if(claseFecha){
+    track('clase_inscripcion',{fecha:claseFecha.fecha});
+    document.getElementById('paso3Msg').textContent=claseRes==='ya_inscripto'?t.ag_clase_ya
+      :t.ag_clase_ok.replace('{f}',_fmtFecha(claseFecha.fecha,{weekday:'long',day:'numeric',month:'long'}));
+  }
+  document.getElementById('modalPaso2').style.display='none';
+  document.getElementById('modalPaso3').style.display='';
 }
 
 /* ── TRACKING ── */
