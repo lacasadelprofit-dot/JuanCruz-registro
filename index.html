@@ -367,6 +367,12 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 .ag-pago-row:first-of-type{border-top:none;}
 .ag-pago-row code{font-family:inherit;font-weight:800;font-size:14px;word-break:break-all;}
 .ag-copy{flex:0 0 auto;padding:6px 12px;border:1px solid var(--terra);border-radius:20px;background:none;color:var(--terra-d);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
+/* Botón flotante "Agendá una sesión" (a la izquierda del de WhatsApp) */
+#agendarFlotante{position:fixed;bottom:1.5rem;right:calc(1.5rem + 62px);z-index:300;height:52px;padding:0 22px;
+  background:var(--terra);color:#fff;border:none;border-radius:26px;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer;
+  box-shadow:0 4px 20px rgba(193,122,72,.4);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .25s,transform .25s,background .2s;}
+#agendarFlotante.visible{opacity:1;transform:none;pointer-events:auto;}
+#agendarFlotante:hover{background:var(--terra-d);}
 .ag-wa{display:block;text-align:center;padding:13px;background:#25D366;border-radius:12px;color:#fff;font-size:14px;font-weight:800;text-decoration:none;}
 .modal-nosé{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;
   background:var(--card2);cursor:pointer;text-decoration:none;transition:background .18s;}
@@ -1052,6 +1058,9 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
   </div>
   <div style="font-size:11px;color:rgba(245,239,228,.3);letter-spacing:.06em;">© 2026 Juan Cruz Consciencia</div>
 </footer>
+
+<!-- AGENDAR FLOTANTE -->
+<button id="agendarFlotante" onclick="openModal();track('click_btn',{boton:'flotante_agendar'})"><span class="agendar-label" data-i18n="btn_agendar">Agendá una sesión ↗</span><span class="agendar-short" data-i18n="btn_agendar_short">Agendar ↗</span></button>
 
 <!-- WHATSAPP FLOTANTE -->
 <a id="waFlotante" href="https://wa.me/541151758653?text=Hola%20Juan%20Cruz%2C%20quiero%20saber%20m%C3%A1s%20sobre%20las%20sesiones" target="_blank" aria-label="Contactar por WhatsApp"
@@ -1826,6 +1835,11 @@ function track(tipo,extra={}){
   try{_sb.from('regalo_eventos').insert({data:{tipo,pagina:'landing_jcc',fecha:new Date().toISOString().split('T')[0],mes:new Date().toISOString().slice(0,7),ts:new Date().toISOString(),...extra}}).then();}catch(e){}
 }
 window.addEventListener('load',()=>track('page_view'));
+
+/* ── BOTÓN FLOTANTE AGENDAR: aparece al bajar (arriba ya está el del header) ── */
+function _toggleAgendarFlotante(){document.getElementById('agendarFlotante').classList.toggle('visible',scrollY>320);}
+window.addEventListener('scroll',_toggleAgendarFlotante,{passive:true});
+_toggleAgendarFlotante();
 
 /* ── PREGUNTA DEL MOMENTO ── */
 let allPregs=[], featIdx=0;
