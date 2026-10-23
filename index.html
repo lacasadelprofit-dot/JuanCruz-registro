@@ -1858,6 +1858,8 @@ async function submitRegistro(){
 
   // 2) Registrar / actualizar el prospecto en el CRM
   try{
+    if(!(await guardarProspecto(_sb,celular,nombre,{fuente:'recursos_jcc',herramientaInteres:sesionInteres,
+        sesionInteres,mensajeRegistro:mensaje,...extras},null,reservado))){
     const {data:existing}=await _sb.from('seres').select('id,data').filter('data->>celular','eq',celular).limit(1);
     if(existing&&existing.length){
       const d=existing[0].data||{};
@@ -1872,6 +1874,7 @@ async function submitRegistro(){
         mensajeRegistro:mensaje,etapaProsp:reservado?'Agendado':'Nuevo',...extras,
         fechaAlta:new Date().toISOString().split('T')[0],ts:new Date().toISOString()
       }});
+    }
     }
   }catch(e){
     console.warn(e);
@@ -2120,9 +2123,19 @@ function shareQ(btn){
   _doShare(texto,area,btn);
 }
 
+/* ── PROSPECTOS: se guardan vía función (el público no puede leer la tabla seres) ── */
+async function guardarProspecto(sb,celular,nombre,campos,regalo,agendado){
+  const {error}=await sb.rpc('guardar_prospecto',{p_celular:celular,p_nombre:nombre,p_campos:campos||{},
+    p_regalo:regalo||null,p_agendado:!!agendado});
+  if(!error)return true;
+  if(error.code!=='PGRST202')throw error;
+  return false; // la función todavía no existe en Supabase → método anterior
+}
+
 /* ── LEAD GATE REGALOS ── */
-async function _addRegaloToExisting(celular,regaloNombre){
+async function _addRegaloToExisting(celular,nombre,regaloNombre){
   try{
+    if(await guardarProspecto(_sb,celular,nombre,{fuente:'regalos_jcc'},regaloNombre))return;
     const {data:existing}=await _sb.from('seres').select('id,data').filter('data->>celular','eq',celular).limit(1);
     if(!existing?.length)return;
     const d=existing[0].data||{};
@@ -2138,7 +2151,7 @@ function openLeadGate(regaloId){
   const r=_regalosLista.find(x=>String(x.id)===String(regaloId));if(!r)return;
   _curRegalo=r;
   const saved=localStorage.getItem('jcc_lead');
-  if(saved){const p=JSON.parse(saved);_addRegaloToExisting(p.celular,r.nombre);_dlRegalo(r,{serNombre:p.nombre,serEmail:p.celular});return;}
+  if(saved){const p=JSON.parse(saved);_addRegaloToExisting(p.celular,p.nombre,r.nombre);_dlRegalo(r,{serNombre:p.nombre,serEmail:p.celular});return;}
   document.getElementById('lgIco').textContent=r.icono||'🎁';
   document.getElementById('lgNombre').textContent=r.nombre||'Recibir regalo';
   document.getElementById('lgMsg').textContent='';
@@ -2167,6 +2180,7 @@ async function submitLeadGate(){
   if(celular.length<8||celular.length>15){msg.textContent=tLG.err_wapp;return;}
   btn.textContent=tLG.cargando_spinner;btn.disabled=true;
   try{
+    if(!(await guardarProspecto(_sb,celular,nombre,{fuente:'regalos_jcc'},_curRegalo.nombre||''))){
     const {data:existing}=await _sb.from('seres').select('id,data').filter('data->>celular','eq',celular).limit(1);
     if(existing&&existing.length){
       const d=existing[0].data||{};
@@ -2178,6 +2192,7 @@ async function submitLeadGate(){
         regalosDescargados:[_curRegalo.nombre||''],
         fechaAlta:new Date().toISOString().split('T')[0],ts:new Date().toISOString()
       }});
+    }
     }
     localStorage.setItem('jcc_lead',JSON.stringify({nombre,celular}));
     msg.textContent=LANGS[_lang].msg_descargando;
