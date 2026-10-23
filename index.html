@@ -1204,7 +1204,7 @@ es:{
   ph_mensaje:'¿Algo que quieras contarme antes? (opcional)',
   ag_dia:'1 · Elegí el día',ag_hora:'2 · Elegí el horario',ag_datos:'3 · Tus datos',ag_clase_fecha:'Elegí la fecha',
   ag_nota:'📍 Posada Luz y Brillo, Búzios · Horario de Brasil (igual que Argentina)',
-  ag_sub:'Elegí día y horario · Turnos de 1h30',ag_sub_clase:'Elegí la fecha y completá tus datos',
+  ag_sub:'Elegí día y horario · Sesiones de 1 hora',ag_sub_clase:'Elegí la fecha y completá tus datos',
   ag_elegi_dia:'Elegí un día para ver los horarios',ag_sin_turnos:'Ese día ya no quedan turnos',ag_cargando:'Cargando turnos...',
   ag_err_slot:'Elegí día y horario para tu sesión',ag_err_ocupado:'Ese horario se acaba de ocupar. Elegí otro 🙏',
   ag_err_limite:'Ya tenés 3 turnos reservados. Escribinos por WhatsApp si necesitás otro.',ag_err_pronto:'Ese horario ya no está disponible. Elegí otro.',
@@ -1345,7 +1345,7 @@ en:{
   ph_mensaje:'Anything you\'d like to share first? (optional)',
   ag_dia:'1 · Pick a day',ag_hora:'2 · Pick a time',ag_datos:'3 · Your details',ag_clase_fecha:'Pick a date',
   ag_nota:'📍 Posada Luz y Brillo, Búzios · Brazil time (UTC-3)',
-  ag_sub:'Pick a day and time · 1h30 slots',ag_sub_clase:'Pick a date and fill in your details',
+  ag_sub:'Pick a day and time · 1-hour sessions',ag_sub_clase:'Pick a date and fill in your details',
   ag_elegi_dia:'Pick a day to see available times',ag_sin_turnos:'No slots left that day',ag_cargando:'Loading slots...',
   ag_err_slot:'Pick a day and time for your session',ag_err_ocupado:'That time was just taken. Please pick another 🙏',
   ag_err_limite:'You already have 3 bookings. Message us on WhatsApp if you need another.',ag_err_pronto:'That time is no longer available. Please pick another.',
@@ -1486,7 +1486,7 @@ pt:{
   ph_mensaje:'Algo que queira me contar antes? (opcional)',
   ag_dia:'1 · Escolha o dia',ag_hora:'2 · Escolha o horário',ag_datos:'3 · Seus dados',ag_clase_fecha:'Escolha a data',
   ag_nota:'📍 Posada Luz y Brillo, Búzios · Horário de Brasília',
-  ag_sub:'Escolha dia e horário · Horários de 1h30',ag_sub_clase:'Escolha a data e preencha seus dados',
+  ag_sub:'Escolha dia e horário · Sessões de 1 hora',ag_sub_clase:'Escolha a data e preencha seus dados',
   ag_elegi_dia:'Escolha um dia para ver os horários',ag_sin_turnos:'Não há mais horários nesse dia',ag_cargando:'Carregando horários...',
   ag_err_slot:'Escolha dia e horário para sua sessão',ag_err_ocupado:'Esse horário acabou de ser ocupado. Escolha outro 🙏',
   ag_err_limite:'Você já tem 3 horários reservados. Fale com a gente pelo WhatsApp se precisar de outro.',ag_err_pronto:'Esse horário não está mais disponível. Escolha outro.',
@@ -1612,7 +1612,7 @@ function selectSesion(key, nombre, ico){
 /* ── AGENDA DE TURNOS ──
    Si cambian los horarios, actualizar también 4_BASE_DE_DATOS/29_agenda_turnos.sql */
 const AGENDA={
-  horas:['09:00','10:30','19:00'],
+  horas:['08:00','09:20','10:40'],   // sesiones de 1 h + 20 min de pausa
   diasHabiles:[1,2,3,4,5],          // lunes a viernes
   diasVista:21,                     // días hacia adelante que se muestran
   anticipacionHs:2,                 // no se puede reservar con menos de 2 hs
