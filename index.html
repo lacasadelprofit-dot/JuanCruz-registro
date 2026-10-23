@@ -1989,6 +1989,7 @@ function qCardHTML(p){
 function renderGrid(reset){
   const grid=document.getElementById('qGrid');
   const lmw=document.getElementById('loadMoreWrap');
+  if(!grid||!lmw)return;
   if(reset) grid.innerHTML='';
   if(!filteredPregs.length){
     grid.innerHTML='<div class="empty"><div class="ei">✦</div><p>No hay preguntas en esta área todavía.</p></div>';
