@@ -307,6 +307,18 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
   font-size:80px;opacity:.04;color:var(--terra);line-height:1;pointer-events:none;}
 
 /* ── CTA FINAL ── */
+.hero-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra-d);border:1px solid var(--border);border-radius:999px;padding:6px 14px;margin-bottom:18px;}
+.lcp-block{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 24px;}
+.lcp-block p{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:12px;}
+.lcp-block p:last-child{margin-bottom:0;color:var(--text);font-weight:600;}
+.como-map{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--terra-d);text-decoration:none;}
+.faq-item{border:1px solid var(--border);border-radius:14px;background:var(--card);margin-bottom:10px;}
+.faq-item summary{cursor:pointer;padding:16px 18px;font-weight:700;font-size:15px;list-style:none;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:'+';float:right;color:var(--terra);font-weight:800;}
+.faq-item[open] summary::after{content:'−';}
+.faq-item div{padding:0 18px 16px;font-size:14px;color:var(--muted);line-height:1.7;}
+.faq-item a{color:var(--terra-d);font-weight:700;}
 .cta-section{padding:64px 16px;max-width:560px;margin:0 auto;}
 .cta-card{background:var(--text);border-radius:24px;padding:48px 36px;text-align:center;
   position:relative;overflow:hidden;}
@@ -642,11 +654,11 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 <header class="site-header">
   <div class="brand">Juan Cruz <span>Consciencia</span></div>
   <nav class="header-nav">
-    <a href="#preguntas" onclick="track('click_btn',{boton:'nav_preguntas'})" data-i18n="nav_preguntas">Preguntas</a>
     <a href="#sesiones" onclick="track('click_btn',{boton:'nav_sesiones'})" data-i18n="nav_sesiones">Sesiones</a>
+    <a href="#quien-soy" onclick="track('click_btn',{boton:'nav_quien_soy'})" data-i18n="nav_camino">Camino</a>
+    <a href="#preguntas" onclick="track('click_btn',{boton:'nav_preguntas'})" data-i18n="nav_preguntas">Preguntas</a>
     <a href="#regalos" onclick="track('click_btn',{boton:'nav_regalos'})" data-i18n="nav_regalos">Regalos</a>
     <a href="#clases" onclick="track('click_btn',{boton:'nav_clases'})" data-i18n="nav_clases">Clases</a>
-    <a href="#quien-soy" onclick="track('click_btn',{boton:'nav_quien_soy'})" data-i18n="nav_camino">Camino</a>
   </nav>
   <div class="lang-sw">
     <button class="lang-btn active" data-lang="es" onclick="setLang('es')">🇦🇷 <span class="lang-label">ARG</span></button>
@@ -659,73 +671,15 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 <!-- HERO -->
 <div class="hero">
   <div class="hero-deco">✦</div>
+  <div class="hero-tag" data-i18n="hero_tag">Sesiones de Barras y Proceso · Presencial en Búzios</div>
   <h1 data-i18n="hero_h1">¿Qué sería posible si reconocieras el poder que ya existe en vos?</h1>
   <p data-i18n="hero_p1">Cada persona tiene dentro suyo todo lo necesario para transformar su realidad.</p>
   <p style="margin-top:-16px" data-i18n="hero_p2">Juan Cruz Consciencia es un espacio de exploración, transformación y crecimiento donde las herramientas se convierten en puentes hacia una vida más consciente.</p>
   <div class="hero-ctas">
-    <a href="#preguntas" class="btn-hero-p" onclick="track('click_btn',{boton:'hero_explorar_preguntas'})" data-i18n="hero_explorar">Explorar preguntas ↓</a>
-    <a href="#sesiones" class="btn-hero-s" onclick="track('click_btn',{boton:'hero_ver_sesiones'})" data-i18n="hero_sesiones">Ver sesiones ✦</a>
+    <button class="btn-hero-p" onclick="openModal();track('click_btn',{boton:'hero_agendar'})" style="cursor:pointer;font-family:inherit" data-i18n="hero_agendar">Agendá tu sesión ✦</button>
+    <a href="#sesiones" class="btn-hero-s" onclick="track('click_btn',{boton:'hero_ver_sesiones'})" data-i18n="hero_ver_ses">Ver sesiones ↓</a>
   </div>
 </div>
-
-<hr class="sec-div">
-
-<!-- PREGUNTAS -->
-<section id="preguntas" class="sec">
-  <div class="sec-label" data-i18n="sec_preguntas_label">✦ Preguntas Expansivas</div>
-  <div class="sec-title" data-i18n="sec_preguntas_titulo">Preguntas para abrir nuevas posibilidades</div>
-
-  <!-- INTRO COPY -->
-  <div class="pregs-intro">
-    <p class="pregs-body" data-i18n="pregs_p1">Cada vez que concluís algo sobre vos, sobre tu vida o sobre lo que es posible, dejás de explorar.</p>
-
-    <p class="pregs-body" data-i18n="pregs_p2">La mayoría de las personas vive desde respuestas que nunca cuestionó.</p>
-
-    <div class="pregs-liviano">
-      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_creencias">Creencias.</span></div>
-      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_conclusiones">Conclusiones.</span></div>
-      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_juicios">Juicios.</span></div>
-      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_historias1">Historias sobre quién es.</span></div>
-      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_historias2">Historias sobre lo que puede o no puede crear.</span></div>
-    </div>
-
-    <p class="pregs-hook" data-i18n="pregs_hook">Una pregunta tiene el poder de interrumpir todo eso.</p>
-
-    <p class="pregs-body" data-i18n="pregs_porque1">No porque te dé una respuesta.</p>
-    <p class="pregs-body" data-i18n="pregs_porque2">Sino porque abre un espacio diferente.</p>
-    <p class="pregs-body" data-i18n="pregs_porque3">Un espacio donde aparecen nuevas perspectivas, nuevas elecciones y nuevas posibilidades.</p>
-
-    <p class="pregs-body" data-i18n="pregs_uso1">Utilizo las preguntas como herramientas de consciencia.</p>
-    <p class="pregs-body" data-i18n="pregs_uso2">No para encontrar la respuesta correcta.</p>
-    <p class="pregs-body" data-i18n="pregs_uso3">Sino para ir más allá de los puntos de vista que limitan lo que podés percibir, elegir y crear.</p>
-
-    <p class="pregs-instruccion" data-i18n-html="pregs_instr1">Tu mente busca respuestas.<br>Tu consciencia descubre posibilidades.</p>
-
-    <p class="pregs-instruccion" data-i18n-html="pregs_instr2">No busques responderlas.<br>Permitite habitarlas.<br>Y observá qué se vuelve posible.</p>
-  </div>
-
-  <!-- CARRUSEL: PREGUNTA DEL DÍA -->
-  <div class="dia-card">
-    <div class="dia-date" id="diaDate"></div>
-    <div class="dia-q" id="diaQ" data-i18n="cargando">Cargando...</div>
-    <div class="dia-footer">
-      <div class="dia-area" id="diaArea"></div>
-      <button class="btn-share-dia" id="btnShareDia" onclick="shareDia(this)" data-i18n="btn_compartir">↗ Compartir</button>
-    </div>
-  </div>
-
-  <!-- Pregunta del momento -->
-  <div class="featured-card">
-    <div class="featured-label" data-i18n="featured_label">✦ Pregunta del momento</div>
-    <div class="featured-q" id="featuredQ" data-i18n="cargando">Cargando...</div>
-    <div class="featured-dim" id="featuredDim"></div>
-    <div class="featured-next" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;">
-      <button class="btn-next" onclick="nextFeatured();track('click_btn',{boton:'pregunta_siguiente'})" data-i18n="btn_siguiente">Otra pregunta →</button>
-      <button class="btn-next" id="btnShareFeat" onclick="shareFeatured(this)" data-i18n="btn_compartir">↗ Compartir</button>
-    </div>
-  </div>
-
-</section>
 
 <hr class="sec-div">
 
@@ -790,13 +744,6 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
           <div class="ses-benefit"><div class="ses-benefit-ico">🌟</div><div><div class="ses-benefit-title" data-i18n="barras_ben2_t">Apertura a nuevas posibilidades</div><div class="ses-benefit-desc" data-i18n="barras_ben2_d">oportunidades que antes no veías</div></div></div>
           <div class="ses-benefit"><div class="ses-benefit-ico">😴</div><div><div class="ses-benefit-title" data-i18n="barras_ben3_t">Sueño reparador</div><div class="ses-benefit-desc" data-i18n="barras_ben3_d">dormís como hacía meses</div></div></div>
           <div class="ses-benefit"><div class="ses-benefit-ico">⚡</div><div><div class="ses-benefit-title" data-i18n="barras_ben4_t">Más energía</div><div class="ses-benefit-desc" data-i18n="barras_ben4_d">menos reactividad ante conflictos</div></div></div>
-        </div>
-        <div class="ses-sep"></div>
-        <div class="ses-sub-title" data-i18n="barras_testi_titulo">📱 Lo que dicen después de una sesión</div>
-        <div class="ses-testi">
-          <div class="ses-testi-img"><img src="https://cdn.shopify.com/s/files/1/0806/4863/4591/files/WhatsAppImage2026-04-22at20.03.36.jpg?v=1776899404" alt="Testimonio" loading="lazy"></div>
-          <div class="ses-testi-img"><img src="https://cdn.shopify.com/s/files/1/0806/4863/4591/files/WhatsAppImage2026-04-22at20.04.11.jpg?v=1776899404" alt="Testimonio" loading="lazy"></div>
-          <div class="ses-testi-img"><img src="https://cdn.shopify.com/s/files/1/0806/4863/4591/files/WhatsApp_Image_2026-04-22_at_20.13.36.jpg?v=1776899680" alt="Testimonio" loading="lazy"></div>
         </div>
         <div class="ses-sep"></div>
         <div class="ses-sub-title" data-i18n="titulo_info_practica">📋 Info práctica</div>
@@ -887,6 +834,165 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 
 <hr class="sec-div">
 
+<!-- TESTIMONIOS -->
+<section id="testimonios" class="sec">
+  <div class="sec-label" data-i18n="sec_testi_label">✦ Testimonios</div>
+  <div class="sec-title" data-i18n="barras_testi_titulo">📱 Lo que dicen después de una sesión</div>
+  <div class="ses-testi">
+          <div class="ses-testi-img"><img src="https://cdn.shopify.com/s/files/1/0806/4863/4591/files/WhatsAppImage2026-04-22at20.03.36.jpg?v=1776899404" alt="Testimonio" loading="lazy"></div>
+          <div class="ses-testi-img"><img src="https://cdn.shopify.com/s/files/1/0806/4863/4591/files/WhatsAppImage2026-04-22at20.04.11.jpg?v=1776899404" alt="Testimonio" loading="lazy"></div>
+          <div class="ses-testi-img"><img src="https://cdn.shopify.com/s/files/1/0806/4863/4591/files/WhatsApp_Image_2026-04-22_at_20.13.36.jpg?v=1776899680" alt="Testimonio" loading="lazy"></div>
+        </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- LA CASA DEL PROFIT -->
+<section id="casa-profit" class="sec">
+  <div class="sec-label" data-i18n="sec_lcp_label">✦ La Casa del Profit</div>
+  <div class="sec-title" data-i18n="sec_lcp_titulo">Más que una sesión</div>
+  <div class="lcp-block">
+    <p data-i18n="lcp_p1">Cada sesión es parte de La Casa del Profit, una dimensión de expansión espiritual.</p>
+    <p data-i18n="lcp_p2">Un espacio donde se reúnen herramientas de consciencia y facilitadores con un mismo deseo: que puedas vivir con más amor, unidad, sabiduría y poder.</p>
+    <p data-i18n="lcp_p3">No venís solo a una sesión. Entrás a un espacio que te acompaña a seguir eligiendo.</p>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- CÓMO FUNCIONA -->
+<section id="como-funciona" class="sec">
+  <div class="sec-label" data-i18n="sec_como_label">✦ Cómo funciona</div>
+  <div class="sec-title" data-i18n="sec_como_titulo">Reservar es simple</div>
+  <div class="ses-steps">
+    <div class="ses-step"><div class="ses-step-num">1</div><div><div class="ses-step-title" data-i18n="como1_t">Elegí tu turno</div><div class="ses-step-desc" data-i18n="como1_d">Elegí la sesión, el día y el horario en la agenda. De lunes a viernes por la mañana.</div></div></div>
+    <div class="ses-step"><div class="ses-step-num">2</div><div><div class="ses-step-title" data-i18n="como2_t">Transferí la seña por Pix</div><div class="ses-step-desc" data-i18n="como2_d">Mandá el comprobante por WhatsApp y tu turno queda confirmado.</div></div></div>
+    <div class="ses-step"><div class="ses-step-num">3</div><div><div class="ses-step-title" data-i18n="como3_t">Vení a la Posada</div><div class="ses-step-desc" data-i18n="como3_d">Te espero en la Posada Luz y Brillo, Búzios.</div><a class="como-map" href="https://www.google.com/maps/search/?api=1&query=Posada+Luz+y+Brillo+B%C3%BAzios" target="_blank" onclick="track('click_btn',{boton:'como_mapa'})" data-i18n="como_mapa">📍 Ver en el mapa ↗</a></div></div>
+  </div>
+  <div style="text-align:center;margin-top:20px">
+    <button class="btn-reservar" onclick="openModal();track('click_btn',{boton:'como_agendar'})" data-i18n="hero_agendar">Agendá tu sesión ✦</button>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- QUIÉN SOY -->
+<section id="quien-soy" class="sec">
+  <div class="sec-label" data-i18n="sec_quien_label">✦ Camino</div>
+
+  <div class="quien-quote" data-i18n-html="quien_quote">
+    No vine a enseñarte nada.<br>Vine a <em>recordarte</em> lo que ya sabés.
+  </div>
+
+  <div class="quien-stats">
+    <div class="quien-stat">
+      <div class="quien-stat-num">5</div>
+      <div class="quien-stat-label" data-i18n="stat_anos">años de camino espiritual</div>
+    </div>
+    <div class="quien-stat">
+      <div class="quien-stat-num">+100</div>
+      <div class="quien-stat-label" data-i18n="stat_exp">sesiones experimentadas</div>
+    </div>
+    <div class="quien-stat">
+      <div class="quien-stat-num">+300</div>
+      <div class="quien-stat-label" data-i18n="stat_fac">sesiones facilitadas</div>
+    </div>
+  </div>
+
+  <div class="quien-eyebrow" data-i18n="eyebrow_manifiesto">Manifiesto</div>
+  <div class="quien-card">
+    <p data-i18n-html="manif_p1">No vine a darte poder.<br>Vine a recordarte que ya lo tenés.</p>
+    <p data-i18n="manif_p2">Creo que cada persona tiene dentro suyo todo lo necesario para transformar su realidad.</p>
+    <p data-i18n="manif_p3">Muchas veces buscamos afuera respuestas, cambios o soluciones que en realidad comienzan dentro nuestro.</p>
+    <p data-i18n="manif_p4">Las herramientas no crean el cambio.</p>
+    <p data-i18n="manif_p5">Nos ayudan a ver nuevas posibilidades, recuperar nuestra claridad y recordar el poder que siempre estuvo ahí.</p>
+    <p data-i18n="manif_p6">Juan Cruz Consciencia existe para acompañar ese proceso.</p>
+  </div>
+
+  <div class="quien-eyebrow" data-i18n="eyebrow_vision">Visión de mundo</div>
+  <div class="quien-card">
+    <p data-i18n="vision_p1">Veo la transformación humana como un proceso de recuerdo.</p>
+    <p data-i18n="vision_p2">Un regreso a nuestra capacidad natural de elegir, crear y vivir conscientemente.</p>
+    <p data-i18n="vision_p3">Por eso trabajo con herramientas energéticas, mentales y emocionales que llevan la consciencia a la acción.</p>
+    <p data-i18n="vision_p4">Porque cuando el ser, la mente y el cuerpo actúan en unidad, se transforma tu vida.</p>
+  </div>
+
+  <div class="quien-eyebrow" data-i18n="eyebrow_proposito">Propósito</div>
+  <div class="quien-card">
+    <p data-i18n="prop_p1">Mi camino comenzó buscando respuestas y me llevó a descubrir herramientas que transformaron mi forma de percibir la vida.</p>
+    <p data-i18n="prop_p2">Hoy comparto esas herramientas con una convicción simple:</p>
+    <p data-i18n="prop_p3">Cada persona tiene dentro suyo el poder de crear una realidad diferente.</p>
+    <p data-i18n="prop_p4">Mi propósito es acompañarte a descubrirlo.</p>
+  </div>
+
+  <div class="quien-espacio" data-i18n-html="quien_espacio">
+    Un espacio sin juicio, donde no hay nada que hacer — solo recibir.<br>
+    Un espacio en el que te permitas ser exactamente lo que sos.<br><br>
+    <span style="font-size:13px;color:var(--muted);">Sin expectativas. Solo presencia.</span>
+  </div>
+</section>
+
+<hr class="sec-div">
+
+<!-- PREGUNTAS -->
+<section id="preguntas" class="sec">
+  <div class="sec-label" data-i18n="sec_preguntas_label">✦ Preguntas Expansivas</div>
+  <div class="sec-title" data-i18n="sec_preguntas_titulo">Preguntas para abrir nuevas posibilidades</div>
+
+  <!-- INTRO COPY -->
+  <div class="pregs-intro">
+    <p class="pregs-body" data-i18n="pregs_p1">Cada vez que concluís algo sobre vos, sobre tu vida o sobre lo que es posible, dejás de explorar.</p>
+
+    <p class="pregs-body" data-i18n="pregs_p2">La mayoría de las personas vive desde respuestas que nunca cuestionó.</p>
+
+    <div class="pregs-liviano">
+      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_creencias">Creencias.</span></div>
+      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_conclusiones">Conclusiones.</span></div>
+      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_juicios">Juicios.</span></div>
+      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_historias1">Historias sobre quién es.</span></div>
+      <div class="pregs-lv-item"><span class="pregs-lv-word" style="color:var(--text)" data-i18n="pregs_historias2">Historias sobre lo que puede o no puede crear.</span></div>
+    </div>
+
+    <p class="pregs-hook" data-i18n="pregs_hook">Una pregunta tiene el poder de interrumpir todo eso.</p>
+
+    <p class="pregs-body" data-i18n="pregs_porque1">No porque te dé una respuesta.</p>
+    <p class="pregs-body" data-i18n="pregs_porque2">Sino porque abre un espacio diferente.</p>
+    <p class="pregs-body" data-i18n="pregs_porque3">Un espacio donde aparecen nuevas perspectivas, nuevas elecciones y nuevas posibilidades.</p>
+
+    <p class="pregs-body" data-i18n="pregs_uso1">Utilizo las preguntas como herramientas de consciencia.</p>
+    <p class="pregs-body" data-i18n="pregs_uso2">No para encontrar la respuesta correcta.</p>
+    <p class="pregs-body" data-i18n="pregs_uso3">Sino para ir más allá de los puntos de vista que limitan lo que podés percibir, elegir y crear.</p>
+
+    <p class="pregs-instruccion" data-i18n-html="pregs_instr1">Tu mente busca respuestas.<br>Tu consciencia descubre posibilidades.</p>
+
+    <p class="pregs-instruccion" data-i18n-html="pregs_instr2">No busques responderlas.<br>Permitite habitarlas.<br>Y observá qué se vuelve posible.</p>
+  </div>
+
+  <!-- CARRUSEL: PREGUNTA DEL DÍA -->
+  <div class="dia-card">
+    <div class="dia-date" id="diaDate"></div>
+    <div class="dia-q" id="diaQ" data-i18n="cargando">Cargando...</div>
+    <div class="dia-footer">
+      <div class="dia-area" id="diaArea"></div>
+      <button class="btn-share-dia" id="btnShareDia" onclick="shareDia(this)" data-i18n="btn_compartir">↗ Compartir</button>
+    </div>
+  </div>
+
+  <!-- Pregunta del momento -->
+  <div class="featured-card">
+    <div class="featured-label" data-i18n="featured_label">✦ Pregunta del momento</div>
+    <div class="featured-q" id="featuredQ" data-i18n="cargando">Cargando...</div>
+    <div class="featured-dim" id="featuredDim"></div>
+    <div class="featured-next" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;">
+      <button class="btn-next" onclick="nextFeatured();track('click_btn',{boton:'pregunta_siguiente'})" data-i18n="btn_siguiente">Otra pregunta →</button>
+      <button class="btn-next" id="btnShareFeat" onclick="shareFeatured(this)" data-i18n="btn_compartir">↗ Compartir</button>
+    </div>
+  </div>
+
+</section>
+
+<hr class="sec-div">
+
 <!-- REGALOS -->
 <section id="regalos" class="sec">
   <div class="sec-label" data-i18n="sec_regalos_label">🎁 Regalos para vos</div>
@@ -970,60 +1076,15 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 
 <hr class="sec-div">
 
-<!-- QUIÉN SOY -->
-<section id="quien-soy" class="sec">
-  <div class="sec-label" data-i18n="sec_quien_label">✦ Camino</div>
-
-  <div class="quien-quote" data-i18n-html="quien_quote">
-    No vine a enseñarte nada.<br>Vine a <em>recordarte</em> lo que ya sabés.
-  </div>
-
-  <div class="quien-stats">
-    <div class="quien-stat">
-      <div class="quien-stat-num">5</div>
-      <div class="quien-stat-label" data-i18n="stat_anos">años de camino espiritual</div>
-    </div>
-    <div class="quien-stat">
-      <div class="quien-stat-num">+100</div>
-      <div class="quien-stat-label" data-i18n="stat_exp">sesiones experimentadas</div>
-    </div>
-    <div class="quien-stat">
-      <div class="quien-stat-num">+300</div>
-      <div class="quien-stat-label" data-i18n="stat_fac">sesiones facilitadas</div>
-    </div>
-  </div>
-
-  <div class="quien-eyebrow" data-i18n="eyebrow_manifiesto">Manifiesto</div>
-  <div class="quien-card">
-    <p data-i18n-html="manif_p1">No vine a darte poder.<br>Vine a recordarte que ya lo tenés.</p>
-    <p data-i18n="manif_p2">Creo que cada persona tiene dentro suyo todo lo necesario para transformar su realidad.</p>
-    <p data-i18n="manif_p3">Muchas veces buscamos afuera respuestas, cambios o soluciones que en realidad comienzan dentro nuestro.</p>
-    <p data-i18n="manif_p4">Las herramientas no crean el cambio.</p>
-    <p data-i18n="manif_p5">Nos ayudan a ver nuevas posibilidades, recuperar nuestra claridad y recordar el poder que siempre estuvo ahí.</p>
-    <p data-i18n="manif_p6">Juan Cruz Consciencia existe para acompañar ese proceso.</p>
-  </div>
-
-  <div class="quien-eyebrow" data-i18n="eyebrow_vision">Visión de mundo</div>
-  <div class="quien-card">
-    <p data-i18n="vision_p1">Veo la transformación humana como un proceso de recuerdo.</p>
-    <p data-i18n="vision_p2">Un regreso a nuestra capacidad natural de elegir, crear y vivir conscientemente.</p>
-    <p data-i18n="vision_p3">Por eso trabajo con herramientas energéticas, mentales y emocionales que llevan la consciencia a la acción.</p>
-    <p data-i18n="vision_p4">Porque cuando el ser, la mente y el cuerpo actúan en unidad, se transforma tu vida.</p>
-  </div>
-
-  <div class="quien-eyebrow" data-i18n="eyebrow_proposito">Propósito</div>
-  <div class="quien-card">
-    <p data-i18n="prop_p1">Mi camino comenzó buscando respuestas y me llevó a descubrir herramientas que transformaron mi forma de percibir la vida.</p>
-    <p data-i18n="prop_p2">Hoy comparto esas herramientas con una convicción simple:</p>
-    <p data-i18n="prop_p3">Cada persona tiene dentro suyo el poder de crear una realidad diferente.</p>
-    <p data-i18n="prop_p4">Mi propósito es acompañarte a descubrirlo.</p>
-  </div>
-
-  <div class="quien-espacio" data-i18n-html="quien_espacio">
-    Un espacio sin juicio, donde no hay nada que hacer — solo recibir.<br>
-    Un espacio en el que te permitas ser exactamente lo que sos.<br><br>
-    <span style="font-size:13px;color:var(--muted);">Sin expectativas. Solo presencia.</span>
-  </div>
+<!-- PREGUNTAS FRECUENTES -->
+<section id="faq" class="sec">
+  <div class="sec-label" data-i18n="sec_faq_label">✦ Preguntas frecuentes</div>
+  <div class="sec-title" data-i18n="sec_faq_titulo">Antes de reservar</div>
+  <details class="faq-item"><summary data-i18n="faq1_q">¿Puedo reprogramar mi turno?</summary><div data-i18n="faq1_a">Sí. Si avisás con al menos 24 horas de anticipación, reprogramás sin costo y tu seña queda para el nuevo turno. Podés reprogramar una vez por seña.</div></details>
+  <details class="faq-item"><summary data-i18n="faq2_q">¿Qué pasa si aviso con menos de 24 horas o no voy?</summary><div data-i18n="faq2_a">La seña no se devuelve, porque ese horario quedó reservado para vos.</div></details>
+  <details class="faq-item"><summary data-i18n="faq3_q">¿Cómo pago la seña?</summary><div data-i18n="faq3_a">Por Pix. Al reservar te aparece la clave y un botón para mandar el comprobante por WhatsApp.</div></details>
+  <details class="faq-item"><summary data-i18n="faq4_q">¿Dónde es?</summary><div data-i18n-html="faq4_a">En la Posada Luz y Brillo, Búzios. <a href="https://www.google.com/maps/search/?api=1&query=Posada+Luz+y+Brillo+B%C3%BAzios" target="_blank">Ver en el mapa ↗</a></div></details>
+  <details class="faq-item"><summary data-i18n="faq5_q">¿Tengo que prepararme o llevar algo?</summary><div data-i18n="faq5_a">No. Vení con ropa cómoda. No hace falta experiencia previa.</div></details>
 </section>
 
 <!-- CTA FINAL -->
@@ -1215,6 +1276,7 @@ es:{
   ag_wa_msg:'¡Hola Juan Cruz! Soy {n}. Reservé {s} para el {f} a las {h}. Te envío el comprobante de la seña.',
   ag_clase_ninguna:'Ninguna me sirve',ag_clase_ok:'Quedaste anotado/a en la clase del {f}. Juan Cruz te escribe para coordinar todo.',
   ag_clase_ya:'Ya estabas anotado/a en esa fecha. Juan Cruz te escribe pronto.',
+  hero_tag:'Sesiones de Barras y Proceso · Presencial en Búzios',hero_agendar:'Agendá tu sesión ✦',hero_ver_ses:'Ver sesiones ↓',sec_testi_label:'✦ Testimonios',sec_lcp_label:'✦ La Casa del Profit',sec_lcp_titulo:'Más que una sesión',lcp_p1:'Cada sesión es parte de La Casa del Profit, una dimensión de expansión espiritual.',lcp_p2:'Un espacio donde se reúnen herramientas de consciencia y facilitadores con un mismo deseo: que puedas vivir con más amor, unidad, sabiduría y poder.',lcp_p3:'No venís solo a una sesión. Entrás a un espacio que te acompaña a seguir eligiendo.',sec_como_label:'✦ Cómo funciona',sec_como_titulo:'Reservar es simple',como1_t:'Elegí tu turno',como1_d:'Elegí la sesión, el día y el horario en la agenda. De lunes a viernes por la mañana.',como2_t:'Transferí la seña por Pix',como2_d:'Mandá el comprobante por WhatsApp y tu turno queda confirmado.',como3_t:'Vení a la Posada',como3_d:'Te espero en la Posada Luz y Brillo, Búzios.',como_mapa:'📍 Ver en el mapa ↗',sec_faq_label:'✦ Preguntas frecuentes',sec_faq_titulo:'Antes de reservar',faq1_q:'¿Puedo reprogramar mi turno?',faq1_a:'Sí. Si avisás con al menos 24 horas de anticipación, reprogramás sin costo y tu seña queda para el nuevo turno. Podés reprogramar una vez por seña.',faq2_q:'¿Qué pasa si aviso con menos de 24 horas o no voy?',faq2_a:'La seña no se devuelve, porque ese horario quedó reservado para vos.',faq3_q:'¿Cómo pago la seña?',faq3_a:'Por Pix. Al reservar te aparece la clave y un botón para mandar el comprobante por WhatsApp.',faq4_q:'¿Dónde es?',faq4_a:'En la Posada Luz y Brillo, Búzios. <a href="https://www.google.com/maps/search/?api=1&query=Posada+Luz+y+Brillo+B%C3%BAzios" target="_blank">Ver en el mapa ↗</a>',faq5_q:'¿Tengo que prepararme o llevar algo?',faq5_a:'No. Vení con ropa cómoda. No hace falta experiencia previa.',ag_politica:'Podés reprogramar sin costo avisando 24 h antes. Con menos aviso o si no venís, la seña no se devuelve.',
   months:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
 },
 en:{
@@ -1356,6 +1418,7 @@ en:{
   ag_wa_msg:'Hi Juan Cruz! I’m {n}. I booked {s} on {f} at {h}. Here is the deposit receipt.',
   ag_clase_ninguna:'None of these work',ag_clase_ok:'You’re signed up for the class on {f}. Juan Cruz will message you to coordinate.',
   ag_clase_ya:'You were already signed up for that date. Juan Cruz will message you soon.',
+  hero_tag:'Bars & Body Process sessions · In person in Búzios',hero_agendar:'Book your session ✦',hero_ver_ses:'See sessions ↓',sec_testi_label:'✦ Testimonials',sec_lcp_label:'✦ La Casa del Profit',sec_lcp_titulo:'More than a session',lcp_p1:'Every session is part of La Casa del Profit, a dimension of spiritual expansion.',lcp_p2:'A space that brings together consciousness tools and facilitators with one wish: that you can live with more love, unity, wisdom and power.',lcp_p3:'You don\'t just come for a session. You step into a space that supports you to keep choosing.',sec_como_label:'✦ How it works',sec_como_titulo:'Booking is simple',como1_t:'Choose your slot',como1_d:'Choose the session, day and time in the calendar. Monday to Friday mornings.',como2_t:'Pay the deposit by Pix',como2_d:'Send the receipt on WhatsApp and your booking is confirmed.',como3_t:'Come to the Posada',como3_d:'I\'ll be waiting for you at Posada Luz y Brillo, Búzios.',como_mapa:'📍 See on the map ↗',sec_faq_label:'✦ FAQ',sec_faq_titulo:'Before you book',faq1_q:'Can I reschedule?',faq1_a:'Yes. If you let me know at least 24 hours ahead, you reschedule at no cost and your deposit moves to the new slot. You can reschedule once per deposit.',faq2_q:'What if I cancel with less than 24 hours\' notice or don\'t show up?',faq2_a:'The deposit is not refunded, because that time was reserved for you.',faq3_q:'How do I pay the deposit?',faq3_a:'By Pix. When you book you get the key and a button to send the receipt on WhatsApp.',faq4_q:'Where is it?',faq4_a:'At Posada Luz y Brillo, Búzios. <a href="https://www.google.com/maps/search/?api=1&query=Posada+Luz+y+Brillo+B%C3%BAzios" target="_blank">See on the map ↗</a>',faq5_q:'Do I need to prepare or bring anything?',faq5_a:'No. Wear comfortable clothes. No previous experience needed.',ag_politica:'You can reschedule at no cost with 24 h notice. With less notice or if you don\'t show up, the deposit is not refunded.',
   months:['January','February','March','April','May','June','July','August','September','October','November','December']
 },
 pt:{
@@ -1497,6 +1560,7 @@ pt:{
   ag_wa_msg:'Olá Juan Cruz! Sou {n}. Reservei {s} para {f} às {h}. Segue o comprovante do sinal.',
   ag_clase_ninguna:'Nenhuma serve',ag_clase_ok:'Você está inscrito/a na aula de {f}. Juan Cruz vai te escrever para combinar tudo.',
   ag_clase_ya:'Você já estava inscrito/a nessa data. Juan Cruz vai te escrever em breve.',
+  hero_tag:'Sessões de Barras e Processo Corporal · Presencial em Búzios',hero_agendar:'Agende sua sessão ✦',hero_ver_ses:'Ver sessões ↓',sec_testi_label:'✦ Depoimentos',sec_lcp_label:'✦ La Casa del Profit',sec_lcp_titulo:'Mais que uma sessão',lcp_p1:'Cada sessão faz parte de La Casa del Profit, uma dimensão de expansão espiritual.',lcp_p2:'Um espaço que reúne ferramentas de consciência e facilitadores com um mesmo desejo: que você possa viver com mais amor, unidade, sabedoria e poder.',lcp_p3:'Você não vem só para uma sessão. Você entra em um espaço que te acompanha a continuar escolhendo.',sec_como_label:'✦ Como funciona',sec_como_titulo:'Reservar é simples',como1_t:'Escolha seu horário',como1_d:'Escolha a sessão, o dia e o horário na agenda. De segunda a sexta pela manhã.',como2_t:'Pague o sinal por Pix',como2_d:'Envie o comprovante pelo WhatsApp e seu horário fica confirmado.',como3_t:'Venha à Posada',como3_d:'Te espero na Posada Luz y Brillo, Búzios.',como_mapa:'📍 Ver no mapa ↗',sec_faq_label:'✦ Perguntas frequentes',sec_faq_titulo:'Antes de reservar',faq1_q:'Posso remarcar meu horário?',faq1_a:'Sim. Avisando com pelo menos 24 horas de antecedência, você remarca sem custo e o sinal fica para o novo horário. Você pode remarcar uma vez por sinal.',faq2_q:'E se eu avisar com menos de 24 horas ou não for?',faq2_a:'O sinal não é devolvido, porque aquele horário ficou reservado para você.',faq3_q:'Como pago o sinal?',faq3_a:'Por Pix. Ao reservar aparece a chave e um botão para enviar o comprovante pelo WhatsApp.',faq4_q:'Onde é?',faq4_a:'Na Posada Luz y Brillo, Búzios. <a href="https://www.google.com/maps/search/?api=1&query=Posada+Luz+y+Brillo+B%C3%BAzios" target="_blank">Ver no mapa ↗</a>',faq5_q:'Preciso me preparar ou levar algo?',faq5_a:'Não. Venha com roupa confortável. Não precisa de experiência prévia.',ag_politica:'Você pode remarcar sem custo avisando 24 h antes. Com menos aviso ou se não vier, o sinal não é devolvido.',
   months:['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro']
 }
 };
@@ -1721,6 +1785,7 @@ function _mostrarTurnoOk(nombre){
       <div><strong>${t.ag_lugar}:</strong> ${AGENDA.lugar}</div>
       <div><strong>${t.ag_senia}:</strong> ${AGENDA.senia[_sesionKey]||''}</div>
     </div>
+    <div style="font-size:12px;color:var(--muted);line-height:1.6;margin:8px 0 12px">${t.ag_politica}</div>
     <div class="ag-pago">
       <div class="ag-pago-row"><div><div style="font-size:11px;color:var(--muted)">${t.ag_pix}</div><code>${AGENDA.pix}</code></div>
         <button type="button" class="ag-copy" onclick="copiarDato('${AGENDA.pix}',this)">${t.ag_copiar}</button></div>
