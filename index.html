@@ -3,11 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juan Cruz Consciencia</title>
+<title>Barras de Access en Búzios · Juan Cruz Consciencia</title>
+<meta name="description" content="Sesiones de Barras de Access y Proceso de Cuerpos, presencial en Búzios. 60 minutos. Reservá tu turno online.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="theme-color" content="#C17A48">
-<meta property="og:title" content="Juan Cruz Consciencia">
-<meta property="og:description" content="Barras de Access, Proceso de Cuerpos y preguntas que abren lo que está cerrado.">
+<meta property="og:title" content="Barras de Access en Búzios · Juan Cruz Consciencia">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://juancruzconsciencia.lat/">
+<meta property="og:locale" content="es_AR">
+<meta property="og:description" content="Sesiones de Barras de Access y Proceso de Cuerpos, presencial en Búzios. 60 minutos. Reservá tu turno online.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -212,10 +216,6 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 .ses-benefit-ico{font-size:28px;flex-shrink:0;width:36px;text-align:center;}
 .ses-benefit-title{font-size:13px;font-weight:800;color:var(--text);margin-bottom:2px;}
 .ses-benefit-desc{font-size:12px;color:var(--muted);}
-.ses-testi{display:flex;gap:10px;margin-bottom:20px;flex-direction:column;}
-.ses-testi-img{border-radius:16px;overflow:hidden;border:1px solid var(--border);}
-.ses-testi-img img{width:100%;height:auto;display:block;}
-@media(min-width:480px){.ses-testi{flex-direction:row;}.ses-testi-img{flex:1;}}
 .ses-info{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
 .ses-info-row{display:flex;align-items:center;gap:12px;background:var(--card2);
   padding:12px 14px;border-radius:14px;border:1px solid var(--border);}
@@ -312,6 +312,17 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 .lcp-block p{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:12px;}
 .lcp-block p:last-child{margin-bottom:0;color:var(--text);font-weight:600;}
 .como-map{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--terra-d);text-decoration:none;}
+.g-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin-bottom:12px;}
+.g-score{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;}
+.g-stars{color:#E8A33C;font-size:16px;letter-spacing:2px;}
+.g-src{font-size:12px;color:var(--muted);font-weight:600;}
+.g-links{display:flex;gap:8px;flex-wrap:wrap;}
+.g-links a{font-size:13px;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;border:1.5px solid var(--border);color:var(--terra-d);}
+.g-list{display:grid;gap:10px;}
+.g-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;}
+.g-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.g-name{font-weight:700;font-size:14px;}
+.g-card p{font-size:14px;color:var(--muted);line-height:1.65;margin:0;white-space:pre-line;}
 .faq-item{border:1px solid var(--border);border-radius:14px;background:var(--card);margin-bottom:10px;}
 .faq-item summary{cursor:pointer;padding:16px 18px;font-weight:700;font-size:15px;list-style:none;}
 .faq-item summary::-webkit-details-marker{display:none;}
@@ -544,6 +555,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
           <label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer"><input type="checkbox" id="sintRuido" style="accent-color:var(--terra);width:16px;height:16px"> <span data-i18n="chk_ruido">Mucho ruido mental</span></label>
           <label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer"><input type="checkbox" id="sintEstres" style="accent-color:var(--terra);width:16px;height:16px"> <span data-i18n="chk_estres">Estrés / Ansiedad</span></label>
           <label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer"><input type="checkbox" id="sintCansancio" style="accent-color:var(--terra);width:16px;height:16px"> <span data-i18n="chk_cansancio">Cansancio general</span></label>
+          <label style="display:flex;align-items:center;gap:10px;font-size:13px;cursor:pointer"><input type="checkbox" id="sintExpansion" style="accent-color:var(--terra);width:16px;height:16px"> <span data-i18n="chk_expansion">Ganas de expandirme y crear más</span></label>
         </div>
         <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px" data-i18n="form_cuando_sentis">¿Cuándo lo sentís más?</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
@@ -837,12 +849,18 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 <!-- TESTIMONIOS -->
 <section id="testimonios" class="sec">
   <div class="sec-label" data-i18n="sec_testi_label">✦ Testimonios</div>
-  <div class="sec-title" data-i18n="barras_testi_titulo">📱 Lo que dicen después de una sesión</div>
-  <div class="ses-testi">
-          <div class="ses-testi-img"><img src="https://cdn.shopify.com/s/files/1/0806/4863/4591/files/WhatsAppImage2026-04-22at20.03.36.jpg?v=1776899404" alt="Testimonio" loading="lazy"></div>
-          <div class="ses-testi-img"><img src="https://cdn.shopify.com/s/files/1/0806/4863/4591/files/WhatsAppImage2026-04-22at20.04.11.jpg?v=1776899404" alt="Testimonio" loading="lazy"></div>
-          <div class="ses-testi-img"><img src="https://cdn.shopify.com/s/files/1/0806/4863/4591/files/WhatsApp_Image_2026-04-22_at_20.13.36.jpg?v=1776899680" alt="Testimonio" loading="lazy"></div>
-        </div>
+  <div class="sec-title" data-i18n="barras_testi_titulo">Lo que dicen después de una sesión</div>
+  <div class="g-head">
+    <div class="g-score">5,0 <span class="g-stars">★★★★★</span> <span class="g-src" data-i18n="g_src">en Google</span></div>
+    <div class="g-links">
+      <a href="https://g.page/r/CQ49CL7ZcGG1EAI" target="_blank" onclick="track('click_btn',{boton:'google_ver_resenas'})" data-i18n="g_ver">Ver todas en Google ↗</a>
+    </div>
+  </div>
+  <div class="g-list">
+    <div class="g-card"><div class="g-card-top"><span class="g-name">Oscar A.</span><span class="g-stars">★★★★★</span></div><p>Una experiencia increíble. Me ayudó a cambiar el foco y a mirar las cosas desde otro lugar. De a poco, los objetivos que me había planteado en la charla inicial y final de la sesión empiezan a tomar forma y a aparecer nuevas posibilidades. Sin dudas la volvería a repetir. ¡Súper recomendable! Un genio Juan</p></div>
+    <div class="g-card"><div class="g-card-top"><span class="g-name">Joel P.</span><span class="g-stars">★★★★★</span></div><p>Mis queridos seres de luz ✨, no se dan una idea del gran cambio que realizo este proceso en mi vida y lo hara en las suyas. Gracias Juan Cruz. Por el espacio para crecer.</p></div>
+    <div class="g-card"><div class="g-card-top"><span class="g-name">Marisol G.</span><span class="g-stars">★★★★★</span></div><p>Es una experiencia hermosa! Super recomendable ✨</p></div>
+  </div>
 </section>
 
 <hr class="sec-div">
@@ -867,7 +885,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
   <div class="ses-steps">
     <div class="ses-step"><div class="ses-step-num">1</div><div><div class="ses-step-title" data-i18n="como1_t">Elegí tu turno</div><div class="ses-step-desc" data-i18n="como1_d">Elegí la sesión, el día y el horario en la agenda. De lunes a viernes por la mañana.</div></div></div>
     <div class="ses-step"><div class="ses-step-num">2</div><div><div class="ses-step-title" data-i18n="como2_t">Transferí la seña por Pix</div><div class="ses-step-desc" data-i18n="como2_d">Mandá el comprobante por WhatsApp y tu turno queda confirmado.</div></div></div>
-    <div class="ses-step"><div class="ses-step-num">3</div><div><div class="ses-step-title" data-i18n="como3_t">Vení a la Posada</div><div class="ses-step-desc" data-i18n="como3_d">Te espero en la Posada Luz y Brillo, Búzios.</div><a class="como-map" href="https://www.google.com/maps/search/?api=1&query=Posada+Luz+y+Brillo+B%C3%BAzios" target="_blank" onclick="track('click_btn',{boton:'como_mapa'})" data-i18n="como_mapa">📍 Ver en el mapa ↗</a></div></div>
+    <div class="ses-step"><div class="ses-step-num">3</div><div><div class="ses-step-title" data-i18n="como3_t">Vení a la Posada</div><div class="ses-step-desc" data-i18n="como3_d">Te espero en la Posada Luz y Brillo, Búzios.</div><a class="como-map" href="https://g.page/r/CQ49CL7ZcGG1EAI" target="_blank" onclick="track('click_btn',{boton:'como_mapa'})" data-i18n="como_mapa">📍 Ver en el mapa ↗</a></div></div>
   </div>
   <div style="text-align:center;margin-top:20px">
     <button class="btn-reservar" onclick="openModal();track('click_btn',{boton:'como_agendar'})" data-i18n="hero_agendar">Agendá tu sesión ✦</button>
@@ -1083,7 +1101,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
   <details class="faq-item"><summary data-i18n="faq1_q">¿Puedo reprogramar mi turno?</summary><div data-i18n="faq1_a">Sí. Si avisás con al menos 24 horas de anticipación, reprogramás sin costo y tu seña queda para el nuevo turno. Podés reprogramar una vez por seña.</div></details>
   <details class="faq-item"><summary data-i18n="faq2_q">¿Qué pasa si aviso con menos de 24 horas o no voy?</summary><div data-i18n="faq2_a">La seña no se devuelve, porque ese horario quedó reservado para vos.</div></details>
   <details class="faq-item"><summary data-i18n="faq3_q">¿Cómo pago la seña?</summary><div data-i18n="faq3_a">Por Pix. Al reservar te aparece la clave y un botón para mandar el comprobante por WhatsApp.</div></details>
-  <details class="faq-item"><summary data-i18n="faq4_q">¿Dónde es?</summary><div data-i18n-html="faq4_a">En la Posada Luz y Brillo, Búzios. <a href="https://www.google.com/maps/search/?api=1&query=Posada+Luz+y+Brillo+B%C3%BAzios" target="_blank">Ver en el mapa ↗</a></div></details>
+  <details class="faq-item"><summary data-i18n="faq4_q">¿Dónde es?</summary><div data-i18n-html="faq4_a">En la Posada Luz y Brillo, Búzios. <a href="https://g.page/r/CQ49CL7ZcGG1EAI" target="_blank">Ver en el mapa ↗</a></div></details>
   <details class="faq-item"><summary data-i18n="faq5_q">¿Tengo que prepararme o llevar algo?</summary><div data-i18n="faq5_a">No. Vení con ropa cómoda. No hace falta experiencia previa.</div></details>
 </section>
 
@@ -1181,7 +1199,7 @@ es:{
   barras_ben2_t:'Apertura a nuevas posibilidades',barras_ben2_d:'oportunidades que antes no veías',
   barras_ben3_t:'Sueño reparador',barras_ben3_d:'dormís como hacía meses',
   barras_ben4_t:'Más energía',barras_ben4_d:'menos reactividad ante conflictos',
-  barras_testi_titulo:'📱 Lo que dicen después de una sesión',
+  barras_testi_titulo:'Lo que dicen después de una sesión',
   titulo_info_practica:'📋 Info práctica',info_duracion:'Duración',info_modalidad:'Modalidad',
   info_modalidad_val:'Presencial · Posada Luz y Brillo, Búzios',info_inversion:'Inversión',info_reserva:'Reserva',
   barras_senia:'Seña de R$ 100 · USD 30',barras_urg:'⏳ Solo 3 turnos por día · Elegí el tuyo en la agenda',barras_btn_det:'Reservar Barras ✦',
@@ -1276,7 +1294,9 @@ es:{
   ag_wa_msg:'¡Hola Juan Cruz! Soy {n}. Reservé {s} para el {f} a las {h}. Te envío el comprobante de la seña.',
   ag_clase_ninguna:'Ninguna me sirve',ag_clase_ok:'Quedaste anotado/a en la clase del {f}. Juan Cruz te escribe para coordinar todo.',
   ag_clase_ya:'Ya estabas anotado/a en esa fecha. Juan Cruz te escribe pronto.',
-  hero_tag:'Sesiones de Barras y Proceso · Presencial en Búzios',hero_agendar:'Agendá tu sesión ✦',hero_ver_ses:'Ver sesiones ↓',sec_testi_label:'✦ Testimonios',sec_lcp_label:'✦ La Casa del Profit',sec_lcp_titulo:'Más que una sesión',lcp_p1:'Cada sesión es parte de La Casa del Profit, una dimensión de expansión espiritual.',lcp_p2:'Un espacio donde se reúnen herramientas de consciencia y facilitadores con un mismo deseo: que puedas vivir con más amor, unidad, sabiduría y poder.',lcp_p3:'No venís solo a una sesión. Entrás a un espacio que te acompaña a seguir eligiendo.',sec_como_label:'✦ Cómo funciona',sec_como_titulo:'Reservar es simple',como1_t:'Elegí tu turno',como1_d:'Elegí la sesión, el día y el horario en la agenda. De lunes a viernes por la mañana.',como2_t:'Transferí la seña por Pix',como2_d:'Mandá el comprobante por WhatsApp y tu turno queda confirmado.',como3_t:'Vení a la Posada',como3_d:'Te espero en la Posada Luz y Brillo, Búzios.',como_mapa:'📍 Ver en el mapa ↗',sec_faq_label:'✦ Preguntas frecuentes',sec_faq_titulo:'Antes de reservar',faq1_q:'¿Puedo reprogramar mi turno?',faq1_a:'Sí. Si avisás con al menos 24 horas de anticipación, reprogramás sin costo y tu seña queda para el nuevo turno. Podés reprogramar una vez por seña.',faq2_q:'¿Qué pasa si aviso con menos de 24 horas o no voy?',faq2_a:'La seña no se devuelve, porque ese horario quedó reservado para vos.',faq3_q:'¿Cómo pago la seña?',faq3_a:'Por Pix. Al reservar te aparece la clave y un botón para mandar el comprobante por WhatsApp.',faq4_q:'¿Dónde es?',faq4_a:'En la Posada Luz y Brillo, Búzios. <a href="https://www.google.com/maps/search/?api=1&query=Posada+Luz+y+Brillo+B%C3%BAzios" target="_blank">Ver en el mapa ↗</a>',faq5_q:'¿Tengo que prepararme o llevar algo?',faq5_a:'No. Vení con ropa cómoda. No hace falta experiencia previa.',ag_politica:'Podés reprogramar sin costo avisando 24 h antes. Con menos aviso o si no venís, la seña no se devuelve.',
+  hero_tag:'Sesiones de Barras y Proceso · Presencial en Búzios',hero_agendar:'Agendá tu sesión ✦',hero_ver_ses:'Ver sesiones ↓',sec_testi_label:'✦ Testimonios',sec_lcp_label:'✦ La Casa del Profit',sec_lcp_titulo:'Más que una sesión',lcp_p1:'Cada sesión es parte de La Casa del Profit, una dimensión de expansión espiritual.',lcp_p2:'Un espacio donde se reúnen herramientas de consciencia y facilitadores con un mismo deseo: que puedas vivir con más amor, unidad, sabiduría y poder.',lcp_p3:'No venís solo a una sesión. Entrás a un espacio que te acompaña a seguir eligiendo.',sec_como_label:'✦ Cómo funciona',sec_como_titulo:'Reservar es simple',como1_t:'Elegí tu turno',como1_d:'Elegí la sesión, el día y el horario en la agenda. De lunes a viernes por la mañana.',como2_t:'Transferí la seña por Pix',como2_d:'Mandá el comprobante por WhatsApp y tu turno queda confirmado.',como3_t:'Vení a la Posada',como3_d:'Te espero en la Posada Luz y Brillo, Búzios.',como_mapa:'📍 Ver en el mapa ↗',sec_faq_label:'✦ Preguntas frecuentes',sec_faq_titulo:'Antes de reservar',faq1_q:'¿Puedo reprogramar mi turno?',faq1_a:'Sí. Si avisás con al menos 24 horas de anticipación, reprogramás sin costo y tu seña queda para el nuevo turno. Podés reprogramar una vez por seña.',faq2_q:'¿Qué pasa si aviso con menos de 24 horas o no voy?',faq2_a:'La seña no se devuelve, porque ese horario quedó reservado para vos.',faq3_q:'¿Cómo pago la seña?',faq3_a:'Por Pix. Al reservar te aparece la clave y un botón para mandar el comprobante por WhatsApp.',faq4_q:'¿Dónde es?',faq4_a:'En la Posada Luz y Brillo, Búzios. <a href="https://g.page/r/CQ49CL7ZcGG1EAI" target="_blank">Ver en el mapa ↗</a>',faq5_q:'¿Tengo que prepararme o llevar algo?',faq5_a:'No. Vení con ropa cómoda. No hace falta experiencia previa.',ag_politica:'Podés reprogramar sin costo avisando 24 h antes. Con menos aviso o si no venís, la seña no se devuelve.',
+  g_src:'en Google',g_ver:'Ver todas en Google ↗',
+  chk_expansion:'Ganas de expandirme y crear más',
   months:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
 },
 en:{
@@ -1323,7 +1343,7 @@ en:{
   barras_ben2_t:'Opening to new possibilities',barras_ben2_d:'opportunities you could not see before',
   barras_ben3_t:'Restful sleep',barras_ben3_d:'you sleep like you have not in months',
   barras_ben4_t:'More energy',barras_ben4_d:'less reactivity in conflicts',
-  barras_testi_titulo:'📱 What people say after a session',
+  barras_testi_titulo:'What people say after a session',
   titulo_info_practica:'📋 Practical info',info_duracion:'Duration',info_modalidad:'Format',
   info_modalidad_val:'In-person · Posada Luz y Brillo, Búzios',info_inversion:'Investment',info_reserva:'Deposit',
   barras_senia:'Deposit of R$ 100 · USD 30',barras_urg:'⏳ Only 3 slots per day · Pick yours in the calendar',barras_btn_det:'Book Bars ✦',
@@ -1418,7 +1438,9 @@ en:{
   ag_wa_msg:'Hi Juan Cruz! I’m {n}. I booked {s} on {f} at {h}. Here is the deposit receipt.',
   ag_clase_ninguna:'None of these work',ag_clase_ok:'You’re signed up for the class on {f}. Juan Cruz will message you to coordinate.',
   ag_clase_ya:'You were already signed up for that date. Juan Cruz will message you soon.',
-  hero_tag:'Bars & Body Process sessions · In person in Búzios',hero_agendar:'Book your session ✦',hero_ver_ses:'See sessions ↓',sec_testi_label:'✦ Testimonials',sec_lcp_label:'✦ La Casa del Profit',sec_lcp_titulo:'More than a session',lcp_p1:'Every session is part of La Casa del Profit, a dimension of spiritual expansion.',lcp_p2:'A space that brings together consciousness tools and facilitators with one wish: that you can live with more love, unity, wisdom and power.',lcp_p3:'You don\'t just come for a session. You step into a space that supports you to keep choosing.',sec_como_label:'✦ How it works',sec_como_titulo:'Booking is simple',como1_t:'Choose your slot',como1_d:'Choose the session, day and time in the calendar. Monday to Friday mornings.',como2_t:'Pay the deposit by Pix',como2_d:'Send the receipt on WhatsApp and your booking is confirmed.',como3_t:'Come to the Posada',como3_d:'I\'ll be waiting for you at Posada Luz y Brillo, Búzios.',como_mapa:'📍 See on the map ↗',sec_faq_label:'✦ FAQ',sec_faq_titulo:'Before you book',faq1_q:'Can I reschedule?',faq1_a:'Yes. If you let me know at least 24 hours ahead, you reschedule at no cost and your deposit moves to the new slot. You can reschedule once per deposit.',faq2_q:'What if I cancel with less than 24 hours\' notice or don\'t show up?',faq2_a:'The deposit is not refunded, because that time was reserved for you.',faq3_q:'How do I pay the deposit?',faq3_a:'By Pix. When you book you get the key and a button to send the receipt on WhatsApp.',faq4_q:'Where is it?',faq4_a:'At Posada Luz y Brillo, Búzios. <a href="https://www.google.com/maps/search/?api=1&query=Posada+Luz+y+Brillo+B%C3%BAzios" target="_blank">See on the map ↗</a>',faq5_q:'Do I need to prepare or bring anything?',faq5_a:'No. Wear comfortable clothes. No previous experience needed.',ag_politica:'You can reschedule at no cost with 24 h notice. With less notice or if you don\'t show up, the deposit is not refunded.',
+  hero_tag:'Bars & Body Process sessions · In person in Búzios',hero_agendar:'Book your session ✦',hero_ver_ses:'See sessions ↓',sec_testi_label:'✦ Testimonials',sec_lcp_label:'✦ La Casa del Profit',sec_lcp_titulo:'More than a session',lcp_p1:'Every session is part of La Casa del Profit, a dimension of spiritual expansion.',lcp_p2:'A space that brings together consciousness tools and facilitators with one wish: that you can live with more love, unity, wisdom and power.',lcp_p3:'You don\'t just come for a session. You step into a space that supports you to keep choosing.',sec_como_label:'✦ How it works',sec_como_titulo:'Booking is simple',como1_t:'Choose your slot',como1_d:'Choose the session, day and time in the calendar. Monday to Friday mornings.',como2_t:'Pay the deposit by Pix',como2_d:'Send the receipt on WhatsApp and your booking is confirmed.',como3_t:'Come to the Posada',como3_d:'I\'ll be waiting for you at Posada Luz y Brillo, Búzios.',como_mapa:'📍 See on the map ↗',sec_faq_label:'✦ FAQ',sec_faq_titulo:'Before you book',faq1_q:'Can I reschedule?',faq1_a:'Yes. If you let me know at least 24 hours ahead, you reschedule at no cost and your deposit moves to the new slot. You can reschedule once per deposit.',faq2_q:'What if I cancel with less than 24 hours\' notice or don\'t show up?',faq2_a:'The deposit is not refunded, because that time was reserved for you.',faq3_q:'How do I pay the deposit?',faq3_a:'By Pix. When you book you get the key and a button to send the receipt on WhatsApp.',faq4_q:'Where is it?',faq4_a:'At Posada Luz y Brillo, Búzios. <a href="https://g.page/r/CQ49CL7ZcGG1EAI" target="_blank">See on the map ↗</a>',faq5_q:'Do I need to prepare or bring anything?',faq5_a:'No. Wear comfortable clothes. No previous experience needed.',ag_politica:'You can reschedule at no cost with 24 h notice. With less notice or if you don\'t show up, the deposit is not refunded.',
+  g_src:'on Google',g_ver:'See all on Google ↗',
+  chk_expansion:'Wanting to expand and create more',
   months:['January','February','March','April','May','June','July','August','September','October','November','December']
 },
 pt:{
@@ -1465,7 +1487,7 @@ pt:{
   barras_ben2_t:'Abertura a novas possibilidades',barras_ben2_d:'oportunidades que antes não via',
   barras_ben3_t:'Sono reparador',barras_ben3_d:'você dorme como faz meses',
   barras_ben4_t:'Mais energia',barras_ben4_d:'menos reatividade diante de conflitos',
-  barras_testi_titulo:'📱 O que dizem após uma sessão',
+  barras_testi_titulo:'O que dizem após uma sessão',
   titulo_info_practica:'📋 Informações práticas',info_duracion:'Duração',info_modalidad:'Modalidade',
   info_modalidad_val:'Presencial · Posada Luz y Brillo, Búzios',info_inversion:'Investimento',info_reserva:'Sinal',
   barras_senia:'Sinal de R$ 100 · USD 30',barras_urg:'⏳ Apenas 3 horários por dia · Escolha o seu na agenda',barras_btn_det:'Reservar Barras ✦',
@@ -1560,7 +1582,9 @@ pt:{
   ag_wa_msg:'Olá Juan Cruz! Sou {n}. Reservei {s} para {f} às {h}. Segue o comprovante do sinal.',
   ag_clase_ninguna:'Nenhuma serve',ag_clase_ok:'Você está inscrito/a na aula de {f}. Juan Cruz vai te escrever para combinar tudo.',
   ag_clase_ya:'Você já estava inscrito/a nessa data. Juan Cruz vai te escrever em breve.',
-  hero_tag:'Sessões de Barras e Processo Corporal · Presencial em Búzios',hero_agendar:'Agende sua sessão ✦',hero_ver_ses:'Ver sessões ↓',sec_testi_label:'✦ Depoimentos',sec_lcp_label:'✦ La Casa del Profit',sec_lcp_titulo:'Mais que uma sessão',lcp_p1:'Cada sessão faz parte de La Casa del Profit, uma dimensão de expansão espiritual.',lcp_p2:'Um espaço que reúne ferramentas de consciência e facilitadores com um mesmo desejo: que você possa viver com mais amor, unidade, sabedoria e poder.',lcp_p3:'Você não vem só para uma sessão. Você entra em um espaço que te acompanha a continuar escolhendo.',sec_como_label:'✦ Como funciona',sec_como_titulo:'Reservar é simples',como1_t:'Escolha seu horário',como1_d:'Escolha a sessão, o dia e o horário na agenda. De segunda a sexta pela manhã.',como2_t:'Pague o sinal por Pix',como2_d:'Envie o comprovante pelo WhatsApp e seu horário fica confirmado.',como3_t:'Venha à Posada',como3_d:'Te espero na Posada Luz y Brillo, Búzios.',como_mapa:'📍 Ver no mapa ↗',sec_faq_label:'✦ Perguntas frequentes',sec_faq_titulo:'Antes de reservar',faq1_q:'Posso remarcar meu horário?',faq1_a:'Sim. Avisando com pelo menos 24 horas de antecedência, você remarca sem custo e o sinal fica para o novo horário. Você pode remarcar uma vez por sinal.',faq2_q:'E se eu avisar com menos de 24 horas ou não for?',faq2_a:'O sinal não é devolvido, porque aquele horário ficou reservado para você.',faq3_q:'Como pago o sinal?',faq3_a:'Por Pix. Ao reservar aparece a chave e um botão para enviar o comprovante pelo WhatsApp.',faq4_q:'Onde é?',faq4_a:'Na Posada Luz y Brillo, Búzios. <a href="https://www.google.com/maps/search/?api=1&query=Posada+Luz+y+Brillo+B%C3%BAzios" target="_blank">Ver no mapa ↗</a>',faq5_q:'Preciso me preparar ou levar algo?',faq5_a:'Não. Venha com roupa confortável. Não precisa de experiência prévia.',ag_politica:'Você pode remarcar sem custo avisando 24 h antes. Com menos aviso ou se não vier, o sinal não é devolvido.',
+  hero_tag:'Sessões de Barras e Processo Corporal · Presencial em Búzios',hero_agendar:'Agende sua sessão ✦',hero_ver_ses:'Ver sessões ↓',sec_testi_label:'✦ Depoimentos',sec_lcp_label:'✦ La Casa del Profit',sec_lcp_titulo:'Mais que uma sessão',lcp_p1:'Cada sessão faz parte de La Casa del Profit, uma dimensão de expansão espiritual.',lcp_p2:'Um espaço que reúne ferramentas de consciência e facilitadores com um mesmo desejo: que você possa viver com mais amor, unidade, sabedoria e poder.',lcp_p3:'Você não vem só para uma sessão. Você entra em um espaço que te acompanha a continuar escolhendo.',sec_como_label:'✦ Como funciona',sec_como_titulo:'Reservar é simples',como1_t:'Escolha seu horário',como1_d:'Escolha a sessão, o dia e o horário na agenda. De segunda a sexta pela manhã.',como2_t:'Pague o sinal por Pix',como2_d:'Envie o comprovante pelo WhatsApp e seu horário fica confirmado.',como3_t:'Venha à Posada',como3_d:'Te espero na Posada Luz y Brillo, Búzios.',como_mapa:'📍 Ver no mapa ↗',sec_faq_label:'✦ Perguntas frequentes',sec_faq_titulo:'Antes de reservar',faq1_q:'Posso remarcar meu horário?',faq1_a:'Sim. Avisando com pelo menos 24 horas de antecedência, você remarca sem custo e o sinal fica para o novo horário. Você pode remarcar uma vez por sinal.',faq2_q:'E se eu avisar com menos de 24 horas ou não for?',faq2_a:'O sinal não é devolvido, porque aquele horário ficou reservado para você.',faq3_q:'Como pago o sinal?',faq3_a:'Por Pix. Ao reservar aparece a chave e um botão para enviar o comprovante pelo WhatsApp.',faq4_q:'Onde é?',faq4_a:'Na Posada Luz y Brillo, Búzios. <a href="https://g.page/r/CQ49CL7ZcGG1EAI" target="_blank">Ver no mapa ↗</a>',faq5_q:'Preciso me preparar ou levar algo?',faq5_a:'Não. Venha com roupa confortável. Não precisa de experiência prévia.',ag_politica:'Você pode remarcar sem custo avisando 24 h antes. Com menos aviso ou se não vier, o sinal não é devolvido.',
+  g_src:'no Google',g_ver:'Ver todas no Google ↗',
+  chk_expansion:'Vontade de me expandir e criar mais',
   months:['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro']
 }
 };
@@ -1654,7 +1678,7 @@ function selectSesion(key, nombre, ico){
   document.getElementById('camposProceso').style.display=key==='proceso_cuerpos'?'':'none';
   document.getElementById('camposClase').style.display=key==='clase_barras'?'':'none';
   // Reset checkboxes y radios
-  ['sintRuido','sintEstres','sintCansancio'].forEach(id=>{const el=document.getElementById(id);if(el)el.checked=false;});
+  ['sintRuido','sintEstres','sintCansancio','sintExpansion'].forEach(id=>{const el=document.getElementById(id);if(el)el.checked=false;});
   document.querySelectorAll('input[type=radio]').forEach(r=>r.checked=false);
   // Agenda: las sesiones individuales eligen día y horario; la clase, una fecha
   const conAgenda=SESIONES_AGENDA.includes(key);
@@ -1818,6 +1842,7 @@ async function submitRegistro(){
     if(document.getElementById('sintRuido')?.checked)sints.push('Mucho ruido mental');
     if(document.getElementById('sintEstres')?.checked)sints.push('Estrés / Ansiedad');
     if(document.getElementById('sintCansancio')?.checked)sints.push('Cansancio general');
+    if(document.getElementById('sintExpansion')?.checked)sints.push('Ganas de expandirme y crear más');
     extras.sintomas=sints;
     extras.momentoDia=document.querySelector('input[name=momentoDia]:checked')?.value||'';
     extras.cuando=document.querySelector('input[name=cuando]:checked')?.value||'';
