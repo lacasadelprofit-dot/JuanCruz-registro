@@ -1,0 +1,17 @@
+# juancruzconsciencia.lat
+# Google puede leer la landing; las páginas internas (portales, registros, herramientas) no se muestran en buscadores.
+User-agent: *
+Allow: /
+Disallow: /portal_ser.html
+Disallow: /portal_programa.html
+Disallow: /portal_facilitador.html
+Disallow: /registro.html
+Disallow: /registro_barras.html
+Disallow: /registro_jcc.html
+Disallow: /onboarding.html
+Disallow: /generar_carrusel.html
+Disallow: /generar_imagen_comunidad.html
+Disallow: /profit_ia.html
+Disallow: /api/
+
+Sitemap: https://www.juancruzconsciencia.lat/sitemap.xml
