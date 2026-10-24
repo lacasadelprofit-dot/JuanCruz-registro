@@ -513,6 +513,14 @@ footer{padding-bottom:104px!important;}
         </div>
         <div class="modal-sesion-arr">→</div>
       </div>
+      <div class="modal-sesion" onclick="selectSesion('mes_energetico','Mes Energético','✨')">
+        <div class="modal-sesion-ico">✨</div>
+        <div class="modal-sesion-info">
+          <div class="modal-sesion-nombre">Mes Energético</div>
+          <div class="modal-sesion-desc" data-i18n="modal_me_desc">3 Barras + 1 Proceso de Cuerpos · Pagás 3, recibís 4</div>
+        </div>
+        <div class="modal-sesion-arr">→</div>
+      </div>
       <div class="modal-sesion" onclick="selectSesion('clase_barras','Clase de Barras de Access®','📚')">
         <div class="modal-sesion-ico">📚</div>
         <div class="modal-sesion-info">
@@ -879,6 +887,59 @@ footer{padding-bottom:104px!important;}
         <div class="ses-urg" data-i18n="proceso_urg">⏳ Solo 3 turnos por día · Elegí el tuyo en la agenda</div>
         <div style="text-align:right">
           <button class="btn-reservar" onclick="reservar('proceso_cuerpos','Proceso de Cuerpos','🌿');track('click_btn',{boton:'reservar_proceso_det'})" style="background:#7B9E87" data-i18n="proceso_btn_det">Reservar Proceso ✦</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- MES ENERGÉTICO (4x3: 3 Barras + 1 Proceso) -->
+  <div class="ses-compact" id="mes-energetico">
+    <div class="ses-stripe" style="background:linear-gradient(90deg,#C17A48,#7B9E87)"></div>
+    <div class="ses-compact-body">
+      <div class="featured-badge" data-i18n="me_badge">✦ Pagás 3, recibís 4</div>
+      <div class="ses-head">
+        <div class="ses-ico">✨</div>
+        <div class="ses-head-info">
+          <div class="ses-nombre">Mes Energético</div>
+          <div class="ses-tagline" data-i18n="me_tagline">"¿Qué cambiaría si te dieras un mes entero de espacio?"</div>
+        </div>
+      </div>
+      <div class="ses-desc-short" data-i18n="me_desc">Cuatro sesiones en hasta 30 días: 3 de Barras de Access y 1 de Proceso de Cuerpos. Una sesión te da un respiro; un mes te deja sostener lo que se abre.</div>
+      <div class="ses-meta">
+        <div class="ses-meta-item" data-i18n="me_meta_dur">⏱ 4 × 60 minutos</div>
+        <div class="ses-meta-item" data-i18n="meta_presencial">📍 Presencial</div>
+        <div class="ses-meta-item" data-i18n="me_meta_plazo">📅 En hasta 30 días</div>
+        <div class="ses-meta-item">💸 R$ 700 <s style="opacity:.55">R$ 900</s> · USD 190 · $ 210.000 ARS</div>
+        <div class="ses-meta-item" data-i18n="me_ahorro">💡 Ahorrás R$ 200</div>
+      </div>
+      <div class="ses-footer">
+        <button class="btn-ver-mas" onclick="toggleDetail('detail-mes',this)" data-i18n="btn_ver_mas">Ver más ↓</button>
+        <button class="btn-reservar" onclick="reservar('mes_energetico','Mes Energético','✨');track('click_btn',{boton:'reservar_mes_energetico'})" data-i18n="btn_reservar">Reservar ✦</button>
+      </div>
+
+      <div class="ses-detail" id="detail-mes">
+        <div class="ses-sub-title" data-i18n="me_inc_t">🎁 Qué incluye</div>
+        <ul class="ses-checklist">
+          <li data-i18n="me_inc1">3 sesiones de Barras de Access</li>
+          <li data-i18n="me_inc2">1 sesión de Proceso de Cuerpos</li>
+          <li data-i18n="me_inc3">Las 4 en hasta 30 días, a tu ritmo</li>
+        </ul>
+        <div class="ses-sep"></div>
+        <div class="ses-sub-title" data-i18n="me_como_t">🗓 Cómo funciona</div>
+        <div class="ses-steps">
+          <div class="ses-step"><div class="ses-step-num">1</div><div><div class="ses-step-title" data-i18n="me_p1_t">Reservá tu primera sesión</div><div class="ses-step-desc" data-i18n="me_p1_d">Elegí día y horario en la agenda y transferí la seña.</div></div></div>
+          <div class="ses-step"><div class="ses-step-num">2</div><div><div class="ses-step-title" data-i18n="me_p2_t">Pagá el resto ese día</div><div class="ses-step-desc" data-i18n="me_p2_d">En tu primera sesión abonás el saldo del Mes Energético.</div></div></div>
+          <div class="ses-step"><div class="ses-step-num">3</div><div><div class="ses-step-title" data-i18n="me_p3_t">Coordinamos las otras 3</div><div class="ses-step-desc" data-i18n="me_p3_d">Juntos elegimos los turnos según tu disponibilidad.</div></div></div>
+        </div>
+        <div class="ses-sep"></div>
+        <div class="ses-sub-title" data-i18n="titulo_info_practica">📋 Info práctica</div>
+        <div class="ses-info">
+          <div class="ses-info-row"><div class="ses-info-ico">🕒</div><div class="ses-info-label" data-i18n="info_duracion">Duración</div><div class="ses-info-val" data-i18n="me_info_dur">4 sesiones de 60 minutos</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">📍</div><div class="ses-info-label" data-i18n="info_modalidad">Modalidad</div><div class="ses-info-val" data-i18n="info_modalidad_val">Presencial · Posada Luz y Brillo, Búzios</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">💸</div><div class="ses-info-label" data-i18n="info_inversion">Inversión</div><div class="ses-info-val">R$ 700 · USD 190 · $ 210.000 ARS</div></div>
+          <div class="ses-info-row"><div class="ses-info-ico">🔐</div><div class="ses-info-label" data-i18n="info_reserva">Reserva</div><div class="ses-info-val" data-i18n="me_senia">Seña de R$ 100 · USD 30 · $ 30.000 ARS</div></div>
+        </div>
+        <div style="text-align:right">
+          <button class="btn-reservar" onclick="reservar('mes_energetico','Mes Energético','✨');track('click_btn',{boton:'reservar_mes_energetico_det'})" data-i18n="me_btn">Quiero mi Mes Energético ✦</button>
         </div>
       </div>
     </div>
@@ -1292,6 +1353,7 @@ es:{
   footer_aviso:'Las sesiones de Access Consciousness® son prácticas de bienestar y no reemplazan diagnóstico ni tratamiento médico o psicológico.',
   eyebrow_historia:'Mi historia',hist_p1:'Soy Juan Cruz. Nací en Llavallol, Buenos Aires.',hist_p2:'Durante mucho tiempo busqué afuera algo que no terminaba de encontrar. Quería entenderme y cambiar mi realidad, pero sentía que, por más que buscara respuestas, volvía una y otra vez al mismo lugar.',hist_p3:'En abril de 2022 recibí mi primera sesión de Barras de Access®. No encontré una respuesta: experimenté algo diferente. Por primera vez en mucho tiempo, mi mente hizo silencio. Lo que empezó como algo personal se convirtió en lo que hoy comparto.',hist_p4:'Me formé como facilitador de Access Consciousness® y desde entonces facilité más de 300 sesiones. Cada encuentro me recuerda que no todos necesitamos las mismas respuestas, y que a veces una pregunta diferente abre lo que antes no veíamos.',hist_p5:'Creo que siempre existen otras posibilidades. Descubrirlas empieza cuando nos permitimos cuestionar lo que dábamos por hecho.',eyebrow_acomp:'Mi manera de acompañar',acomp_p1:'Un espacio sin juicio, donde no tenés que demostrar nada, resolver nada ni convertirte en alguien diferente.',acomp_p2:'Un espacio para bajar el ruido, escuchar tu cuerpo y permitirte recibir.',acomp_p3:'Sin expectativas. Solo presencia.',
   info_dur_val:'60 minutos',
+  me_badge:'✦ Pagás 3, recibís 4',me_tagline:'"¿Qué cambiaría si te dieras un mes entero de espacio?"',me_desc:'Cuatro sesiones en hasta 30 días: 3 de Barras de Access y 1 de Proceso de Cuerpos. Una sesión te da un respiro; un mes te deja sostener lo que se abre.',me_meta_dur:'⏱ 4 × 60 minutos',me_meta_plazo:'📅 En hasta 30 días',me_ahorro:'💡 Ahorrás R$ 200',me_inc_t:'🎁 Qué incluye',me_inc1:'3 sesiones de Barras de Access',me_inc2:'1 sesión de Proceso de Cuerpos',me_inc3:'Las 4 en hasta 30 días, a tu ritmo',me_como_t:'🗓 Cómo funciona',me_p1_t:'Reservá tu primera sesión',me_p1_d:'Elegí día y horario en la agenda y transferí la seña.',me_p2_t:'Pagá el resto ese día',me_p2_d:'En tu primera sesión abonás el saldo del Mes Energético.',me_p3_t:'Coordinamos las otras 3',me_p3_d:'Juntos elegimos los turnos según tu disponibilidad.',me_senia:'Seña de R$ 100 · USD 30 · $ 30.000 ARS',me_info_dur:'4 sesiones de 60 minutos',me_btn:'Quiero mi Mes Energético ✦',modal_me_desc:'3 Barras + 1 Proceso de Cuerpos · Pagás 3, recibís 4',
   months:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
 },
 en:{
@@ -1443,6 +1505,7 @@ en:{
   footer_aviso:'Access Consciousness® sessions are wellbeing practices and do not replace medical or psychological diagnosis or treatment.',
   eyebrow_historia:'My story',hist_p1:'I’m Juan Cruz. I was born in Llavallol, Buenos Aires.',hist_p2:'For a long time I looked outside myself for something I couldn’t quite find. I wanted to understand myself and change my reality, but no matter how many answers I searched for, I kept coming back to the same place.',hist_p3:'In April 2022 I received my first Access Bars® session. I didn’t find an answer: I experienced something different. For the first time in a long while, my mind went quiet. What began as something personal became what I share today.',hist_p4:'I trained as an Access Consciousness® facilitator and have since facilitated more than 300 sessions. Every encounter reminds me that we don’t all need the same answers, and that sometimes a different question opens up what we couldn’t see before.',hist_p5:'I believe there are always other possibilities. Discovering them begins when we allow ourselves to question what we took for granted.',eyebrow_acomp:'How I accompany you',acomp_p1:'A space without judgment, where you don’t have to prove anything, fix anything or become someone different.',acomp_p2:'A space to quiet the noise, listen to your body and allow yourself to receive.',acomp_p3:'No expectations. Just presence.',
   info_dur_val:'60 minutes',
+  me_badge:'✦ Pay for 3, get 4',me_tagline:'"What would change if you gave yourself a whole month of space?"',me_desc:'Four sessions within 30 days: 3 Access Bars and 1 Body Process. One session gives you a breather; a month lets you sustain what opens up.',me_meta_dur:'⏱ 4 × 60 minutes',me_meta_plazo:'📅 Within 30 days',me_ahorro:'💡 You save R$ 200',me_inc_t:'🎁 What is included',me_inc1:'3 Access Bars sessions',me_inc2:'1 Body Process session',me_inc3:'All 4 within 30 days, at your own pace',me_como_t:'🗓 How it works',me_p1_t:'Book your first session',me_p1_d:'Choose a day and time in the calendar and pay the deposit.',me_p2_t:'Pay the rest that day',me_p2_d:'At your first session you pay the balance of the Energy Month.',me_p3_t:'We schedule the other 3',me_p3_d:'Together we choose the times that suit you.',me_senia:'Deposit of R$ 100 · USD 30 · $ 30.000 ARS',me_info_dur:'4 sessions of 60 minutes',me_btn:'I want my Energy Month ✦',modal_me_desc:'3 Bars + 1 Body Process · Pay for 3, get 4',
   months:['January','February','March','April','May','June','July','August','September','October','November','December']
 },
 pt:{
@@ -1594,6 +1657,7 @@ pt:{
   footer_aviso:'As sessões de Access Consciousness® são práticas de bem-estar e não substituem diagnóstico nem tratamento médico ou psicológico.',
   eyebrow_historia:'Minha história',hist_p1:'Sou Juan Cruz. Nasci em Llavallol, Buenos Aires.',hist_p2:'Durante muito tempo busquei fora algo que não conseguia encontrar. Queria me entender e mudar minha realidade, mas sentia que, por mais que buscasse respostas, voltava sempre ao mesmo lugar.',hist_p3:'Em abril de 2022 recebi minha primeira sessão de Barras de Access®. Não encontrei uma resposta: vivi algo diferente. Pela primeira vez em muito tempo, minha mente fez silêncio. O que começou como algo pessoal se transformou no que hoje compartilho.',hist_p4:'Me formei como facilitador de Access Consciousness® e, desde então, facilitei mais de 300 sessões. Cada encontro me lembra que nem todos precisamos das mesmas respostas, e que às vezes uma pergunta diferente abre o que antes não víamos.',hist_p5:'Acredito que sempre existem outras possibilidades. Descobri-las começa quando nos permitimos questionar o que dávamos como certo.',eyebrow_acomp:'Minha forma de acompanhar',acomp_p1:'Um espaço sem julgamento, onde você não precisa provar nada, resolver nada nem se tornar alguém diferente.',acomp_p2:'Um espaço para baixar o ruído, escutar seu corpo e se permitir receber.',acomp_p3:'Sem expectativas. Só presença.',
   info_dur_val:'60 minutos',
+  me_badge:'✦ Pague 3, receba 4',me_tagline:'"O que mudaria se você se desse um mês inteiro de espaço?"',me_desc:'Quatro sessões em até 30 dias: 3 de Barras de Access e 1 de Processo Corporal. Uma sessão te dá um respiro; um mês te permite sustentar o que se abre.',me_meta_dur:'⏱ 4 × 60 minutos',me_meta_plazo:'📅 Em até 30 dias',me_ahorro:'💡 Você economiza R$ 200',me_inc_t:'🎁 O que inclui',me_inc1:'3 sessões de Barras de Access',me_inc2:'1 sessão de Processo Corporal',me_inc3:'As 4 em até 30 dias, no seu ritmo',me_como_t:'🗓 Como funciona',me_p1_t:'Reserve sua primeira sessão',me_p1_d:'Escolha dia e horário na agenda e pague o sinal.',me_p2_t:'Pague o restante nesse dia',me_p2_d:'Na sua primeira sessão você paga o saldo do Mês Energético.',me_p3_t:'Combinamos as outras 3',me_p3_d:'Juntos escolhemos os horários conforme sua disponibilidade.',me_senia:'Sinal de R$ 100 · USD 30 · $ 30.000 ARS',me_info_dur:'4 sessões de 60 minutos',me_btn:'Quero meu Mês Energético ✦',modal_me_desc:'3 Barras + 1 Processo Corporal · Pague 3, receba 4',
   months:['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro']
 }
 };
@@ -1689,7 +1753,7 @@ function selectSesion(key, nombre, ico){
   document.getElementById('regWapp').value='';
   document.getElementById('regMensaje').value='';
   // Mostrar campos según sesión
-  document.getElementById('camposBarras').style.display=key==='barras'?'':'none';
+  document.getElementById('camposBarras').style.display=(key==='barras'||key==='mes_energetico')?'':'none';
   document.getElementById('camposProceso').style.display=key==='proceso_cuerpos'?'':'none';
   document.getElementById('camposClase').style.display=key==='clase_barras'?'':'none';
   // Reset checkboxes y radios
@@ -1723,9 +1787,9 @@ const AGENDA={
   pix:'04572950741',
   alias:'juancruzconsciencia',     // transferencia en pesos argentinos
   wa:'541151758653',
-  senia:{barras:'R$ 100 · USD 30 · $ 30.000 ARS',proceso_cuerpos:'R$ 150 · USD 35 · $ 45.000 ARS'}
+  senia:{mes_energetico:'R$ 100 · USD 30 · $ 30.000 ARS',barras:'R$ 100 · USD 30 · $ 30.000 ARS',proceso_cuerpos:'R$ 150 · USD 35 · $ 45.000 ARS'}
 };
-const SESIONES_AGENDA=['barras','proceso_cuerpos'];
+const SESIONES_AGENDA=['barras','proceso_cuerpos','mes_energetico'];
 let _agOcupados=new Set(), _agDia='', _agHora='', _agOk=false, _claseFechas=[], _claseSel='';
 
 // Fechas en hora de Búzios (UTC-3, sin horario de verano)
@@ -1851,11 +1915,11 @@ async function submitRegistro(){
   if(celular.length<8||celular.length>15){msg.textContent=t.err_wapp;return;}
   const btnTxt=btn.textContent;
   btn.textContent=t.cargando_spinner;btn.disabled=true;
-  const SESION_MAP={barras:'Barras de Access',proceso_cuerpos:'Proceso de Cuerpos',clase_barras:'Clase de Barras de Access®',no_se:'Sin definir'};
+  const SESION_MAP={mes_energetico:'Mes Energético',barras:'Barras de Access',proceso_cuerpos:'Proceso de Cuerpos',clase_barras:'Clase de Barras de Access®',no_se:'Sin definir'};
   const sesionInteres=SESION_MAP[_sesionKey]||_sesionNombre;
   // Recolectar campos extra según sesión
   const extras={};
-  if(_sesionKey==='barras'){
+  if(_sesionKey==='barras'||_sesionKey==='mes_energetico'){
     const sints=[];
     if(document.getElementById('sintRuido')?.checked)sints.push('Mucho ruido mental');
     if(document.getElementById('sintEstres')?.checked)sints.push('Estrés / Ansiedad');
@@ -1876,8 +1940,8 @@ async function submitRegistro(){
   // 1) Reservar el turno / anotarse en la clase (lo importante: si falla, no se sigue)
   let claseRes=null;
   if(conAgenda){
-    const {data,error}=await _sb.rpc('reservar_turno',{p_fecha:_agDia,p_hora:_agHora,p_servicio:_sesionKey,
-      p_nombre:nombre,p_celular:celular,p_datos:{sesion:sesionInteres,mensaje,lang:_lang,...extras}});
+    const {data,error}=await _sb.rpc('reservar_turno',{p_fecha:_agDia,p_hora:_agHora,p_servicio:_sesionKey==='mes_energetico'?'barras':_sesionKey,
+      p_nombre:nombre,p_celular:celular,p_datos:{sesion:sesionInteres,mensaje,lang:_lang,...extras,...(_sesionKey==='mes_energetico'?{pack:'mes_energetico'}:{})}});
     if(error){
       const m=error.message||'';
       const libre=m.includes('ocupado')||m.includes('muy_pronto');
