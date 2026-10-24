@@ -282,6 +282,9 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 .quien-quote{font-size:26px;font-weight:600;color:var(--text);line-height:1.35;
   text-align:center;padding:8px 8px 32px;letter-spacing:-.3px;}
 .quien-quote em{color:var(--terra);font-style:normal;}
+.quien-foto{display:flex;justify-content:center;margin:4px 0 18px;}
+.quien-foto img{width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--terra-l);box-shadow:0 6px 20px rgba(28,18,0,.12);}
+.quien-card p.quien-presencia{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:400;font-size:20px;line-height:1.5;color:var(--terra-d);margin-top:4px;}
 .quien-stats{display:flex;gap:12px;margin-bottom:20px;}
 .quien-stat{flex:1;background:var(--terra-l);border:1px solid rgba(193,122,72,.2);
   border-radius:16px;padding:14px;text-align:center;}
@@ -894,55 +897,30 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 <section id="quien-soy" class="sec">
   <div class="sec-label" data-i18n="sec_quien_label">✦ Camino</div>
 
-  <div class="quien-quote" data-i18n-html="quien_quote">
-    No vine a enseñarte nada.<br>Vine a <em>recordarte</em> lo que ya sabés.
-  </div>
+  <div class="quien-foto"><img src="juan_cruz.jpg" alt="Juan Cruz" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+
+  <div class="quien-quote" data-i18n-html="quien_quote">No vine a enseñarte nada.<br>Vine a <em>recordarte</em> lo que ya sabés.</div>
 
   <div class="quien-stats">
-    <div class="quien-stat">
-      <div class="quien-stat-num">5</div>
-      <div class="quien-stat-label" data-i18n="stat_anos">años de camino espiritual</div>
-    </div>
-    <div class="quien-stat">
-      <div class="quien-stat-num">+100</div>
-      <div class="quien-stat-label" data-i18n="stat_exp">sesiones experimentadas</div>
-    </div>
-    <div class="quien-stat">
-      <div class="quien-stat-num">+300</div>
-      <div class="quien-stat-label" data-i18n="stat_fac">sesiones facilitadas</div>
-    </div>
+    <div class="quien-stat"><div class="quien-stat-num">5</div><div class="quien-stat-label" data-i18n="stat_anos">años de camino</div></div>
+    <div class="quien-stat"><div class="quien-stat-num">+100</div><div class="quien-stat-label" data-i18n="stat_exp">seres atendidos</div></div>
+    <div class="quien-stat"><div class="quien-stat-num">+300</div><div class="quien-stat-label" data-i18n="stat_fac">sesiones facilitadas</div></div>
   </div>
 
-  <div class="quien-eyebrow" data-i18n="eyebrow_manifiesto">Manifiesto</div>
+  <div class="quien-eyebrow" data-i18n="eyebrow_historia">Mi historia</div>
   <div class="quien-card">
-    <p data-i18n-html="manif_p1">No vine a darte poder.<br>Vine a recordarte que ya lo tenés.</p>
-    <p data-i18n="manif_p2">Creo que cada persona tiene dentro suyo todo lo necesario para transformar su realidad.</p>
-    <p data-i18n="manif_p3">Muchas veces buscamos afuera respuestas, cambios o soluciones que en realidad comienzan dentro nuestro.</p>
-    <p data-i18n="manif_p4">Las herramientas no crean el cambio.</p>
-    <p data-i18n="manif_p5">Nos ayudan a ver nuevas posibilidades, recuperar nuestra claridad y recordar el poder que siempre estuvo ahí.</p>
-    <p data-i18n="manif_p6">Juan Cruz Consciencia existe para acompañar ese proceso.</p>
+    <p data-i18n="hist_p1">Soy Juan Cruz. Nací en Llavallol, Buenos Aires.</p>
+    <p data-i18n="hist_p2">Durante mucho tiempo busqué afuera algo que no terminaba de encontrar. Quería entenderme y cambiar mi realidad, pero sentía que, por más que buscara respuestas, volvía una y otra vez al mismo lugar.</p>
+    <p data-i18n="hist_p3">En abril de 2022 recibí mi primera sesión de Barras de Access®. No encontré una respuesta: experimenté algo diferente. Por primera vez en mucho tiempo, mi mente hizo silencio. Lo que empezó como algo personal se convirtió en lo que hoy comparto.</p>
+    <p data-i18n="hist_p4">Me formé como facilitador de Access Consciousness® y desde entonces facilité más de 300 sesiones. Cada encuentro me recuerda que no todos necesitamos las mismas respuestas, y que a veces una pregunta diferente abre lo que antes no veíamos.</p>
+    <p data-i18n="hist_p5">Creo que siempre existen otras posibilidades. Descubrirlas empieza cuando nos permitimos cuestionar lo que dábamos por hecho.</p>
   </div>
 
-  <div class="quien-eyebrow" data-i18n="eyebrow_vision">Visión de mundo</div>
+  <div class="quien-eyebrow" data-i18n="eyebrow_acomp">Mi manera de acompañar</div>
   <div class="quien-card">
-    <p data-i18n="vision_p1">Veo la transformación humana como un proceso de recuerdo.</p>
-    <p data-i18n="vision_p2">Un regreso a nuestra capacidad natural de elegir, crear y vivir conscientemente.</p>
-    <p data-i18n="vision_p3">Por eso trabajo con herramientas energéticas, mentales y emocionales que llevan la consciencia a la acción.</p>
-    <p data-i18n="vision_p4">Porque cuando el ser, la mente y el cuerpo actúan en unidad, se transforma tu vida.</p>
-  </div>
-
-  <div class="quien-eyebrow" data-i18n="eyebrow_proposito">Propósito</div>
-  <div class="quien-card">
-    <p data-i18n="prop_p1">Mi camino comenzó buscando respuestas y me llevó a descubrir herramientas que transformaron mi forma de percibir la vida.</p>
-    <p data-i18n="prop_p2">Hoy comparto esas herramientas con una convicción simple:</p>
-    <p data-i18n="prop_p3">Cada persona tiene dentro suyo el poder de crear una realidad diferente.</p>
-    <p data-i18n="prop_p4">Mi propósito es acompañarte a descubrirlo.</p>
-  </div>
-
-  <div class="quien-espacio" data-i18n-html="quien_espacio">
-    Un espacio sin juicio, donde no hay nada que hacer — solo recibir.<br>
-    Un espacio en el que te permitas ser exactamente lo que sos.<br><br>
-    <span style="font-size:13px;color:var(--muted);">Sin expectativas. Solo presencia.</span>
+    <p data-i18n="acomp_p1">Un espacio sin juicio, donde no tenés que demostrar nada, resolver nada ni convertirte en alguien diferente.</p>
+    <p data-i18n="acomp_p2">Un espacio para bajar el ruido, escuchar tu cuerpo y permitirte recibir.</p>
+    <p class="quien-presencia" data-i18n="acomp_p3">Sin expectativas. Solo presencia.</p>
   </div>
 </section>
 
@@ -1241,23 +1219,23 @@ es:{
   clase_det_cierre:'Si sentís que es momento de un cambio real…<br><strong>Esta clase puede ser el inicio de algo mucho más grande.</strong>',
   sec_quien_label:'✦ Camino',
   quien_quote:'No vine a enseñarte nada.<br>Vine a <em>recordarte</em> lo que ya sabés.',
-  stat_anos:'años de camino espiritual',stat_exp:'sesiones experimentadas',stat_fac:'sesiones facilitadas',
-  eyebrow_manifiesto:'Manifiesto',eyebrow_vision:'Visión de mundo',eyebrow_proposito:'Propósito',
-  manif_p1:'No vine a darte poder.<br>Vine a recordarte que ya lo tenés.',
-  manif_p2:'Creo que cada persona tiene dentro suyo todo lo necesario para transformar su realidad.',
-  manif_p3:'Muchas veces buscamos afuera respuestas, cambios o soluciones que en realidad comienzan dentro nuestro.',
-  manif_p4:'Las herramientas no crean el cambio.',
-  manif_p5:'Nos ayudan a ver nuevas posibilidades, recuperar nuestra claridad y recordar el poder que siempre estuvo ahí.',
-  manif_p6:'Juan Cruz Consciencia existe para acompañar ese proceso.',
-  vision_p1:'Veo la transformación humana como un proceso de recuerdo.',
-  vision_p2:'Un regreso a nuestra capacidad natural de elegir, crear y vivir conscientemente.',
-  vision_p3:'Por eso trabajo con herramientas energéticas, mentales y emocionales que llevan la consciencia a la acción.',
-  vision_p4:'Porque cuando el ser, la mente y el cuerpo actúan en unidad, se transforma tu vida.',
-  prop_p1:'Mi camino comenzó buscando respuestas y me llevó a descubrir herramientas que transformaron mi forma de percibir la vida.',
-  prop_p2:'Hoy comparto esas herramientas con una convicción simple:',
-  prop_p3:'Cada persona tiene dentro suyo el poder de crear una realidad diferente.',
-  prop_p4:'Mi propósito es acompañarte a descubrirlo.',
-  quien_espacio:'Un espacio sin juicio, donde no hay nada que hacer — solo recibir.<br>Un espacio en el que te permitas ser exactamente lo que sos.<br><br><span style="font-size:13px;color:var(--muted);">Sin expectativas. Solo presencia.</span>',
+  stat_anos:'años de camino',stat_exp:'seres atendidos',stat_fac:'sesiones facilitadas',
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   cta_h2:'¿No sabés por dónde empezar?',cta_p:'Contame dónde estás y juntos elegimos lo que más te sirve en este momento.',cta_btn:'Agendá una sesión ✨',
   modal1_titulo:'¿Qué te llama?',modal1_sub:'Elegí lo que más resuena con lo que estás buscando ahora.',
   modal_barras_desc:'Liberar carga mental, relajación profunda, claridad · 60 min',
@@ -1302,6 +1280,7 @@ es:{
   testi_cta:'¿Querés vivirlo vos? Elegí tu sesión ↓',
   faq6_q:'¿Qué se siente? ¿Tengo que creer en algo?',faq6_a:'Es un toque muy suave y sostenido, acostado/a y vestido/a. La mayoría siente una relajación profunda y algunas personas se quedan dormidas. No hace falta creer en nada ni entender la técnica para recibirla.',faq7_q:'¿Tengo que hablar de lo que me pasa?',faq7_a:'No. Si querés contar algo, podés, pero no es necesario. La sesión funciona en silencio.',faq8_q:'¿Reemplaza una terapia o un tratamiento médico?',faq8_a:'No. Las sesiones son un espacio de relajación y bienestar que complementa, no reemplaza. Si estás en tratamiento por ansiedad, depresión u otra condición, seguí con tu profesional de salud.',
   footer_aviso:'Las sesiones de Access Consciousness® son prácticas de bienestar y no reemplazan diagnóstico ni tratamiento médico o psicológico.',
+  eyebrow_historia:'Mi historia',hist_p1:'Soy Juan Cruz. Nací en Llavallol, Buenos Aires.',hist_p2:'Durante mucho tiempo busqué afuera algo que no terminaba de encontrar. Quería entenderme y cambiar mi realidad, pero sentía que, por más que buscara respuestas, volvía una y otra vez al mismo lugar.',hist_p3:'En abril de 2022 recibí mi primera sesión de Barras de Access®. No encontré una respuesta: experimenté algo diferente. Por primera vez en mucho tiempo, mi mente hizo silencio. Lo que empezó como algo personal se convirtió en lo que hoy comparto.',hist_p4:'Me formé como facilitador de Access Consciousness® y desde entonces facilité más de 300 sesiones. Cada encuentro me recuerda que no todos necesitamos las mismas respuestas, y que a veces una pregunta diferente abre lo que antes no veíamos.',hist_p5:'Creo que siempre existen otras posibilidades. Descubrirlas empieza cuando nos permitimos cuestionar lo que dábamos por hecho.',eyebrow_acomp:'Mi manera de acompañar',acomp_p1:'Un espacio sin juicio, donde no tenés que demostrar nada, resolver nada ni convertirte en alguien diferente.',acomp_p2:'Un espacio para bajar el ruido, escuchar tu cuerpo y permitirte recibir.',acomp_p3:'Sin expectativas. Solo presencia.',
   months:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']
 },
 en:{
@@ -1389,24 +1368,24 @@ en:{
   clase_det_familia_badge:'👨‍👩‍👧‍👦 Family',
   clase_det_cierre:'If you feel it\'s time for a real change…<br><strong>This class could be the beginning of something much greater.</strong>',
   sec_quien_label:'✦ Journey',
-  quien_quote:'I did not come to teach you anything.<br>I came to <em>remind you</em> of what you already know.',
-  stat_anos:'years of spiritual journey',stat_exp:'sessions experienced',stat_fac:'sessions facilitated',
-  eyebrow_manifiesto:'Manifesto',eyebrow_vision:'World View',eyebrow_proposito:'Purpose',
-  manif_p1:'I did not come to give you power.<br>I came to remind you that you already have it.',
-  manif_p2:'I believe every person has within them everything necessary to transform their reality.',
-  manif_p3:'Many times we look outside for answers, changes or solutions that actually begin within.',
-  manif_p4:'Tools do not create change.',
-  manif_p5:'They help us see new possibilities, recover our clarity and remember the power that was always there.',
-  manif_p6:'Juan Cruz Consciencia exists to accompany that process.',
-  vision_p1:'I see human transformation as a process of remembering.',
-  vision_p2:'A return to our natural capacity to choose, create and live consciously.',
-  vision_p3:'That is why I work with energetic, mental and emotional tools that bring consciousness into action.',
-  vision_p4:'Because when being, mind and body act in unity, your life transforms.',
-  prop_p1:'My journey began searching for answers and led me to discover tools that transformed the way I perceive life.',
-  prop_p2:'Today I share those tools with a simple conviction:',
-  prop_p3:'Every person has within them the power to create a different reality.',
-  prop_p4:'My purpose is to accompany you in discovering it.',
-  quien_espacio:'A space without judgment, where there is nothing to do — just receive.<br>A space where you allow yourself to be exactly who you are.<br><br><span style="font-size:13px;color:var(--muted);">No expectations. Just presence.</span>',
+  quien_quote:'I didn’t come to teach you anything.<br>I came to <em>remind you</em> of what you already know.',
+  stat_anos:'years on the path',stat_exp:'people supported',stat_fac:'sessions facilitated',
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   cta_h2:"Don't know where to start?",cta_p:'Tell me where you are and together we choose what serves you most right now.',cta_btn:'Book a session ✨',
   modal1_titulo:'What calls to you?',modal1_sub:'Choose what resonates most with what you are looking for now.',
   modal_barras_desc:'Release mental load, deep relaxation, clarity · 60 min',
@@ -1451,6 +1430,7 @@ en:{
   testi_cta:'Want to experience it? Choose your session ↓',
   faq6_q:'What does it feel like? Do I have to believe in anything?',faq6_a:'It is a very gentle, steady touch while you lie down fully clothed. Most people feel deeply relaxed and some fall asleep. You don\'t need to believe in anything or understand the technique to receive it.',faq7_q:'Do I have to talk about what is going on with me?',faq7_a:'No. If you want to share something, you can, but it is not necessary. The session works in silence.',faq8_q:'Does it replace therapy or medical treatment?',faq8_a:'No. Sessions are a space for relaxation and wellbeing that complements, not replaces. If you are in treatment for anxiety, depression or any other condition, keep working with your health professional.',
   footer_aviso:'Access Consciousness® sessions are wellbeing practices and do not replace medical or psychological diagnosis or treatment.',
+  eyebrow_historia:'My story',hist_p1:'I’m Juan Cruz. I was born in Llavallol, Buenos Aires.',hist_p2:'For a long time I looked outside myself for something I couldn’t quite find. I wanted to understand myself and change my reality, but no matter how many answers I searched for, I kept coming back to the same place.',hist_p3:'In April 2022 I received my first Access Bars® session. I didn’t find an answer: I experienced something different. For the first time in a long while, my mind went quiet. What began as something personal became what I share today.',hist_p4:'I trained as an Access Consciousness® facilitator and have since facilitated more than 300 sessions. Every encounter reminds me that we don’t all need the same answers, and that sometimes a different question opens up what we couldn’t see before.',hist_p5:'I believe there are always other possibilities. Discovering them begins when we allow ourselves to question what we took for granted.',eyebrow_acomp:'How I accompany you',acomp_p1:'A space without judgment, where you don’t have to prove anything, fix anything or become someone different.',acomp_p2:'A space to quiet the noise, listen to your body and allow yourself to receive.',acomp_p3:'No expectations. Just presence.',
   months:['January','February','March','April','May','June','July','August','September','October','November','December']
 },
 pt:{
@@ -1539,23 +1519,23 @@ pt:{
   clase_det_cierre:'Se você sente que é hora de uma mudança real…<br><strong>Esta aula pode ser o início de algo muito maior.</strong>',
   sec_quien_label:'✦ Caminho',
   quien_quote:'Não vim te ensinar nada.<br>Vim te <em>lembrar</em> do que você já sabe.',
-  stat_anos:'anos de caminho espiritual',stat_exp:'sessões vivenciadas',stat_fac:'sessões facilitadas',
-  eyebrow_manifiesto:'Manifesto',eyebrow_vision:'Visão de mundo',eyebrow_proposito:'Propósito',
-  manif_p1:'Não vim te dar poder.<br>Vim te lembrar que você já o tem.',
-  manif_p2:'Acredito que cada pessoa tem dentro de si tudo o que é necessário para transformar sua realidade.',
-  manif_p3:'Muitas vezes buscamos fora respostas, mudanças ou soluções que na verdade começam dentro de nós.',
-  manif_p4:'As ferramentas não criam a mudança.',
-  manif_p5:'Elas nos ajudam a ver novas possibilidades, recuperar nossa clareza e lembrar o poder que sempre esteve lá.',
-  manif_p6:'Juan Cruz Consciencia existe para acompanhar esse processo.',
-  vision_p1:'Vejo a transformação humana como um processo de lembrança.',
-  vision_p2:'Um retorno à nossa capacidade natural de escolher, criar e viver conscientemente.',
-  vision_p3:'Por isso trabalho com ferramentas energéticas, mentais e emocionais que levam a consciência à ação.',
-  vision_p4:'Porque quando o ser, a mente e o corpo agem em unidade, sua vida se transforma.',
-  prop_p1:'Meu caminho começou buscando respostas e me levou a descobrir ferramentas que transformaram minha forma de perceber a vida.',
-  prop_p2:'Hoje compartilho essas ferramentas com uma convicção simples:',
-  prop_p3:'Cada pessoa tem dentro de si o poder de criar uma realidade diferente.',
-  prop_p4:'Meu propósito é te acompanhar a descobrir isso.',
-  quien_espacio:'Um espaço sem julgamento, onde não há nada a fazer — só receber.<br>Um espaço onde você se permite ser exatamente o que é.<br><br><span style="font-size:13px;color:var(--muted);">Sem expectativas. Só presença.</span>',
+  stat_anos:'anos de caminho',stat_exp:'seres atendidos',stat_fac:'sessões facilitadas',
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   cta_h2:'Não sabe por onde começar?',cta_p:'Me conta onde você está e juntos escolhemos o que mais te serve neste momento.',cta_btn:'Agende uma sessão ✨',
   modal1_titulo:'O que te chama?',modal1_sub:'Escolha o que mais ressoa com o que você está buscando agora.',
   modal_barras_desc:'Liberar carga mental, relaxamento profundo, clareza · 60 min',
@@ -1600,6 +1580,7 @@ pt:{
   testi_cta:'Quer viver isso também? Escolha sua sessão ↓',
   faq6_q:'O que se sente? Preciso acreditar em algo?',faq6_a:'É um toque muito suave e contínuo, deitado/a e vestido/a. A maioria sente um relaxamento profundo e algumas pessoas adormecem. Não é preciso acreditar em nada nem entender a técnica para receber.',faq7_q:'Preciso falar sobre o que está acontecendo comigo?',faq7_a:'Não. Se quiser contar algo, pode, mas não é necessário. A sessão funciona em silêncio.',faq8_q:'Substitui uma terapia ou um tratamento médico?',faq8_a:'Não. As sessões são um espaço de relaxamento e bem-estar que complementa, não substitui. Se você está em tratamento para ansiedade, depressão ou outra condição, continue com seu profissional de saúde.',
   footer_aviso:'As sessões de Access Consciousness® são práticas de bem-estar e não substituem diagnóstico nem tratamento médico ou psicológico.',
+  eyebrow_historia:'Minha história',hist_p1:'Sou Juan Cruz. Nasci em Llavallol, Buenos Aires.',hist_p2:'Durante muito tempo busquei fora algo que não conseguia encontrar. Queria me entender e mudar minha realidade, mas sentia que, por mais que buscasse respostas, voltava sempre ao mesmo lugar.',hist_p3:'Em abril de 2022 recebi minha primeira sessão de Barras de Access®. Não encontrei uma resposta: vivi algo diferente. Pela primeira vez em muito tempo, minha mente fez silêncio. O que começou como algo pessoal se transformou no que hoje compartilho.',hist_p4:'Me formei como facilitador de Access Consciousness® e, desde então, facilitei mais de 300 sessões. Cada encontro me lembra que nem todos precisamos das mesmas respostas, e que às vezes uma pergunta diferente abre o que antes não víamos.',hist_p5:'Acredito que sempre existem outras possibilidades. Descobri-las começa quando nos permitimos questionar o que dávamos como certo.',eyebrow_acomp:'Minha forma de acompanhar',acomp_p1:'Um espaço sem julgamento, onde você não precisa provar nada, resolver nada nem se tornar alguém diferente.',acomp_p2:'Um espaço para baixar o ruído, escutar seu corpo e se permitir receber.',acomp_p3:'Sem expectativas. Só presença.',
   months:['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro']
 }
 };
