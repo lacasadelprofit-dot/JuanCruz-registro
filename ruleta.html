@@ -130,13 +130,13 @@ a{color:inherit;}
     </div>
     <div class="guia">
       <h3 id="guiaT"></h3>
-      <p data-t="guia_sub">De regalo. Te la envío por WhatsApp.</p>
+      <p data-t="guia_sub">De regalo. Descargala ahora.</p>
       <ol>
         <li data-t="guia1">Tocá el botón: se abre WhatsApp con el mensaje listo.</li>
         <li data-t="guia2">Envialo tal cual.</li>
         <li data-t="guia3">Te respondo con tu guía, en tu idioma.</li>
       </ol>
-      <a class="btn btn-terra" id="btnGuia" target="_blank" rel="noopener" onclick="ev('guia_whatsapp',{dimension:_dim})" data-t="guia_btn">Pedirla por WhatsApp</a>
+      <a class="btn btn-terra" id="btnGuia" target="_blank" rel="noopener" onclick="ev('guia_whatsapp',{dimension:_dim});if(window.abrirGuia){event.preventDefault();abrirGuia(_dim,{origen:'ruleta',flyer:ORIG.flyer,ciudad:ORIG.ciudad,lang:_lang});}" data-t="guia_btn">Descargar la guía ✦</a>
     </div>
   </section>
 
@@ -162,25 +162,25 @@ const _sb=supabase.createClient(SUPA_URL,SUPA_KEY);
 const T={
  es:{kicker:'Ruleta de preguntas',tit:'Girá y recibí <em>tu pregunta</em>',sub:'Una pregunta para hoy. Sin registro, sin datos, las veces que quieras.',
   centro:'GIRAR',girar:'Girar la ruleta',te_toco:'Te tocó',compartir:'Compartir en mi historia',otra:'Girar de nuevo',
-  guia_t:'¿Querés la guía de 20 preguntas de {d}?',guia_sub:'De regalo. Te la envío por WhatsApp.',
+  guia_t:'¿Querés la guía de 20 preguntas de {d}?',guia_sub:'De regalo. Descargala ahora.',
   guia1:'Tocá el botón: se abre WhatsApp con el mensaje listo.',guia2:'Envialo tal cual.',guia3:'Te respondo con tu guía, en tu idioma.',
-  guia_btn:'Pedirla por WhatsApp',guia_msg:'Hola Juan Cruz! Quiero la guía de 20 preguntas de {d} ✦',
+  guia_btn:'Descargar la guía ✦',guia_msg:'Hola Juan Cruz! Quiero la guía de 20 preguntas de {d} ✦',
   tesoro:'Hay stickers escondidos con premios',agendar:'Agendar una sesión por WhatsApp',agendar_msg:'Hola Juan Cruz! Giré la ruleta y quiero agendar una sesión ✦',
   sesiones:'Conocé las sesiones',historia:'Mi pregunta de hoy',pie_story:'Girá la tuya en juancruzconsciencia.lat',
   descargada:'Imagen guardada: subila a tu historia ✦',generando:'Generando…',fallback:'¿Qué elegiría si confiara en mí?'},
  pt:{kicker:'Roleta de perguntas',tit:'Gire e receba <em>sua pergunta</em>',sub:'Uma pergunta para hoje. Sem cadastro, sem dados, quantas vezes quiser.',
   centro:'GIRAR',girar:'Girar a roleta',te_toco:'Você tirou',compartir:'Compartilhar no meu story',otra:'Girar de novo',
-  guia_t:'Quer o guia de 20 perguntas de {d}?',guia_sub:'De presente. Te envio pelo WhatsApp.',
+  guia_t:'Quer o guia de 20 perguntas de {d}?',guia_sub:'De presente. Baixe agora.',
   guia1:'Toque no botão: o WhatsApp abre com a mensagem pronta.',guia2:'Envie do jeito que está.',guia3:'Eu te respondo com seu guia, no seu idioma.',
-  guia_btn:'Pedir pelo WhatsApp',guia_msg:'Oi Juan Cruz! Quero o guia de 20 perguntas de {d} ✦',
+  guia_btn:'Baixar o guia ✦',guia_msg:'Oi Juan Cruz! Quero o guia de 20 perguntas de {d} ✦',
   tesoro:'Tem adesivos escondidos com prêmios',agendar:'Agendar uma sessão pelo WhatsApp',agendar_msg:'Oi Juan Cruz! Girei a roleta e quero agendar uma sessão ✦',
   sesiones:'Conheça as sessões',historia:'Minha pergunta de hoje',pie_story:'Gire a sua em juancruzconsciencia.lat',
   descargada:'Imagem salva: poste no seu story ✦',generando:'Gerando…',fallback:'O que eu escolheria se confiasse em mim?'},
  en:{kicker:'Question wheel',tit:'Spin and receive <em>your question</em>',sub:'A question for today. No sign-up, no data, as many times as you like.',
   centro:'SPIN',girar:'Spin the wheel',te_toco:'You got',compartir:'Share to my story',otra:'Spin again',
-  guia_t:'Want the 20-question guide on {d}?',guia_sub:"A gift. I'll send it to you on WhatsApp.",
+  guia_t:'Want the 20-question guide on {d}?',guia_sub:'A gift. Download it now.',
   guia1:'Tap the button: WhatsApp opens with the message ready.',guia2:'Send it as is.',guia3:"I'll reply with your guide, in your language.",
-  guia_btn:'Ask for it on WhatsApp',guia_msg:"Hi Juan Cruz! I'd like the 20-question guide on {d} ✦",
+  guia_btn:'Download the guide ✦',guia_msg:"Hi Juan Cruz! I'd like the 20-question guide on {d} ✦",
   tesoro:'There are hidden stickers with prizes',agendar:'Book a session on WhatsApp',agendar_msg:'Hi Juan Cruz! I spun the wheel and I want to book a session ✦',
   sesiones:'See the sessions',historia:'My question today',pie_story:'Spin yours at juancruzconsciencia.lat',
   descargada:'Image saved: post it to your story ✦',generando:'Generating…',fallback:'What would I choose if I trusted myself?'}
@@ -364,5 +364,6 @@ setLang(_lang);
 ev('page_view');
 cargarPreguntas();
 </script>
+<script src="v2_guias.js"></script>
 </body>
 </html>
