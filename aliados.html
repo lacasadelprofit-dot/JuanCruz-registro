@@ -252,6 +252,7 @@
 
 <script>
 const WA='541151758653';
+const T=s=>window.v2t?window.v2t(s):s;
 document.querySelectorAll('[data-wa]').forEach(a=>{a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(a.dataset.wa);a.target='_blank';a.rel='noopener';});
 document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
 document.getElementById('formAliado').addEventListener('submit',e=>{
@@ -260,8 +261,8 @@ document.getElementById('formAliado').addEventListener('submit',e=>{
   const err=document.getElementById('fErr');
   if(!v('fEst')||!v('fNom')||!v('fTel')){err.style.display='block';return;}
   err.style.display='none';
-  const mods=[...document.querySelectorAll('.chips input:checked')].map(c=>c.value).join(', ')||'No indicada';
-  const txt=`Hola Juan Cruz, quiero ser aliado.\n\nEstablecimiento: ${v('fEst')} (${v('fTipo')})\nCiudad: ${v('fCiudad')}\nNombre: ${v('fNom')}\nWhatsApp: ${v('fTel')}\nModalidad: ${mods}`+(v('fMsg')?`\nMensaje: ${v('fMsg')}`:'');
+  const mods=[...document.querySelectorAll('.chips input:checked')].map(c=>c.value).join(', ')||T('No indicada');
+  const txt=`${T('Hola Juan Cruz, quiero ser aliado.')}\n\n${T('Establecimiento')}: ${v('fEst')} (${v('fTipo')})\n${T('Ciudad')}: ${v('fCiudad')}\n${T('Nombre')}: ${v('fNom')}\nWhatsApp: ${v('fTel')}\n${T('Modalidad')}: ${mods}`+(v('fMsg')?`\n${T('Mensaje')}: ${v('fMsg')}`:'');
   /* se guarda también en el sistema (te llega aviso por Telegram) */
   try{if(window.supabase){const sb=window.__sbV2=window.__sbV2||supabase.createClient('https://vffmnyjjawvvctcqzkvj.supabase.co','sb_publishable_A1rJIiXHSg6TQYT2gKQHUw_UTwmS76t');
     sb.from('aliados_solicitudes').insert({id:'al-'+Date.now().toString(36)+Math.random().toString(36).slice(2,7),data:{establecimiento:v('fEst'),tipo:v('fTipo'),ciudad:v('fCiudad'),nombre:v('fNom'),celular:v('fTel').replace(/\D/g,''),modalidad:mods,mensaje:v('fMsg'),origen:'aliados_web',ts:new Date().toISOString()}}).then(()=>{},()=>{});}}catch(e){}
@@ -270,6 +271,7 @@ document.getElementById('formAliado').addEventListener('submit',e=>{
 /* videos: si la persona pidió menos movimiento, quedan quietos */
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('video.vid').forEach(v=>{v.removeAttribute('autoplay');v.pause();});
 </script>
+<script src="v2_i18n.js"></script>
 <script src="v2_nav.js"></script>
 </body>
 </html>

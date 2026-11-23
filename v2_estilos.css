@@ -219,3 +219,9 @@ details p{margin-top:10px;color:var(--muted);font-size:15px}
 
 /* anotaciones del modelo */
 .nota{font-size:12.5px;color:#6B5200;background:#FFF8DC;border:1px dashed #E0C25A;border-radius:10px;padding:10px 14px;margin-top:18px}
+
+/* selector de idioma ES · PT · EN */
+.v2-lang{display:flex;align-items:center;gap:1px;font-size:12px;color:var(--muted,#7A6E60);border:1px solid var(--border);border-radius:20px;padding:3px 8px}
+.v2-lang button{background:none;border:0;padding:1px 4px;font:500 12px 'DM Sans',sans-serif;color:inherit;cursor:pointer;border-radius:10px}
+.v2-lang button.on{color:var(--text,#22180E);font-weight:700}
+.v2-lang span{opacity:.5}
