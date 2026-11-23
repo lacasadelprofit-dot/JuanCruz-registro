@@ -143,9 +143,9 @@
 "Receba uma sessão",
 "Receive a session"
 ],
-"Presencial en Búzios, Cabo Frío o Arraial do Cabo. Solo 3 turnos por día, de lunes a viernes por la mañana.": [
-"Presencial em Búzios, Cabo Frio ou Arraial do Cabo. Apenas 3 horários por dia, de segunda a sexta pela manhã.",
-"In person in Búzios, Cabo Frio or Arraial do Cabo. Only 3 slots per day, Monday to Friday mornings."
+"Presencial en Búzios, Cabo Frío o Arraial do Cabo. De lunes a viernes, por la mañana y por la tarde.": [
+"Presencial em Búzios, Cabo Frio ou Arraial do Cabo. De segunda a sexta, de manhã e à noite.",
+"In person in Búzios, Cabo Frio or Arraial do Cabo. Monday to Friday, mornings and evenings."
 ],
 "Barras de AccessR$ 200": [
 "<span>Barras de Access</span><span>R$ 200</span>",
