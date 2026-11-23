@@ -18,8 +18,8 @@
     pt:{tit:'Seu guia de 20 perguntas',sub:'Deixe seu nome e seu WhatsApp ou e-mail, e baixe agora.',nombre:'Seu nome',wa:'WhatsApp (com código do país)',mail:'E-mail',o:'ou',btn:'Baixar meu guia ✦',err_nombre:'Escreva seu nome.',err_contacto:'Deixe seu WhatsApp ou seu e-mail.',err_mail:'Confira o e-mail.',ok_t:'Seu guia está pronto!',ok_p:'Toque no botão para abrir. Guarde para voltar a ele quando quiser.',ok_btn:'Abrir meu guia',pend_t:'Pronto, pedido feito!',pend_p:'Te envio hoje por WhatsApp ou e-mail.',cerrar:'Fechar',priv:'Uso seus dados só para te enviar o guia e te escrever. Nada de spam.'},
     en:{tit:'Your 20-question guide',sub:'Leave your name and your WhatsApp or email, and download it now.',nombre:'Your name',wa:'WhatsApp (with country code)',mail:'Email',o:'or',btn:'Download my guide ✦',err_nombre:'Please write your name.',err_contacto:'Leave your WhatsApp or your email.',err_mail:'Please check the email.',ok_t:'Your guide is ready!',ok_p:'Tap the button to open it. Save it to come back whenever you want.',ok_btn:'Open my guide',pend_t:'Done, request sent!',pend_p:"I'll send it to you today by WhatsApp or email.",cerrar:'Close',priv:'I only use your details to send you the guide and write to you. No spam.'}
   };
-  const AREA_LBL={pt:{Consciencia:'Consciência',Recibir:'Receber',Cuerpo:'Corpo',Vínculos:'Vínculos',Propósito:'Propósito',Identidad:'Identidade'},
-                  en:{Consciencia:'Consciousness',Recibir:'Receiving',Cuerpo:'Body',Vínculos:'Bonds',Propósito:'Purpose',Identidad:'Identity'}};
+  const AREA_LBL={pt:{Recibir:'Receber',Cuerpo:'Corpo',Vínculos:'Vínculos',Viajes:'Viagens',Emprender:'Empreender',Identidad:'Identidade'},
+                  en:{Recibir:'Receiving',Cuerpo:'Body',Vínculos:'Bonds',Viajes:'Travel',Emprender:'Business',Identidad:'Identity'}};
   const areaLbl=(a,l)=>(AREA_LBL[l]&&AREA_LBL[l][a])||a;
 
   /* modal */

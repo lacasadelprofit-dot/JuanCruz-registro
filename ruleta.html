@@ -185,20 +185,20 @@ const T={
   sesiones:'See the sessions',historia:'My question today',pie_story:'Spin yours at juancruzconsciencia.lat',
   descargada:'Image saved: post it to your story ✦',generando:'Generating…',fallback:'What would I choose if I trusted myself?'}
 };
-/* 6 dimensiones (nombre en la base → cómo se muestra) */
-const DIMS=['Consciencia','Dinero','Cuerpo','Relaciones','Propósito','Identidad'];
+/* 6 tipos de la temporada 2026/27 (20 preguntas cada uno · nombre en la base → cómo se muestra) */
+const DIMS=['Recibir','Cuerpo','Vínculos','Viajes','Emprender','Identidad'];
 const DIM_LBL={
- es:{Consciencia:'Consciencia',Dinero:'Recibir',Cuerpo:'Cuerpo',Relaciones:'Vínculos',Propósito:'Propósito',Identidad:'Identidad'},
- pt:{Consciencia:'Consciência',Dinero:'Receber',Cuerpo:'Corpo',Relaciones:'Vínculos',Propósito:'Propósito',Identidad:'Identidade'},
- en:{Consciencia:'Consciousness',Dinero:'Receiving',Cuerpo:'Body',Relaciones:'Bonds',Propósito:'Purpose',Identidad:'Identity'}
+ es:{Recibir:'Recibir',Cuerpo:'Cuerpo',Vínculos:'Vínculos',Viajes:'Viajes',Emprender:'Emprender',Identidad:'Identidad'},
+ pt:{Recibir:'Receber',Cuerpo:'Corpo',Vínculos:'Vínculos',Viajes:'Viagens',Emprender:'Empreender',Identidad:'Identidade'},
+ en:{Recibir:'Receiving',Cuerpo:'Body',Vínculos:'Bonds',Viajes:'Travel',Emprender:'Business',Identidad:'Identity'}
 };
 const MANO='M4 14V10a1 1 0 0 1 2 0V8a1 1 0 0 1 2 0V7a1 1 0 0 1 2 0V8a1 1 0 0 1 2 0V21 M6 10v3.2 M8 8v4.6 M10 8v4.6 M4 14l-1.3-2.1a1.1 1.1 0 0 0-1.9 1.1L3 17.2c1.3 2.3 3.6 3.8 6.2 3.8H12';
 const ICO={
- Consciencia:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2 M12 20v2 M4.93 4.93l1.41 1.41 M17.66 17.66l1.41 1.41 M2 12h2 M20 12h2 M6.34 17.66l-1.41 1.41 M19.07 4.93l-1.41 1.41"/>',
- Dinero:`<path d="${MANO}"/><path transform="matrix(-1 0 0 1 24 0)" d="${MANO}"/>`,
+ Recibir:`<path d="${MANO}"/><path transform="matrix(-1 0 0 1 24 0)" d="${MANO}"/>`,
  Cuerpo:'<circle cx="12" cy="5" r="1.6"/><path d="M9 20l3-6 3 6 M6 8l6 2 6-2 M12 10v4"/>',
- Relaciones:'<circle cx="9" cy="7" r="4"/><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M22 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75"/>',
- Propósito:'<circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/>',
+ Vínculos:'<circle cx="9" cy="7" r="4"/><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M22 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75"/>',
+ Viajes:'<path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>',
+ Emprender:'<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0 M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>',
  Identidad:'<path d="M2 12C2 6.5 6.5 2 12 2a10 10 0 0 1 8 4 M5 19.5C5.5 18 6 15 6 12c0-.7.12-1.37.34-2 M17.29 21.02c.12-.6.43-2.3.5-3.02 M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4 M8.65 22c.21-.66.45-1.32.57-2 M14 13.12c0 2.38 0 6.38-1 8.88 M21.8 16c.2-2 .13-5.35 0-6 M9 6.8a6 6 0 0 1 9 5.2c0 .47 0 1.17-.02 2"/>'
 };
 const SHARE_ICO='<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8 M16 6l-4-4-4 4 M12 2v13"/></svg>';
@@ -249,7 +249,7 @@ let PREGS=[];
 async function cargarPreguntas(){
   try{
     const {data,error}=await _sb.from('comunidad_contenido').select('id,data')
-      .filter('data->>tipo','eq','pregunta').or('data->>activo.is.null,data->>activo.eq.true');
+      .filter('data->>tipo','eq','pregunta').filter('data->>set','eq','temporada-2026').or('data->>activo.is.null,data->>activo.eq.true');
     if(!error&&data)PREGS=data.map(r=>r.data||{}).filter(p=>p.activo!==false);
   }catch(e){console.warn(e);}
 }
@@ -273,7 +273,7 @@ function girar(otra){
   _girando=true;
   ev(otra?'ruleta_girar_otra':'ruleta_girar');
   ['btnCentro','btnGirar'].forEach(id=>document.getElementById(id).disabled=true);
-  let dims=DIMS.filter(d=>PREGS.some(p=>(p.matiz||'Consciencia')===d));
+  let dims=DIMS.filter(d=>PREGS.some(p=>p.matiz===d));
   if(!dims.length)dims=[...DIMS];
   let pool=dims.filter(d=>d!==_dim);if(!pool.length)pool=dims;
   const dim=pool[Math.floor(Math.random()*pool.length)];
@@ -288,7 +288,7 @@ function girar(otra){
   setTimeout(()=>{
     _girando=false;['btnCentro','btnGirar'].forEach(id=>document.getElementById(id).disabled=false);
     _dim=dim;
-    const cands=PREGS.map((p,k)=>k).filter(k=>(PREGS[k].matiz||'Consciencia')===dim&&k!==_lastIdx);
+    const cands=PREGS.map((p,k)=>k).filter(k=>PREGS[k].matiz===dim&&k!==_lastIdx);
     _lastIdx=cands.length?cands[Math.floor(Math.random()*cands.length)]:-1;
     _preg=_lastIdx>=0?PREGS[_lastIdx]:null;
     ev('ruleta_resultado',{dimension:dim});
