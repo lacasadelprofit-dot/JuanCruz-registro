@@ -203,6 +203,20 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 .ruleta-res.vacio .featured-q{font-size:18px;font-weight:400;color:rgba(251,241,228,.7);font-style:italic;}
 @media(prefers-reduced-motion:reduce){#ruletaRot,#ruletaRot .rul-l{transition-duration:.6s;}}
 
+/* ── BÚSQUEDA DEL TESORO (bloque en la landing) ── */
+.tz-card{background:linear-gradient(135deg,#FBF0E6 0%,#F5E8D4 60%,var(--terra-l) 100%);border:1px solid #E2C9AE;border-radius:24px;padding:24px 20px;}
+.tz-cont{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.tz-n{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:54px;line-height:1;color:var(--terra-d);min-width:40px;text-align:center;}
+.tz-cont b{display:block;font-size:15px;color:var(--text);}
+.tz-activa{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--terra-d);margin-top:3px;}
+.tz-activa::before{content:'';width:8px;height:8px;border-radius:50%;background:#4C8B5A;box-shadow:0 0 0 3px rgba(76,139,90,.2);}
+.tz-pasos{display:grid;gap:10px;margin-bottom:20px;}
+.tz-paso{display:flex;gap:14px;align-items:flex-start;background:#fff;border-radius:16px;padding:14px;}
+.tz-ico{flex:none;width:42px;height:42px;border-radius:50%;background:var(--terra-l);color:var(--terra);display:flex;align-items:center;justify-content:center;font-size:21px;}
+.tz-paso b{display:block;font-size:14.5px;color:var(--text);margin-bottom:2px;}
+.tz-paso span{font-size:13px;color:var(--muted);line-height:1.55;}
+.tz-card .tz-btn{display:block;width:100%;text-align:center;text-decoration:none;}
+
 /* ── REGALOS ── */
 .regalos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
 @media(max-width:480px){.regalos-grid{grid-template-columns:1fr;}}
@@ -1104,9 +1118,30 @@ footer{padding-bottom:104px!important;}
       </div>
       <button class="ruleta-cta" onclick="track('click_btn',{boton:'ruleta_agendar',dimension:_rulDim});openModal()" data-i18n="ruleta_agendar">Agendá tu sesión →</button>
     </div>
-    <a class="ruleta-tesoro" href="tesoro.html" onclick="track('click_btn',{boton:'ruleta_tesoro'})" data-i18n="ruleta_tesoro">Hay stickers escondidos con premios →</a>
+    <a class="ruleta-tesoro" href="#tesoro" onclick="track('click_btn',{boton:'ruleta_tesoro'})" data-i18n="ruleta_tesoro">Hay stickers escondidos con premios →</a>
   </div>
 
+</section>
+
+<hr class="sec-div">
+
+<!-- BÚSQUEDA DEL TESORO (bloque informativo → tesoro.html) -->
+<section id="tesoro" class="sec">
+  <div class="sec-label" data-i18n="tz_label">✦ Búsqueda del tesoro</div>
+  <div class="sec-title" data-i18n="tz_titulo">Hay preguntas escondidas en la ciudad</div>
+  <div class="sec-sub" data-i18n="tz_sub">Escondí stickers con una pregunta y un código QR en Búzios, Arraial do Cabo y Cabo Frío. Si encontrás uno, puede tener un premio para vos.</div>
+  <div class="tz-card">
+    <div class="tz-cont" id="tzCont" style="display:none">
+      <div class="tz-n" id="tzN">0</div>
+      <div><b id="tzNLbl"></b><span class="tz-activa" data-i18n="tz_activa">Búsqueda activa</span></div>
+    </div>
+    <div class="tz-pasos">
+      <div class="tz-paso"><div class="tz-ico"><i data-i="ubicacion"></i></div><div><b data-i18n="tz_p1_t">Encontrá un sticker</b><span data-i18n="tz_p1_d">Están escondidos en distintos lugares de las tres ciudades. Mirá bien a tu alrededor.</span></div></div>
+      <div class="tz-paso"><div class="tz-ico"><i data-i="camara"></i></div><div><b data-i18n="tz_p2_t">Compartilo</b><span data-i18n="tz_p2_d">Subí una foto o video del sticker a tu historia y etiquetá a @juancruzconsciencia.</span></div></div>
+      <div class="tz-paso"><div class="tz-ico"><i data-i="regalo"></i></div><div><b data-i18n="tz_p3_t">Girá y ganá</b><span data-i18n="tz_p3_d">Escaneá el QR y girá la ruleta de premios: sesiones gratis, descuentos y más. El primero que lo reclama, gana.</span></div></div>
+    </div>
+    <a class="btn-cta tz-btn" href="tesoro.html" onclick="track('click_btn',{boton:'tesoro_tablero'})" data-i18n="tz_btn">Ver el tablero del tesoro →</a>
+  </div>
 </section>
 
 <!-- REGALOS: OCULTA por pedido del usuario (2026-11-22). Para volver a mostrarla, quitar los style="display:none" de este <hr>, de la <section> y del link "nav_regalos" del menú. -->
@@ -1288,6 +1323,7 @@ const ICO={
   idea:'<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5 M9 18h6 M10 22h4"/>',
   regalo:'<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13 M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7 M7.5 8a2.5 2.5 0 0 1 0-5C10 3 11.5 5.5 12 8c.5-2.5 2-5 4.5-5a2.5 2.5 0 0 1 0 5"/>',
   espera:'<path d="M5 22h14 M5 2h14 M17 22v-4.17a2 2 0 0 0-.59-1.42L12 12l-4.41 4.41A2 2 0 0 0 7 17.83V22 M7 2v4.17a2 2 0 0 0 .59 1.42L12 12l4.41-4.41A2 2 0 0 0 17 6.17V2"/>',
+  camara:'<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/>',
   familia:'<circle cx="9" cy="7" r="4"/><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M22 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75"/>'
 };
 /* ── PRECIOS SEGÚN IDIOMA: R$ siempre primero; ARG (es) suma pesos, EN suma dólares, BR (pt) solo reales.
@@ -1337,7 +1373,7 @@ es:{
   cargando:'Cargando...',featured_label:'✦ Pregunta del momento',
   ruleta_tit:'Hay una <em>pregunta</em> esperándote',
   ruleta_sub:'Girá la ruleta y dejá que aparezca la pregunta que ahora está disponible para vos.',ruleta_girar:'GIRAR',
-  ruleta_hint:'Tocá GIRAR ✦',ruleta_otra:'Girar de nuevo ↻',ruleta_agendar:'Agendá tu sesión →',ruleta_tesoro:'Hay stickers escondidos con premios →',
+  ruleta_hint:'Tocá GIRAR ✦',ruleta_otra:'Girar de nuevo ↻',ruleta_agendar:'Agendá tu sesión →',ruleta_tesoro:'Hay stickers escondidos con premios →',tz_label:'✦ Búsqueda del tesoro',tz_titulo:'Hay preguntas escondidas en la ciudad',tz_sub:'Escondí stickers con una pregunta y un código QR en Búzios, Arraial do Cabo y Cabo Frío. Si encontrás uno, puede tener un premio para vos.',tz_activa:'Búsqueda activa',tz_quedan1:'premio todavía escondido',tz_quedan:'premios todavía escondidos',tz_p1_t:'Encontrá un sticker',tz_p1_d:'Están escondidos en distintos lugares de las tres ciudades. Mirá bien a tu alrededor.',tz_p2_t:'Compartilo',tz_p2_d:'Subí una foto o video del sticker a tu historia y etiquetá a @juancruzconsciencia.',tz_p3_t:'Girá y ganá',tz_p3_d:'Escaneá el QR y girá la ruleta de premios: sesiones gratis, descuentos y más. El primero que lo reclama, gana.',tz_btn:'Ver el tablero del tesoro →',
   btn_siguiente:'Otra pregunta →',btn_compartir:'↗ Compartir',
   sec_ses_label:'✦ Lo que ofrezco',sec_ses_titulo:'Un espacio para soltar y elegir',
   sec_ses_sub:'Cada sesión es una invitación a liberar lo que ya no te sirve y abrirte a más de lo que sos. Si es tu primera vez, empezá por Barras: es la más suave y la que más se elige.',
@@ -1498,7 +1534,7 @@ en:{
   cargando:'Loading...',featured_label:'✦ Question of the moment',
   ruleta_tit:'A <em>question</em> is waiting for you',
   ruleta_sub:"Spin the wheel and let the question that's available for you right now appear.",ruleta_girar:'SPIN',
-  ruleta_hint:'Tap SPIN ✦',ruleta_otra:'Spin again ↻',ruleta_agendar:'Book your session →',ruleta_tesoro:'There are hidden stickers with prizes →',
+  ruleta_hint:'Tap SPIN ✦',ruleta_otra:'Spin again ↻',ruleta_agendar:'Book your session →',ruleta_tesoro:'There are hidden stickers with prizes →',tz_label:'✦ Treasure hunt',tz_titulo:'There are questions hidden around town',tz_sub:'I hid stickers with a question and a QR code in Búzios, Arraial do Cabo and Cabo Frio. If you find one, it may have a prize for you.',tz_activa:'Hunt is on',tz_quedan1:'prize still hidden',tz_quedan:'prizes still hidden',tz_p1_t:'Find a sticker',tz_p1_d:'They are hidden in different spots across the three towns. Look closely around you.',tz_p2_t:'Share it',tz_p2_d:'Post a photo or video of the sticker to your story and tag @juancruzconsciencia.',tz_p3_t:'Spin and win',tz_p3_d:'Scan the QR and spin the prize wheel: free sessions, discounts and more. First to claim, wins.',tz_btn:'See the treasure board →',
   btn_siguiente:'Next question →',btn_compartir:'↗ Share',
   sec_ses_label:'✦ What I offer',sec_ses_titulo:'A space to release and choose',
   sec_ses_sub:'Each session is an invitation to release what no longer serves you and open up to more of who you are. If it’s your first time, start with Bars: it’s the gentlest and the most chosen.',
@@ -1659,7 +1695,7 @@ pt:{
   cargando:'Carregando...',featured_label:'✦ Pergunta do momento',
   ruleta_tit:'Tem uma <em>pergunta</em> esperando por você',
   ruleta_sub:'Gire a roleta e deixe aparecer a pergunta que agora está disponível para você.',ruleta_girar:'GIRAR',
-  ruleta_hint:'Toque em GIRAR ✦',ruleta_otra:'Girar de novo ↻',ruleta_agendar:'Agende sua sessão →',ruleta_tesoro:'Tem adesivos escondidos com prêmios →',
+  ruleta_hint:'Toque em GIRAR ✦',ruleta_otra:'Girar de novo ↻',ruleta_agendar:'Agende sua sessão →',ruleta_tesoro:'Tem adesivos escondidos com prêmios →',tz_label:'✦ Caça ao tesouro',tz_titulo:'Tem perguntas escondidas pela cidade',tz_sub:'Escondi adesivos com uma pergunta e um QR code em Búzios, Arraial do Cabo e Cabo Frio. Se você encontrar um, pode ter um prêmio para você.',tz_activa:'Caça ativa',tz_quedan1:'prêmio ainda escondido',tz_quedan:'prêmios ainda escondidos',tz_p1_t:'Encontre um adesivo',tz_p1_d:'Eles estão escondidos em vários lugares das três cidades. Olhe bem ao seu redor.',tz_p2_t:'Compartilhe',tz_p2_d:'Poste uma foto ou vídeo do adesivo no seu story e marque @juancruzconsciencia.',tz_p3_t:'Gire e ganhe',tz_p3_d:'Escaneie o QR e gire a roleta de prêmios: sessões grátis, descontos e mais. Quem reclamar primeiro, ganha.',tz_btn:'Ver o painel do tesouro →',
   btn_siguiente:'Próxima pergunta →',btn_compartir:'↗ Compartilhar',
   sec_ses_label:'✦ O que ofereço',sec_ses_titulo:'Um espaço para soltar e escolher',
   sec_ses_sub:'Cada sessão é um convite para liberar o que já não te serve e se abrir para mais do que você é. Se é a sua primeira vez, comece pelas Barras: é a mais suave e a mais escolhida.',
@@ -1810,6 +1846,7 @@ function setLang(code){
   document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml;if(t[k]!==undefined)el.innerHTML=t[k];});
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.dataset.i18nPh;if(t[k]!==undefined)el.placeholder=t[k];});
   aplicarPrecios();
+  if(typeof pintarTesoroCount==='function')pintarTesoroCount();
   const wa=document.getElementById('waFlotante');
   if(wa&&t.wa_msg)wa.href=`https://wa.me/541151758653?text=${encodeURIComponent(t.wa_msg)}`;
   if(typeof allPregs!=='undefined'&&allPregs.length){
@@ -2525,6 +2562,24 @@ async function submitLeadGate(){
 }
 
 /* ── CARGAR REGALOS ── */
+/* Cuántos premios del tesoro quedan escondidos (solo el número; si no hay, se oculta el contador) */
+var _tzQuedan=0;  // var (no let): setLang puede usarlo antes de que se ejecute esta línea
+async function loadTesoroCount(){
+  try{
+    const {data,error}=await _sb.rpc('tesoro_tablero');
+    if(error||!Array.isArray(data))return;
+    _tzQuedan=data.filter(p=>!p.reclamado).length;
+    pintarTesoroCount();
+  }catch(e){}
+}
+function pintarTesoroCount(){
+  const box=document.getElementById('tzCont');if(!box)return;
+  box.style.display=_tzQuedan>0?'':'none';
+  const t=LANGS[_lang]||{};
+  document.getElementById('tzN').textContent=_tzQuedan;
+  document.getElementById('tzNLbl').textContent=_tzQuedan===1?(t.tz_quedan1||'premio todavía escondido'):(t.tz_quedan||'premios todavía escondidos');
+}
+
 async function loadRegalos(){
   try{
     const {data,error}=await _sb.from('regalos').select('id,data')
@@ -2569,6 +2624,7 @@ async function init(){
   setLang(_lang);
   showDia();
   showFeatured();
+  loadTesoroCount();
   await loadRegalos();
 }
 
