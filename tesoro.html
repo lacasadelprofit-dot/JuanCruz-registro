@@ -4,424 +4,345 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Búsqueda del Tesoro · Juan Cruz Consciencia</title>
-<meta name="theme-color" content="#C17A48">
+<meta name="description" content="Encontrá un sticker escondido en Búzios, Arraial do Cabo o Cabo Frío y ganá un premio.">
+<meta name="theme-color" content="#A44E22">
+<meta property="og:title" content="Preguntas que abren premios">
+<meta property="og:description" content="Búsqueda del tesoro · Juan Cruz Consciencia">
+<meta property="og:image" content="https://www.juancruzconsciencia.lat/og_image.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 :root{
-  --bg:#FAFAF8;--card:#FFFFFF;--card2:#F4F2EE;--border:#E5E0D8;
-  --terra:#C17A48;--terra-d:#9A5C30;--terra-l:#F0E4D6;
-  --text:#1C1200;--muted:#7A6E60;--green:#4C8B5A;
+  --bg:#FAF7F2;--card:#FFFFFF;--card2:#F4F0EA;--border:#E8DFD3;
+  --terra:#C17A48;--terra-d:#9A5C30;--terra-l:#F0E4D6;--text:#1C1200;--muted:#7A6E60;
+  --cream:#FBF1E4;--gold:#F1C778;--ok:#4C8B5A;--err:#A83C3C;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;}
-.wrap{max-width:640px;margin:0 auto;padding:28px 20px 60px;}
+.wrap{max-width:480px;margin:0 auto;padding:14px 16px 48px;}
+a{color:inherit;}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 0 18px;}
+.brand{font-weight:800;font-size:15px;color:var(--terra-d);text-decoration:none;}
+.brand span{color:var(--terra);}
+.langs{display:flex;gap:6px;}
+.lang{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:#fff;color:var(--text);font:700 12px 'DM Sans',sans-serif;cursor:pointer;}
+.lang.on{background:var(--terra-d);border-color:var(--terra-d);color:#fff;}
 
-/* HEADER */
-.hdr{text-align:center;margin-bottom:28px;}
-.hdr .kicker{display:inline-block;padding:5px 16px;border-radius:20px;background:var(--terra-l);
-  border:1px solid rgba(193,122,72,.35);color:var(--terra-d);font-size:12px;font-weight:700;
-  letter-spacing:.4px;margin-bottom:14px;}
-.hdr h1{font-size:34px;font-weight:600;color:var(--text);line-height:1.15;}
-.hdr h1 span{color:var(--terra);}
-.hdr p{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.5;}
-.edicion-badge{display:inline-flex;align-items:center;gap:5px;margin-top:14px;padding:6px 14px;
-  border-radius:20px;background:var(--terra);color:#fff;font-size:12.5px;font-weight:600;}
-.edicion-badge b{font-weight:800;}
+.cab{text-align:center;margin-bottom:20px;}
+.kicker{display:inline-block;padding:5px 14px;border-radius:20px;background:var(--terra-l);color:var(--terra-d);font-size:12px;font-weight:700;margin-bottom:12px;}
+.cab h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(32px,9vw,40px);line-height:1.08;}
+.cab h1 em{font-style:normal;color:var(--terra);}
+.cab p{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.5;}
 
-.ig-follow{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:8px 18px;
-  border-radius:20px;border:1.5px solid var(--terra);color:var(--terra-d);font-size:13px;
-  font-weight:700;text-decoration:none;transition:all .15s;}
-.ig-follow:hover{background:var(--terra);color:#fff;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:20px;margin-bottom:14px;}
+.sec-t{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:12px;}
+.ico{width:1em;height:1em;vertical-align:-.15em;flex:none;}
 
-.cta-card{text-align:center;background:linear-gradient(135deg,#FBF0E6 0%,#F5E8D4 60%,var(--terra-l) 100%);}
-.cta-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--text);}
-.cta-text{font-size:13px;color:var(--muted);margin:8px 0 16px;line-height:1.5;}
+/* sticker */
+.st-preg{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:27px;line-height:1.3;text-align:center;margin:4px 0 14px;}
+.chip{display:table;margin:0 auto 16px;padding:6px 16px;border-radius:20px;background:var(--terra-l);color:var(--terra-d);font-size:13px;font-weight:700;}
+.pasos{background:var(--card2);border-radius:14px;padding:14px 14px 14px 32px;font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:16px;}
+.pasos b{color:var(--text);}
+.fg label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;}
+.fg input[type=text]{width:100%;padding:14px;border:1.5px solid var(--border);border-radius:12px;font:15px 'DM Sans',sans-serif;outline:none;}
+.fg input[type=text]:focus{border-color:var(--terra);}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);line-height:1.45;margin:14px 0 16px;cursor:pointer;}
+.check input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--terra-d);}
+.check a{color:var(--terra-d);}
+.nota{text-align:center;font-size:12.5px;color:var(--muted);line-height:1.5;margin:4px 8px 18px;}
+.btn{display:block;width:100%;padding:15px;border:none;border-radius:14px;font:800 15px 'DM Sans',sans-serif;cursor:pointer;text-align:center;text-decoration:none;transition:background .2s,transform .15s;}
+.btn:active{transform:scale(.98);}
+.btn:disabled{opacity:.55;cursor:wait;}
+.btn-terra{background:var(--terra-d);color:#fff;}
+.btn-terra:hover{background:#7E3815;}
+.btn-borde{background:transparent;color:var(--terra-d);border:1.5px solid var(--terra-d);}
+.link-c{display:block;text-align:center;font-size:13.5px;font-weight:700;color:var(--terra-d);margin-top:16px;}
+.msg{border-radius:14px;padding:14px;font-size:14px;line-height:1.55;text-align:center;}
+.msg-ok{background:rgba(76,139,90,.1);border:1px solid rgba(76,139,90,.3);color:var(--ok);}
+.msg-err{background:rgba(168,60,60,.07);border:1px solid rgba(168,60,60,.25);color:var(--err);}
+.recordar{display:flex;gap:10px;align-items:flex-start;background:var(--terra-l);border-radius:14px;padding:14px;font-size:13.5px;color:var(--terra-d);line-height:1.5;margin:12px 0;font-weight:600;text-align:left;}
+.recordar svg{width:20px;height:20px;flex:none;margin-top:1px;}
+.error-campo{border-color:var(--err)!important;}
 
-/* CARD base */
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:16px;}
+/* ruleta de premios */
+.rp{position:relative;width:min(290px,100%);aspect-ratio:1;margin:4px auto 18px;}
+.rp>svg{width:100%;height:100%;display:block;overflow:visible;}
+#rpRot{transform-origin:150px 150px;transition:transform 4s cubic-bezier(.15,.75,.12,1);}
+.rp-pin{position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:20px solid var(--terra-d);z-index:2;}
+.rp-txt{font-family:'DM Sans',sans-serif;font-weight:700;}
 
-/* COUNTER */
-.counter{display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;
-  background:linear-gradient(135deg,#FBF0E6 0%,#F5E8D4 60%,var(--terra-l) 100%);}
-.counter .n{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:var(--terra-d);line-height:1;}
-.counter .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:4px;}
-
-/* STICKER VIEW */
-.sticker-card{text-align:center;}
-.sticker-ico{font-size:38px;margin-bottom:10px;}
-.sticker-pregunta{font-size:26px;font-weight:500;line-height:1.35;color:var(--text);margin:6px 0 16px;}
-.sticker-premio{display:inline-block;padding:6px 16px;border-radius:20px;background:var(--terra-l);
-  color:var(--terra-d);font-size:13px;font-weight:700;margin-bottom:18px;}
-.sticker-instr{font-size:13px;color:var(--muted);line-height:1.6;background:var(--card2);
-  border-radius:12px;padding:14px;margin-bottom:18px;text-align:left;}
-.sticker-instr b{color:var(--text);}
-
-.cartel{display:flex;align-items:flex-start;gap:10px;text-align:left;background:var(--terra-l);
-  border:1.5px solid rgba(193,122,72,.4);border-radius:12px;padding:14px;margin-bottom:18px;}
-.cartel-ico{font-size:20px;flex-shrink:0;line-height:1.3;}
-.cartel-txt{font-size:13px;color:var(--terra-d);line-height:1.5;font-weight:600;}
-.cartel-txt b{color:var(--text);}
-
-/* RULETA */
-.wheel-outer{position:relative;width:220px;height:220px;margin:6px auto 20px;}
-.wheel-pointer{position:absolute;top:-4px;left:50%;transform:translateX(-50%);font-size:22px;
-  color:var(--terra-d);z-index:2;line-height:1;filter:drop-shadow(0 2px 2px rgba(0,0,0,.2));}
-.wheel{width:100%;height:100%;border-radius:50%;position:relative;border:4px solid #fff;
-  box-shadow:0 4px 24px rgba(193,122,72,.35),0 0 0 1px var(--border);
-  transform:rotate(0deg);transition:transform 4s cubic-bezier(.17,.67,.1,1);}
-.wheel-label{position:absolute;top:50%;left:50%;width:72px;margin-left:-36px;text-align:center;
-  font-size:9.5px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);
-  line-height:1.15;transform-origin:center top;pointer-events:none;}
-.wheel-center{position:absolute;top:50%;left:50%;width:26px;height:26px;margin:-13px;
-  border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.25);}
-.wheel-spin-hint{text-align:center;font-size:12px;color:var(--muted);margin-bottom:14px;}
-
-.fg{margin-bottom:12px;text-align:left;}
-.fg label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:5px;}
-.fg input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;
-  font-family:inherit;font-size:14px;color:var(--text);background:var(--card);outline:none;transition:border .15s;}
-.fg input:focus{border-color:var(--terra);}
-
-.btn{width:100%;padding:14px;border:none;border-radius:12px;font-family:inherit;font-size:15px;
-  font-weight:700;cursor:pointer;transition:all .15s;}
-.btn-terra{background:var(--terra);color:#fff;}
-.btn-terra:hover:not(:disabled){background:var(--terra-d);}
-.btn-terra:disabled{opacity:.5;cursor:not-allowed;}
-.btn-ghost{background:var(--card2);color:var(--text);border:1px solid var(--border);margin-top:10px;}
-.btn-ghost:hover{border-color:var(--terra);color:var(--terra-d);}
-
-.msg-ok{background:rgba(76,139,90,.1);border:1px solid rgba(76,139,90,.3);color:var(--green);
-  border-radius:12px;padding:16px;font-size:14px;line-height:1.6;text-align:center;}
-.msg-err{background:rgba(193,72,72,.08);border:1px solid rgba(193,72,72,.3);color:#A83C3C;
-  border-radius:12px;padding:16px;font-size:14px;line-height:1.5;text-align:center;}
-
-/* GRID (tablero) */
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-@media(max-width:480px){.grid{grid-template-columns:1fr;}}
-.g-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;
-  display:flex;flex-direction:column;gap:6px;}
-.g-item.done{opacity:.55;}
-.g-top{display:flex;align-items:center;gap:8px;}
-.g-ico{font-size:20px;}
-.g-nombre{font-size:13px;font-weight:700;color:var(--text);line-height:1.3;}
-.g-estado{font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;display:inline-block;width:fit-content;}
-.g-estado.disp{background:rgba(193,122,72,.12);color:var(--terra-d);}
-.g-estado.gan{background:var(--card2);color:var(--muted);}
-
-/* GANADORES */
-.gan-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2px 10px;padding:9px 0;
-  border-bottom:1px solid var(--border);font-size:13px;}
-.gan-row:last-child{border-bottom:none;}
-.gan-user{font-weight:700;color:var(--terra-d);word-break:break-word;}
-.gan-premio{color:var(--muted);font-size:12px;text-align:right;flex:1;min-width:0;word-break:break-word;}
-@media(max-width:400px){
-  .gan-row{flex-direction:column;align-items:flex-start;gap:2px;}
-  .gan-premio{text-align:left;}
-}
-
-.sec-title{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;
-  letter-spacing:.5px;margin-bottom:12px;}
-
-#tesoroMap{height:280px;border-radius:12px;overflow:hidden;}
-.leaflet-popup-content{font-family:'DM Sans',system-ui,sans-serif;}
-
-.foot-link{display:block;text-align:center;font-size:12px;color:var(--muted);margin-top:24px;text-decoration:none;}
-.foot-link:hover{color:var(--terra-d);}
-
-.loading{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px;}
+/* tablero */
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.modo{border-radius:20px;padding:16px;text-decoration:none;display:block;}
+.modo h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:23px;line-height:1.1;margin-bottom:8px;}
+.modo p{font-size:13px;line-height:1.45;}
+.modo-a{background:var(--terra-d);color:#fff;}
+.modo-a p{color:rgba(255,255,255,.85);}
+.modo-b{background:var(--terra-l);border:1px solid #E2C9AE;color:var(--text);}
+.modo-b p{color:var(--muted);}
+.contador{display:flex;align-items:center;gap:16px;}
+.contador .n{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:58px;line-height:1;color:var(--terra-d);min-width:44px;text-align:center;}
+.contador b{display:block;font-size:15px;}
+.contador span{font-size:13px;color:var(--muted);}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.pr{border:1px solid var(--border);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px;justify-content:space-between;min-height:86px;}
+.pr.ya{background:var(--card2);}
+.pr-n{font-size:13.5px;font-weight:700;line-height:1.3;}
+.pr.ya .pr-n{color:var(--muted);}
+.est{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:20px;width:fit-content;}
+.est.disp{background:var(--terra-l);color:var(--terra-d);}
+.est.ya{background:#fff;color:var(--muted);}
+#mapa{height:240px;border-radius:14px;overflow:hidden;}
+.vacio{border:1.5px dashed var(--border);border-radius:14px;padding:26px 14px;text-align:center;font-size:13px;color:var(--muted);background:var(--card2);}
+.gan{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13.5px;}
+.gan:last-child{border-bottom:none;}
+.gan-u{font-weight:700;color:var(--terra-d);word-break:break-word;}
+.gan-p{color:var(--muted);text-align:right;}
+.pie{text-align:center;margin-top:18px;font-size:12.5px;}
+.pie a{color:var(--terra-d);}
+.cargando{text-align:center;padding:70px 10px;color:var(--muted);}
 </style>
 </head>
 <body>
-
-<div class="wrap" id="app">
-  <div class="loading">Cargando...</div>
+<div class="wrap">
+  <header class="hdr">
+    <a class="brand" href="index.html">Juan Cruz <span>Consciencia</span></a>
+    <div class="langs">
+      <button class="lang" data-l="es" onclick="setLang('es')">ES</button>
+      <button class="lang" data-l="pt" onclick="setLang('pt')">PT</button>
+      <button class="lang" data-l="en" onclick="setLang('en')">EN</button>
+    </div>
+  </header>
+  <main id="app"><div class="cargando">…</div></main>
 </div>
 
 <script>
 const SUPA_URL='https://vffmnyjjawvvctcqzkvj.supabase.co';
 const SUPA_KEY='sb_publishable_A1rJIiXHSg6TQYT2gKQHUw_UTwmS76t';
+const WA_NUM='541151758653';
 const _sb=supabase.createClient(SUPA_URL,SUPA_KEY);
-const WA_NUM='5491151758653';
-const CAT_ICO={Identidad:'🪞',Dinero:'💰',Cuerpo:'🌿',Relaciones:'💛',Propósito:'🌅',Consciencia:'✦'};
+const stickerId=new URLSearchParams(location.search).get('id');
 
-const params=new URLSearchParams(location.search);
-const stickerId=params.get('id');
+const T={
+ es:{kicker:'Búsqueda del tesoro',st_h1:'Encontraste <em>un sticker con premio</em>',chip:'Premio sorpresa en la ruleta',
+  p1:'Subí una foto o video del sticker a tu historia.',p2:'Etiquetá a <b>@juancruzconsciencia</b>.',p3:'Poné tu usuario y girá. El primero que reclama, gana.',
+  ig_lbl:'Tu usuario de Instagram',ig_ph:'@tuusuario',acepto:'Acepto que mi usuario aparezca como ganador en el tablero público.',privacidad:'Política de privacidad',
+  reclamar:'Girar y reclamar',girando:'Girando…',nota:'El premio se entrega después de verificar tu historia con la etiqueta.',ver_todos:'Ver todos los premios del tesoro',
+  ganaste:'¡Ganaste <b>{p}</b>!',recordar:'Para recibirlo: subí la foto o video del sticker a tu historia y etiquetá a @juancruzconsciencia. Después escribime por WhatsApp.',
+  coordinar:'Coordinar mi premio por WhatsApp',wa_premio:'Hola Juan Cruz! Gané "{p}" en la Búsqueda del Tesoro ✦ Sticker: {id} · Instagram: @{ig}',
+  ya_h1:'Este premio <em>ya voló</em>',ya_txt:'Lo reclamó {g} y ganó <b>{p}</b>. ¡Pero quedan más stickers esperando!',alguien:'otra persona',
+  no_existe:'Este sticker no existe o ya no está activo.',adelantaron:'¡Justo se te adelantaron! Este premio ya fue reclamado.',
+  sin_premios:'Los premios todavía se están cargando. Probá de nuevo en un rato.',usuario_invalido:'Revisá tu usuario de Instagram.',error:'Hubo un error. Probá de nuevo en un momento.',
+  qued:'Ver qué premios quedan',
+  tb_h1:'Preguntas que <em>abren</em> premios',tb_sub:'Dos formas de jugar en Búzios, Arraial do Cabo y Cabo Frío.',
+  m1_t:'Ruleta de preguntas',m1_p:'Girá ahora y recibí una pregunta. Sin premio, sin registro.',m2_t:'Búsqueda del tesoro',m2_p:'Encontrá un sticker escondido y ganá un premio.',
+  escondidos:'premios todavía escondidos',escondido1:'premio todavía escondido',edicion:'Edición activa en {e}',sin_edicion:'Muy pronto, nuevos stickers',
+  premios:'Premios',sorpresa:'Premio sorpresa',disponible:'Disponible',reclamado:'Ya reclamado',sin_stickers:'Muy pronto vas a poder buscar los primeros stickers.',
+  donde:'Dónde encontraron los premios',mapa_vacio:'Cuando alguien encuentre un sticker, vas a ver la zona acá (zona aproximada, no el punto exacto).',zona:'Zona donde se encontró un premio',
+  ultimos:'Últimos en ganar',nadie:'Todavía nadie ganó. ¡Podés ser la primera persona!',agendar:'Agendar una sesión por WhatsApp',
+  wa_agendar:'Hola Juan Cruz! Vi la Búsqueda del Tesoro y quiero agendar una sesión ✦'},
+ pt:{kicker:'Caça ao tesouro',st_h1:'Você encontrou <em>um adesivo com prêmio</em>',chip:'Prêmio surpresa na roleta',
+  p1:'Poste uma foto ou vídeo do adesivo no seu story.',p2:'Marque <b>@juancruzconsciencia</b>.',p3:'Coloque seu usuário e gire. Quem reclamar primeiro, ganha.',
+  ig_lbl:'Seu usuário do Instagram',ig_ph:'@seuusuario',acepto:'Aceito que meu usuário apareça como ganhador no painel público.',privacidad:'Política de privacidade',
+  reclamar:'Girar e reclamar',girando:'Girando…',nota:'O prêmio é entregue depois de verificar seu story com a marcação.',ver_todos:'Ver todos os prêmios do tesouro',
+  ganaste:'Você ganhou <b>{p}</b>!',recordar:'Para receber: poste a foto ou vídeo do adesivo no seu story e marque @juancruzconsciencia. Depois me escreva no WhatsApp.',
+  coordinar:'Combinar meu prêmio pelo WhatsApp',wa_premio:'Oi Juan Cruz! Ganhei "{p}" na Caça ao Tesouro ✦ Adesivo: {id} · Instagram: @{ig}',
+  ya_h1:'Este prêmio <em>já voou</em>',ya_txt:'{g} reclamou e ganhou <b>{p}</b>. Mas ainda tem mais adesivos esperando!',alguien:'Outra pessoa',
+  no_existe:'Este adesivo não existe ou não está mais ativo.',adelantaron:'Alguém chegou antes! Este prêmio já foi reclamado.',
+  sin_premios:'Os prêmios ainda estão sendo carregados. Tente de novo daqui a pouco.',usuario_invalido:'Confira seu usuário do Instagram.',error:'Houve um erro. Tente de novo em um momento.',
+  qued:'Ver quais prêmios restam',
+  tb_h1:'Perguntas que <em>abrem</em> prêmios',tb_sub:'Duas formas de jogar em Búzios, Arraial do Cabo e Cabo Frio.',
+  m1_t:'Roleta de perguntas',m1_p:'Gire agora e receba uma pergunta. Sem prêmio, sem cadastro.',m2_t:'Caça ao tesouro',m2_p:'Encontre um adesivo escondido e ganhe um prêmio.',
+  escondidos:'prêmios ainda escondidos',escondido1:'prêmio ainda escondido',edicion:'Edição ativa em {e}',sin_edicion:'Em breve, novos adesivos',
+  premios:'Prêmios',sorpresa:'Prêmio surpresa',disponible:'Disponível',reclamado:'Já reclamado',sin_stickers:'Em breve você vai poder procurar os primeiros adesivos.',
+  donde:'Onde encontraram os prêmios',mapa_vacio:'Quando alguém encontrar um adesivo, você verá a região aqui (região aproximada, não o ponto exato).',zona:'Região onde um prêmio foi encontrado',
+  ultimos:'Últimos ganhadores',nadie:'Ninguém ganhou ainda. Pode ser você!',agendar:'Agendar uma sessão pelo WhatsApp',
+  wa_agendar:'Oi Juan Cruz! Vi a Caça ao Tesouro e quero agendar uma sessão ✦'},
+ en:{kicker:'Treasure hunt',st_h1:'You found <em>a sticker with a prize</em>',chip:'Surprise prize on the wheel',
+  p1:'Post a photo or video of the sticker to your story.',p2:'Tag <b>@juancruzconsciencia</b>.',p3:'Enter your username and spin. First to claim, wins.',
+  ig_lbl:'Your Instagram username',ig_ph:'@yourusername',acepto:'I agree that my username appears as a winner on the public board.',privacidad:'Privacy policy',
+  reclamar:'Spin and claim',girando:'Spinning…',nota:'The prize is delivered after checking your story with the tag.',ver_todos:'See all treasure prizes',
+  ganaste:'You won <b>{p}</b>!',recordar:'To receive it: post the photo or video of the sticker to your story and tag @juancruzconsciencia. Then message me on WhatsApp.',
+  coordinar:'Arrange my prize on WhatsApp',wa_premio:'Hi Juan Cruz! I won "{p}" in the Treasure Hunt ✦ Sticker: {id} · Instagram: @{ig}',
+  ya_h1:'This prize is <em>already gone</em>',ya_txt:'{g} claimed it and won <b>{p}</b>. But there are more stickers waiting!',alguien:'Someone',
+  no_existe:'This sticker does not exist or is no longer active.',adelantaron:'Someone got there first! This prize was already claimed.',
+  sin_premios:'Prizes are still being loaded. Try again in a while.',usuario_invalido:'Check your Instagram username.',error:'Something went wrong. Try again in a moment.',
+  qued:'See which prizes are left',
+  tb_h1:'Questions that <em>open</em> prizes',tb_sub:'Two ways to play in Búzios, Arraial do Cabo and Cabo Frio.',
+  m1_t:'Question wheel',m1_p:'Spin now and receive a question. No prize, no sign-up.',m2_t:'Treasure hunt',m2_p:'Find a hidden sticker and win a prize.',
+  escondidos:'prizes still hidden',escondido1:'prize still hidden',edicion:'Active edition in {e}',sin_edicion:'New stickers coming soon',
+  premios:'Prizes',sorpresa:'Surprise prize',disponible:'Available',reclamado:'Already claimed',sin_stickers:'Soon you will be able to look for the first stickers.',
+  donde:'Where the prizes were found',mapa_vacio:'When someone finds a sticker, you will see the area here (approximate area, not the exact spot).',zona:'Area where a prize was found',
+  ultimos:'Latest winners',nadie:'Nobody has won yet. It could be you!',agendar:'Book a session on WhatsApp',
+  wa_agendar:'Hi Juan Cruz! I saw the Treasure Hunt and I want to book a session ✦'}
+};
+let _lang=(()=>{try{const s=localStorage.getItem('jcc_lang');if(T[s])return s;}catch(e){}const n=(navigator.language||'es').slice(0,2);return n==='pt'?'pt':n==='en'?'en':'es';})();
+const t=k=>(T[_lang]&&T[_lang][k])||T.es[k]||'';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ig=h=>h?`<a href="https://instagram.com/${esc(h)}" target="_blank" rel="noopener">@${esc(h)}</a>`:'';
+const I={
+ camara:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3"/></svg>'
+};
+
+function ev(tipo,extra={}){
+  try{const n=new Date();_sb.from('regalo_eventos').insert({data:{tipo,pagina:'tesoro',idioma:_lang,fecha:n.toISOString().split('T')[0],mes:n.toISOString().slice(0,7),ts:n.toISOString(),...extra}}).then();}catch(e){}
+}
 const app=document.getElementById('app');
+let _vista=null;   // función que redibuja la vista actual (para cambiar de idioma)
 
-function track(tipo,extra={}){
-  try{_sb.from('regalo_eventos').insert({data:{tipo,pagina:'tesoro',fecha:new Date().toISOString().split('T')[0],mes:new Date().toISOString().slice(0,7),ts:new Date().toISOString(),...extra}}).then();}catch(e){}
-}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function igLink(handle){
-  const h=esc(handle||'');
-  if(!h)return '@?';
-  return `<a href="https://instagram.com/${h}" target="_blank" rel="noopener" style="color:inherit;font-weight:700;text-decoration:underline">@${h}</a>`;
-}
-function cartelRequisito(){
-  return `<div class="cartel"><div class="cartel-ico">📸</div><div class="cartel-txt">Para recibir tu premio: subí una foto o video del sticker a tus redes sociales y etiquetá a <b>@juancruzconsciencia</b>.</div></div>`;
-}
-
-/* ================= INIT ================= */
-(async function init(){
-  if(stickerId){ await renderSticker(stickerId); }
-  else{ await renderTablero(); }
-})();
-
-/* ================= RULETA ================= */
-const WHEEL_COLORS=['#C17A48','#9A5C30','#D9A86C','#B8895A','#E8C08A','#A9683E'];
-
-function pickWeighted(pool){
-  const total=pool.reduce((s,r)=>s+(Number(r.data.peso)||1),0);
-  let r=Math.random()*total;
-  for(const item of pool){
-    r-=Number(item.data.peso)||1;
-    if(r<=0)return item;
+/* ═══════════ STICKER ═══════════ */
+let _st=null,_res=null,_ruleta=[];
+async function vistaSticker(){
+  if(!_st){
+    ev('page_view_sticker',{sticker:stickerId});
+    const {data,error}=await _sb.rpc('tesoro_sticker',{p_id:stickerId});
+    _st=error?{error:'error'}:(data||{error:'no_existe'});
   }
-  return pool[pool.length-1];
+  _vista=pintarSticker;pintarSticker();
 }
-
-function buildWheelHTML(pool){
-  const n=pool.length;
-  const slice=360/n;
-  const gradient=pool.map((r,i)=>`${WHEEL_COLORS[i%WHEEL_COLORS.length]} ${i*slice}deg ${(i+1)*slice}deg`).join(',');
-  const labels=pool.map((r,i)=>{
-    const mid=i*slice+slice/2;
-    return `<div class="wheel-label" style="transform:rotate(${mid}deg) translateY(-72px) rotate(${-mid}deg)">${esc(r.data.nombre)}</div>`;
+function pintarSticker(){
+  const s=_st;
+  if(s.error){
+    app.innerHTML=`<div class="cab"><div class="kicker">${t('kicker')}</div></div>
+      <div class="msg msg-err">${t(s.error==='no_existe'?'no_existe':'error')}</div>
+      <a class="link-c" href="tesoro.html">${t('ver_todos')} →</a>`;return;
+  }
+  if(_res){pintarGanador();return;}
+  if(s.reclamado){
+    app.innerHTML=`<div class="cab"><div class="kicker">${t('kicker')}</div><h1>${t('ya_h1')}</h1></div>
+      <div class="card"><div class="st-preg">${esc(s.pregunta)}</div>
+      <div class="msg msg-err">${t('ya_txt').replace('{g}',s.ganador?ig(s.ganador):t('alguien')).replace('{p}',esc(s.premio_ganado||'—'))}</div></div>
+      <a class="link-c" href="tesoro.html">${t('qued')} →</a>`;return;
+  }
+  const val=document.getElementById('igUser')?.value||'';const chk=document.getElementById('acepto')?.checked||false;
+  app.innerHTML=`<div class="cab"><div class="kicker">${t('kicker')}</div><h1>${t('st_h1')}</h1></div>
+    <div class="card">
+      <div class="st-preg">${esc(s[`pregunta_${_lang}`]||s.pregunta)}</div>
+      <div class="chip">${t('chip')}</div>
+      <ol class="pasos"><li>${t('p1')}</li><li>${t('p2')}</li><li>${t('p3')}</li></ol>
+      <div id="zona">
+        <div class="fg"><label for="igUser">${t('ig_lbl')}</label><input type="text" id="igUser" placeholder="${t('ig_ph')}" autocomplete="off" autocapitalize="off" value="${esc(val)}"></div>
+        <label class="check"><input type="checkbox" id="acepto" ${chk?'checked':''}><span>${t('acepto')} <a href="privacidad.html" target="_blank">${t('privacidad')}</a></span></label>
+        <button class="btn btn-terra" id="btnReclamar" onclick="reclamar()">${t('reclamar')}</button>
+        <div id="err" style="margin-top:12px"></div>
+      </div>
+    </div>
+    <p class="nota">${t('nota')}</p>
+    <a class="link-c" href="tesoro.html">${t('ver_todos')}</a>`;
+}
+async function reclamar(){
+  const inp=document.getElementById('igUser'),btn=document.getElementById('btnReclamar'),err=document.getElementById('err');
+  const handle=inp.value.trim().replace(/^@+/,'');
+  if(!handle){inp.classList.add('error-campo');inp.focus();return;}
+  btn.disabled=true;btn.textContent=t('girando');err.innerHTML='';
+  const [{data:pool},{data,error}]=await Promise.all([
+    _sb.from('tesoro_ruleta').select('id,data').order('created_at',{ascending:true}),
+    _sb.rpc('reclamar_premio',{p_id:stickerId,p_ig:handle,p_acepta:document.getElementById('acepto').checked,p_lang:_lang})
+  ]);
+  if(error||!data||data.error){
+    const code=error?'error':(data?.error||'error');
+    btn.disabled=false;btn.textContent=t('reclamar');
+    if(code==='ya_reclamado'){err.innerHTML=`<div class="msg msg-err">${t('adelantaron')}</div><a class="link-c" href="tesoro.html">${t('qued')} →</a>`;btn.style.display='none';}
+    else err.innerHTML=`<div class="msg msg-err">${t(['sin_premios','usuario_invalido','no_existe'].includes(code)?code:'error')}</div>`;
+    return;
+  }
+  ev('reclamo',{sticker:stickerId,premio:data.premio});
+  _ruleta=(pool||[]).filter(r=>r.data?.activo!==false);
+  _res={premio:data.premio,premio_id:data.premio_id,ig:handle.toLowerCase(),girando:true};
+  pintarGanador();
+}
+function cortar(txt,max){const w=String(txt).split(' ');const out=[];let l='';w.forEach(p=>{const s=l?l+' '+p:p;if(s.length>max&&l){out.push(l);l=p;}else l=s;});if(l)out.push(l);return out.slice(0,3);}
+function pintarGanador(){
+  const r=_res;
+  const n=Math.max(_ruleta.length,1),sl=360/n,C=150,R=135;
+  const pt=(a,rr)=>{const x=a*Math.PI/180;return[+(C+rr*Math.sin(x)).toFixed(2),+(C-rr*Math.cos(x)).toFixed(2)];};
+  const segs=_ruleta.map((p,i)=>{
+    const a0=i*sl,a1=(i+1)*sl,[x1,y1]=pt(a0,R),[x2,y2]=pt(a1,R),mid=a0+sl/2;
+    const ls=cortar(p.data?.nombre||'',13);
+    const txt=ls.map((l,k)=>`<text x="${C}" y="${C-R+30+k*13}" text-anchor="middle" class="rp-txt" font-size="10.5" fill="${i%2?'#FBF1E4':'#6B3A1E'}">${esc(l)}</text>`).join('');
+    return`<path d="M${C} ${C}L${x1} ${y1}A${R} ${R} 0 ${sl>180?1:0} 1 ${x2} ${y2}Z" fill="${i%2?'#9A5C30':'#FBF1E4'}" stroke="#D9A54A" stroke-width="1.5"/><g transform="rotate(${mid} ${C} ${C})">${txt}</g>`;
   }).join('');
-  return `<div class="wheel-outer">
-    <div class="wheel-pointer">▼</div>
-    <div class="wheel" id="tesoroWheel" style="background:conic-gradient(${gradient})">
-      ${labels}
-      <div class="wheel-center"></div>
-    </div>
-  </div>`;
-}
-
-function spinWheelTo(pool,winnerId){
-  const wheelEl=document.getElementById('tesoroWheel');
-  if(!wheelEl)return;
-  const idx=pool.findIndex(r=>r.id===winnerId);
-  const n=pool.length;
-  const slice=360/n;
-  const target=5*360 + (360-(idx*slice+slice/2));
-  wheelEl.style.transform='rotate(0deg)';
-  void wheelEl.offsetHeight; // fuerza reflow para que el navegador registre el estado inicial antes de animar
-  wheelEl.style.transform=`rotate(${target}deg)`;
-}
-
-/* ================= STICKER VIEW ================= */
-async function renderSticker(id){
-  track('page_view_sticker',{sticker:id});
-  const {data:p,error}=await _sb.from('tesoro_premios').select('*').eq('id',id).single();
-  if(error||!p){
-    app.innerHTML=`
-      <div class="wrap">
-        <div class="card msg-err">Este premio no existe o ya no está disponible. 🌱</div>
-        <a class="foot-link" href="tesoro.html">← Ver todos los premios</a>
-      </div>`;
-    return;
-  }
-  const d=p.data||{};
-  const ico=CAT_ICO[d.categoria]||'✦';
-  if(d.reclamado){
-    app.innerHTML=`
-      <div class="hdr">
-        <div class="kicker">🎁 Búsqueda del Tesoro</div>
-        <h1>Este premio ya <span>voló</span></h1>
-      </div>
-      <div class="card sticker-card">
-        <div class="sticker-ico">${ico}</div>
-        <div class="sticker-pregunta">${esc(d.pregunta)}</div>
-        <div class="msg-err">Ya fue reclamado por ${igLink(d.ganador_instagram)}, que ganó <b>${esc(d.premio_ganado||'un premio')}</b>. ¡Pero quedan más stickers esperando!</div>
-      </div>
-      <a class="foot-link" href="tesoro.html">← Ver qué premios quedan disponibles</a>`;
-    return;
-  }
-
-  const {data:ruletaData}=await _sb.from('tesoro_ruleta').select('*').order('created_at',{ascending:true});
-  const pool=(ruletaData||[]).filter(r=>r.data?.activo!==false);
-
-  if(!pool.length){
-    app.innerHTML=`
-      <div class="hdr"><div class="kicker">🎁 Búsqueda del Tesoro</div><h1>Encontraste <span>una pregunta</span></h1></div>
-      <div class="card sticker-card">
-        <div class="sticker-ico">${ico}</div>
-        <div class="sticker-pregunta">${esc(d.pregunta)}</div>
-        <div class="msg-err">Los premios todavía se están cargando. Volvé a intentar en un rato. 🌱</div>
-      </div>`;
-    return;
-  }
-
-  app.innerHTML=`
-    <div class="hdr">
-      <div class="kicker">🎁 Búsqueda del Tesoro</div>
-      <h1>Encontraste <span>una pregunta</span></h1>
-    </div>
-    <div class="card sticker-card">
-      <div class="sticker-ico">${ico}</div>
-      <div class="sticker-pregunta">${esc(d.pregunta)}</div>
-      <div class="sticker-premio">🎡 Premio sorpresa</div>
-      ${cartelRequisito()}
-      <div class="sticker-instr">
-        <b>Cómo reclamarlo:</b><br>
-        1. Sacale una foto o grabá un video del sticker y subilo a tu historia de Instagram.<br>
-        2. Etiquetá a <b>@juancruzconsciencia</b>.<br>
-        3. Completá tu usuario abajo y girá la ruleta — el primero que reclama, gana.
-      </div>
-      <div id="claimZone">
-        <div class="fg">
-          <label>Tu usuario de Instagram</label>
-          <input type="text" id="igUser" placeholder="@tuusuario">
-        </div>
-        <button class="btn btn-terra" id="btnClaim" onclick="reclamar('${esc(id)}')">🎡 Girar y reclamar</button>
-      </div>
-    </div>
-    <a class="foot-link" href="tesoro.html">Ver todos los premios del tesoro →</a>`;
-}
-
-async function reclamar(id){
-  const inp=document.getElementById('igUser');
-  const btn=document.getElementById('btnClaim');
-  let handle=inp.value.trim().replace(/^@/,'');
-  if(!handle){ inp.style.borderColor='#A83C3C'; inp.focus(); return; }
-  btn.disabled=true; btn.textContent='Girando...';
-
-  const {data:ruletaData}=await _sb.from('tesoro_ruleta').select('*').order('created_at',{ascending:true});
-  const pool=(ruletaData||[]).filter(r=>r.data?.activo!==false);
-  if(!pool.length){
-    document.getElementById('claimZone').innerHTML='<div class="msg-err">Los premios todavía se están cargando. Volvé a intentar en un rato.</div>';
-    return;
-  }
-  const winner=pickWeighted(pool);
-
-  const {data:current}=await _sb.from('tesoro_premios').select('*').eq('id',id).single();
-  const newData={...(current?.data||{}),reclamado:true,ganador_instagram:handle,ganador_fecha:new Date().toISOString(),premio_ganado:winner.data.nombre};
-
-  const {data,error}=await _sb.from('tesoro_premios')
-    .update({data:newData}).eq('id',id)
-    .filter('data->>reclamado','eq','false')
-    .select();
-
-  if(error){
-    btn.disabled=false; btn.textContent='🎡 Girar y reclamar';
-    document.getElementById('claimZone').innerHTML='<div class="msg-err">Hubo un error, intentá de nuevo en un momento.</div>';
-    return;
-  }
-  if(!data||data.length===0){
-    document.getElementById('claimZone').innerHTML='<div class="msg-err">¡Justo se te adelantaron! 😅 Este premio ya fue reclamado. Mirá qué otros quedan.</div><a class="foot-link" href="tesoro.html">Ver premios disponibles →</a>';
-    return;
-  }
-  track('reclamo',{sticker:id,instagram:handle,premio:winner.data.nombre});
-
-  document.getElementById('claimZone').innerHTML=`
-    <div class="wheel-spin-hint" id="wheelHint">Girando la ruleta...</div>
-    ${buildWheelHTML(pool)}
-    <div id="wheelResult"></div>`;
-  spinWheelTo(pool, winner.id);
-
-  setTimeout(()=>{
-    const hint=document.getElementById('wheelHint');
-    if(hint)hint.remove();
-    const waMsg=encodeURIComponent(`Hola! Gané "${winner.data.nombre}" en la Búsqueda del Tesoro 🎁 (usuario IG: @${handle})`);
-    document.getElementById('wheelResult').innerHTML=`
-      <div class="msg-ok">🎉 ¡Listo, ${igLink(handle)}! Ganaste <b>${esc(winner.data.nombre)}</b>.</div>
-      ${cartelRequisito()}
-      <a class="btn btn-terra" style="display:block;text-align:center;text-decoration:none;margin-top:12px" href="https://wa.me/${WA_NUM}?text=${waMsg}" target="_blank">Coordinar por WhatsApp →</a>`;
-  }, 4200);
-}
-
-/* ================= TABLERO ================= */
-async function renderTablero(){
-  track('page_view_tablero');
-  const {data:premios}=await _sb.from('tesoro_premios').select('*').order('created_at',{ascending:true});
-  const list=premios||[];
-  const disponibles=list.filter(p=>!p.data?.reclamado);
-  const ganados=list.filter(p=>p.data?.reclamado).sort((a,b)=>new Date(b.data.ganador_fecha||0)-new Date(a.data.ganador_fecha||0));
-  const edicionActual=[...list].reverse().find(p=>p.data?.edicion)?.data?.edicion;
-
-  const gridHtml=list.length? list.map(p=>{
-    const d=p.data||{};
-    const ico=CAT_ICO[d.categoria]||'✦';
-    return `<div class="g-item ${d.reclamado?'done':''}">
-      <div class="g-top"><span class="g-ico">${ico}</span><span class="g-nombre">${d.reclamado?esc(d.premio_ganado||'Premio'):'🎡 Premio sorpresa'}</span></div>
-      <span class="g-estado ${d.reclamado?'gan':'disp'}">${d.reclamado?'Reclamado por '+igLink(d.ganador_instagram):'Disponible'}</span>
-    </div>`;
-  }).join('') : `<div style="grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padding:20px 0">Todavía no hay premios cargados.</div>`;
-
-  const ganadoresHtml=ganados.length? ganados.slice(0,8).map(p=>`
-    <div class="gan-row">
-      <span class="gan-user">${igLink(p.data.ganador_instagram)}</span>
-      <span class="gan-premio">${esc(p.data.premio_ganado||'Premio')}</span>
-    </div>`).join('') : `<div style="color:var(--muted);font-size:13px">Todavía nadie reclamó un premio. ¡Podés ser el primero!</div>`;
-
-  app.innerHTML=`
-    <div class="hdr">
-      <div class="kicker">🎁 Búsqueda del Tesoro</div>
-      <h1>Preguntas que <span>abren</span> premios</h1>
-      <p>Encontrá los stickers, subí la pregunta a tu historia mencionando a @juancruzconsciencia, y reclamá tu premio antes que nadie.</p>
-      ${edicionActual?`<div class="edicion-badge">📍 Edición activa ahora en <b>${esc(edicionActual)}</b></div>`:''}
-      <a class="ig-follow" href="https://www.instagram.com/juancruzconsciencia/" target="_blank" rel="noopener">📸 Ver Instagram de @juancruzconsciencia</a>
-    </div>
-
-    <div class="card counter">
-      <div><div class="n">${disponibles.length}</div><div class="lbl">de ${list.length} premios disponibles</div></div>
-    </div>
-
+  const idx=Math.max(0,_ruleta.findIndex(p=>p.id===r.premio_id));
+  const final=360*5+(360-(idx*sl+sl/2));
+  const waTxt=t('wa_premio').replace('{p}',r.premio).replace('{id}',stickerId).replace('{ig}',r.ig);
+  app.innerHTML=`<div class="cab"><div class="kicker">${t('kicker')}</div></div>
     <div class="card">
-      <div class="sec-title">Premios</div>
-      <div class="grid">${gridHtml}</div>
+      <div class="rp"><div class="rp-pin"></div><svg viewBox="0 0 300 300"><g id="rpRot" style="transform:rotate(${r.girando?0:final}deg)">${segs}</g>
+        <circle cx="150" cy="150" r="135" fill="none" stroke="#D9A54A" stroke-width="4"/><circle cx="150" cy="150" r="20" fill="#FBF1E4" stroke="#D9A54A" stroke-width="2"/></svg></div>
+      <div id="fin" style="${r.girando?'display:none':''}">
+        <div class="msg msg-ok">${t('ganaste').replace('{p}',esc(r.premio))}</div>
+        <div class="recordar">${I.camara}<span>${t('recordar')}</span></div>
+        <a class="btn btn-terra" href="https://wa.me/${WA_NUM}?text=${encodeURIComponent(waTxt)}" target="_blank" rel="noopener" onclick="ev('premio_whatsapp',{sticker:stickerId})">${t('coordinar')}</a>
+      </div>
     </div>
-
-    <div class="card">
-      <div class="sec-title">🗺️ Dónde encontraron los premios</div>
-      ${ganados.some(p=>p.data.lat!=null)
-        ? `<div id="tesoroMap"></div>`
-        : `<div style="color:var(--muted);font-size:13px">Todavía no aparece ningún punto en el mapa. ¡Encontrá el primer premio!</div>`}
-    </div>
-
-    <div class="card">
-      <div class="sec-title">Últimos en ganar</div>
-      ${ganadoresHtml}
-    </div>
-
-    <div class="card cta-card">
-      <div class="cta-title">✨ ¿No querés esperar a ganar?</div>
-      <p class="cta-text">Agendá tu sesión de Barras de Access o Proceso de Cuerpos cuando quieras, sin depender del tesoro.</p>
-      <a class="btn btn-terra" style="display:block;text-align:center;text-decoration:none" href="https://wa.me/${WA_NUM}?text=${encodeURIComponent('Hola! Vi la Búsqueda del Tesoro y quiero agendar una sesión. ✨')}" target="_blank">Agendar por WhatsApp →</a>
-    </div>
-
-  `;
-
-  if(ganados.some(p=>p.data.lat!=null)) setTimeout(()=>_initTesoroMap(ganados), 0);
-}
-
-function _initTesoroMap(ganados){
-  const mapEl=document.getElementById('tesoroMap');
-  if(!mapEl||typeof L==='undefined')return;
-  const puntos=ganados.filter(p=>p.data.lat!=null&&p.data.lng!=null);
-  const map=L.map('tesoroMap',{scrollWheelZoom:false});
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    maxZoom:19,attribution:'© OpenStreetMap'
-  }).addTo(map);
-  const ico=p=>CAT_ICO[p.data.categoria]||'✦';
-  const markers=puntos.map(p=>{
-    const m=L.marker([p.data.lat,p.data.lng]).addTo(map);
-    m.bindPopup(`<b>${ico(p)} ${esc(p.data.premio_ganado||'Premio')}</b><br>Encontrado por ${igLink(p.data.ganador_instagram)}`);
-    return m;
-  });
-  if(markers.length===1){
-    map.setView([puntos[0].data.lat,puntos[0].data.lng],14);
-  }else{
-    map.fitBounds(L.featureGroup(markers).getBounds().pad(.2));
+    <a class="link-c" href="tesoro.html">${t('ver_todos')}</a>`;
+  if(r.girando){
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{document.getElementById('rpRot').style.transform=`rotate(${final}deg)`;}));
+    setTimeout(()=>{r.girando=false;const f=document.getElementById('fin');if(f)f.style.display='';if(navigator.vibrate)try{navigator.vibrate([30,60,30]);}catch(e){}},4200);
   }
 }
+
+/* ═══════════ TABLERO ═══════════ */
+let _tb=null,_mapa=null;
+async function vistaTablero(){
+  if(!_tb){
+    ev('page_view_tablero');
+    const {data,error}=await _sb.rpc('tesoro_tablero');
+    _tb=error?[]:(data||[]);
+  }
+  _vista=pintarTablero;pintarTablero();
+}
+function pintarTablero(){
+  const L=_tb||[];
+  const disp=L.filter(p=>!p.reclamado),gan=L.filter(p=>p.reclamado).sort((a,b)=>new Date(b.fecha||0)-new Date(a.fecha||0));
+  const edicion=[...L].reverse().find(p=>p.edicion)?.edicion;
+  const zonas=gan.filter(p=>p.zona_lat!=null&&p.zona_lng!=null);
+  app.innerHTML=`<div class="cab"><h1>${t('tb_h1')}</h1><p>${t('tb_sub')}</p></div>
+    <div class="dos">
+      <a class="modo modo-a" href="ruleta.html" onclick="ev('click_ruleta')"><h3>${t('m1_t')}</h3><p>${t('m1_p')}</p></a>
+      <div class="modo modo-b"><h3>${t('m2_t')}</h3><p>${t('m2_p')}</p></div>
+    </div>
+    <div class="card contador"><div class="n">${disp.length}</div><div><b>${t(disp.length===1?'escondido1':'escondidos')}</b><span>${edicion?t('edicion').replace('{e}',esc(edicion)):t('sin_edicion')}</span></div></div>
+    <div class="card"><div class="sec-t">${t('premios')}</div>
+      ${L.length?`<div class="grid">${L.map(p=>p.reclamado
+        ?`<div class="pr ya"><div class="pr-n">${esc(p.premio_ganado||'—')}</div><span class="est ya">${t('reclamado')}</span></div>`
+        :`<div class="pr"><div class="pr-n">${t('sorpresa')}</div><span class="est disp">${t('disponible')}</span></div>`).join('')}</div>`
+        :`<div class="vacio">${t('sin_stickers')}</div>`}
+    </div>
+    <div class="card"><div class="sec-t">${t('donde')}</div>${zonas.length?'<div id="mapa"></div>':`<div class="vacio">${t('mapa_vacio')}</div>`}</div>
+    <div class="card"><div class="sec-t">${t('ultimos')}</div>
+      ${gan.length?gan.slice(0,8).map(p=>`<div class="gan"><span class="gan-u">${p.ganador?ig(p.ganador):t('alguien')}</span><span class="gan-p">${esc(p.premio_ganado||'')}</span></div>`).join(''):`<div style="font-size:13.5px;color:var(--muted)">${t('nadie')}</div>`}
+    </div>
+    <a class="btn btn-borde" href="https://wa.me/${WA_NUM}?text=${encodeURIComponent(t('wa_agendar'))}" target="_blank" rel="noopener" onclick="ev('agendar_whatsapp')">${t('agendar')}</a>
+    <div class="pie"><a href="privacidad.html">${t('privacidad')}</a></div>`;
+  if(zonas.length&&window.L)setTimeout(()=>dibujarMapa(zonas),0);
+}
+function dibujarMapa(zonas){
+  if(_mapa){_mapa.remove();_mapa=null;}
+  _mapa=window.L.map('mapa',{scrollWheelZoom:false});
+  window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:16,attribution:'© OpenStreetMap'}).addTo(_mapa);
+  // primero la vista (los círculos necesitan el mapa ya ubicado), después las zonas
+  if(zonas.length===1)_mapa.setView([zonas[0].zona_lat,zonas[0].zona_lng],13);
+  else _mapa.fitBounds(window.L.latLngBounds(zonas.map(z=>[z.zona_lat,z.zona_lng])).pad(.35),{maxZoom:13});
+  zonas.forEach(z=>window.L.circle([z.zona_lat,z.zona_lng],{radius:650,color:'#9A5C30',weight:1.5,fillColor:'#C17A48',fillOpacity:.25})
+    .bindTooltip(t('zona')).addTo(_mapa));
+}
+
+/* ═══════════ IDIOMA ═══════════ */
+function setLang(l){
+  if(!T[l])return;_lang=l;try{localStorage.setItem('jcc_lang',l);}catch(e){}
+  document.documentElement.lang=l;
+  document.querySelectorAll('.lang').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  if(_res&&_res.girando)return;
+  if(_vista)_vista();
+}
+setLang(_lang);
+if(stickerId)vistaSticker();else vistaTablero();
 </script>
 </body>
 </html>

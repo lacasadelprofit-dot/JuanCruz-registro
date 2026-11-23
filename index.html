@@ -199,6 +199,7 @@ h1,h2,h3,.hero h1,.sec-title,.dia-q,.featured-q,.quien-quote,.quien-espacio,.ses
 .ruleta-cta{margin-top:20px;padding:12px 28px;background:#FBF1E4;border:none;border-radius:12px;
   color:#7E3815;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s,transform .15s;}
 .ruleta-cta:hover{background:#F1C778;transform:translateY(-1px);}
+.ruleta-tesoro{display:inline-block;margin-top:22px;font-size:13px;font-weight:700;color:#F6DDA8;text-decoration:underline;text-underline-offset:3px;}
 .ruleta-res.vacio .featured-q{font-size:18px;font-weight:400;color:rgba(251,241,228,.7);font-style:italic;}
 @media(prefers-reduced-motion:reduce){#ruletaRot,#ruletaRot .rul-l{transition-duration:.6s;}}
 
@@ -1103,6 +1104,7 @@ footer{padding-bottom:104px!important;}
       </div>
       <button class="ruleta-cta" onclick="track('click_btn',{boton:'ruleta_agendar',dimension:_rulDim});openModal()" data-i18n="ruleta_agendar">Agendá tu sesión →</button>
     </div>
+    <a class="ruleta-tesoro" href="tesoro.html" onclick="track('click_btn',{boton:'ruleta_tesoro'})" data-i18n="ruleta_tesoro">Hay stickers escondidos con premios →</a>
   </div>
 
 </section>
@@ -1335,7 +1337,7 @@ es:{
   cargando:'Cargando...',featured_label:'✦ Pregunta del momento',
   ruleta_tit:'Hay una <em>pregunta</em> esperándote',
   ruleta_sub:'Girá la ruleta y dejá que aparezca la pregunta que ahora está disponible para vos.',ruleta_girar:'GIRAR',
-  ruleta_hint:'Tocá GIRAR ✦',ruleta_otra:'Girar de nuevo ↻',ruleta_agendar:'Agendá tu sesión →',
+  ruleta_hint:'Tocá GIRAR ✦',ruleta_otra:'Girar de nuevo ↻',ruleta_agendar:'Agendá tu sesión →',ruleta_tesoro:'Hay stickers escondidos con premios →',
   btn_siguiente:'Otra pregunta →',btn_compartir:'↗ Compartir',
   sec_ses_label:'✦ Lo que ofrezco',sec_ses_titulo:'Un espacio para soltar y elegir',
   sec_ses_sub:'Cada sesión es una invitación a liberar lo que ya no te sirve y abrirte a más de lo que sos. Si es tu primera vez, empezá por Barras: es la más suave y la que más se elige.',
@@ -1496,7 +1498,7 @@ en:{
   cargando:'Loading...',featured_label:'✦ Question of the moment',
   ruleta_tit:'A <em>question</em> is waiting for you',
   ruleta_sub:"Spin the wheel and let the question that's available for you right now appear.",ruleta_girar:'SPIN',
-  ruleta_hint:'Tap SPIN ✦',ruleta_otra:'Spin again ↻',ruleta_agendar:'Book your session →',
+  ruleta_hint:'Tap SPIN ✦',ruleta_otra:'Spin again ↻',ruleta_agendar:'Book your session →',ruleta_tesoro:'There are hidden stickers with prizes →',
   btn_siguiente:'Next question →',btn_compartir:'↗ Share',
   sec_ses_label:'✦ What I offer',sec_ses_titulo:'A space to release and choose',
   sec_ses_sub:'Each session is an invitation to release what no longer serves you and open up to more of who you are. If it’s your first time, start with Bars: it’s the gentlest and the most chosen.',
@@ -1657,7 +1659,7 @@ pt:{
   cargando:'Carregando...',featured_label:'✦ Pergunta do momento',
   ruleta_tit:'Tem uma <em>pergunta</em> esperando por você',
   ruleta_sub:'Gire a roleta e deixe aparecer a pergunta que agora está disponível para você.',ruleta_girar:'GIRAR',
-  ruleta_hint:'Toque em GIRAR ✦',ruleta_otra:'Girar de novo ↻',ruleta_agendar:'Agende sua sessão →',
+  ruleta_hint:'Toque em GIRAR ✦',ruleta_otra:'Girar de novo ↻',ruleta_agendar:'Agende sua sessão →',ruleta_tesoro:'Tem adesivos escondidos com prêmios →',
   btn_siguiente:'Próxima pergunta →',btn_compartir:'↗ Compartilhar',
   sec_ses_label:'✦ O que ofereço',sec_ses_titulo:'Um espaço para soltar e escolher',
   sec_ses_sub:'Cada sessão é um convite para liberar o que já não te serve e se abrir para mais do que você é. Se é a sua primeira vez, comece pelas Barras: é a mais suave e a mais escolhida.',
@@ -2204,7 +2206,7 @@ function buildRuleta(){
     return`<path d="M${C} ${C}L${x1} ${y1}A${R} ${R} 0 0 1 ${x2} ${y2}Z" fill="${RUL_COL[i]}" stroke="#D9A54A" stroke-width="1.6"/>`+
       `<g class="rul-l" style="transform-origin:${lx}px ${ly}px">`+
       `<g transform="translate(${lx-12.5} ${ly-29}) scale(1.04)" fill="none" stroke="#8A4A22" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${RUL_ICO[d]||''}</g>`+
-      `<text class="ruleta-lbl" x="${lx}" y="${ly+14}" text-anchor="middle" fill="#6B3A1E" font-size="13.5">${_dimLbl(d)}</text></g>`;
+      `<text class="ruleta-lbl" x="${lx}" y="${ly+14}" text-anchor="middle" fill="#6B3A1E" font-size="${_dimLbl(d).length>11?11.5:13.5}">${_dimLbl(d)}</text></g>`;
   }).join('')+`<circle cx="${C}" cy="${C}" r="44" fill="#FBF1E4" stroke="#D9A54A" stroke-width="2"/>`;
   _rulEnderezar();
 }
