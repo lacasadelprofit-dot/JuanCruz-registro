@@ -9,6 +9,17 @@
 <meta property="og:title" content="Preguntas que abren premios">
 <meta property="og:description" content="Búsqueda del tesoro · Juan Cruz Consciencia">
 <meta property="og:image" content="https://www.juancruzconsciencia.lat/og_image.jpg">
+<link rel="canonical" href="https://www.juancruzconsciencia.lat/tesoro.html">
+<meta name="theme-color" content="#C17A48">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.juancruzconsciencia.lat/tesoro.html">
+<meta property="og:title" content="Búsqueda del Tesoro · Juan Cruz Consciencia">
+<meta property="og:description" content="Encontrá un sticker escondido en Búzios, Arraial do Cabo o Cabo Frío y ganá un premio.">
+<meta property="og:image" content="https://www.juancruzconsciencia.lat/og_image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,17 +118,31 @@ a{color:inherit;}
 .pie a{color:var(--terra-d);}
 .cargando{text-align:center;padding:70px 10px;color:var(--muted);}
 </style>
+<link rel="stylesheet" href="v2_puente.css">
+<style>
+/* tablero con el formato del rediseño */
+body{background:#FAF7F2}
+.wrap{max-width:760px!important;padding:40px 20px 72px!important}
+.x-lang .lang{width:auto!important;height:auto!important;border:0!important;background:none!important;padding:1px 4px!important;font:500 12px 'DM Sans',sans-serif!important;color:#7A6E60!important;border-radius:10px!important}
+.x-lang .lang.on{color:#22180E!important;font-weight:700!important}
+.cab h1{font-size:clamp(40px,6vw,62px)!important}
+.cab p{font-size:17px!important}
+.card{border-radius:18px!important;padding:26px!important}
+</style>
 </head>
 <body>
-<div class="wrap">
-  <header class="hdr">
-    <a class="brand" href="index.html">Juan Cruz <span>Consciencia</span></a>
-    <div class="langs">
-      <button class="lang" data-l="es" onclick="setLang('es')">ES</button>
-      <button class="lang" data-l="pt" onclick="setLang('pt')">PT</button>
-      <button class="lang" data-l="en" onclick="setLang('en')">EN</button>
+<header class="x-hdr">
+  <div class="x-wrap">
+    <a href="index.html" class="x-brand">Juan Cruz Consciencia</a>
+    <nav class="x-nav" id="nav"></nav>
+    <div class="x-r">
+      <div class="x-lang"><button class="lang" data-l="es" onclick="setLang('es')">ES</button>·<button class="lang" data-l="pt" onclick="setLang('pt')">PT</button>·<button class="lang" data-l="en" onclick="setLang('en')">EN</button></div>
+      <button class="x-menu" aria-label="Menú" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
     </div>
-  </header>
+  </div>
+</header>
+<div class="wrap">
+
   <main id="app"><div class="cargando">…</div></main>
 </div>
 
@@ -344,5 +369,12 @@ function setLang(l){
 setLang(_lang);
 if(stickerId)vistaSticker();else vistaTablero();
 </script>
+<footer class="x-ftr">
+  <div class="x-wrap">
+    <div><div class="x-brand">Juan Cruz Consciencia</div><div>Búzios · Cabo Frío · Arraial do Cabo</div></div>
+    <div><a href="https://www.instagram.com/juancruzconsciencia/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@juancruzconsciencia" target="_blank" rel="noopener">TikTok</a><a href="https://g.page/r/CQ49CL7ZcGG1EAI" target="_blank" rel="noopener">Google</a></div>
+  </div>
+</footer>
+<script src="v2_nav.js"></script>
 </body>
 </html>
