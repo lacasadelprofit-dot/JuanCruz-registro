@@ -3,6 +3,233 @@
    Para traducir un texto nuevo: agregalo en TX con la clave = el texto en español (tal cual se lee). */
 (function(){
   const TX={
+/* áreas de la temporada */
+"Ser Infinito": [
+"Ser Infinito",
+"Infinite Being"
+],
+"Propósito": [
+"Propósito",
+"Purpose"
+],
+/* camino.html (texto nuevo 2026-11-23) */
+"¿Qué más es posible ahora que antes no lo era?": [
+"O que mais é possível agora que antes não era?",
+"What else is possible now that wasn't possible before?"
+],
+/* camino.html (texto nuevo 2026-11-23) */
+"4 añoscomo practicante de Barras de Access®": [
+"<b>4 anos</b><span>como praticante de Barras de Access®</span>",
+"<b>4 years</b><span>as an Access Bars® practitioner</span>"
+],
+"personas acompañadas": [
+"pessoas acompanhadas",
+"people accompanied"
+],
+"Mi búsqueda": [
+"Minha busca",
+"My search"
+],
+"Siempre sentí que había algo más. Aunque todavía no sabía qué era.": [
+"Sempre senti que havia algo mais. <em>Mesmo sem saber ainda o que era.</em>",
+"I always felt there was something more. <em>Even though I didn't know yet what it was.</em>"
+],
+"Mi camino de desarrollo personal comenzó en 2018. Siempre fui una persona curiosa, con ganas de crecer, aprender y descubrir nuevas maneras de vivir.": [
+"Meu caminho de desenvolvimento pessoal começou em 2018. Sempre fui uma pessoa curiosa, com vontade de crescer, aprender e descobrir novas maneiras de viver.",
+"My personal growth journey began in 2018. I've always been a curious person, eager to grow, learn and discover new ways of living."
+],
+"Leía libros, asistía a eventos, hacía cursos, investigaba y exploraba distintas herramientas. Buscaba respuestas, nuevas perspectivas y formas de comprenderme mejor.": [
+"Lia livros, ia a eventos, fazia cursos, pesquisava e explorava diferentes ferramentas. Buscava respostas, novas perspectivas e formas de me compreender melhor.",
+"I read books, went to events, took courses, researched and explored different tools. I was looking for answers, new perspectives and ways to understand myself better."
+],
+"En 2021, esa búsqueda comenzó a tomar un rumbo más espiritual. Empecé a explorar herramientas de consciencia y a hacerme preguntas que hasta entonces no me había planteado.": [
+"Em 2021, essa busca começou a tomar um rumo mais espiritual. Comecei a explorar ferramentas de consciência e a me fazer perguntas que até então não tinha feito.",
+"In 2021, that search began to take a more spiritual turn. I started exploring consciousness tools and asking myself questions I had never asked before."
+],
+"No sabía exactamente qué estaba buscando, pero sentía que había mucho más por descubrir.": [
+"Eu não sabia exatamente o que estava buscando, mas sentia que havia muito mais para descobrir.",
+"I didn't know exactly what I was looking for, but I felt there was so much more to discover."
+],
+"El encuentro con Barras": [
+"O encontro com as Barras",
+"Meeting the Bars"
+],
+"A veces, una experiencia puede abrir preguntas que nunca antes nos habíamos hecho.": [
+"Às vezes, uma experiência pode abrir <em>perguntas que nunca tínhamos feito antes.</em>",
+"Sometimes, one experience can open <em>questions we had never asked before.</em>"
+],
+"En abril de 2022 recibí mi primera sesión de Barras de Access®.": [
+"Em abril de 2022 recebi minha primeira sessão de Barras de Access®.",
+"In April 2022 I received my first Access Bars® session."
+],
+"Recuerdo especialmente una sensación: por primera vez en mucho tiempo, mi mente hizo silencio.": [
+"Lembro especialmente de uma sensação: <b>pela primeira vez em muito tempo, minha mente fez silêncio.</b>",
+"I especially remember one feeling: <b>for the first time in a long time, my mind went quiet.</b>"
+],
+"No sabía muy bien qué había sucedido, pero algo de esa experiencia despertó mi curiosidad. Quería conocer más, experimentar y descubrir qué otras posibilidades podían existir.": [
+"Não sabia muito bem o que tinha acontecido, mas algo naquela experiência despertou minha curiosidade. Queria conhecer mais, experimentar e descobrir que outras possibilidades podiam existir.",
+"I wasn't quite sure what had happened, but something in that experience sparked my curiosity. I wanted to know more, to experiment and discover what other possibilities might exist."
+],
+"Una de las experiencias que más recuerdo ocurrió apenas una semana después de aquella primera sesión.": [
+"Uma das experiências de que mais me lembro aconteceu apenas uma semana depois daquela primeira sessão.",
+"One of the experiences I remember most happened just one week after that first session."
+],
+"Llevaba tiempo buscando un lugar donde vivir y tenía bastante claro lo que quería: las características del espacio, los requisitos que debía cumplir e incluso el valor que estaba dispuesto a pagar de alquiler.": [
+"Fazia tempo que eu procurava um lugar para morar e tinha bem claro o que queria: as características do espaço, os requisitos que precisava cumprir e até o valor que estava disposto a pagar de aluguel.",
+"I had been looking for a place to live for a while and I was quite clear about what I wanted: the features of the space, the requirements it had to meet and even the rent I was willing to pay."
+],
+"Una semana después, encontré ese lugar. Cumplía con todo lo que había imaginado y, de una manera que me sorprendió por su facilidad, apareció una posibilidad que terminó convirtiéndose en mi hogar durante los siguientes tres años.": [
+"Uma semana depois, encontrei esse lugar. Tinha tudo o que eu tinha imaginado e, de um jeito que me surpreendeu pela facilidade, apareceu uma possibilidade que acabou se tornando meu lar pelos três anos seguintes.",
+"A week later, I found that place. It had everything I had imagined and, with an ease that surprised me, a possibility appeared that ended up becoming my home for the next three years."
+],
+"Fue mucho más que un lugar donde vivir. Allí crecí enormemente, atravesé experiencias que transformaron mi manera de ver la vida y, con el tiempo, comenzó a gestarse una idea que hoy tiene nombre: La Casa del Profit.": [
+"Foi muito mais do que um lugar para morar. Ali cresci enormemente, vivi experiências que transformaram minha maneira de ver a vida e, com o tempo, começou a nascer uma ideia que hoje tem nome: <b>La Casa del Profit</b>.",
+"It was much more than a place to live. There I grew enormously, went through experiences that transformed the way I see life and, over time, an idea began to take shape that today has a name: <b>La Casa del Profit</b>."
+],
+"Mirando hacia atrás, me resulta interesante pensar cómo algo que comenzó con una búsqueda personal terminó abriendo posibilidades que en aquel momento ni siquiera imaginaba.": [
+"Olhando para trás, acho interessante pensar como algo que começou com uma busca pessoal acabou abrindo possibilidades que naquele momento eu nem imaginava.",
+"Looking back, I find it interesting how something that started as a personal search ended up opening possibilities I couldn't even imagine at the time."
+],
+"Mi recorrido": [
+"Meu percurso",
+"My path"
+],
+"Lo que comenzó como una experiencia personal se convirtió en un camino que elegí compartir.": [
+"O que começou como uma experiência pessoal <em>se tornou um caminho que escolhi compartilhar.</em>",
+"What began as a personal experience <em>became a path I chose to share.</em>"
+],
+"En diciembre de 2022 me formé como practicante de Barras de Access®.": [
+"Em dezembro de 2022 me formei como praticante de Barras de Access®.",
+"In December 2022 I trained as an Access Bars® practitioner."
+],
+"Desde entonces, continué explorando, aprendiendo y profundizando en estas herramientas. A lo largo de este recorrido acompañé a más de 150 personas en sus propios procesos y descubrí cuánto disfruto compartir aquello que también transformó mi manera de vivir.": [
+"Desde então, continuei explorando, aprendendo e me aprofundando nessas ferramentas. Ao longo desse percurso acompanhei mais de 150 pessoas em seus próprios processos e descobri o quanto gosto de compartilhar aquilo que também transformou minha maneira de viver.",
+"Since then, I've kept exploring, learning and going deeper into these tools. Along the way I've accompanied more than 150 people in their own processes and discovered how much I enjoy sharing what also transformed the way I live."
+],
+"Más recientemente, después de sentir un llamado muy fuerte a compartir estas herramientas, di el paso de formarme como facilitador de Access Consciousness®.": [
+"Mais recentemente, depois de sentir um chamado muito forte para compartilhar essas ferramentas, dei o passo de me formar como facilitador de Access Consciousness®.",
+"More recently, after feeling a very strong call to share these tools, I took the step of training as an Access Consciousness® facilitator."
+],
+"Hoy sigo siendo un explorador. Alguien que aprende, cuestiona, experimenta y descubre nuevas posibilidades.": [
+"Hoje continuo sendo um explorador. Alguém que aprende, questiona, experimenta e descobre novas possibilidades.",
+"Today I'm still an explorer. Someone who learns, questions, experiments and discovers new possibilities."
+],
+"No considero que tenga todas las respuestas.Me interesa mucho más descubrir qué preguntas pueden abrir nuevas puertas.": [
+"Não considero que tenho todas as respostas.<br>Me interessa muito mais descobrir que perguntas podem abrir novas portas.",
+"I don't believe I have all the answers.<br>I'm far more interested in discovering which questions can open new doors."
+],
+"Lo que hago hoy": [
+"O que faço hoje",
+"What I do today"
+],
+"Nace de una búsqueda personal que encontró en compartir una manera de seguir creciendo y contribuyendo.": [
+"Nasce de uma busca pessoal que encontrou no compartilhar uma maneira de continuar crescendo e contribuindo.",
+"Born from a personal search that found, in sharing, a way to keep growing and contributing."
+],
+"Hoy facilito sesiones, comparto herramientas de consciencia, enseño Barras de Access® y genero espacios de encuentro, experiencias y preguntas.": [
+"Hoje facilito sessões, compartilho ferramentas de consciência, ensino Barras de Access® e crio espaços de encontro, experiências e perguntas.",
+"Today I facilitate sessions, share consciousness tools, teach Access Bars® and create spaces for gathering, experiences and questions."
+],
+"Mi intención es acompañar a cada persona a conectar con sus propias posibilidades, escuchar lo que realmente desea y descubrir que quizás existen otras maneras de vivir su realidad.": [
+"Minha intenção é acompanhar cada pessoa a se conectar com suas próprias possibilidades, escutar o que realmente deseja e descobrir que talvez existam outras maneiras de viver sua realidade.",
+"My intention is to accompany each person in connecting with their own possibilities, listening to what they truly desire and discovering that there may be other ways to live their reality."
+],
+"No se trata de seguir una doctrina, adoptar mis ideas ni encontrar respuestas afuera.": [
+"Não se trata de seguir uma doutrina, adotar minhas ideias nem encontrar respostas fora.",
+"It's not about following a doctrine, adopting my ideas or finding answers outside."
+],
+"Se trata de experimentar, cuestionar y permitirte descubrir qué es verdadero para vos.": [
+"Se trata de experimentar, questionar e se permitir descobrir o que é verdadeiro para você.",
+"It's about experimenting, questioning and allowing yourself to discover what's true for you."
+],
+"Creo que cada persona tiene dentro suyo todo lo necesario para transformar su realidad.": [
+"Acredito que cada pessoa tem dentro de si tudo o que precisa para transformar sua realidade.",
+"I believe every person has within them everything they need to transform their reality."
+],
+"La visión": [
+"A visão",
+"The vision"
+],
+"Lo que comenzó como una búsqueda personal hoy se está convirtiendo en una visión colectiva.": [
+"O que começou como uma busca pessoal hoje está se tornando uma visão coletiva.",
+"What began as a personal search is now becoming a collective vision."
+],
+"La Casa del Profit nace como una dimensión de expansión espiritual, con la intención de contribuir a transformar colectivamente nuestra manera de vivir, relacionarnos y crear realidad.": [
+"La Casa del Profit nasce como uma dimensão de expansão espiritual, com a intenção de contribuir para transformar coletivamente nossa maneira de viver, de nos relacionar e de criar realidade.",
+"La Casa del Profit was born as a dimension of spiritual expansion, with the intention of helping to collectively transform the way we live, relate and create reality."
+],
+"Una visión que busca acercar un millón de herramientas de consciencia vivenciales para que cada vez más personas puedan descubrir nuevas posibilidades y vivir desde su propia esencia.": [
+"Uma visão que busca levar um milhão de ferramentas de consciência vivenciais para que cada vez mais pessoas possam descobrir novas possibilidades e viver a partir da sua própria essência.",
+"A vision that seeks to bring one million experiential consciousness tools so that more and more people can discover new possibilities and live from their own essence."
+],
+"Esta expansión se sostiene sobre cuatro principios:": [
+"Essa expansão se sustenta em quatro princípios:",
+"This expansion rests on four principles:"
+],
+"AMOR": [
+"AMOR",
+"LOVE"
+],
+"UNIDAD": [
+"UNIDADE",
+"UNITY"
+],
+"SABIDURÍA": [
+"SABEDORIA",
+"WISDOM"
+],
+"PODER": [
+"PODER",
+"POWER"
+],
+"No imagino este camino como algo que dependa de una sola persona. Quiero construir algo que pueda crecer más allá de mí, donde cada persona pueda convertirse también en parte activa de esta expansión.": [
+"Não imagino este caminho como algo que dependa de uma só pessoa. Quero construir algo que possa crescer além de mim, onde cada pessoa possa se tornar também parte ativa dessa expansão.",
+"I don't see this path as something that depends on one single person. I want to build something that can grow beyond me, where each person can also become an active part of this expansion."
+],
+"Una dimensión donde podamos aprender, compartir, crear y contribuir juntos.": [
+"Uma dimensão onde possamos aprender, compartilhar, criar e contribuir juntos.",
+"A dimension where we can learn, share, create and contribute together."
+],
+"La Casa del Profit: Herramientas de consciencia para vivir en esencia.": [
+"La Casa del Profit: <em>Ferramentas de consciência para viver em essência.</em>",
+"La Casa del Profit: <em>Consciousness tools to live in essence.</em>"
+],
+"¿Qué más es posible?": [
+"O que mais é possível?",
+"What else is possible?"
+],
+"No sé exactamente hacia dónde me llevará este camino. Y, en parte, eso es lo que más me entusiasma.": [
+"Não sei exatamente para onde este caminho vai me levar. E, em parte, é isso o que mais me entusiasma.",
+"I don't know exactly where this path will take me. And, in part, that's what excites me most."
+],
+"Sigo explorando, aprendiendo y descubriendo. Sigo haciéndome preguntas y eligiendo posibilidades que antes quizás ni siquiera podía imaginar.": [
+"Continuo explorando, aprendendo e descobrindo. Continuo me fazendo perguntas e escolhendo possibilidades que antes talvez eu nem conseguisse imaginar.",
+"I keep exploring, learning and discovering. I keep asking questions and choosing possibilities I perhaps couldn't even imagine before."
+],
+"Si algo de esta historia resonó con vos, quizás también sea el momento de explorar algo diferente.": [
+"Se algo desta história ressoou com você, talvez também seja o momento de explorar algo diferente.",
+"If something in this story resonated with you, maybe it's also time to explore something different."
+],
+"Tal vez no necesitás más respuestas. Tal vez necesitás hacerte una nueva pregunta.": [
+"Talvez você não precise de mais respostas. Talvez precise se fazer uma nova pergunta.",
+"Maybe you don't need more answers. Maybe you need to ask yourself a new question."
+],
+"¿Qué más es posible para vos?": [
+"O que mais é possível para você?",
+"What else is possible for you?"
+],
+"Me gustaría que nos encontremos en el camino.": [
+"Eu gostaria que a gente se encontrasse no caminho.",
+"I'd love for us to meet along the way."
+],
+"Aprendé Barras de Access® ✦": [
+"Aprenda Barras de Access® ✦",
+"Learn Access Bars® ✦"
+],
+"En algún punto de este camino, nos encontremos explorando una nueva posibilidad juntos.": [
+"Em algum ponto deste caminho, que a gente se encontre explorando juntos uma nova possibilidade.",
+"Somewhere along this path, may we meet exploring a new possibility together."
+],
 "Juan Cruz Consciencia · Barras de Access en Búzios, Cabo Frío y Arraial do Cabo": [
 "Juan Cruz Consciencia · Barras de Access em Búzios, Cabo Frio e Arraial do Cabo",
 "Juan Cruz Consciencia · Access Bars in Búzios, Cabo Frio and Arraial do Cabo"

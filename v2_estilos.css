@@ -197,6 +197,7 @@ h3{font-size:26px;margin-bottom:8px}
 .guia-chips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .guia-chip{cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;padding:16px 14px;border-radius:40px;background:#fff;border:1.5px solid var(--terra);color:var(--terra-d);font:600 15px var(--sans);text-decoration:none;transition:background .15s,color .15s,transform .15s}
 .guia-chip::after{content:"→";opacity:.6}
+.guia-chip svg{width:19px;height:19px;flex:none}
 .guia-chip:hover{background:var(--terra);color:#fff;transform:translateY(-1px)}
 @media(max-width:760px){.guia{grid-template-columns:1fr;padding:28px;gap:24px}}
 
