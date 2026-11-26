@@ -3,6 +3,159 @@
    Para traducir un texto nuevo: agregalo en TX con la clave = el texto en español (tal cual se lee). */
 (function(){
   const TX={
+/* aliado.html (landing de cada aliado) */
+"Barras de Access para huéspedes · Juan Cruz Consciencia": [
+"Barras de Access para hóspedes · Juan Cruz Consciencia",
+"Access Bars for guests · Juan Cruz Consciencia"
+],
+"Para huéspedes · Região dos Lagos": [
+"Para hóspedes · Região dos Lagos",
+"For guests · Região dos Lagos"
+],
+"Una hora para soltar todo, durante tu estadía.": [
+"Uma hora para soltar tudo, <em>durante a sua estadia.</em>",
+"One hour to let it all go, <em>during your stay.</em>"
+],
+"Sesiones de Barras de Access®: te acostás, cerrás los ojos y recibís un toque suave en 32 puntos de la cabeza. Sin hablar de tus problemas. Sin tener que creer en nada.": [
+"Sessões de Barras de Access®: você se deita, fecha os olhos e recebe um toque suave em 32 pontos da cabeça. Sem falar dos seus problemas. Sem precisar acreditar em nada.",
+"Access Bars® sessions: you lie down, close your eyes and receive a gentle touch on 32 points of the head. No need to talk about your problems. No need to believe in anything."
+],
+"Reservar por WhatsApp ✦": [
+"Reservar pelo WhatsApp ✦",
+"Book on WhatsApp ✦"
+],
+"Elegir día y horario": [
+"Escolher dia e horário",
+"Choose day and time"
+],
+"60 minutos": [
+"60 minutos",
+"60 minutes"
+],
+"Para tu estadía": [
+"Para a sua estadia",
+"For your stay"
+],
+"¿Cuándo te viene bien?": [
+"Quando fica bom para você?",
+"When works for you?"
+],
+"Ayuda a soltar pensamientos en loop, estrés y creencias que ya no te sirven. Muchas personas cuentan que esa noche durmieron como hacía meses.": [
+"Ajuda a soltar pensamentos em loop, estresse e crenças que já não te servem. Muitas pessoas contam que naquela noite dormiram como não dormiam havia meses.",
+"It helps release looping thoughts, stress and beliefs that no longer serve you. Many people say they slept that night like they hadn't in months."
+],
+"Ver todas las sesiones →": [
+"Ver todas as sessões →",
+"See all sessions →"
+],
+"Cómo reservar": [
+"Como reservar",
+"How to book"
+],
+"Simple, en tres pasos": [
+"Simples, em três passos",
+"Simple, in three steps"
+],
+"Elegí tu horario": [
+"Escolha seu horário",
+"Choose your time"
+],
+"De lunes a viernes, por la mañana o por la tarde.": [
+"De segunda a sexta, de manhã ou à tarde.",
+"Monday to Friday, morning or afternoon."
+],
+"Reservá con una seña": [
+"Reserve com um sinal",
+"Book with a deposit"
+],
+"Por Pix. El resto lo pagás el día de la sesión.": [
+"Por Pix. O restante você paga no dia da sessão.",
+"Via Pix. You pay the rest on the day of the session."
+],
+"Vení a tu sesión": [
+"Venha para a sua sessão",
+"Come to your session"
+],
+"Te confirmo el lugar por WhatsApp.": [
+"Te confirmo o local pelo WhatsApp.",
+"I'll confirm the place on WhatsApp."
+],
+"¿Te quedás más días?": [
+"Vai ficar mais dias?",
+"Staying longer?"
+],
+"Aprendé Barras en un día": [
+"Aprenda Barras em um dia",
+"Learn Bars in one day"
+],
+"8 horas. Te llevás un manual de herramientas energéticas para vos y aprendés a dar Barras a otras personas.": [
+"8 horas. Você leva um manual de ferramentas energéticas para você e aprende a dar Barras para outras pessoas.",
+"8 hours. You take home a manual of energy tools for yourself and learn to give Bars to others."
+],
+"pronto": [
+"em breve",
+"soon"
+],
+"Nuevas fechas muy pronto": [
+"Novas datas em breve",
+"New dates coming soon"
+],
+"Escribime y te aviso apenas haya fecha.": [
+"Me escreva e eu te aviso assim que tiver data.",
+"Message me and I'll let you know as soon as there's a date."
+],
+"Avisame ✦": [
+"Me avise ✦",
+"Let me know ✦"
+],
+"Ver la clase →": [
+"Ver a aula →",
+"See the class →"
+],
+"Antes de reservar": [
+"Antes de reservar",
+"Before booking"
+],
+"¿Cómo es una sesión?": [
+"Como é uma sessão?",
+"What is a session like?"
+],
+"Te acostás vestido/a en una camilla y recibís un toque suave en 32 puntos de la cabeza. Dura 60 minutos y la mayoría siente una relajación profunda.": [
+"Você se deita vestido/a numa maca e recebe um toque suave em 32 pontos da cabeça. Dura 60 minutos e a maioria sente um relaxamento profundo.",
+"You lie fully clothed on a massage table and receive a gentle touch on 32 points of the head. It lasts 60 minutes and most people feel deeply relaxed."
+],
+"¿Necesito experiencia o creer en algo?": [
+"Preciso de experiência ou acreditar em algo?",
+"Do I need experience or to believe in something?"
+],
+"No. No hace falta experiencia previa ni creer en nada.": [
+"Não. Não precisa de experiência prévia nem acreditar em nada.",
+"No. You don't need any previous experience or to believe in anything."
+],
+"¿Y si cambian mis planes?": [
+"E se meus planos mudarem?",
+"What if my plans change?"
+],
+"Avisame con 24 horas de anticipación y reprogramamos sin costo, una vez por seña. Con menos aviso, o si no venís, la seña no se devuelve.": [
+"Me avise com 24 horas de antecedência e remarcamos sem custo, uma vez por sinal. Com menos aviso, ou se você não vier, o sinal não é devolvido.",
+"Let me know 24 hours ahead and we reschedule at no cost, once per deposit. With less notice, or if you don't show up, the deposit is not refunded."
+],
+"Regalate una hora para vos": [
+"Se dê uma hora para você",
+"Give yourself an hour"
+],
+"Escribime y buscamos el mejor horario para tu estadía.": [
+"Me escreva e encontramos o melhor horário para a sua estadia.",
+"Message me and we'll find the best time for your stay."
+],
+"Vista desde la camilla durante una sesión frente al mar": [
+"Vista da maca durante uma sessão de frente para o mar",
+"View from the table during a session facing the sea"
+],
+"Hola Juan Cruz, quiero enterarme de la próxima clase de Barras": [
+"Olá Juan Cruz, quero saber da próxima aula de Barras",
+"Hi Juan Cruz, I'd like to hear about the next Bars class"
+],
 /* áreas de la temporada */
 "Ser Infinito": [
 "Ser Infinito",
@@ -1426,9 +1579,9 @@
 "Renda extra",
 "Extra income"
 ],
-"Recibís el 20% de cada sesión o clase que llegue por tu establecimiento.": [
-"Você recebe 20% de cada sessão ou aula que chegue pelo seu estabelecimento.",
-"You receive 20% of every session or class that comes through your property."
+"Recibís el 20% de cada sesión y el 10% de cada clase de los huéspedes que lleguen por vos.": [
+"Você recebe 20% de cada sessão e 10% de cada aula dos hóspedes que chegarem por você.",
+"You receive 20% of every session and 10% of every class from guests who come through you."
 ],
 "La experiencia": [
 "A experiência",
@@ -1534,9 +1687,9 @@
 "Eu deixo flyers e um QR próprio do seu estabelecimento para seus hóspedes",
 "I leave flyers and a QR code unique to your property for your guests"
 ],
-"Beneficio: 20% de cada sesión o clase de los huéspedes que lleguen por vos.": [
-"<b>Benefício:</b> 20% de cada sessão ou aula dos hóspedes que chegarem por você.",
-"<b>Benefit:</b> 20% of every session or class from guests who come through you."
+"Beneficio: 20% de cada sesión y 10% de cada clase de los huéspedes que lleguen por vos.": [
+"<b>Benefício:</b> 20% de cada sessão e 10% de cada aula dos hóspedes que chegarem por você.",
+"<b>Benefit:</b> 20% of every session and 10% of every class from guests who come through you."
 ],
 "Recibís en tu establecimiento experiencias de presentación de Barras para tus huéspedes.": [
 "Você recebe no seu estabelecimento experiências de apresentação de Barras para seus hóspedes.",
@@ -1550,9 +1703,9 @@
 "Convida seus hóspedes para a experiência",
 "Invite your guests to the experience"
 ],
-"Beneficio: 20% de cada sesión o clase que se realice en tu espacio.": [
-"<b>Benefício:</b> 20% de cada sessão ou aula realizada no seu espaço.",
-"<b>Benefit:</b> 20% of every session or class held in your space."
+"Beneficio: además, 20% de cada sesión y 10% de cada clase que se realicen en tu espacio.": [
+"<b>Benefício:</b> além disso, 20% de cada sessão e 10% de cada aula realizadas no seu espaço.",
+"<b>Benefit:</b> on top of that, 20% of every session and 10% of every class held in your space."
 ],
 "Tu espacio aloja encuentros: clases de Barras e intercambios de la comunidad.": [
 "Seu espaço recebe encontros: aulas de Barras e intercâmbios da comunidade.",
@@ -1752,6 +1905,35 @@
 ]
 };
   const DYN={
+/* aliado.html */
+"Para huéspedes de ": [
+"Para hóspedes de ",
+"For guests of "
+],
+"Beneficio para huéspedes": [
+"Benefício para hóspedes",
+"Guest benefit"
+],
+"Hola Juan Cruz, me hospedo en ": [
+"Olá Juan Cruz, estou hospedado/a em ",
+"Hi Juan Cruz, I'm staying at "
+],
+" y quiero reservar una sesión de Barras.": [
+" e quero reservar uma sessão de Barras.",
+" and I'd like to book a Bars session."
+],
+"Hola Juan Cruz, quiero reservar una sesión de Barras.": [
+"Olá Juan Cruz, quero reservar uma sessão de Barras.",
+"Hi Juan Cruz, I'd like to book a Bars session."
+],
+"Sesiones para huéspedes de": [
+"Sessões para hóspedes de",
+"Sessions for guests of"
+],
+"Barras de Access para huéspedes de ": [
+"Barras de Access para hóspedes de ",
+"Access Bars for guests of "
+],
 "Clase de Barras de Access®": [
 "Aula de Barras de Access®",
 "Access Bars® Class"

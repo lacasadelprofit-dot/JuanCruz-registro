@@ -1932,7 +1932,7 @@ async function submitRegistro(){
   let claseRes=null;
   if(conAgenda){
     const {data,error}=await _sb.rpc('reservar_turno',{p_fecha:_agDia,p_hora:_agHora,p_servicio:_sesionKey==='mes_energetico'?'barras':_sesionKey,
-      p_nombre:nombre,p_celular:celular,p_datos:{sesion:sesionInteres,mensaje,lang:_lang,...extras,...(_sesionKey==='mes_energetico'?{pack:'mes_energetico'}:{})}});
+      p_nombre:nombre,p_celular:celular,p_datos:{sesion:sesionInteres,mensaje,lang:_lang,...extras,...(_sesionKey==='mes_energetico'?{pack:'mes_energetico'}:{}),...(()=>{try{const x=JSON.parse(sessionStorage.getItem('jcc_aliado')||'null');return x&&x.slug?{aliado:x.slug,aliado_nombre:x.nombre||''}:{};}catch(e){return {};}})(),...(()=>{try{const v=sessionStorage.getItem('jcc_vendedor');return v?{vendedor:v}:{};}catch(e){return {};}})()}});
     if(error){
       const m=error.message||'';
       const libre=m.includes('ocupado')||m.includes('muy_pronto');
@@ -1999,6 +1999,8 @@ async function submitRegistro(){
 /* ── TRACKING ── */
 /* Origen de la visita: ?o=flyer / ?o=instagram (o utm_source); si no viene, el sitio de donde llegó; si no, "directo".
    Se guarda por sesión para que todos los eventos (giros, reservas) lleven el mismo origen. */
+/* Vendedores: link con ?ref=CÓDIGO → la reserva queda marcada con ese vendedor (comisión, Agenda → 💸 Comisiones) */
+try{const _rf=(new URLSearchParams(location.search).get('ref')||'').trim().toLowerCase().replace(/[^a-z0-9-]/g,'').slice(0,40);if(_rf)sessionStorage.setItem('jcc_vendedor',_rf);}catch(e){}
 const _origen=(()=>{
   try{
     const q=new URLSearchParams(location.search);
