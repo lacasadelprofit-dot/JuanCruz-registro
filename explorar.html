@@ -1600,6 +1600,7 @@ function _agCfg(){
     if(error||!data)return;
     if(Array.isArray(data.horas)&&data.horas.length)AGENDA.horas=[...new Set(data.horas)].sort();
     if(Array.isArray(data.dias)&&data.dias.length)AGENDA.diasHabiles=data.dias.map(Number);
+    if(Number.isFinite(+data.anticipacion))AGENDA.anticipacionHs=+data.anticipacion;
   },()=>{}));
 }
 async function cargarAgenda(){

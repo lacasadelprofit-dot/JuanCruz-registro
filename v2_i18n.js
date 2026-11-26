@@ -3,6 +3,18 @@
    Para traducir un texto nuevo: agregalo en TX con la clave = el texto en español (tal cual se lee). */
 (function(){
   const TX={
+"Sesiones online · Desde donde estés": [
+"Sessões online · De onde você estiver",
+"Online sessions · Wherever you are"
+],
+"Curiosidad": [
+"Curiosidade",
+"Curiosity"
+],
+"Contame cómo venís (opcional)": [
+"Me conte como você está <span style=\"text-transform:none;letter-spacing:0;font-weight:500\">(opcional)</span>",
+"Tell me how you are <span style=\"text-transform:none;letter-spacing:0;font-weight:500\">(optional)</span>"
+],
 /* sesiones.html v2 (2026-11-26) */
 "Bajale el volumen a tu mente en 60 minutos": [
 "Abaixe o volume da sua mente em 60 minutos",

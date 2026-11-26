@@ -344,15 +344,16 @@
         <input id="resHoney" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
       </div>
       <div class="res-blk">
-        <details class="opc">
-          <summary>+ Contame cómo venís (opcional)</summary>
+        <div class="opc">
+          <h4>Contame cómo venís <span style="text-transform:none;letter-spacing:0;font-weight:500">(opcional)</span></h4>
           <div id="opcBarras">
             <p class="lbl">¿Qué sentís?</p>
             <div class="chk">
+              <label><input type="checkbox" class="sint" value="Ganas de expandirme y crear más"> Ganas de expandirme y crear más</label>
+              <label><input type="checkbox" class="sint" value="Curiosidad"> Curiosidad</label>
               <label><input type="checkbox" class="sint" value="Mucho ruido mental"> Mucho ruido mental</label>
               <label><input type="checkbox" class="sint" value="Estrés / Ansiedad"> Estrés / Ansiedad</label>
               <label><input type="checkbox" class="sint" value="Cansancio general"> Cansancio general</label>
-              <label><input type="checkbox" class="sint" value="Ganas de expandirme y crear más"> Ganas de expandirme y crear más</label>
             </div>
             <p class="lbl">¿Cuándo lo sentís más?</p>
             <div class="chk">
@@ -367,7 +368,7 @@
           </div>
           <p class="lbl">¿Algo que quieras contarme antes?</p>
           <textarea id="resMsg" rows="2"></textarea>
-        </details>
+        </div>
       </div>
       <div class="res-resumen">
         <p id="resTxt">Elegí día y horario.</p>
@@ -401,7 +402,7 @@
 <!-- ONLINE -->
 <section class="sec sec-alt">
   <div class="wrap">
-    <div class="eyebrow">Sesiones online · Desde donde estés · por videollamada</div>
+    <div class="eyebrow">Sesiones online · Desde donde estés</div>
     <div class="card" style="display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:center;margin-top:16px" id="mentoria">
       <div>
         <span class="badge">Mentoría · 90 días · individual</span>
@@ -461,7 +462,7 @@
    la reserva queda marcada (comisión). Estadísticas: regalo_eventos con pagina 'landing_jcc' (Admin → Stats Landing). */
 (function(){
   const SUPA_URL='https://vffmnyjjawvvctcqzkvj.supabase.co',SUPA_KEY='sb_publishable_A1rJIiXHSg6TQYT2gKQHUw_UTwmS76t',WA='541151758653';
-  let HORAS=['08:00','09:20','10:40','18:30','19:50'],DIAS=[1,2,3,4,5];const VISTA=21,ANTICIP_HS=2;
+  let HORAS=['08:00','09:20','10:40','18:30','19:50'],DIAS=[1,2,3,4,5];const VISTA=21;let ANTICIP_HS=2;  // anticipación mínima: Agenda → ⏰ Horarios
   const SES={barras:'Barras de Access',proceso_cuerpos:'Proceso de Cuerpos',mes_energetico:'Mes Energético'};
   const SERV={barras:'barras',proceso_cuerpos:'proceso_cuerpos',mes_energetico:'barras'};
   const SENIA={barras:[100,30,'30.000'],proceso_cuerpos:[150,35,'45.000'],mes_energetico:[100,30,'30.000']},PIX='04572950741',ALIAS='juancruzconsciencia';
@@ -499,7 +500,6 @@
   function pintarReserva(){
     if(hecho){pintarOk();return;}
     document.querySelectorAll('#resSes .pill').forEach(b=>b.classList.toggle('on',b.dataset.s===sel.ses));
-    document.getElementById('opcBarras').style.display=sel.ses==='proceso_cuerpos'?'none':'';
     document.getElementById('opcProceso').style.display=sel.ses==='proceso_cuerpos'?'':'none';
     const dEl=document.getElementById('resDias'),hEl=document.getElementById('resHoras');
     if(ocup===null){dEl.innerHTML=`<span class="res-vacio">${esc(T('Cargando horarios…'))}</span>`;return;}
@@ -527,8 +527,8 @@
     if(cel.length<8||cel.length>15)return mal('Poné tu WhatsApp con código de país.');
     if(!sb)return mal('No se pudo conectar. Probá de nuevo en un momento.');
     const sesion=SES[sel.ses],mensaje=document.getElementById('resMsg').value.trim(),extras={};
-    if(sel.ses==='proceso_cuerpos'){extras.patron=document.getElementById('resPatron').value.trim();}
-    else{extras.sintomas=[...document.querySelectorAll('.sint:checked')].map(x=>x.value);extras.momentoDia=document.querySelector('input[name=momentoDia]:checked')?.value||'';}
+    extras.sintomas=[...document.querySelectorAll('.sint:checked')].map(x=>x.value);extras.momentoDia=document.querySelector('input[name=momentoDia]:checked')?.value||'';
+    if(sel.ses==='proceso_cuerpos')extras.patron=document.getElementById('resPatron').value.trim();
     const lang=window.v2lang?window.v2lang():'es';
     const txt0=btn.textContent;btn.textContent=T('Reservando…');btn.setAttribute('aria-disabled','true');
     const {data,error}=await sb.rpc('reservar_turno',{p_fecha:sel.dia,p_hora:sel.hora,p_servicio:SERV[sel.ses],p_nombre:nombre,p_celular:cel,
@@ -576,7 +576,7 @@
     if(!sb){ocup=[];pintarReserva();return;}
     const hoy=isoDia(ahoraBR());
     sb.rpc('agenda_config').then(({data,error})=>{
-      if(!error&&data){if(Array.isArray(data.horas)&&data.horas.length)HORAS=[...new Set(data.horas)].sort();if(Array.isArray(data.dias)&&data.dias.length)DIAS=data.dias.map(Number);}
+      if(!error&&data){if(Array.isArray(data.horas)&&data.horas.length)HORAS=[...new Set(data.horas)].sort();if(Array.isArray(data.dias)&&data.dias.length)DIAS=data.dias.map(Number);if(Number.isFinite(+data.anticipacion))ANTICIP_HS=+data.anticipacion;}
     },()=>{}).then(()=>sb.rpc('agenda_ocupados',{desde:hoy,hasta:sumar(hoy,VISTA)}).then(({data,error})=>{
       ocup=(!error&&Array.isArray(data))?data.map(o=>({fecha:String(o.fecha).slice(0,10),hora:o.hora})):[];pintarReserva();
     },()=>{ocup=[];pintarReserva();}));
