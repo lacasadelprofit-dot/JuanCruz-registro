@@ -27,15 +27,16 @@
 .prop-meta{margin-top:auto;padding-top:16px;font-size:13px;color:var(--verde);font-weight:600}
 .bienv{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--terra-d);line-height:1.45;margin-top:18px;display:none}
 /* qué son las Barras */
-.puntos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.puntos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
 .punto{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
 .punto b{display:block;font-family:var(--serif);font-size:22px;font-weight:600}
 .punto span{font-size:14px;color:var(--muted)}
 .notar{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 28px;margin-top:18px}
 .notar div b{display:block;font-size:16px}
 .notar div span{font-size:14.5px;color:var(--muted)}
-.subt{font-family:var(--serif);font-size:27px;font-weight:600;margin:40px 0 4px}
-@media(max-width:760px){.puntos{grid-template-columns:repeat(2,1fr)}.notar{grid-template-columns:1fr}}
+.subt{font-family:var(--serif);font-size:27px;font-weight:600;margin:34px 0 4px}
+@media(min-width:761px){.pasos3{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.notar{grid-template-columns:1fr}}
 /* reservar */
 .res{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:28px;margin-top:24px}
 .res h4{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 10px}
@@ -120,6 +121,14 @@
         <div class="eyebrow">Qué son las Barras de Access®</div>
         <h2>Un toque suave en 32 puntos de la cabeza</h2>
         <p class="lead">Apagá el ruido mental sin hablar de tus problemas. Te acostás, cerrás los ojos y recibís un toque suave en 32 puntos de la cabeza que ayuda a soltar lo acumulado: pensamientos en loop, estrés y creencias que ya no te sirven. Mucha gente se queda dormida.</p>
+        <h3 class="subt">32 puntos energéticos en tu cabeza</h3>
+        <p>En estos puntos se almacena todo lo que viviste y aprendiste. Las Barras trabajan directamente sobre ellos.</p>
+        <div class="puntos">
+          <div class="punto"><b>Pensamientos</b><span>patrones repetitivos</span></div>
+          <div class="punto"><b>Emociones</b><span>cargas no procesadas</span></div>
+          <div class="punto"><b>Creencias</b><span>limitaciones aprendidas</span></div>
+          <div class="punto"><b>Patrones</b><span>comportamientos automáticos</span></div>
+        </div>
       </div>
       <div>
         <video class="vid" src="img_v2/sesion_pileta.mp4" poster="img_v2/sesion_pileta.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Vista desde la camilla durante una sesión, frente a la pileta y las montañas"></video>
@@ -127,17 +136,8 @@
       </div>
     </div>
 
-    <h3 class="subt">32 puntos energéticos en tu cabeza</h3>
-    <p>En estos puntos se almacena todo lo que viviste y aprendiste. Las Barras trabajan directamente sobre ellos.</p>
-    <div class="puntos">
-      <div class="punto"><b>Pensamientos</b><span>patrones repetitivos</span></div>
-      <div class="punto"><b>Emociones</b><span>cargas no procesadas</span></div>
-      <div class="punto"><b>Creencias</b><span>limitaciones aprendidas</span></div>
-      <div class="punto"><b>Patrones</b><span>comportamientos automáticos</span></div>
-    </div>
-
     <h3 class="subt">El proceso</h3>
-    <div class="pasos" style="margin-top:14px">
+    <div class="pasos pasos3" style="margin-top:14px">
       <div class="paso"><div class="n">1</div><h4>Se activan los puntos</h4><p>Toque suave en los 32 puntos energéticos</p></div>
       <div class="paso"><div class="n">2</div><h4>Se descargan acumulaciones</h4><p>Se liberan las cargas energéticas almacenadas</p></div>
       <div class="paso"><div class="n">3</div><h4>Relajación profunda</h4><p>El sistema nervioso entra en calma real</p></div>
@@ -296,7 +296,9 @@
   let hecho=null;  // reserva confirmada: {ses,dia,hora,nombre}
   const T=s=>window.v2t?window.v2t(s):s;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const slug=(new URLSearchParams(location.search).get('a')||'').trim().toLowerCase().replace(/[^a-z0-9-]/g,'').slice(0,60);
+  /* el lugar sale del link: juancruzconsciencia.lat/vista-al-mar (vercel.json lo manda acá) o aliado.html?a=vista-al-mar */
+  const porRuta=(location.pathname.replace(/^\/+|\/+$/g,'').match(/^[a-z0-9-]+$/i)||[''])[0];
+  const slug=(new URLSearchParams(location.search).get('a')||porRuta||'').trim().toLowerCase().replace(/[^a-z0-9-]/g,'').slice(0,60);
   const sb=window.supabase?(window.__sbV2=window.__sbV2||supabase.createClient(SUPA_URL,SUPA_KEY)):null;
   let A=null,ocup=null,sel={ses:'barras',dia:'',hora:''};
 
@@ -442,6 +444,8 @@
         if(!elegido&&['pt','en'].includes(A.idioma)&&window.setLang)window.setLang(A.idioma);
         pintar();foto();
       }
+      /* link directo a un lugar que no existe o está apagado → a la portada (no mostrar una página vacía) */
+      if(!error&&!A&&porRuta){location.replace('/');return;}
       track('page_view',{encontrado:!!A});
     },()=>track('page_view',{encontrado:false}));
   }else track('page_view',{encontrado:false});
