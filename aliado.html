@@ -25,11 +25,53 @@
 .prop{display:flex;flex-direction:column}
 .prop h3{font-size:25px}
 .prop-meta{margin-top:auto;padding-top:16px;font-size:13px;color:var(--verde);font-weight:600}
-.ses-list{list-style:none;padding:0;margin:18px 0 0}
-.ses-list li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);font-size:15.5px}
-.ses-list li span:last-child{font-weight:600;white-space:nowrap}
-.ses-list small{display:block;color:var(--muted);font-size:13px;font-weight:400}
 .bienv{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--terra-d);line-height:1.45;margin-top:18px;display:none}
+/* qué son las Barras */
+.puntos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.punto{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
+.punto b{display:block;font-family:var(--serif);font-size:22px;font-weight:600}
+.punto span{font-size:14px;color:var(--muted)}
+.notar{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 28px;margin-top:18px}
+.notar div b{display:block;font-size:16px}
+.notar div span{font-size:14.5px;color:var(--muted)}
+.subt{font-family:var(--serif);font-size:27px;font-weight:600;margin:40px 0 4px}
+@media(max-width:760px){.puntos{grid-template-columns:repeat(2,1fr)}.notar{grid-template-columns:1fr}}
+/* reservar */
+.res{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:28px;margin-top:24px}
+.res h4{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 10px}
+.res-blk+.res-blk{margin-top:24px}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{font:600 14.5px var(--sans);border:1px solid var(--border);background:var(--bg);color:var(--text);border-radius:14px;padding:12px 16px;cursor:pointer;text-align:left;line-height:1.3}
+.pill small{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
+.pill.on{border-color:var(--terra);background:var(--terra-l);box-shadow:0 0 0 1px var(--terra) inset}
+.pill:disabled{opacity:.4;cursor:not-allowed;text-decoration:line-through}
+.dias{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.dia{flex:0 0 auto;min-width:66px;text-align:center;padding:10px 8px}
+.dia b{display:block;font-size:20px;font-family:var(--serif)}
+.horas{display:flex;flex-wrap:wrap;gap:10px}
+.horas .pill{min-width:84px;text-align:center}
+.res input{width:100%;max-width:360px;font:15px var(--sans);padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text)}
+.res-resumen{margin-top:24px;padding-top:20px;border-top:1px solid var(--border);display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between}
+.res-resumen p{margin:0;font-size:15px}
+.res .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.res-nota{font-size:13.5px;color:var(--muted);margin-top:14px}
+.res-vacio{font-size:14.5px;color:var(--muted)}
+.exp{list-style:none;padding:0;margin:20px 0 4px;display:flex;flex-wrap:wrap;gap:8px}
+.exp li{font-size:13.5px;font-weight:600;color:var(--verde);background:var(--verde-l);border-radius:30px;padding:7px 13px}
+.res-campos{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:640px}
+.res-campos label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.res .res-campos input{max-width:none}
+.res-err{color:#A33;font-size:14px;margin-top:10px;display:none}
+.ok h3{font-size:30px;margin:0 0 6px}
+.ok-det{margin:18px 0;display:grid;gap:8px;font-size:15px}
+.ok-det div{display:flex;gap:10px;flex-wrap:wrap}
+.ok-det span:first-child{min-width:90px;color:var(--muted)}
+.ok-pago{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:16px;display:grid;gap:10px;margin:14px 0 20px}
+.ok-pago div{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.ok-pago code{font:600 16px var(--sans)}
+.ok-pago button{font:600 13px var(--sans);border:1px solid var(--border);background:var(--card);border-radius:20px;padding:6px 14px;cursor:pointer}
+@media(max-width:560px){.res-campos{grid-template-columns:1fr}}
+@media(max-width:560px){.res{padding:20px}}
 </style>
 </head>
 <body>
@@ -49,12 +91,14 @@
   <div class="wrap">
     <div>
       <div class="hero-tag" id="alTag">Para huéspedes · Região dos Lagos</div>
-      <h1>Una hora para soltar todo, <em>durante tu estadía.</em></h1>
+      <h1>¿Y si el verdadero descanso <em>empieza en tu mente?</em></h1>
       <p class="lead">Sesiones de Barras de Access®: te acostás, cerrás los ojos y recibís un toque suave en 32 puntos de la cabeza. Sin hablar de tus problemas. Sin tener que creer en nada.</p>
+      <ul class="exp">
+        <li>Relajación profunda</li><li>Sensación de ligereza</li><li>Desconexión del exceso de pensamientos</li><li>Soltar tensiones</li><li>Una sensación de bienestar</li>
+      </ul>
       <p class="bienv" id="alBienv"></p>
       <div class="hero-ctas">
-        <a class="btn btn-p" id="ctaWa" href="#" target="_blank" rel="noopener">Reservar por WhatsApp ✦</a>
-        <a class="btn btn-s" id="ctaAgenda" href="sesiones.html">Elegir día y horario</a>
+        <a class="btn btn-p" href="#reservar">Elegir día y horario ✦</a>
       </div>
       <div class="proof">
         <span><a href="https://g.page/r/CQ49CL7ZcGG1EAI" target="_blank" rel="noopener">5,0 ★ en Google</a></span>
@@ -68,8 +112,63 @@
   </div>
 </section>
 
-<!-- PROPUESTAS -->
+<!-- QUÉ SON LAS BARRAS -->
 <section class="sec sec-alt">
+  <div class="wrap">
+    <div class="vid-split">
+      <div>
+        <div class="eyebrow">Qué son las Barras de Access®</div>
+        <h2>Un toque suave en 32 puntos de la cabeza</h2>
+        <p class="lead">Apagá el ruido mental sin hablar de tus problemas. Te acostás, cerrás los ojos y recibís un toque suave en 32 puntos de la cabeza que ayuda a soltar lo acumulado: pensamientos en loop, estrés y creencias que ya no te sirven. Mucha gente se queda dormida.</p>
+      </div>
+      <div>
+        <video class="vid" src="img_v2/sesion_pileta.mp4" poster="img_v2/sesion_pileta.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Vista desde la camilla durante una sesión, frente a la pileta y las montañas"></video>
+        <div class="vid-cap">Así se ve desde la camilla</div>
+      </div>
+    </div>
+
+    <h3 class="subt">32 puntos energéticos en tu cabeza</h3>
+    <p>En estos puntos se almacena todo lo que viviste y aprendiste. Las Barras trabajan directamente sobre ellos.</p>
+    <div class="puntos">
+      <div class="punto"><b>Pensamientos</b><span>patrones repetitivos</span></div>
+      <div class="punto"><b>Emociones</b><span>cargas no procesadas</span></div>
+      <div class="punto"><b>Creencias</b><span>limitaciones aprendidas</span></div>
+      <div class="punto"><b>Patrones</b><span>comportamientos automáticos</span></div>
+    </div>
+
+    <h3 class="subt">El proceso</h3>
+    <div class="pasos" style="margin-top:14px">
+      <div class="paso"><div class="n">1</div><h4>Se activan los puntos</h4><p>Toque suave en los 32 puntos energéticos</p></div>
+      <div class="paso"><div class="n">2</div><h4>Se descargan acumulaciones</h4><p>Se liberan las cargas energéticas almacenadas</p></div>
+      <div class="paso"><div class="n">3</div><h4>Relajación profunda</h4><p>El sistema nervioso entra en calma real</p></div>
+    </div>
+
+    <div class="g2" style="gap:40px;margin-top:8px">
+      <div>
+        <h3 class="subt">En 60 minutos vas a notar</h3>
+        <div class="notar">
+          <div><b>Menos ruido mental</b><span>como si alguien bajara el volumen</span></div>
+          <div><b>Sueño reparador</b><span>muchos cuentan que esa noche durmieron como hacía meses</span></div>
+          <div><b>Más energía</b><span>menos reactividad ante conflictos</span></div>
+          <div><b>Apertura a nuevas posibilidades</b><span>oportunidades que antes no veías</span></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="subt">¿Es para vos?</h3>
+        <ul class="check" style="margin-top:14px">
+          <li>Pensás demasiado y no podés frenar la mente</li>
+          <li>Sentís estrés, ansiedad o sobrecarga constante</li>
+          <li>Te cuesta relajarte de verdad</li>
+          <li>Querés soltar y resetear tu energía</li>
+          <li>Estás bien, pero sentís que podés estar mejor</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPUESTAS -->
+<section class="sec">
   <div class="wrap">
     <div class="eyebrow" style="color:var(--verde)">Para tu estadía</div>
     <h2>¿Cuándo te viene bien?</h2>
@@ -81,35 +180,41 @@
   </div>
 </section>
 
-<!-- QUÉ SON LAS BARRAS + SESIONES -->
-<section class="sec">
-  <div class="wrap vid-split">
-    <div>
-      <div class="eyebrow">Qué son las Barras</div>
-      <h2>Un toque suave en 32 puntos de la cabeza</h2>
-      <p class="lead">Ayuda a soltar pensamientos en loop, estrés y creencias que ya no te sirven. Muchas personas cuentan que esa noche durmieron como hacía meses.</p>
-      <ul class="ses-list">
-        <li><span>Barras de Access<small>60 minutos</small></span><span>R$ 200</span></li>
-        <li><span>Proceso de Cuerpos<small>60 minutos</small></span><span>R$ 300</span></li>
-      </ul>
-      <p style="margin-top:20px"><a href="sesiones.html" id="lnkSesiones" style="color:var(--terra-d);font-weight:600">Ver todas las sesiones →</a></p>
-    </div>
-    <div>
-      <video class="vid" src="img_v2/sesion_pileta.mp4" poster="img_v2/sesion_pileta.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Vista desde la camilla durante una sesión, frente a la pileta y las montañas"></video>
-      <div class="vid-cap">Así se ve desde la camilla</div>
-    </div>
-  </div>
-</section>
-
-<!-- CÓMO RESERVAR -->
-<section class="sec sec-alt">
+<!-- RESERVAR -->
+<section class="sec sec-alt" id="reservar">
   <div class="wrap">
-    <div class="eyebrow">Cómo reservar</div>
-    <h2>Simple, en tres pasos</h2>
-    <div class="pasos">
-      <div class="paso"><div class="n">1</div><h4>Elegí tu horario</h4><p>De lunes a viernes, por la mañana o por la tarde.</p></div>
-      <div class="paso"><div class="n">2</div><h4>Reservá con una seña</h4><p>Por Pix. El resto lo pagás el día de la sesión.</p></div>
-      <div class="paso"><div class="n">3</div><h4>Vení a tu sesión</h4><p id="alLugar">Te confirmo el lugar por WhatsApp.</p></div>
+    <div class="eyebrow">Reservá tu sesión</div>
+    <h2>Elegí día y horario</h2>
+    <p class="lead">Estos son los horarios libres en este momento. Elegí el tuyo y reservalo acá mismo.</p>
+    <div class="res" id="resBox">
+      <div class="res-blk">
+        <h4>Sesión</h4>
+        <div class="pills" id="resSes">
+          <button type="button" class="pill on" data-s="barras">Barras de Access<small>60 minutos · R$ 200</small></button>
+          <button type="button" class="pill" data-s="proceso_cuerpos">Proceso de Cuerpos<small>60 minutos · R$ 300</small></button>
+        </div>
+      </div>
+      <div class="res-blk">
+        <h4>Día</h4>
+        <div class="dias" id="resDias"><span class="res-vacio">Cargando horarios…</span></div>
+      </div>
+      <div class="res-blk">
+        <h4>Horario</h4>
+        <div class="horas" id="resHoras"><span class="res-vacio">Elegí un día.</span></div>
+      </div>
+      <div class="res-blk">
+        <h4>Tus datos</h4>
+        <div class="res-campos">
+          <div><label for="resNom">Nombre</label><input id="resNom" autocomplete="name"></div>
+          <div><label for="resCel">WhatsApp (con código de país)</label><input id="resCel" type="tel" inputmode="tel" autocomplete="tel" placeholder="+55 22 99999-9999"></div>
+        </div>
+      </div>
+      <div class="res-resumen">
+        <p id="resTxt">Elegí día y horario.</p>
+        <button type="button" class="btn btn-p" id="resBtn" aria-disabled="true">Reservar turno ✦</button>
+      </div>
+      <div class="res-err" id="resErr"></div>
+      <div class="res-nota"><span>Se reserva con una seña por Pix y el resto se paga el día de la sesión.</span> <a id="resOtro" href="#" target="_blank" rel="noopener" style="color:var(--terra-d);font-weight:600">¿Ninguno te queda bien? Escribime</a></div>
     </div>
   </div>
 </section>
@@ -152,6 +257,7 @@
     <h2>Antes de reservar</h2>
     <details><summary>¿Cómo es una sesión?</summary><p>Te acostás vestido/a en una camilla y recibís un toque suave en 32 puntos de la cabeza. Dura 60 minutos y la mayoría siente una relajación profunda.</p></details>
     <details><summary>¿Necesito experiencia o creer en algo?</summary><p>No. No hace falta experiencia previa ni creer en nada.</p></details>
+    <details><summary>¿Dónde es la sesión?</summary><p id="alLugar">Te confirmo el lugar por WhatsApp.</p></details>
     <details><summary>¿Y si cambian mis planes?</summary><p>Avisame con 24 horas de anticipación y reprogramamos sin costo, una vez por seña. Con menos aviso, o si no venís, la seña no se devuelve.</p></details>
     <details><summary>¿Las sesiones reemplazan un tratamiento?</summary><p>No. Son prácticas de bienestar y no reemplazan diagnóstico ni tratamiento médico o psicológico.</p></details>
   </div>
@@ -161,8 +267,8 @@
 <section class="sec sec-alt">
   <div class="wrap narrow" style="text-align:center">
     <h2>Regalate una hora para vos</h2>
-    <p class="lead" style="margin:0 auto 24px">Escribime y buscamos el mejor horario para tu estadía.</p>
-    <a class="btn btn-p" id="ctaWa2" href="#" target="_blank" rel="noopener">Reservar por WhatsApp ✦</a>
+    <p class="lead" style="margin:0 auto 24px">Elegí el horario que mejor le queda a tu estadía.</p>
+    <a class="btn btn-p" href="#reservar">Elegir día y horario ✦</a>
   </div>
 </section>
 
@@ -175,24 +281,131 @@
 </footer>
 
 <script>
-/* ── Landing de cada aliado: aliado.html?a=SLUG ──
-   Los datos (nombre, bienvenida, foto, lugar, idioma) se cargan en Admin → Marketing → Estrategia → Aliados → 🔗 Landing,
-   y se leen con la función aliado_landing (SQL 55). Si el lugar no existe o la landing está apagada,
-   la página igual funciona como landing genérica para huéspedes. */
+/* ── Landing de cada aliado: aliado.html?a=CÓDIGO ──
+   Los datos (nombre, bienvenida, foto, lugar, idioma, días y horarios del lugar) se cargan en
+   Admin → Marketing → Estrategia → Aliados → 🔗, y se leen con la función aliado_landing (SQL 55).
+   Reserva: muestra los horarios del lugar que están LIBRES en la agenda general (agenda_ocupados: la misma
+   agenda de todas las sesiones) y manda a WhatsApp con día, hora, sesión y el código del aliado.
+   El turno se carga después en Agenda (Lo trajo = el aliado), y ahí queda ocupado para todos. */
 (function(){
   const SUPA_URL='https://vffmnyjjawvvctcqzkvj.supabase.co',SUPA_KEY='sb_publishable_A1rJIiXHSg6TQYT2gKQHUw_UTwmS76t',WA='541151758653';
+  const HORAS=['08:00','09:20','10:40','18:30','19:50'],DIAS_DEF=[1,2,3,4,5],VISTA=21,ANTICIP_HS=2;
+  const SES={barras:'Barras de Access',proceso_cuerpos:'Proceso de Cuerpos'};
+  /* seña: [reales, dólares, pesos argentinos] · mismos datos que sesiones.html (AGENDA) */
+  const SENIA={barras:[100,30,'30.000'],proceso_cuerpos:[150,35,'45.000']},PIX='04572950741',ALIAS='juancruzconsciencia';
+  let hecho=null;  // reserva confirmada: {ses,dia,hora,nombre}
   const T=s=>window.v2t?window.v2t(s):s;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const slug=(new URLSearchParams(location.search).get('a')||'').trim().toLowerCase().replace(/[^a-z0-9-]/g,'').slice(0,60);
-  let A=null;
   const sb=window.supabase?(window.__sbV2=window.__sbV2||supabase.createClient(SUPA_URL,SUPA_KEY)):null;
+  let A=null,ocup=null,sel={ses:'barras',dia:'',hora:''};
+
+  /* fecha y hora de Brasil (la agenda trabaja en hora de Búzios) */
+  const ahoraBR=()=>{const p=Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+    return new Date(`${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}:00Z`);};
+  const isoDia=d=>d.toISOString().slice(0,10);
+  const sumar=(iso,n)=>{const d=new Date(iso+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+n);return isoDia(d);};
+  const loc=()=>window.v2loc?window.v2loc():'es-AR';
+  const fD=(iso,o)=>new Date(iso+'T12:00:00Z').toLocaleDateString(loc(),{timeZone:'UTC',...o});
 
   function track(tipo,extra={}){
     try{if(!sb)return;const d=new Date().toISOString();
       sb.from('regalo_eventos').insert({data:{tipo,pagina:'aliado',aliado:slug||'sin_codigo',aliado_nombre:A?.nombre||'',origen:'aliado',idioma:window.v2lang?window.v2lang():'es',fecha:d.slice(0,10),mes:d.slice(0,7),ts:d,...extra}}).then(()=>{},()=>{});}catch(e){}
   }
-  /* para que la reserva en sesiones.html quede marcada con este aliado (comisión) */
-  function marcarOrigen(){try{if(slug)sessionStorage.setItem('jcc_aliado',JSON.stringify({slug,nombre:A?.nombre||''}));}catch(e){}}
+  /* días del lugar (0=domingo … 6=sábado). Sábado/domingo solo se aceptan si el lugar los tiene marcados (SQL 56) */
+  const disp=()=>{const x=A?.disp||{};let dias=Array.isArray(x.dias)&&x.dias.length?x.dias.map(Number).filter(d=>d>=0&&d<=6):DIAS_DEF;if(!dias.length)dias=DIAS_DEF;
+    const horas=Array.isArray(x.horas)&&x.horas.length?HORAS.filter(h=>x.horas.includes(h)):HORAS;return {dias,horas};};
+  function libres(dia){
+    const {horas}=disp(),ahora=ahoraBR();
+    if(ocup&&ocup.some(o=>o.fecha===dia&&o.hora==='todo'))return [];
+    return horas.filter(h=>(new Date(dia+'T'+h+':00Z')-ahora)>=ANTICIP_HS*3600e3&&!(ocup||[]).some(o=>o.fecha===dia&&o.hora===h));
+  }
+  function diasVisibles(){
+    const {dias}=disp(),hoy=isoDia(ahoraBR()),out=[];
+    for(let i=0;i<VISTA;i++){const f=sumar(hoy,i),wd=new Date(f+'T12:00:00Z').getUTCDay();if(dias.includes(wd)&&libres(f).length)out.push(f);}
+    return out;
+  }
+  function pintarReserva(){
+    if(hecho){pintarOk();return;}
+    document.querySelectorAll('#resSes .pill').forEach(b=>b.classList.toggle('on',b.dataset.s===sel.ses));
+    const dEl=document.getElementById('resDias'),hEl=document.getElementById('resHoras');
+    if(ocup===null){dEl.innerHTML=`<span class="res-vacio">${esc(T('Cargando horarios…'))}</span>`;return;}
+    const ds=diasVisibles();
+    if(sel.dia&&!ds.includes(sel.dia)){sel.dia='';sel.hora='';}
+    dEl.innerHTML=ds.length?ds.map(f=>`<button type="button" class="pill dia${f===sel.dia?' on':''}" data-d="${f}"><small>${esc(fD(f,{weekday:'short'}).replace('.',''))}</small><b>${fD(f,{day:'numeric'})}</b><small>${esc(fD(f,{month:'short'}).replace('.',''))}</small></button>`).join('')
+      :`<span class="res-vacio">${esc(T('No hay horarios libres en los próximos días. Escribime y lo vemos.'))}</span>`;
+    if(!sel.dia)hEl.innerHTML=`<span class="res-vacio">${esc(T('Elegí un día.'))}</span>`;
+    else{const lib=libres(sel.dia);if(!lib.includes(sel.hora))sel.hora='';
+      hEl.innerHTML=disp().horas.map(h=>`<button type="button" class="pill${h===sel.hora?' on':''}" data-h="${h}"${lib.includes(h)?'':' disabled'}>${h}</button>`).join('');}
+    const btn=document.getElementById('resBtn'),txt=document.getElementById('resTxt');
+    if(sel.dia&&sel.hora){
+      const cuando=fD(sel.dia,{weekday:'long',day:'numeric',month:'long'})+' · '+sel.hora;
+      txt.innerHTML=`<b>${esc(T(SES[sel.ses]))}</b> · ${esc(cuando)}`;
+      btn.setAttribute('aria-disabled','false');
+    }else{txt.textContent=T('Elegí día y horario.');btn.setAttribute('aria-disabled','true');}
+    document.getElementById('resOtro').href='https://wa.me/'+WA+'?text='+encodeURIComponent(mensaje(''));
+  }
+  /* reserva directa en la agenda general (queda «falta seña» y ocupa el horario para todos) */
+  async function reservar(){
+    const err=document.getElementById('resErr'),btn=document.getElementById('resBtn');
+    const nombre=document.getElementById('resNom').value.trim(),cel=document.getElementById('resCel').value.replace(/\D/g,'');
+    const mal=m=>{err.textContent=T(m);err.style.display='block';};
+    err.style.display='none';
+    if(!(sel.dia&&sel.hora))return mal('Elegí día y horario.');
+    if(nombre.length<2)return mal('Poné tu nombre.');
+    if(cel.length<8||cel.length>15)return mal('Poné tu WhatsApp con código de país.');
+    if(!sb)return mal('No se pudo conectar. Probá de nuevo en un momento.');
+    const txt0=btn.textContent;btn.textContent=T('Reservando…');btn.setAttribute('aria-disabled','true');
+    const {error}=await sb.rpc('reservar_turno',{p_fecha:sel.dia,p_hora:sel.hora,p_servicio:sel.ses,p_nombre:nombre,p_celular:cel,
+      p_datos:{sesion:SES[sel.ses],lang:window.v2lang?window.v2lang():'es',pagina:'aliado',...(slug?{aliado:slug,aliado_nombre:A?.nombre||''}:{})}});
+    btn.textContent=txt0;btn.setAttribute('aria-disabled','false');
+    if(error){
+      const m=error.message||'';track('reserva_error',{error:m.slice(0,60),dia:sel.dia,hora:sel.hora});
+      if(m.includes('ocupado')||m.includes('muy_pronto')||m.includes('dia_invalido')||m.includes('hora_invalida')){sel.hora='';cargarAgenda();return mal('Ese horario se acaba de ocupar. Elegí otro.');}
+      if(m.includes('limite'))return mal('Ya tenés 3 turnos reservados. Escribime por WhatsApp si necesitás otro.');
+      if(m.includes('celular'))return mal('Poné tu WhatsApp con código de país.');
+      return mal('No se pudo reservar. Probá de nuevo o escribime por WhatsApp.');
+    }
+    hecho={ses:sel.ses,dia:sel.dia,hora:sel.hora,nombre};
+    track('reserva_ok',{sesion:sel.ses,dia:sel.dia,hora:sel.hora});
+    pintarOk();document.getElementById('reservar').scrollIntoView({behavior:'smooth'});
+  }
+  function pintarOk(){
+    const h=hecho,s=SENIA[h.ses],cuando=fD(h.dia,{weekday:'long',day:'numeric',month:'long'})+' · '+h.hora;
+    const msg=T('¡Hola Juan Cruz! Soy ')+h.nombre+'. '+(A?.nombre?T('Me hospedo en ')+A.nombre+'. ':'')+T('Reservé ')+T(SES[h.ses])+T(' para el ')+cuando+'. '+T('Te paso el comprobante de la seña.')+(slug?' ('+slug+')':'');
+    document.getElementById('resBox').innerHTML=`<div class="ok">
+      <h3>${esc(T('¡Tu turno está reservado!'))}</h3>
+      <p>${esc(T('Para confirmarlo, transferí la seña y mandá el comprobante por WhatsApp.'))}</p>
+      <div class="ok-det">
+        <div><span>${esc(T('Sesión'))}</span><b>${esc(T(SES[h.ses]))}</b></div>
+        <div><span>${esc(T('Cuándo'))}</span><b>${esc(cuando)}</b></div>
+        <div><span>${esc(T('Lugar'))}</span><b>${esc(A?.lugar||T('Te confirmo el lugar por WhatsApp.'))}</b></div>
+        <div><span>${esc(T('Seña'))}</span><b>R$ ${s[0]} · USD ${s[1]} · $ ${s[2]} ARS</b></div>
+      </div>
+      <div class="ok-pago">
+        <div><span>${esc(T('Pix (reales)'))}</span><code>${PIX}</code><button type="button" data-copiar="${PIX}">${esc(T('Copiar'))}</button></div>
+        <div><span>${esc(T('Alias (pesos argentinos)'))}</span><code>${ALIAS}</code><button type="button" data-copiar="${ALIAS}">${esc(T('Copiar'))}</button></div>
+      </div>
+      <a class="btn btn-p" id="okWa" href="https://wa.me/${WA}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">${esc(T('Enviar comprobante por WhatsApp'))}</a>
+    </div>`;
+    document.getElementById('okWa').addEventListener('click',()=>track('click_wa',{donde:'comprobante'}));
+    document.querySelectorAll('[data-copiar]').forEach(b=>b.addEventListener('click',()=>{
+      const v=b.dataset.copiar,ok=()=>{b.textContent=T('¡Copiado!');setTimeout(()=>b.textContent=T('Copiar'),1800);};
+      (navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(ok,()=>{prompt('',v);});}));
+  }
+  function mensaje(cuando){
+    const n=A?.nombre||'',nom=(document.getElementById('resNom').value||'').trim();
+    let m=T('Hola Juan Cruz')+(nom?T(', soy ')+nom:'')+'. ';
+    if(n)m+=T('Me hospedo en ')+n+'. ';
+    m+=cuando?T('Quiero reservar ')+T(SES[sel.ses])+T(' el ')+cuando+'.':T('Quiero reservar una sesión de Barras, pero ningún horario me queda bien.');
+    return m+(slug?' ('+slug+')':'');
+  }
+  document.getElementById('resSes').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(b){sel.ses=b.dataset.s;pintarReserva();}});
+  document.getElementById('resDias').addEventListener('click',e=>{const b=e.target.closest('[data-d]');if(b){sel.dia=b.dataset.d;sel.hora='';pintarReserva();}});
+  document.getElementById('resHoras').addEventListener('click',e=>{const b=e.target.closest('[data-h]');if(b&&!b.disabled){sel.hora=b.dataset.h;pintarReserva();}});
+  document.getElementById('resNom').addEventListener('input',()=>{const o=document.getElementById('resOtro');if(o)o.href='https://wa.me/'+WA+'?text='+encodeURIComponent(mensaje(''));});
+  document.getElementById('resBtn').addEventListener('click',reservar);
+  document.getElementById('resOtro').addEventListener('click',()=>track('click_wa',{donde:'otro_horario'}));
 
   function pintar(){
     const n=A?.nombre||'';
@@ -200,11 +413,7 @@
     const bv=document.getElementById('alBienv');
     if(A?.bienvenida){bv.textContent='“'+A.bienvenida+'”';bv.style.display='block';}else bv.style.display='none';
     if(A?.lugar)document.getElementById('alLugar').textContent=A.lugar;
-    const msg=n?T('Hola Juan Cruz, me hospedo en ')+n+T(' y quiero reservar una sesión de Barras.'):T('Hola Juan Cruz, quiero reservar una sesión de Barras.');
-    const href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg+(slug?' ('+slug+')':''));
-    ['ctaWa','ctaWa2'].forEach(id=>document.getElementById(id).href=href);
-    const ag='sesiones.html'+(slug?'?o=aliado-'+encodeURIComponent(slug):'');
-    document.getElementById('ctaAgenda').href=ag;document.getElementById('lnkSesiones').href=ag;
+    pintarReserva();
   }
   function foto(){
     if(!A?.foto||!/^https:\/\//.test(A.foto))return;
@@ -212,20 +421,23 @@
     box.innerHTML=`<img class="vid" src="${esc(A.foto)}" alt="${esc(A.nombre||'')}">`+
       `<div class="next-chip">${esc(T('Sesiones para huéspedes de'))}<b>${esc(A.nombre||'')}</b>${esc([A.barrio,A.ciudad].filter(Boolean).join(' · '))}</div>`;
   }
+  function cargarAgenda(){
+    if(!sb){ocup=[];pintarReserva();return;}
+    const hoy=isoDia(ahoraBR());
+    sb.rpc('agenda_ocupados',{desde:hoy,hasta:sumar(hoy,VISTA)}).then(({data,error})=>{
+      ocup=(!error&&Array.isArray(data))?data.map(o=>({fecha:String(o.fecha).slice(0,10),hora:o.hora})):[];
+      pintarReserva();
+    },()=>{ocup=[];pintarReserva();});
+  }
 
   pintar();
   document.addEventListener('v2lang',pintar);
-  document.getElementById('ctaWa').addEventListener('click',()=>track('click_wa',{donde:'hero'}));
-  document.getElementById('ctaWa2').addEventListener('click',()=>track('click_wa',{donde:'final'}));
-  document.getElementById('ctaAgenda').addEventListener('click',()=>{marcarOrigen();track('click_agenda');});
-  document.getElementById('lnkSesiones').addEventListener('click',()=>{marcarOrigen();track('click_agenda',{donde:'sesiones'});});
-
+  cargarAgenda();
   if(sb&&slug){
     sb.rpc('aliado_landing',{p_slug:slug}).then(({data,error})=>{
       if(!error&&data&&data.nombre){
         A=data;
         document.title=document.documentElement.dataset.titEs=T('Barras de Access para huéspedes de ')+A.nombre;
-        /* idioma del lugar, solo si la persona todavía no eligió uno */
         let elegido=false;try{elegido=!!localStorage.getItem('jcc_lang')||!!new URLSearchParams(location.search).get('lang');}catch(e){}
         if(!elegido&&['pt','en'].includes(A.idioma)&&window.setLang)window.setLang(A.idioma);
         pintar();foto();

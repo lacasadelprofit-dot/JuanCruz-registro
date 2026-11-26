@@ -3,6 +3,244 @@
    Para traducir un texto nuevo: agregalo en TX con la clave = el texto en español (tal cual se lee). */
 (function(){
   const TX={
+/* aliado.html v3 (reserva directa) */
+"¿Y si el verdadero descanso empieza en tu mente?": [
+"E se o verdadeiro descanso <em>começa na sua mente?</em>",
+"What if true rest <em>starts in your mind?</em>"
+],
+"Sensación de ligereza": [
+"Sensação de leveza",
+"A feeling of lightness"
+],
+"Desconexión del exceso de pensamientos": [
+"Desconexão do excesso de pensamentos",
+"Switching off overthinking"
+],
+"Soltar tensiones": [
+"Soltar tensões",
+"Releasing tension"
+],
+"Una sensación de bienestar": [
+"Uma sensação de bem-estar",
+"A sense of well-being"
+],
+"Estos son los horarios libres en este momento. Elegí el tuyo y reservalo acá mismo.": [
+"Estes são os horários livres neste momento. Escolha o seu e reserve aqui mesmo.",
+"These are the times available right now. Pick yours and book it right here."
+],
+"Tus datos": [
+"Seus dados",
+"Your details"
+],
+"WhatsApp (con código de país)": [
+"WhatsApp (com código do país)",
+"WhatsApp (with country code)"
+],
+"Reservar turno ✦": [
+"Reservar horário ✦",
+"Book slot ✦"
+],
+/* aliado.html v2 (reserva + qué son las Barras) */
+"Apagá el ruido mental sin hablar de tus problemas. Te acostás, cerrás los ojos y recibís un toque suave en 32 puntos de la cabeza que ayuda a soltar lo acumulado: pensamientos en loop, estrés y creencias que ya no te sirven. Mucha gente se queda dormida.": [
+"Desligue o barulho mental sem falar dos seus problemas. Você deita, fecha os olhos e recebe um toque suave em 32 pontos da cabeça que ajuda a soltar o acumulado: pensamentos em loop, estresse e crenças que já não te servem. Muita gente adormece.",
+"Switch off the mental noise without talking about your problems. You lie down, close your eyes and receive a gentle touch on 32 points of your head that helps release what has built up: looping thoughts, stress and beliefs that no longer serve you. Many people fall asleep."
+],
+"¿Es para vos?": [
+"É para você?",
+"Is this for you?"
+],
+"Pensás demasiado y no podés frenar la mente": [
+"Você pensa demais e não consegue parar a mente",
+"You overthink and can't stop your mind"
+],
+"Sentís estrés, ansiedad o sobrecarga constante": [
+"Sente estresse, ansiedade ou sobrecarga constante",
+"You feel stress, anxiety or constant overwhelm"
+],
+"Te cuesta relajarte de verdad": [
+"É difícil se relaxar de verdade",
+"It's hard for you to truly relax"
+],
+"Querés soltar y resetear tu energía": [
+"Quer soltar e resetar sua energia",
+"You want to let go and reset your energy"
+],
+"Estás bien, pero sentís que podés estar mejor": [
+"Está bem, mas sente que poderia estar melhor",
+"You're fine, but you feel you could be better"
+],
+"32 puntos energéticos en tu cabeza": [
+"32 pontos energéticos na sua cabeça",
+"32 energetic points on your head"
+],
+"En estos puntos se almacena todo lo que viviste y aprendiste. Las Barras trabajan directamente sobre ellos.": [
+"Nesses pontos se armazena tudo o que você viveu e aprendeu. As Barras trabalham diretamente sobre eles.",
+"These points store everything you have lived and learned. The Bars work directly on them."
+],
+"Pensamientos": [
+"Pensamentos",
+"Thoughts"
+],
+"patrones repetitivos": [
+"padrões repetitivos",
+"repetitive patterns"
+],
+"Emociones": [
+"Emoções",
+"Emotions"
+],
+"cargas no procesadas": [
+"cargas não processadas",
+"unprocessed loads"
+],
+"Creencias": [
+"Crenças",
+"Beliefs"
+],
+"limitaciones aprendidas": [
+"limitações aprendidas",
+"learned limitations"
+],
+"Patrones": [
+"Padrões",
+"Patterns"
+],
+"comportamientos automáticos": [
+"comportamentos automáticos",
+"automatic behaviors"
+],
+"El proceso": [
+"O processo",
+"The process"
+],
+"Se activan los puntos": [
+"Os pontos são ativados",
+"Points are activated"
+],
+"Toque suave en los 32 puntos energéticos": [
+"Toque suave nos 32 pontos energéticos",
+"Gentle touch on the 32 energetic points"
+],
+"Se descargan acumulaciones": [
+"As acumulações são descarregadas",
+"Accumulated loads are discharged"
+],
+"Se liberan las cargas energéticas almacenadas": [
+"As cargas energéticas armazenadas são liberadas",
+"Stored energetic charges are released"
+],
+"Relajación profunda": [
+"Relaxamento profundo",
+"Deep relaxation"
+],
+"El sistema nervioso entra en calma real": [
+"O sistema nervoso entra em calma real",
+"The nervous system enters real calm"
+],
+"En 60 minutos vas a notar": [
+"Em 60 minutos você vai notar",
+"In 60 minutes you will notice"
+],
+"Menos ruido mental": [
+"Menos ruído mental",
+"Less mental noise"
+],
+"como si alguien bajara el volumen": [
+"como se alguém tivesse baixado o volume",
+"as if someone turned the volume down"
+],
+"Apertura a nuevas posibilidades": [
+"Abertura a novas possibilidades",
+"Opening to new possibilities"
+],
+"oportunidades que antes no veías": [
+"oportunidades que antes não via",
+"opportunities you could not see before"
+],
+"Sueño reparador": [
+"Sono reparador",
+"Restful sleep"
+],
+"muchos cuentan que esa noche durmieron como hacía meses": [
+"muitos contam que naquela noite dormiram como não dormiam há meses",
+"many say they slept that night like they hadn’t in months"
+],
+"Más energía": [
+"Mais energia",
+"More energy"
+],
+"menos reactividad ante conflictos": [
+"menos reatividade diante de conflitos",
+"less reactivity in conflicts"
+],
+"Elegir día y horario ✦": [
+"Escolher dia e horário ✦",
+"Choose day and time ✦"
+],
+"Qué son las Barras de Access®": [
+"O que são as Barras de Access®",
+"What Access Bars® are"
+],
+"Reservá tu sesión": [
+"Reserve sua sessão",
+"Book your session"
+],
+"Elegí día y horario": [
+"Escolha dia e horário",
+"Choose day and time"
+],
+"Elegí día y horario.": [
+"Escolha dia e horário.",
+"Choose day and time."
+],
+"Estos son los horarios libres en este momento. Elegí el tuyo y me escribís por WhatsApp para confirmarlo.": [
+"Estes são os horários livres neste momento. Escolha o seu e me escreva pelo WhatsApp para confirmar.",
+"These are the times available right now. Pick yours and message me on WhatsApp to confirm it."
+],
+"Sesión": [
+"Sessão",
+"Session"
+],
+"Día": [
+"Dia",
+"Day"
+],
+"Horario": [
+"Horário",
+"Time"
+],
+"Barras de Access60 minutos · R$ 200": [
+"Barras de Access<small>60 minutos · R$ 200</small>",
+"Access Bars<small>60 minutes · R$ 200</small>"
+],
+"Proceso de Cuerpos60 minutos · R$ 300": [
+"Proceso de Cuerpos<small>60 minutos · R$ 300</small>",
+"Body Process<small>60 minutes · R$ 300</small>"
+],
+"Cargando horarios…": [
+"Carregando horários…",
+"Loading times…"
+],
+"Elegí un día.": [
+"Escolha um dia.",
+"Pick a day."
+],
+"Se reserva con una seña por Pix y el resto se paga el día de la sesión.": [
+"Reserva-se com um sinal por Pix e o restante se paga no dia da sessão.",
+"You book with a deposit via Pix and pay the rest on the day of the session."
+],
+"¿Ninguno te queda bien? Escribime": [
+"Nenhum fica bom? Me escreva",
+"None work for you? Message me"
+],
+"¿Dónde es la sesión?": [
+"Onde é a sessão?",
+"Where is the session?"
+],
+"Elegí el horario que mejor le queda a tu estadía.": [
+"Escolha o horário que fica melhor para a sua estadia.",
+"Pick the time that best fits your stay."
+],
 /* aliado.html (landing de cada aliado) */
 "Barras de Access para huéspedes · Juan Cruz Consciencia": [
 "Barras de Access para hóspedes · Juan Cruz Consciencia",
@@ -1579,9 +1817,9 @@
 "Renda extra",
 "Extra income"
 ],
-"Recibís el 20% de cada sesión y el 10% de cada clase de los huéspedes que lleguen por vos.": [
-"Você recebe 20% de cada sessão e 10% de cada aula dos hóspedes que chegarem por você.",
-"You receive 20% of every session and 10% of every class from guests who come through you."
+"Sumás un ingreso extra por los huéspedes que lleguen por vos. Los detalles te los cuento en persona.": [
+"Você soma uma renda extra pelos hóspedes que chegarem por você. Os detalhes eu te conto pessoalmente.",
+"You earn extra income from guests who come through you. I'll share the details in person."
 ],
 "La experiencia": [
 "A experiência",
@@ -1905,6 +2143,144 @@
 ]
 };
   const DYN={
+/* aliado.html v3 (reserva directa) */
+"Poné tu nombre.": [
+"Coloque seu nome.",
+"Please enter your name."
+],
+"Poné tu WhatsApp con código de país.": [
+"Coloque seu WhatsApp com código do país.",
+"Please enter your WhatsApp with country code."
+],
+"No se pudo conectar. Probá de nuevo en un momento.": [
+"Não foi possível conectar. Tente de novo em um momento.",
+"Could not connect. Please try again in a moment."
+],
+"Reservando…": [
+"Reservando…",
+"Booking…"
+],
+"Ese horario se acaba de ocupar. Elegí otro.": [
+"Esse horário acabou de ser ocupado. Escolha outro.",
+"That time was just taken. Please pick another."
+],
+"Ya tenés 3 turnos reservados. Escribime por WhatsApp si necesitás otro.": [
+"Você já tem 3 horários reservados. Me escreva pelo WhatsApp se precisar de outro.",
+"You already have 3 bookings. Message me on WhatsApp if you need another."
+],
+"No se pudo reservar. Probá de nuevo o escribime por WhatsApp.": [
+"Não foi possível reservar. Tente de novo ou me escreva pelo WhatsApp.",
+"Couldn't book. Please try again or message me on WhatsApp."
+],
+"¡Hola Juan Cruz! Soy ": [
+"Olá Juan Cruz! Sou ",
+"Hi Juan Cruz! I'm "
+],
+"Reservé ": [
+"Reservei ",
+"I booked "
+],
+" para el ": [
+" para ",
+" for "
+],
+"Te paso el comprobante de la seña.": [
+"Te envio o comprovante do sinal.",
+"Here's the deposit receipt."
+],
+"¡Tu turno está reservado!": [
+"Seu horário está reservado!",
+"Your slot is booked!"
+],
+"Para confirmarlo, transferí la seña y mandá el comprobante por WhatsApp.": [
+"Para confirmar, faça o sinal e envie o comprovante pelo WhatsApp.",
+"To confirm it, send the deposit and share the receipt on WhatsApp."
+],
+"Sesión": [
+"Sessão",
+"Session"
+],
+"Cuándo": [
+"Quando",
+"When"
+],
+"Lugar": [
+"Local",
+"Place"
+],
+"Seña": [
+"Sinal",
+"Deposit"
+],
+"Pix (reales)": [
+"Pix (reais)",
+"Pix (Brazilian reais)"
+],
+"Alias (pesos argentinos)": [
+"Alias (pesos argentinos)",
+"Alias (Argentine pesos)"
+],
+"Copiar": [
+"Copiar",
+"Copy"
+],
+"¡Copiado!": [
+"Copiado!",
+"Copied!"
+],
+"Enviar comprobante por WhatsApp": [
+"Enviar comprovante pelo WhatsApp",
+"Send receipt on WhatsApp"
+],
+/* aliado.html v2 (reserva + qué son las Barras) */
+"Cargando horarios…": [
+"Carregando horários…",
+"Loading times…"
+],
+"No hay horarios libres en los próximos días. Escribime y lo vemos.": [
+"Não há horários livres nos próximos dias. Me escreva e vemos.",
+"There are no free times in the next few days. Message me and we'll sort it out."
+],
+"Elegí un día.": [
+"Escolha um dia.",
+"Pick a day."
+],
+"Elegí día y horario.": [
+"Escolha dia e horário.",
+"Choose day and time."
+],
+"Hola Juan Cruz": [
+"Olá Juan Cruz",
+"Hi Juan Cruz"
+],
+", soy ": [
+", sou ",
+", I'm "
+],
+"Me hospedo en ": [
+"Estou hospedado/a em ",
+"I'm staying at "
+],
+"Quiero reservar ": [
+"Quero reservar ",
+"I'd like to book "
+],
+" el ": [
+" no dia ",
+" on "
+],
+"Quiero reservar una sesión de Barras, pero ningún horario me queda bien.": [
+"Quero reservar uma sessão de Barras, mas nenhum horário fica bom para mim.",
+"I'd like to book a Bars session, but none of the times work for me."
+],
+"Barras de Access": [
+"Barras de Access",
+"Access Bars"
+],
+"Proceso de Cuerpos": [
+"Proceso de Cuerpos",
+"Body Process"
+],
 /* aliado.html */
 "Para huéspedes de ": [
 "Para hóspedes de ",
