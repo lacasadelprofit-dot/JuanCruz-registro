@@ -29,10 +29,10 @@
 /* qué son las Barras */
 .puntos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
 .punto{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
-.punto b{display:block;font-family:var(--serif);font-size:22px;font-weight:600}
+.punto .t{display:block;color:var(--text);font-family:var(--serif);font-size:22px;font-weight:600}
 .punto span{font-size:14px;color:var(--muted)}
 .notar{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 28px;margin-top:18px}
-.notar div b{display:block;font-size:16px}
+.notar div .t{display:block;font-size:16px;font-weight:700;color:var(--text)}
 .notar div span{font-size:14.5px;color:var(--muted)}
 .subt{font-family:var(--serif);font-size:27px;font-weight:600;margin:34px 0 4px}
 @media(min-width:761px){.pasos3{grid-template-columns:repeat(3,1fr)}}
@@ -67,6 +67,7 @@
 .ok-det{margin:18px 0;display:grid;gap:8px;font-size:15px}
 .ok-det div{display:flex;gap:10px;flex-wrap:wrap}
 .ok-det span:first-child{min-width:90px;color:var(--muted)}
+.ok-det .v{font-weight:700}
 .ok-pago{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:16px;display:grid;gap:10px;margin:14px 0 20px}
 .ok-pago div{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .ok-pago code{font:600 16px var(--sans)}
@@ -124,10 +125,10 @@
         <h3 class="subt">32 puntos energéticos en tu cabeza</h3>
         <p>En estos puntos se almacena todo lo que viviste y aprendiste. Las Barras trabajan directamente sobre ellos.</p>
         <div class="puntos">
-          <div class="punto"><b>Pensamientos</b><span>patrones repetitivos</span></div>
-          <div class="punto"><b>Emociones</b><span>cargas no procesadas</span></div>
-          <div class="punto"><b>Creencias</b><span>limitaciones aprendidas</span></div>
-          <div class="punto"><b>Patrones</b><span>comportamientos automáticos</span></div>
+          <div class="punto"><span class="t">Pensamientos</span><span>patrones repetitivos</span></div>
+          <div class="punto"><span class="t">Emociones</span><span>cargas no procesadas</span></div>
+          <div class="punto"><span class="t">Creencias</span><span>limitaciones aprendidas</span></div>
+          <div class="punto"><span class="t">Patrones</span><span>comportamientos automáticos</span></div>
         </div>
       </div>
       <div>
@@ -147,10 +148,10 @@
       <div>
         <h3 class="subt">En 60 minutos vas a notar</h3>
         <div class="notar">
-          <div><b>Menos ruido mental</b><span>como si alguien bajara el volumen</span></div>
-          <div><b>Sueño reparador</b><span>muchos cuentan que esa noche durmieron como hacía meses</span></div>
-          <div><b>Más energía</b><span>menos reactividad ante conflictos</span></div>
-          <div><b>Apertura a nuevas posibilidades</b><span>oportunidades que antes no veías</span></div>
+          <div><span class="t">Menos ruido mental</span><span>como si alguien bajara el volumen</span></div>
+          <div><span class="t">Sueño reparador</span><span>muchos cuentan que esa noche durmieron como hacía meses</span></div>
+          <div><span class="t">Más energía</span><span>menos reactividad ante conflictos</span></div>
+          <div><span class="t">Apertura a nuevas posibilidades</span><span>oportunidades que antes no veías</span></div>
         </div>
       </div>
       <div>
@@ -246,7 +247,7 @@
       <div class="evento"><div class="fecha"><b>✦</b><span>pronto</span></div><div><h4>Nuevas fechas muy pronto</h4><p>Escribime y te aviso apenas haya fecha.</p></div>
         <a class="btn btn-p btn-sm" data-wa="Hola Juan Cruz, quiero enterarme de la próxima clase de Barras">Avisame ✦</a></div>
     </div>
-    <p style="margin-top:20px"><a href="aprender-barras.html" style="color:var(--terra-d);font-weight:600">Ver la clase →</a></p>
+    <div style="margin-top:20px"><a href="aprender-barras.html" style="color:var(--terra-d);font-weight:600">Ver la clase →</a></div>
   </div>
 </section>
 
@@ -379,10 +380,10 @@
       <h3>${esc(T('¡Tu turno está reservado!'))}</h3>
       <p>${esc(T('Para confirmarlo, transferí la seña y mandá el comprobante por WhatsApp.'))}</p>
       <div class="ok-det">
-        <div><span>${esc(T('Sesión'))}</span><b>${esc(T(SES[h.ses]))}</b></div>
-        <div><span>${esc(T('Cuándo'))}</span><b>${esc(cuando)}</b></div>
-        <div><span>${esc(T('Lugar'))}</span><b>${esc(A?.lugar||T('Te confirmo el lugar por WhatsApp.'))}</b></div>
-        <div><span>${esc(T('Seña'))}</span><b>R$ ${s[0]} · USD ${s[1]} · $ ${s[2]} ARS</b></div>
+        <div><span>${esc(T('Sesión'))}</span><span class="v">${esc(T(SES[h.ses]))}</span></div>
+        <div><span>${esc(T('Cuándo'))}</span><span class="v">${esc(cuando)}</span></div>
+        <div><span>${esc(T('Lugar'))}</span><span class="v">${esc(A?.lugar||T('Te confirmo el lugar por WhatsApp.'))}</span></div>
+        <div><span>${esc(T('Seña'))}</span><span class="v">R$ ${s[0]} · USD ${s[1]} · $ ${s[2]} ARS</span></div>
       </div>
       <div class="ok-pago">
         <div><span>${esc(T('Pix (reales)'))}</span><code>${PIX}</code><button type="button" data-copiar="${PIX}">${esc(T('Copiar'))}</button></div>

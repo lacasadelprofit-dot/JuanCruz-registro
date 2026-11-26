@@ -3,6 +3,435 @@
    Para traducir un texto nuevo: agregalo en TX con la clave = el texto en español (tal cual se lee). */
 (function(){
   const TX={
+/* sesiones.html v2 (2026-11-26) */
+"Bajale el volumen a tu mente en 60 minutos": [
+"Abaixe o volume da sua mente em 60 minutos",
+"Turn down the volume of your mind in 60 minutes"
+],
+"Te acostás vestido/a, recibís un toque suave en 32 puntos de la cabeza y salís más liviano/a. Sin hablar de tus problemas. Sin tener que creer en nada.": [
+"Você se deita vestido/a, recebe um toque suave em 32 pontos da cabeça e sai mais leve. Sem falar dos seus problemas. Sem precisar acreditar em nada.",
+"You lie down fully clothed, receive a gentle touch on 32 points of your head and leave feeling lighter. No need to talk about your problems. No need to believe in anything."
+],
+"Ver sesiones ↓": [
+"Ver sessões ↓",
+"See sessions ↓"
+],
+"Turnos de mañana y de tarde": [
+"Horários de manhã e à noite",
+"Morning and evening slots"
+],
+"Un espacio para soltar y elegir": [
+"Um espaço para soltar e escolher",
+"A space to release and choose"
+],
+"Cada sesión es una invitación a liberar lo que ya no te sirve y abrirte a más de lo que sos. Si es tu primera vez, empezá por Barras: es la más suave y la que más se elige.": [
+"Cada sessão é um convite para liberar o que já não te serve e se abrir para mais do que você é. Se é a sua primeira vez, comece pelas Barras: é a mais suave e a mais escolhida.",
+"Each session is an invitation to release what no longer serves you and open up to more of who you are. If it’s your first time, start with Bars: it’s the gentlest and the most chosen."
+],
+"✦ Más popular": [
+"✦ Mais popular",
+"✦ Most popular"
+],
+"\"¿Qué pasaría si pudieras soltar todo lo que creés que sabés?\"": [
+"\"E se você pudesse soltar tudo o que acha que sabe?\"",
+"\"What if you could let go of everything you think you know?\""
+],
+"Reservar ✦": [
+"Reservar ✦",
+"Book ✦"
+],
+"Ver más ↓": [
+"Ver mais ↓",
+"See more ↓"
+],
+"\"¿Qué sabe tu cuerpo que vos todavía no estás escuchando?\"": [
+"\"O que seu corpo sabe que você ainda não está ouvindo?\"",
+"\"What does your body know that you are not yet listening to?\""
+],
+"✦ Pagás 3, recibís 4": [
+"✦ Pague 3, receba 4",
+"✦ Pay for 3, get 4"
+],
+"\"¿Qué cambiaría si te dieras un mes entero de espacio?\"": [
+"\"O que mudaria se você se desse um mês inteiro de espaço?\"",
+"\"What would change if you gave yourself a whole month of space?\""
+],
+"Ahorrás R$ 200": [
+"Você economiza R$ 200",
+"You save R$ 200"
+],
+"Duración": [
+"Duração",
+"Duration"
+],
+"Reserva": [
+"Sinal",
+"Deposit"
+],
+"Modalidad": [
+"Modalidade",
+"Format"
+],
+"Presencial": [
+"Presencial",
+"In-person"
+],
+"Reservar Barras ✦": [
+"Reservar Barras ✦",
+"Book Bars ✦"
+],
+"Para cuando te pasa siempre lo mismo y no entendés por qué. Un proceso de Access Consciousness® con imposición de manos que trabaja a nivel energético sobre lo que tu cuerpo guardó: reacciones automáticas y verdades que nunca cuestionaste.": [
+"Para quando acontece sempre a mesma coisa e você não entende por quê. Um processo de Access Consciousness® com imposição de mãos que trabalha em nível energético sobre o que o seu corpo guardou: reações automáticas e verdades que você nunca questionou.",
+"For when the same thing keeps happening and you don’t understand why. An Access Consciousness® process using laying on of hands that works on an energetic level with what your body has stored: automatic reactions and truths you never questioned."
+],
+"Siempre te pasa lo mismo en distintas situaciones": [
+"A mesma coisa sempre acontece com você em situações diferentes",
+"The same thing always happens to you in different situations"
+],
+"Reaccionás y después pensás: \"¿por qué hice eso?\"": [
+"\"Você reage e depois pensa: por que fiz isso?\"",
+"You react and then think: \"why did I do that?\""
+],
+"Querés cambiar pero no sabés cómo empezar": [
+"Quer mudar mas não sabe por onde começar",
+"You want to change but don't know where to start"
+],
+"Sentís que el cuerpo guarda algo que la mente no puede resolver": [
+"Sente que o corpo guarda algo que a mente não consegue resolver",
+"You feel your body holds something your mind can't resolve"
+],
+"Realidades Reactivas y Presuntivas": [
+"Realidades Reativas e Presuntivas",
+"Reactive and Assumptive Realities"
+],
+"Dos formas en que nos limitamos sin darnos cuenta — y que se fijan directamente en el cuerpo.": [
+"Duas formas pelas quais nos limitamos sem perceber — e que se fixam diretamente no corpo.",
+"Two ways we limit ourselves without realizing — and that become fixed directly in the body."
+],
+"Realidad Presuntiva": [
+"Realidade Presuntiva",
+"Assumptive Reality"
+],
+"Todos los supuestos y creencias que adoptamos como verdades absolutas sin cuestionar: \"así son las cosas\", \"esto es lo normal\".": [
+"Todos os pressupostos e crenças que adotamos como verdades absolutas sem questionar: <em>\"é assim que as coisas são\"</em>, <em>\"isso é normal\"</em>.",
+"All the assumptions and beliefs we adopt as absolute truths without questioning: <em>\"that's just how things are\"</em>, <em>\"this is normal\"</em>."
+],
+"Realidad Reactiva": [
+"Realidade Reativa",
+"Reactive Reality"
+],
+"Reaccionar automáticamente desde el juicio bueno/malo, en lugar de elegir conscientemente.": [
+"Reagir automaticamente a partir do julgamento bom/mau, em vez de escolher conscientemente.",
+"Reacting automatically from good/bad judgment instead of choosing consciously."
+],
+"Liberación de realidades reactivas": [
+"Liberação de realidades reativas",
+"Liberation from reactive realities"
+],
+"el cuerpo deja de reaccionar automáticamente": [
+"o corpo para de reagir automaticamente",
+"the body stops reacting automatically"
+],
+"Desprogramación de realidades presuntivas": [
+"Desprogramação de realidades presuntivas",
+"Deprogramming of assumptive realities"
+],
+"lo que asumiste como verdad sin cuestionar": [
+"o que você assumiu como verdade sem questionar",
+"what you assumed as truth without questioning"
+],
+"Mayor conexión corporal": [
+"Maior conexão corporal",
+"Greater body connection"
+],
+"empezás a sentir lo que tu cuerpo necesita": [
+"você começa a sentir o que seu corpo precisa",
+"you start feeling what your body needs"
+],
+"Reservar Proceso ✦": [
+"Reservar Processo ✦",
+"Book Body Process ✦"
+],
+"Cuatro sesiones en hasta 30 días: 3 de Barras de Access y 1 de Proceso de Cuerpos. Una sesión te da un respiro; un mes te deja sostener lo que se abre.": [
+"Quatro sessões em até 30 dias: 3 de Barras de Access e 1 de Processo Corporal. Uma sessão te dá um respiro; um mês te permite sustentar o que se abre.",
+"Four sessions within 30 days: 3 Access Bars and 1 Body Process. One session gives you a breather; a month lets you sustain what opens up."
+],
+"Qué incluye": [
+"O que inclui",
+"What is included"
+],
+"3 sesiones de Barras de Access": [
+"3 sessões de Barras de Access",
+"3 Access Bars sessions"
+],
+"1 sesión de Proceso de Cuerpos": [
+"1 sessão de Processo Corporal",
+"1 Body Process session"
+],
+"Las 4 en hasta 30 días, a tu ritmo": [
+"As 4 em até 30 dias, no seu ritmo",
+"All 4 within 30 days, at your own pace"
+],
+"Cómo funciona": [
+"Como funciona",
+"How it works"
+],
+"Reservá tu primera sesión": [
+"Reserve sua primeira sessão",
+"Book your first session"
+],
+"Elegí día y horario en la agenda y transferí la seña.": [
+"Escolha dia e horário na agenda e pague o sinal.",
+"Choose a day and time in the calendar and pay the deposit."
+],
+"Pagá el resto ese día": [
+"Pague o restante nesse dia",
+"Pay the rest that day"
+],
+"En tu primera sesión abonás el saldo del Mes Energético.": [
+"Na sua primeira sessão você paga o saldo do Mês Energético.",
+"At your first session you pay the balance of the Energy Month."
+],
+"Coordinamos las otras 3": [
+"Combinamos as outras 3",
+"We schedule the other 3"
+],
+"Juntos elegimos los turnos según tu disponibilidad.": [
+"Juntos escolhemos os horários conforme sua disponibilidade.",
+"Together we choose the times that suit you."
+],
+"4 sesiones de 60 minutos": [
+"4 sessões de 60 minutos",
+"4 sessions of 60 minutes"
+],
+"Quiero mi Mes Energético ✦": [
+"Quero meu Mês Energético ✦",
+"I want my Energy Month ✦"
+],
+"¿Qué sentís?": [
+"O que você sente?",
+"What do you feel?"
+],
+"Mucho ruido mental": [
+"Muito ruído mental",
+"A lot of mental noise"
+],
+"Estrés / Ansiedad": [
+"Estresse / Ansiedade",
+"Stress / Anxiety"
+],
+"Cansancio general": [
+"Cansaço geral",
+"General fatigue"
+],
+"Ganas de expandirme y crear más": [
+"Vontade de me expandir e criar mais",
+"Wanting to expand and create more"
+],
+"¿Cuándo lo sentís más?": [
+"Quando você sente mais?",
+"When do you feel it most?"
+],
+"En el trabajo": [
+"No trabalho",
+"At work"
+],
+"Por la noche": [
+"À noite",
+"At night"
+],
+"Durante todo el día": [
+"Durante todo o dia",
+"Throughout the day"
+],
+"¿Hay algún patrón que sentís que se repite?": [
+"Há algum padrão que você sente que se repete?",
+"Is there a pattern you feel keeps repeating?"
+],
+"¿Qué se siente? ¿Tengo que creer en algo?": [
+"O que se sente? Preciso acreditar em algo?",
+"What does it feel like? Do I have to believe in anything?"
+],
+"Es un toque muy suave y sostenido, acostado/a y vestido/a. La mayoría siente una relajación profunda y algunas personas se quedan dormidas. No hace falta creer en nada ni entender la técnica para recibirla.": [
+"É um toque muito suave e contínuo, deitado/a e vestido/a. A maioria sente um relaxamento profundo e algumas pessoas adormecem. Não é preciso acreditar em nada nem entender a técnica para receber.",
+"It is a very gentle, steady touch while you lie down fully clothed. Most people feel deeply relaxed and some fall asleep. You don't need to believe in anything or understand the technique to receive it."
+],
+"¿Tengo que hablar de lo que me pasa?": [
+"Preciso falar sobre o que está acontecendo comigo?",
+"Do I have to talk about what is going on with me?"
+],
+"No. Si querés contar algo, podés, pero no es necesario. La sesión funciona en silencio.": [
+"Não. Se quiser contar algo, pode, mas não é necessário. A sessão funciona em silêncio.",
+"No. If you want to share something, you can, but it is not necessary. The session works in silence."
+],
+"¿Reemplaza una terapia o un tratamiento médico?": [
+"Substitui uma terapia ou um tratamento médico?",
+"Does it replace therapy or medical treatment?"
+],
+"No. Las sesiones son un espacio de relajación y bienestar que complementa, no reemplaza. Si estás en tratamiento por ansiedad, depresión u otra condición, seguí con tu profesional de salud.": [
+"Não. As sessões são um espaço de relaxamento e bem-estar que complementa, não substitui. Se você está em tratamento para ansiedade, depressão ou outra condição, continue com seu profissional de saúde.",
+"No. Sessions are a space for relaxation and wellbeing that complements, not replaces. If you are in treatment for anxiety, depression or any other condition, keep working with your health professional."
+],
+"¿Puedo reprogramar mi turno?": [
+"Posso remarcar meu horário?",
+"Can I reschedule?"
+],
+"Sí. Si avisás con al menos 24 horas de anticipación, reprogramás sin costo y tu seña queda para el nuevo turno. Podés reprogramar una vez por seña.": [
+"Sim. Avisando com pelo menos 24 horas de antecedência, você remarca sem custo e o sinal fica para o novo horário. Você pode remarcar uma vez por sinal.",
+"Yes. If you let me know at least 24 hours ahead, you reschedule at no cost and your deposit moves to the new slot. You can reschedule once per deposit."
+],
+"¿Qué pasa si aviso con menos de 24 horas o no voy?": [
+"E se eu avisar com menos de 24 horas ou não for?",
+"What if I cancel with less than 24 hours' notice or don't show up?"
+],
+"La seña no se devuelve, porque ese horario quedó reservado para vos.": [
+"O sinal não é devolvido, porque aquele horário ficou reservado para você.",
+"The deposit is not refunded, because that time was reserved for you."
+],
+"¿Cómo pago la seña?": [
+"Como pago o sinal?",
+"How do I pay the deposit?"
+],
+"Por Pix en reales o por transferencia en pesos argentinos al alias juancruzconsciencia. Al reservar te aparecen los dos datos y un botón para mandar el comprobante por WhatsApp.": [
+"Por Pix em reais ou por transferência em pesos argentinos para o alias juancruzconsciencia. Ao reservar aparecem os dois dados e um botão para enviar o comprovante pelo WhatsApp.",
+"By Pix in Brazilian reais or by transfer in Argentine pesos to the alias juancruzconsciencia. When you book you get both details and a button to send the receipt on WhatsApp."
+],
+"¿Dónde es?": [
+"Onde é?",
+"Where is it?"
+],
+"En Búzios, Cabo Frío o Arraial do Cabo. El lugar exacto te lo confirmo por WhatsApp junto con tu turno.": [
+"Em Búzios, Cabo Frio ou Arraial do Cabo. O local exato eu te confirmo pelo WhatsApp junto com seu horário.",
+"In Búzios, Cabo Frio or Arraial do Cabo. I'll confirm the exact place on WhatsApp along with your booking."
+],
+"¿Tengo que prepararme o llevar algo?": [
+"Preciso me preparar ou levar algo?",
+"Do I need to prepare or bring anything?"
+],
+"No. Vení con ropa cómoda. No hace falta experiencia previa.": [
+"Não. Venha com roupa confortável. Não precisa de experiência prévia.",
+"No. Wear comfortable clothes. No previous experience needed."
+],
+"Sesiones presenciales · Búzios, Cabo Frío y Arraial do Cabo": [
+"Sessões presenciais · Búzios, Cabo Frio e Arraial do Cabo",
+"In-person sessions · Búzios, Cabo Frio and Arraial do Cabo"
+],
+"Lo que ofrezco": [
+"O que ofereço",
+"What I offer"
+],
+"Barras de Access": [
+"Barras de Access",
+"Access Bars"
+],
+"Apagá el ruido mental sin hablar de tus problemas. Mucha gente se queda dormida.": [
+"Desligue o ruído mental sem falar dos seus problemas. Muita gente acaba dormindo.",
+"Switch off the mental noise without talking about your problems. Many people fall asleep."
+],
+"60 minutos · Presencial": [
+"60 minutos · Presencial",
+"60 minutes · In person"
+],
+"Proceso de Cuerpos": [
+"Proceso de Cuerpos",
+"Body Process"
+],
+"Para cuando te pasa siempre lo mismo y no entendés por qué.": [
+"Para quando sempre acontece a mesma coisa e você não entende por quê.",
+"For when the same thing keeps happening and you don't understand why."
+],
+"Mes Energético": [
+"Mês Energético",
+"Energy Month"
+],
+"3 sesiones de Barras de Access y 1 de Proceso de Cuerpos, en hasta 30 días.": [
+"3 sessões de Barras de Access e 1 de Proceso de Cuerpos, em até 30 dias.",
+"3 Access Bars sessions and 1 Body Process, within 30 days."
+],
+"4 × 60 minutos · Presencial": [
+"4 × 60 minutos · Presencial",
+"4 × 60 minutes · In person"
+],
+"Seña de R$ 100": [
+"Sinal de R$ 100",
+"R$ 100 deposit"
+],
+"Seña de R$ 150": [
+"Sinal de R$ 150",
+"R$ 150 deposit"
+],
+"¿Qué sabe tu cuerpo que vos todavía no estás escuchando?": [
+"O que o seu corpo sabe que você ainda não está escutando?",
+"What does your body know that you're not listening to yet?"
+],
+"Mes Energético · Pagás 3, recibís 4": [
+"Mês Energético · Paga 3, recebe 4",
+"Energy Month · Pay 3, get 4"
+],
+"¿Qué cambiaría si te dieras un mes entero de espacio?": [
+"O que mudaria se você se desse um mês inteiro de espaço?",
+"What would change if you gave yourself a whole month of space?"
+],
+"Mes Energético4 sesiones · R$ 700": [
+"Mês Energético<small>4 sessões · R$ 700</small>",
+"Energy Month<small>4 sessions · R$ 700</small>"
+],
+"Nombre": [
+"Nome",
+"Name"
+],
+"+ Contame cómo venís (opcional)": [
+"+ Me conte como você está (opcional)",
+"+ Tell me how you're doing (optional)"
+],
+"¿Algo que quieras contarme antes?": [
+"Algo que queira me contar antes?",
+"Anything you want to tell me beforehand?"
+],
+"Sesiones online · Desde donde estés · por videollamada": [
+"Sessões online · De onde você estiver · por videochamada",
+"Online sessions · Wherever you are · by video call"
+],
+"Mentoría · 90 días · individual": [
+"Mentoria · 90 dias · individual",
+"Mentoring · 90 days · one-on-one"
+],
+"De perdido a exitoso": [
+"De perdido a exitoso",
+"From lost to successful"
+],
+"“De la intención a la acción, semana a semana.”": [
+"“Da intenção à ação, semana a semana.”",
+"“From intention to action, week by week.”"
+],
+"Un acompañamiento individual de 90 días para dejar de postergar lo que querés crear: consciencia, estrategia y disciplina para dar el paso y sostenerlo.": [
+"Um acompanhamento individual de 90 dias para parar de adiar o que você quer criar: consciência, estratégia e disciplina para dar o passo e sustentá-lo.",
+"A 90-day one-on-one program to stop putting off what you want to create: awareness, strategy and discipline to take the step and sustain it."
+],
+"Duración: 90 días": [
+"Duração: 90 dias",
+"Length: 90 days"
+],
+"Individual · online": [
+"Individual · online",
+"One-on-one · online"
+],
+"12 encuentros semanales · 1 hora": [
+"12 encontros semanais · 1 hora",
+"12 weekly meetings · 1 hour"
+],
+"Quiero saber más ✦": [
+"Quero saber mais ✦",
+"I want to know more ✦"
+],
+"Hola Juan Cruz, quiero saber más de la mentoría De perdido a exitoso": [
+"Olá Juan Cruz, quero saber mais sobre a mentoria De perdido a exitoso",
+"Hi Juan Cruz, I'd like to know more about the mentoring program From lost to successful"
+],
+"Hola Juan Cruz, no sé por qué sesión empezar. ¿Me ayudás a elegir?": [
+"Olá Juan Cruz, não sei por qual sessão começar. Me ajuda a escolher?",
+"Hi Juan Cruz, I don't know which session to start with. Can you help me choose?"
+],
 /* aliado.html v3 (reserva directa) */
 "¿Y si el verdadero descanso empieza en tu mente?": [
 "E se o verdadeiro descanso <em>começa na sua mente?</em>",
@@ -2143,6 +2572,19 @@
 ]
 };
   const DYN={
+/* sesiones.html v2 (2026-11-26) */
+"Mes Energético": [
+"Mês Energético",
+"Energy Month"
+],
+"Hola Juan Cruz, quiero saber más de la mentoría De perdido a exitoso": [
+"Olá Juan Cruz, quero saber mais sobre a mentoria De perdido a exitoso",
+"Hi Juan Cruz, I'd like to know more about the mentoring program From lost to successful"
+],
+"Hola Juan Cruz, no sé por qué sesión empezar. ¿Me ayudás a elegir?": [
+"Olá Juan Cruz, não sei por qual sessão começar. Me ajuda a escolher?",
+"Hi Juan Cruz, I don't know which session to start with. Can you help me choose?"
+],
 /* aliado.html v3 (reserva directa) */
 "Poné tu nombre.": [
 "Coloque seu nome.",
