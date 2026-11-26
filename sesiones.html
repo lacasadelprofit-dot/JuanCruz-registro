@@ -1802,7 +1802,17 @@ function _diasAgenda(){
   return out;
 }
 
+/* Horarios y días: los define Agenda → ⏰ Horarios (agenda_config, SQL 57). Si no responde, quedan los de AGENDA. */
+let _agCfgP=null;
+function _agCfg(){
+  return _agCfgP||(_agCfgP=_sb.rpc('agenda_config').then(({data,error})=>{
+    if(error||!data)return;
+    if(Array.isArray(data.horas)&&data.horas.length)AGENDA.horas=[...new Set(data.horas)].sort();
+    if(Array.isArray(data.dias)&&data.dias.length)AGENDA.diasHabiles=data.dias.map(Number);
+  },()=>{}));
+}
 async function cargarAgenda(){
+  await _agCfg();
   const t=LANGS[_lang];
   document.getElementById('agDias').innerHTML=`<div class="ag-vacio">${t.ag_cargando}</div>`;
   document.getElementById('agHoras').innerHTML='';

@@ -289,7 +289,7 @@
    El turno se carga después en Agenda (Lo trajo = el aliado), y ahí queda ocupado para todos. */
 (function(){
   const SUPA_URL='https://vffmnyjjawvvctcqzkvj.supabase.co',SUPA_KEY='sb_publishable_A1rJIiXHSg6TQYT2gKQHUw_UTwmS76t',WA='541151758653';
-  const HORAS=['08:00','09:20','10:40','18:30','19:50'],DIAS_DEF=[1,2,3,4,5],VISTA=21,ANTICIP_HS=2;
+  let HORAS=['08:00','09:20','10:40','18:30','19:50'],DIAS_DEF=[1,2,3,4,5];const VISTA=21,ANTICIP_HS=2;  // horarios/días se reemplazan con agenda_config() (Agenda → ⏰ Horarios)
   const SES={barras:'Barras de Access',proceso_cuerpos:'Proceso de Cuerpos'};
   /* seña: [reales, dólares, pesos argentinos] · mismos datos que sesiones.html (AGENDA) */
   const SENIA={barras:[100,30,'30.000'],proceso_cuerpos:[150,35,'45.000']},PIX='04572950741',ALIAS='juancruzconsciencia';
@@ -426,10 +426,12 @@
   function cargarAgenda(){
     if(!sb){ocup=[];pintarReserva();return;}
     const hoy=isoDia(ahoraBR());
-    sb.rpc('agenda_ocupados',{desde:hoy,hasta:sumar(hoy,VISTA)}).then(({data,error})=>{
+    sb.rpc('agenda_config').then(({data,error})=>{
+      if(!error&&data){if(Array.isArray(data.horas)&&data.horas.length)HORAS=[...new Set(data.horas)].sort();if(Array.isArray(data.dias)&&data.dias.length)DIAS_DEF=data.dias.map(Number);}
+    },()=>{}).then(()=>sb.rpc('agenda_ocupados',{desde:hoy,hasta:sumar(hoy,VISTA)}).then(({data,error})=>{
       ocup=(!error&&Array.isArray(data))?data.map(o=>({fecha:String(o.fecha).slice(0,10),hora:o.hora})):[];
       pintarReserva();
-    },()=>{ocup=[];pintarReserva();});
+    },()=>{ocup=[];pintarReserva();}));
   }
 
   pintar();
