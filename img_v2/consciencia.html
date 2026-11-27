@@ -16,8 +16,9 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_AR">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="img_v2/logo_consciencia_180.png">
-<link rel="apple-touch-icon" href="img_v2/logo_consciencia_180.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/img_v2/logo_consciencia_48.png?v=2">
+<link rel="icon" type="image/png" sizes="180x180" href="/img_v2/logo_consciencia_180.png?v=2">
+<link rel="apple-touch-icon" href="/img_v2/logo_consciencia_180.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -202,14 +203,25 @@ body{background:#0E2620}
 @media(max-width:760px){.ch img.logo-hero{width:72px;height:72px;margin:0 0 16px}}
 .ch{position:relative;overflow:hidden}
 .ch>.wrap{position:relative;z-index:1}
-.ch::before{content:"";position:absolute;left:50%;top:50%;width:1100px;height:1100px;transform:translate(-50%,-50%);background:url(img_v2/fondo_consciencia.svg) center/contain no-repeat;opacity:.24;pointer-events:none}
-@media(max-width:760px){.ch::before{width:760px;height:760px;top:38%;opacity:.2}}
-.ch::after{content:"";position:absolute;left:50%;top:50%;width:400px;height:800px;transform:translate(-50%,-46%);background:url(img_v2/caminante_consciencia.webp) center/contain no-repeat;opacity:.42;mix-blend-mode:screen;pointer-events:none}
-@media(max-width:760px){.ch::after{width:300px;height:600px;top:34%;opacity:.3}}
+/* ── Fondo vivo: el caminante del logo camina hacia vos a medida que bajás ── */
+.fondo-vivo{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.fv-flor{position:absolute;left:50%;top:46%;width:1100px;height:1100px;margin:-550px 0 0 -550px;background:url(img_v2/fondo_consciencia.svg) center/contain no-repeat;opacity:.22;will-change:transform}
+.fv-cam{position:absolute;left:50%;top:50%;width:380px;height:760px;margin:-400px 0 0 -190px;background:url(img_v2/caminante_consciencia.webp) center/contain no-repeat;mix-blend-mode:screen;will-change:transform,opacity}
+.fv-luz{position:absolute;left:50%;top:50%;width:160px;height:160px;margin:-170px 0 0 -80px;border-radius:50%;background:radial-gradient(circle,rgba(255,243,196,.55) 0%,rgba(240,213,142,.18) 40%,rgba(240,213,142,0) 70%);animation:latido 3.2s ease-in-out infinite;will-change:transform,opacity}
+@keyframes latido{0%,100%{transform:scale(.85);opacity:.55}50%{transform:scale(1.15);opacity:1}}
+@media(max-width:760px){.fv-flor{width:760px;height:760px;margin:-380px 0 0 -380px}.fv-cam{width:280px;height:560px;margin:-300px 0 0 -140px}.fv-luz{width:120px;height:120px;margin:-130px 0 0 -60px}}
+@media(prefers-reduced-motion:reduce){.fv-luz{animation:none}}
+.hdr,.ch,.consc,.ftr,section{position:relative;z-index:1}
+.consc .card,.pilar,.enc:not(.enc-dia),.consc .evento:not(#consProx .evento){background:rgba(20,52,42,.55)!important;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.galeria .gi img,.galeria2 .gi img{opacity:.86;transition:opacity .3s}
+.galeria .gi:hover img,.galeria2 .gi:hover img{opacity:1}
+.ch,.consc{background:transparent!important}
+.ch .lead,.consc .lead,.consc p{text-shadow:0 1px 12px rgba(14,38,32,.85)}
 .logo-pie{width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 0 18px rgba(217,181,94,.25)}
 </style>
 </head>
 <body>
+<div class="fondo-vivo" aria-hidden="true"><div class="fv-flor"></div><div class="fv-cam"></div><div class="fv-luz"></div></div>
 
 
 <header class="hdr hdr-cb">
@@ -414,6 +426,31 @@ if(window.supabase){
     .then(({data,error})=>{if(!error&&data&&data.length)render(data.map(r=>r.data));})
     .catch(()=>{});
 }
+</script>
+<script>
+/* Fondo vivo: al bajar, el caminante se acerca (se agranda), da pasos (balanceo) y la flor de la vida gira.
+   Arriba se ve más fuerte (inicio) y después queda suave para que se lean los textos. */
+(function(){
+  const flor=document.querySelector('.fv-flor'),cam=document.querySelector('.fv-cam'),luz=document.querySelector('.fv-luz');
+  if(!flor||!cam)return;
+  const quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let pend=false;
+  function pintar(){
+    pend=false;
+    const max=Math.max(1,document.documentElement.scrollHeight-innerHeight),y=scrollY,p=Math.min(1,y/max);
+    const inicio=Math.min(1,y/(innerHeight*.9));                 // 0 en el inicio → 1 al pasarlo
+    const paso=quieto?0:Math.sin(y/55)*7;                         // balanceo de cada paso
+    const ladeo=quieto?0:Math.sin(y/110)*1.6;
+    const esc=.92+p*.55;                                          // se acerca a medida que bajás
+    cam.style.transform='translate(0,'+(paso-p*30)+'px) scale('+esc+') rotate('+ladeo+'deg)';
+    cam.style.opacity=(.46-inicio*.26).toFixed(3);               // .46 en el inicio, .20 en el resto
+    if(luz){luz.style.marginTop=(-170*esc+paso-p*30)+'px';luz.style.opacity=(1-inicio*.35).toFixed(3);}
+    flor.style.transform='rotate('+(quieto?0:p*90)+'deg) scale('+(1+p*.25)+')';
+    flor.style.opacity=(.24-inicio*.1).toFixed(3);
+  }
+  const pedir=()=>{if(!pend){pend=true;requestAnimationFrame(pintar);}};
+  addEventListener('scroll',pedir,{passive:true});addEventListener('resize',pedir);pintar();
+})();
 </script>
 <script src="v2_i18n.js"></script>
 </body>
