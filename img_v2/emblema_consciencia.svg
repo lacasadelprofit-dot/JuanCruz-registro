@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Emblema de Consciencia en Búzios (provisorio, inspirado en el logo): círculo verde, borde dorado, flor de la vida y sol -->
+  <defs>
+    <radialGradient id="sol" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#FFF4C8"/>
+      <stop offset=".35" stop-color="#F0D58E"/>
+      <stop offset="1" stop-color="#F0D58E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="32" r="31" fill="#0E2620"/>
+  <circle cx="32" cy="32" r="29" fill="none" stroke="#D9B55E" stroke-width="2"/>
+  <circle cx="32" cy="32" r="12" fill="url(#sol)" opacity=".55"/>
+  <g fill="none" stroke="#D9B55E" stroke-width="1.3">
+    <circle cx="32" cy="32" r="8"/>
+    <circle cx="32" cy="24" r="8"/>
+    <circle cx="32" cy="40" r="8"/>
+    <circle cx="38.93" cy="28" r="8"/>
+    <circle cx="25.07" cy="28" r="8"/>
+    <circle cx="38.93" cy="36" r="8"/>
+    <circle cx="25.07" cy="36" r="8"/>
+    <circle cx="32" cy="32" r="16" stroke-width="1.1"/>
+  </g>
+  <circle cx="32" cy="32" r="2.2" fill="#FFF4C8"/>
+</svg>
