@@ -11,12 +11,13 @@
 <meta property="og:url" content="https://conscienciaenbuzios.vercel.app/inicio">
 <meta property="og:title" content="Consciencia en Búzios · comunidad abierta">
 <meta property="og:description" content="Encuentros abiertos y gratuitos para encontrarnos, explorar y crear juntos en Búzios.">
-<meta property="og:image" content="https://vffmnyjjawvvctcqzkvj.supabase.co/storage/v1/object/public/encuentros/galeria-consciencia/1795409714504-0.jpg">
+<meta property="og:image" content="https://conscienciaenbuzios.vercel.app/img_v2/og_consciencia.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_AR">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" href="img_v2/logo_consciencia_180.png">
+<link rel="apple-touch-icon" href="img_v2/logo_consciencia_180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -145,21 +146,44 @@
 .sb-ig:hover{background:rgba(232,168,124,.12)}
 @media(max-width:760px){.sumate{grid-template-columns:1fr;padding:24px}.sb{justify-content:center}}
 
-/* ── Colores de Consciencia en Búzios (inspirados en el logo) ── */
-body{background:#0F2A22}
-.hdr{background:#0B211B!important;border-bottom:1px solid #2B5446!important}
-.hdr .brand{color:#E3BE62!important;letter-spacing:.5px}
-.v2-lang{border-color:#2B5446!important}
-.v2-lang button{color:#A8BCB0!important}.v2-lang button.on{color:#E3BE62!important}.v2-lang span{color:#3F6B5B!important}
-.ch{background:radial-gradient(ellipse at 75% 30%,#1E4A3D 0%,#0F2A22 60%)}
-.ch h1 em,.consc h2 em{color:#E3BE62;text-shadow:0 0 24px rgba(227,190,98,.25)}
-.ch img{border:2px solid #C9A24A;box-shadow:0 0 0 6px rgba(201,162,74,.12)}
-.consc{background:#0F2A22}
-.consc .eyebrow,.ch .eyebrow{color:#7FC8BF}
-.ftr{background:#0B211B!important;color:#C9D6CB;border-top:1px solid #2B5446}
-.ftr .brand{color:#E3BE62}.ftr a{color:#C9D6CB!important}
-.check li::before,.consc .check li::before{color:#E3BE62!important}
-.btn-v{background:#3FA59A!important;border-color:#3FA59A!important;color:#06231E!important}
+/* ── Colores de Consciencia en Búzios (inspirados en el logo): SOLO verde profundo + dorado + crema ──
+   verde fondo #0E2620 · verde tarjetas #14342A · bordes #27503F · dorado #D9B55E · dorado claro #F0D58E · crema #F4EFE2 · texto suave #BFCDC3 */
+body{background:#0E2620}
+.hdr{background:#0B201A!important;border-bottom:1px solid #27503F!important}
+.hdr .brand{color:#F0D58E!important;letter-spacing:.5px}
+.v2-lang{border-color:#27503F!important;background:transparent!important}
+.v2-lang button{color:#BFCDC3!important}.v2-lang button.on{color:#F0D58E!important}.v2-lang span{color:#27503F!important}
+.ch{background:radial-gradient(ellipse at 75% 35%,#16392E 0%,#0E2620 62%)}
+.ch h1{color:#F4EFE2}
+.ch h1 em,.consc h2 em{color:#D9B55E}
+.ch .lead,.consc .lead{color:#BFCDC3}
+.ch img{border:2px solid #D9B55E;box-shadow:0 0 0 7px rgba(217,181,94,.10)}
+.consc{background:#0E2620}
+.consc .eyebrow,.ch .eyebrow{color:#D9B55E;opacity:.9}
+.consc .card,.pilar,.enc,.consc .evento{background:#14342A!important;border-color:#27503F!important}
+.consc .card h3,.pilar h3,.enc h4,.consc .evento h4{color:#F4EFE2!important}
+.check li::before,.consc .check li::before{color:#D9B55E!important}
+/* botones: dorado sólido (principal) y borde dorado (secundario) */
+.ch .a-wa,.sb-wa,.btn-v{background:#D9B55E!important;color:#0E2620!important;border:1px solid #D9B55E!important}
+.ch .a-wa:hover,.sb-wa:hover,.btn-v:hover{background:#F0D58E!important;border-color:#F0D58E!important}
+.ch .a-ir,.sb-ig,.ver-mas{border:1px solid #D9B55E!important;color:#F0D58E!important;background:transparent!important}
+/* «Encuentros abiertos y gratuitos»: sin degradé, borde dorado */
+.consc .libre{background:transparent!important;border:1px solid #D9B55E;box-shadow:none!important}
+.consc .libre .li{background:rgba(217,181,94,.15)!important;color:#F0D58E!important}
+.consc .libre b{color:#F0D58E!important}
+/* encuentro de día completo: verde con borde dorado (sin degradé) */
+.enc-dia{background:#173B30!important;border:1.5px solid #D9B55E!important}
+.enc-dia .db{background:#D9B55E!important;color:#0E2620!important}
+.enc-dia .pq{color:#F0D58E!important}.enc-dia .pal{border-color:#D9B55E!important;color:#F0D58E!important}
+.evento .tag-dia{background:#D9B55E!important;color:#0E2620!important}
+/* números y detalles */
+.cstats b{color:#D9B55E!important}.cstats div{border-color:#27503F!important}
+.pn{border-color:#D9B55E!important;color:#D9B55E!important}
+.ftr{background:#0B201A!important;color:#BFCDC3;border-top:1px solid #27503F}
+.ftr .brand{color:#F0D58E}.ftr a{color:#BFCDC3!important}
+.hdr .brand{display:inline-flex!important;align-items:center;gap:10px}
+.logo-cb{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:0 0 34px}
+.logo-pie{width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 0 18px rgba(217,181,94,.25)}
 </style>
 </head>
 <body>
@@ -167,7 +191,7 @@ body{background:#0F2A22}
 
 <header class="hdr hdr-cb">
   <div class="wrap">
-    <a href="#" class="brand">Consciencia en Búzios</a>
+    <a href="#" class="brand"><img class="logo-cb" src="img_v2/logo_consciencia_180.png" alt="" onerror="this.onerror=null;this.src='img_v2/emblema_consciencia.svg'">Consciencia en Búzios</a>
     <div class="hdr-r"></div>
   </div>
 </header>
@@ -251,7 +275,7 @@ body{background:#0F2A22}
 
 <footer class="ftr">
   <div class="wrap">
-    <div><div class="brand">Consciencia en Búzios</div><div>Encuentros abiertos y gratuitos · Búzios, RJ</div></div>
+    <div style="display:flex;align-items:center;gap:14px"><img class="logo-pie" src="img_v2/logo_consciencia_180.png" alt="Logo de Consciencia en Búzios" onerror="this.onerror=null;this.src='img_v2/emblema_consciencia.svg'"><div><div class="brand">Consciencia en Búzios</div><div>Encuentros abiertos y gratuitos · Búzios, RJ</div></div></div>
     <div><a href="https://www.instagram.com/conscienciaenbuzios" target="_blank" rel="noopener">Instagram</a><a href="https://chat.whatsapp.com/EYAg6qOjwq3F9mv6li9QfY" target="_blank" rel="noopener">Grupo de WhatsApp</a></div>
   </div>
 </footer>
