@@ -2004,7 +2004,7 @@ function getWrappedLines(ctx,text,maxW){
 
 function generateStoryImage(texto,area,opts){
   return new Promise(resolve=>{
-    const W=900,H=1600;
+    let W=900,H=1600;
     const cv=document.createElement('canvas');cv.width=W;cv.height=H;
     const c=cv.getContext('2d');
     const isDia=opts&&opts.mode==='dia';
@@ -2045,37 +2045,23 @@ function generateStoryImage(texto,area,opts){
       c.font='bold 36px "Segoe UI",system-ui,sans-serif';c.fillStyle='#2A1A08';c.textBaseline='alphabetic';
       c.fillText('Juan Cruz Consciencia',W/2,H-200);
     } else {
-      // Fondo oscuro (default — pregunta del momento + grilla)
-      c.fillStyle='#1C1200';c.fillRect(0,0,W,H);
-      const g=c.createRadialGradient(W/2,H*.42,0,W/2,H*.42,520);
-      g.addColorStop(0,'rgba(193,122,72,.18)');g.addColorStop(1,'rgba(0,0,0,0)');
-      c.fillStyle=g;c.fillRect(0,0,W,H);
-      c.font='bold 400px Georgia,serif';c.fillStyle='rgba(193,122,72,.05)';
-      c.textAlign='center';c.textBaseline='middle';c.fillText('✦',W/2,H*.44);
-      const isFeatured=opts&&opts.mode==='featured';
-      c.font='bold 26px "Segoe UI",system-ui,sans-serif';c.fillStyle='rgba(193,122,72,.85)';
+      /* Pregunta del momento y preguntas de la grilla: mismo diseño NARANJA que la ruleta (ruleta.html → compartir) */
+      W=1080;H=1920;cv.width=W;cv.height=H;
+      const g=c.createRadialGradient(W/2,H*.4,40,W/2,H*.45,1250);
+      g.addColorStop(0,'#C8692F');g.addColorStop(.55,'#A44E22');g.addColorStop(1,'#7E3815');c.fillStyle=g;c.fillRect(0,0,W,H);
       c.textAlign='center';c.textBaseline='alphabetic';
-      if(isFeatured){
-        c.fillText('✦  PREGUNTA DEL MOMENTO  ✦',W/2,330);
-      } else {
-        c.fillText(('✦  '+_dimLbl(area||'Ser Infinito')+'  ✦').toUpperCase(),W/2,330);
-      }
-      c.strokeStyle='rgba(193,122,72,.3)';c.lineWidth=1;
-      c.beginPath();c.moveTo(W/2-60,358);c.lineTo(W/2+60,358);c.stroke();
-      const PAD=130;let fs=52;
-      c.font=`bold ${fs}px "Segoe UI",system-ui,sans-serif`;
-      let lines=getWrappedLines(c,texto,W-PAD);
-      if(lines.length>6){fs=42;c.font=`bold ${fs}px "Segoe UI",system-ui,sans-serif`;lines=getWrappedLines(c,texto,W-PAD);}
-      if(lines.length>8){fs=34;c.font=`bold ${fs}px "Segoe UI",system-ui,sans-serif`;lines=getWrappedLines(c,texto,W-PAD);}
-      const lh=fs*1.44;const startY=H/2-lines.length*lh/2-20;
-      c.fillStyle='#F5F0E8';c.textAlign='center';c.textBaseline='top';
-      lines.forEach((l,i)=>c.fillText(l,W/2,startY+i*lh));
-      c.strokeStyle='rgba(193,122,72,.4)';c.lineWidth=1;
-      c.beginPath();c.moveTo(100,H-270);c.lineTo(W-100,H-270);c.stroke();
-      c.font='18px Georgia,serif';c.fillStyle='rgba(193,122,72,.6)';
-      c.textAlign='center';c.textBaseline='middle';c.fillText('✦',W/2,H-270);
-      c.font='bold 36px "Segoe UI",system-ui,sans-serif';c.fillStyle='#F5F0E8';c.textBaseline='alphabetic';
-      c.fillText('Juan Cruz Consciencia',W/2,H-200);
+      const isFeatured=opts&&opts.mode==='featured';
+      c.fillStyle='#F1C778';c.font='700 34px "DM Sans","Segoe UI",sans-serif';
+      c.fillText(isFeatured?'✦  PREGUNTA DEL MOMENTO  ✦':('✦  '+_dimLbl(area||'Ser Infinito')+'  ✦').toUpperCase(),W/2,360);
+      c.strokeStyle='rgba(241,199,120,.5)';c.lineWidth=2;c.beginPath();c.moveTo(W/2-70,400);c.lineTo(W/2+70,400);c.stroke();
+      c.fillStyle='#FBF1E4';let fs=86;c.font=`600 ${fs}px "Cormorant Garamond",Georgia,serif`;
+      let ls=getWrappedLines(c,texto,W-180);
+      while(ls.length>7&&fs>56){fs-=8;c.font=`600 ${fs}px "Cormorant Garamond",Georgia,serif`;ls=getWrappedLines(c,texto,W-180);}
+      const lh=fs*1.25,y0=H/2-ls.length*lh/2+fs*.4;
+      ls.forEach((l,i)=>c.fillText(l,W/2,y0+i*lh));
+      c.strokeStyle='rgba(241,199,120,.5)';c.lineWidth=2;c.beginPath();c.moveTo(W/2-90,H-430);c.lineTo(W/2+90,H-430);c.stroke();
+      c.fillStyle='#FBF1E4';c.font='italic 500 54px "Cormorant Garamond",Georgia,serif';c.fillText('Juan Cruz Consciencia',W/2,H-340);
+      c.fillStyle='#F1C778';c.font='600 34px "DM Sans","Segoe UI",sans-serif';c.fillText('@juancruzconsciencia',W/2,H-280);
     }
     resolve(cv);
   });
@@ -2084,6 +2070,7 @@ function generateStoryImage(texto,area,opts){
 async function _doShare(texto,area,btn,opts){
   const orig=btn.innerHTML;btn.textContent='…';btn.disabled=true;
   try{
+    try{await Promise.all([document.fonts.load('600 80px "Cormorant Garamond"'),document.fonts.load('italic 500 54px "Cormorant Garamond"'),document.fonts.load('700 34px "DM Sans"')]);}catch(e){}
     const cv=await generateStoryImage(texto,area,opts);
     const blob=await new Promise(r=>cv.toBlob(r,'image/png'));
     const file=new File([blob],'pregunta-expansiva.png',{type:'image/png'});

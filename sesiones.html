@@ -89,6 +89,9 @@
 .res-nota{font-size:13.5px;color:var(--muted);margin-top:14px}
 .res-vacio{font-size:14.5px;color:var(--muted)}
 .res-err{color:#A33;font-size:14px;margin-top:10px;display:none}
+.res-top{display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:end}
+.res-top img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;display:block}
+@media(max-width:760px){.res-top{grid-template-columns:1fr;gap:20px}}
 .ok h3{font-size:30px;margin:0 0 6px}
 .ok-det{margin:18px 0;display:grid;gap:8px;font-size:15px}
 .ok-det div{display:flex;gap:10px;flex-wrap:wrap}
@@ -118,7 +121,7 @@
   <div class="wrap">
     <div>
       <div class="hero-tag">Sesiones presenciales · Búzios, Cabo Frío y Arraial do Cabo</div>
-      <h1>Bajale el volumen a tu mente <em>en 60 minutos</em></h1>
+      <h1>¿Y si el verdadero descanso <em>empieza en tu mente?</em></h1>
       <p class="lead">Te acostás vestido/a, recibís un toque suave en 32 puntos de la cabeza y salís más liviano/a. Sin hablar de tus problemas. Sin tener que creer en nada.</p>
       <ul class="exp">
         <li>Relajación profunda</li><li>Sensación de ligereza</li><li>Desconexión del exceso de pensamientos</li><li>Soltar tensiones</li><li>Una sensación de bienestar</li>
@@ -134,7 +137,7 @@
       </div>
     </div>
     <div class="hero-foto">
-      <video src="img_v2/sesion_bahia.mp4" poster="img_v2/sesion_bahia.jpg" class="vid" autoplay muted loop playsinline preload="metadata" aria-label="Vista desde la camilla durante una sesión frente al mar"></video>
+      <video src="img_v2/deck_mar.mp4" poster="img_v2/deck_mar.jpg" class="vid" autoplay muted loop playsinline preload="metadata" aria-label="Vista desde la camilla durante una sesión frente al mar"></video>
     </div>
   </div>
 </section>
@@ -315,9 +318,14 @@
 <!-- RESERVAR -->
 <section class="sec sec-alt" id="reservar">
   <div class="wrap">
-    <div class="eyebrow">Reservá tu sesión</div>
-    <h2>Elegí día y horario</h2>
-    <p class="lead">Estos son los horarios libres en este momento. Elegí el tuyo y reservalo acá mismo.</p>
+    <div class="res-top">
+      <div>
+        <div class="eyebrow">Reservá tu sesión</div>
+        <h2>Elegí día y horario</h2>
+        <p class="lead">Estos son los horarios libres en este momento. Elegí el tuyo y reservalo acá mismo.</p>
+      </div>
+      <img src="img_v2/deck_mar_playa.jpg" alt="Camilla lista para una sesión en un deck con vista al mar" loading="lazy">
+    </div>
     <div class="res" id="resBox">
       <div class="res-blk">
         <h4>Sesión</h4>
@@ -347,7 +355,7 @@
         <div class="opc">
           <h4>Contame cómo venís <span style="text-transform:none;letter-spacing:0;font-weight:500">(opcional)</span></h4>
           <div id="opcBarras">
-            <p class="lbl">¿Qué sentís?</p>
+            <p class="lbl">¿Qué sentís? <span style="font-weight:400;color:var(--muted)">(podés elegir varias)</span></p>
             <div class="chk">
               <label><input type="checkbox" class="sint" value="Ganas de expandirme y crear más"> Ganas de expandirme y crear más</label>
               <label><input type="checkbox" class="sint" value="Curiosidad"> Curiosidad</label>
@@ -355,11 +363,13 @@
               <label><input type="checkbox" class="sint" value="Estrés / Ansiedad"> Estrés / Ansiedad</label>
               <label><input type="checkbox" class="sint" value="Cansancio general"> Cansancio general</label>
             </div>
-            <p class="lbl">¿Cuándo lo sentís más?</p>
+            <p class="lbl">¿Qué te gustaría que sea posible? <span style="font-weight:400;color:var(--muted)">(podés elegir varias)</span></p>
             <div class="chk">
-              <label><input type="radio" name="momentoDia" value="En el trabajo"> En el trabajo</label>
-              <label><input type="radio" name="momentoDia" value="Por la noche"> Por la noche</label>
-              <label><input type="radio" name="momentoDia" value="Durante todo el día"> Durante todo el día</label>
+              <label><input type="checkbox" class="posible" value="Más calma"> Más calma</label>
+              <label><input type="checkbox" class="posible" value="Más claridad"> Más claridad</label>
+              <label><input type="checkbox" class="posible" value="Más energía"> Más energía</label>
+              <label><input type="checkbox" class="posible" value="Soltar algo que se repite"> Soltar algo que se repite</label>
+              <label><input type="checkbox" class="posible" value="Abrirme a algo nuevo"> Abrirme a algo nuevo</label>
             </div>
           </div>
           <div id="opcProceso" style="display:none">
@@ -527,7 +537,7 @@
     if(cel.length<8||cel.length>15)return mal('Poné tu WhatsApp con código de país.');
     if(!sb)return mal('No se pudo conectar. Probá de nuevo en un momento.');
     const sesion=SES[sel.ses],mensaje=document.getElementById('resMsg').value.trim(),extras={};
-    extras.sintomas=[...document.querySelectorAll('.sint:checked')].map(x=>x.value);extras.momentoDia=document.querySelector('input[name=momentoDia]:checked')?.value||'';
+    extras.sintomas=[...document.querySelectorAll('.sint:checked')].map(x=>x.value);extras.posible=[...document.querySelectorAll('.posible:checked')].map(x=>x.value);if(extras.posible.length)extras.interes=extras.posible.join(', ');
     if(sel.ses==='proceso_cuerpos')extras.patron=document.getElementById('resPatron').value.trim();
     const lang=window.v2lang?window.v2lang():'es';
     const txt0=btn.textContent;btn.textContent=T('Reservando…');btn.setAttribute('aria-disabled','true');
@@ -537,6 +547,7 @@
     if(error){
       const m=error.message||'';track('turno_error',{sesion,error:m.slice(0,60)});
       if(/ocupado|muy_pronto|dia_invalido|hora_invalida/.test(m)){sel.hora='';cargarAgenda();return mal('Ese horario se acaba de ocupar. Elegí otro.');}
+      if(m.includes('muchas'))return mal('Hay muchas reservas en este momento. Escribime por WhatsApp y lo vemos.');
       if(m.includes('limite'))return mal('Ya tenés 3 turnos reservados. Escribime por WhatsApp si necesitás otro.');
       if(m.includes('celular'))return mal('Poné tu WhatsApp con código de país.');
       return mal('No se pudo reservar. Probá de nuevo o escribime por WhatsApp.');

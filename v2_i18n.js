@@ -3,6 +3,50 @@
    Para traducir un texto nuevo: agregalo en TX con la clave = el texto en español (tal cual se lee). */
 (function(){
   const TX={
+"¿Qué te gustaría que sea posible? (podés elegir varias)": [
+"O que você gostaria que fosse possível? <span style=\"font-weight:400;color:var(--muted)\">(pode escolher várias)</span>",
+"What would you like to be possible? <span style=\"font-weight:400;color:var(--muted)\">(you can pick several)</span>"
+],
+"Más calma": [
+"Mais calma",
+"More calm"
+],
+"Más claridad": [
+"Mais clareza",
+"More clarity"
+],
+"Soltar algo que se repite": [
+"Soltar algo que se repete",
+"Let go of something that keeps repeating"
+],
+"Abrirme a algo nuevo": [
+"Me abrir para algo novo",
+"Open up to something new"
+],
+"¿Qué sentís? (podés elegir varias)": [
+"O que você sente? <span style=\"font-weight:400;color:var(--muted)\">(pode escolher várias)</span>",
+"What do you feel? <span style=\"font-weight:400;color:var(--muted)\">(you can pick several)</span>"
+],
+"Vista desde la camilla durante una sesión en un deck frente al mar, en Arraial do Cabo": [
+"Vista da maca durante uma sessão num deck de frente para o mar, em Arraial do Cabo",
+"View from the table during a session on a deck facing the sea, in Arraial do Cabo"
+],
+"Camilla lista para una sesión en un deck con vista al mar": [
+"Maca pronta para uma sessão num deck com vista para o mar",
+"Table ready for a session on a deck with a sea view"
+],
+"El lugar": [
+"O lugar",
+"The place"
+],
+"Tu sesión, con esta vista": [
+"Sua sessão, com esta vista",
+"Your session, with this view"
+],
+"Muy pronto": [
+"Em breve",
+"Coming soon"
+],
 "Sesiones online · Desde donde estés": [
 "Sessões online · De onde você estiver",
 "Online sessions · Wherever you are"
@@ -1386,9 +1430,9 @@
 "A saída é para dentro.",
 "The way out is in."
 ],
-"En 2018 empecé un camino de desarrollo personal y en 2021 esa búsqueda se volvió espiritual. En abril de 2022 recibí mi primera sesión de Barras de Access® y, por primera vez en mucho tiempo, mi mente hizo silencio.": [
-"Em 2018 comecei um caminho de desenvolvimento pessoal e em 2021 essa busca se tornou espiritual. Em abril de 2022 recebi minha primeira sessão de Barras de Access® e, pela primeira vez em muito tempo, minha mente fez silêncio.",
-"In 2018 I started a path of personal growth, and in 2021 that search became spiritual. In April 2022 I received my first Access Bars® session and, for the first time in a long while, my mind went quiet."
+"En 2018 empecé un camino de desarrollo personal y en 2021 esa búsqueda se volvió espiritual. En abril de 2022 recibí mi primera sesión de Barras de Access®.": [
+"Em 2018 comecei um caminho de desenvolvimento pessoal e em 2021 essa busca se tornou espiritual. Em abril de 2022 recebi minha primeira sessão de Barras de Access®.",
+"In 2018 I started a path of personal growth, and in 2021 that search became spiritual. In April 2022 I received my first Access Bars® session."
 ],
 "sesiones facilitadas": [
 "sessões facilitadas",
@@ -2584,6 +2628,10 @@
 ]
 };
   const DYN={
+"Hay muchas reservas en este momento. Escribime por WhatsApp y lo vemos.": [
+"Há muitas reservas neste momento. Me escreva pelo WhatsApp e vemos.",
+"There are a lot of bookings right now. Message me on WhatsApp and we'll sort it out."
+],
 /* sesiones.html v2 (2026-11-26) */
 "Mes Energético": [
 "Mês Energético",

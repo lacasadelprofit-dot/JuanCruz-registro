@@ -25,6 +25,8 @@
 .prop{display:flex;flex-direction:column}
 .prop h3{font-size:25px}
 .prop-meta{margin-top:auto;padding-top:16px;font-size:13px;color:var(--verde);font-weight:600}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px;margin-top:24px}
+.gal img,.gal video{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:18px;display:block;background:var(--bg2)}
 .bienv{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--terra-d);line-height:1.45;margin-top:18px;display:none}
 /* qué son las Barras */
 .puntos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
@@ -111,6 +113,15 @@
     <div class="hero-foto" id="alFotoBox">
       <video src="img_v2/sesion_bahia.mp4" poster="img_v2/sesion_bahia.jpg" class="vid" autoplay muted loop playsinline preload="metadata" aria-label="Vista desde la camilla durante una sesión frente al mar"></video>
     </div>
+  </div>
+</section>
+
+<!-- EL LUGAR (galería del aliado: Admin → Aliados → 🔗 → Galería) -->
+<section class="sec" id="alGaleriaSec" style="display:none">
+  <div class="wrap">
+    <div class="eyebrow">El lugar</div>
+    <h2 id="alGaleriaTit">Tu sesión, con esta vista</h2>
+    <div class="gal" id="alGaleria"></div>
   </div>
 </section>
 
@@ -365,10 +376,13 @@
     if(error){
       const m=error.message||'';track('reserva_error',{error:m.slice(0,60),dia:sel.dia,hora:sel.hora});
       if(m.includes('ocupado')||m.includes('muy_pronto')||m.includes('dia_invalido')||m.includes('hora_invalida')){sel.hora='';cargarAgenda();return mal('Ese horario se acaba de ocupar. Elegí otro.');}
+      if(m.includes('muchas'))return mal('Hay muchas reservas en este momento. Escribime por WhatsApp y lo vemos.');
       if(m.includes('limite'))return mal('Ya tenés 3 turnos reservados. Escribime por WhatsApp si necesitás otro.');
       if(m.includes('celular'))return mal('Poné tu WhatsApp con código de país.');
       return mal('No se pudo reservar. Probá de nuevo o escribime por WhatsApp.');
     }
+    /* también al CRM (como las reservas de Sesiones); no frena la reserva si falla */
+    try{await sb.rpc('guardar_prospecto',{p_celular:cel,p_nombre:nombre,p_campos:{fuente:'aliado_'+(slug||'web'),herramientaInteres:SES[sel.ses],sesionInteres:SES[sel.ses],origen:A?.nombre||slug||'aliado',canalProsp:'Landing aliado',lang:window.v2lang?window.v2lang():'es',cuando:sel.dia+' '+sel.hora},p_regalo:null,p_agendado:true});}catch(e){}
     hecho={ses:sel.ses,dia:sel.dia,hora:sel.hora,nombre};
     track('reserva_ok',{sesion:sel.ses,dia:sel.dia,hora:sel.hora});
     pintarOk();document.getElementById('reservar').scrollIntoView({behavior:'smooth'});
@@ -418,6 +432,15 @@
     if(A?.lugar)document.getElementById('alLugar').textContent=A.lugar;
     pintarReserva();
   }
+  /* galería: [{url, tipo:"foto"|"video"}] — url https:// o una ruta de la web (img_v2/…) */
+  function galeria(){
+    const g=(Array.isArray(A?.galeria)?A.galeria:[]).filter(x=>x&&typeof x.url==='string'&&(/^https:\/\//.test(x.url)||/^img_v2\/[\w.-]+$/.test(x.url))).slice(0,8);
+    if(!g.length)return;
+    document.getElementById('alGaleria').innerHTML=g.map(x=>x.tipo==='video'||/\.mp4(\?|$)/i.test(x.url)
+      ?`<video src="${esc(x.url)}" autoplay muted loop playsinline preload="metadata"></video>`
+      :`<img src="${esc(x.url)}" alt="${esc(A.nombre||'')}" loading="lazy">`).join('');
+    document.getElementById('alGaleriaSec').style.display='';
+  }
   function foto(){
     if(!A?.foto||!/^https:\/\//.test(A.foto))return;
     const box=document.getElementById('alFotoBox');
@@ -445,7 +468,7 @@
         document.title=document.documentElement.dataset.titEs=T('Barras de Access para huéspedes de ')+A.nombre;
         let elegido=false;try{elegido=!!localStorage.getItem('jcc_lang')||!!new URLSearchParams(location.search).get('lang');}catch(e){}
         if(!elegido&&['pt','en'].includes(A.idioma)&&window.setLang)window.setLang(A.idioma);
-        pintar();foto();
+        pintar();foto();galeria();
       }
       /* link directo a un lugar que no existe o está apagado → a la portada (no mostrar una página vacía) */
       if(!error&&!A&&porRuta){location.replace('/');return;}
