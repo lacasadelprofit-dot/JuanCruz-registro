@@ -3,36 +3,90 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
       ]
     }
   ],
   "rewrites": [
     {
-      "has": [{ "type": "host", "value": "juancruzconsciencia.lat" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "juancruzconsciencia.lat"
+        }
+      ],
       "source": "/",
       "destination": "/index.html"
     },
     {
-      "has": [{ "type": "host", "value": "www.juancruzconsciencia.lat" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.juancruzconsciencia.lat"
+        }
+      ],
       "source": "/",
       "destination": "/index.html"
     },
     {
-      "has": [{ "type": "host", "value": "conscienciaenbuzios.vercel.app" }],
-      "source": "/",
-      "destination": "/consciencia.html"
-    },
-    {
-      "has": [{ "type": "host", "value": "registro.juancruzconsciencia.lat" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "registro.juancruzconsciencia.lat"
+        }
+      ],
       "source": "/(.*)",
       "destination": "/registro_jcc.html"
     },
-    { "source": "/consciencia", "destination": "/consciencia.html" },
-    { "source": "/:lugar([a-z0-9-]+)", "destination": "/aliado.html" },
-    { "source": "/(.*)", "destination": "/$1" }
+    {
+      "has": [
+        {
+          "type": "host",
+          "value": "conscienciaenbuzios.vercel.app"
+        }
+      ],
+      "source": "/inicio",
+      "destination": "/consciencia.html"
+    },
+    {
+      "source": "/consciencia",
+      "destination": "/consciencia.html"
+    },
+    {
+      "source": "/:lugar([a-z0-9-]+)",
+      "destination": "/aliado.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
+  ],
+  "redirects": [
+    {
+      "has": [
+        {
+          "type": "host",
+          "value": "conscienciaenbuzios.vercel.app"
+        }
+      ],
+      "source": "/",
+      "destination": "/inicio",
+      "permanent": false
+    }
   ]
 }
