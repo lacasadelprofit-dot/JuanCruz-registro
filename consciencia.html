@@ -198,6 +198,14 @@ body{background:#0E2620}
 .enc-dia .pal{border-color:#0E2620!important;color:#0E2620!important}
 .enc-dia .db{background:#0E2620!important;color:#F0D58E!important}
 .logo-cb{width:40px!important;height:40px!important;flex-basis:40px!important}
+.ch img.logo-hero{width:96px;height:96px;aspect-ratio:1;border-radius:50%;border:none;box-shadow:0 0 0 2px #D9B55E,0 0 30px rgba(240,213,142,.30);margin:0 0 22px;display:block}
+@media(max-width:760px){.ch img.logo-hero{width:72px;height:72px;margin:0 0 16px}}
+.ch{position:relative;overflow:hidden}
+.ch>.wrap{position:relative;z-index:1}
+.ch::before{content:"";position:absolute;left:50%;top:50%;width:1100px;height:1100px;transform:translate(-50%,-50%);background:url(img_v2/fondo_consciencia.svg) center/contain no-repeat;opacity:.24;pointer-events:none}
+@media(max-width:760px){.ch::before{width:760px;height:760px;top:38%;opacity:.2}}
+.ch::after{content:"";position:absolute;left:50%;top:50%;width:400px;height:800px;transform:translate(-50%,-46%);background:url(img_v2/caminante_consciencia.webp) center/contain no-repeat;opacity:.42;mix-blend-mode:screen;pointer-events:none}
+@media(max-width:760px){.ch::after{width:300px;height:600px;top:34%;opacity:.3}}
 .logo-pie{width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 0 18px rgba(217,181,94,.25)}
 </style>
 </head>
@@ -215,6 +223,7 @@ body{background:#0E2620}
 <section class="ch">
   <div class="wrap">
     <div>
+      <img class="logo-hero" src="img_v2/logo_consciencia_180.png" alt="Logo de Consciencia en Búzios">
       <div class="eyebrow">Comunidad abierta · Búzios</div>
       <h1>Un espacio para encontrarnos, <em>explorar y crear juntos.</em></h1>
       <p class="lead">Somos una comunidad abierta de personas que comparten la curiosidad por la vida, las ganas de explorar nuevas posibilidades y la voluntad de crecer en conjunto.</p>
