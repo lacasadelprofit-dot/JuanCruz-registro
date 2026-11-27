@@ -183,6 +183,21 @@ body{background:#0E2620}
 .ftr .brand{color:#F0D58E}.ftr a{color:#BFCDC3!important}
 .hdr .brand{display:inline-flex!important;align-items:center;gap:10px}
 .logo-cb{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:0 0 34px}
+/* pedidos 2026-11-27: chip, próximo encuentro y día de consciencia en dorado; botón del próximo en verde */
+.consc .libre{background:linear-gradient(135deg,#F0D58E,#D9B55E)!important;border:none!important;box-shadow:0 10px 30px rgba(217,181,94,.22)!important}
+.consc .libre .li{background:rgba(14,38,32,.15)!important;color:#0E2620!important}
+.consc .libre b{color:#0E2620!important}
+#consProx .evento{background:linear-gradient(135deg,#F0D58E,#D9B55E)!important;border:none!important}
+#consProx .evento h4{color:#0E2620!important}
+#consProx .evento p,#consProx .evento p a{color:#2B3F35!important}
+#consProx .evento .fecha b{color:#0E2620!important}#consProx .evento .fecha span{color:#3A5246!important}
+#consProx .evento .btn{background:#0E2620!important;border-color:#0E2620!important;color:#F0D58E!important}
+.enc-dia{background:linear-gradient(135deg,#F0D58E,#D9B55E)!important;border:none!important}
+.enc-dia,.enc-dia h4,.enc-dia h5,.enc-dia .top,.enc-dia .by,.enc-dia .by a{color:#0E2620!important}
+.enc-dia .pq{color:#3A5246!important}
+.enc-dia .pal{border-color:#0E2620!important;color:#0E2620!important}
+.enc-dia .db{background:#0E2620!important;color:#F0D58E!important}
+.logo-cb{width:40px!important;height:40px!important;flex-basis:40px!important}
 .logo-pie{width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 0 18px rgba(217,181,94,.25)}
 </style>
 </head>
@@ -248,7 +263,7 @@ body{background:#0E2620}
       <div id="consProx"></div>
     </div>
     <div class="cstats">
-      <div><b id="cNum">15</b><span id="cDesde">encuentros desde julio</span></div>
+      <div><b id="cNum">15</b><span id="cDesde">encuentros</span></div>
       <div><b id="cPart">177</b><span>participaciones</span></div>
       <div><b id="cFac">17</b><span>personas facilitaron</span></div>
     </div>
@@ -301,10 +316,11 @@ let IG={};
 /* nombres → links a Instagram (si la persona tiene cuenta cargada en el admin) */
 function facLinks(t){const n=facNombres(t);if(!n.length)return '';const a=n.map(x=>{const h=IG[x.toLowerCase()];return h?`<a href="https://instagram.com/${encodeURIComponent(h)}" target="_blank" rel="noopener" title="@${esc(h)}">${esc(x)}</a>`:esc(x);});return a.length>1?a.slice(0,-1).join(', ')+T(' y ')+a[a.length-1]:a[0];}
 
+const hh=h=>{h=String(h||'').trim();return /^\d{3,4}$/.test(h)?h.padStart(4,'0').replace(/(\d\d)(\d\d)/,'$1:$2'):h;};  /* «0900» → «09:00» */
 function eventoHTML(r){
   const barras=r.comunidad==='barras';
   const tit=barras?T('Barras en ')+ciu(r):(r.enfoque||T('Consciencia en Búzios'));
-  const det=[cap(fD(r.fecha,{weekday:'long'})),T(r.hora||''),r.aporte].filter(Boolean).map(esc).concat(r.facilitadores?[T('Con ')+facLinks(r.facilitadores)]:[]).join(' · ');
+  const det=[cap(fD(r.fecha,{weekday:'long'})),T(hh(r.hora)),r.aporte].filter(Boolean).map(esc).concat(r.facilitadores?[T('Con ')+facLinks(r.facilitadores)]:[]).join(' · ');
   const btn=barras
     ?`<a class="btn btn-p btn-sm" href="${wa(T('Hola Juan Cruz, quiero ir al encuentro de Barras del ')+dm(r.fecha)+T(' en ')+[r.lugar,ciu(r)].filter(Boolean).join(', '))}" target="_blank" rel="noopener">${T('Quiero ir ✦')}</a>`
     :`<a class="btn btn-v btn-sm" href="${GRUPO}" target="_blank" rel="noopener">${T('Quiero ir')}</a>`;
@@ -357,7 +373,7 @@ function render(rows){
   document.getElementById('consProx').innerHTML=cProx.map(eventoHTML).join('');
   const facs=new Set();cPas.forEach(r=>facNombres(r.facilitadores).forEach(n=>facs.add(n.toLowerCase())));
   document.getElementById('cNum').textContent=cPas.length;
-  document.getElementById('cDesde').textContent=cPas.length?T('encuentros desde ')+fD(cPas[cPas.length-1].fecha,{month:'long'}):T('encuentros');
+  document.getElementById('cDesde').textContent=T(cPas.length===1?'encuentro':'encuentros');
   document.getElementById('cPart').textContent=cPas.reduce((t,r)=>t+(+r.participantes||0),0);
   document.getElementById('cFac').textContent=facs.size;
   const encsEl=document.getElementById('encs');

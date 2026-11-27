@@ -312,10 +312,11 @@ let IG={};
 /* nombres → links a Instagram (si la persona tiene cuenta cargada en el admin) */
 function facLinks(t){const n=facNombres(t);if(!n.length)return '';const a=n.map(x=>{const h=IG[x.toLowerCase()];return h?`<a href="https://instagram.com/${encodeURIComponent(h)}" target="_blank" rel="noopener" title="@${esc(h)}">${esc(x)}</a>`:esc(x);});return a.length>1?a.slice(0,-1).join(', ')+T(' y ')+a[a.length-1]:a[0];}
 
+const hh=h=>{h=String(h||'').trim();return /^\d{3,4}$/.test(h)?h.padStart(4,'0').replace(/(\d\d)(\d\d)/,'$1:$2'):h;};  /* «0900» → «09:00» */
 function eventoHTML(r){
   const barras=r.comunidad==='barras';
   const tit=barras?T('Barras en ')+ciu(r):(r.enfoque||T('Consciencia en Búzios'));
-  const det=[cap(fD(r.fecha,{weekday:'long'})),T(r.hora||''),r.aporte].filter(Boolean).map(esc).concat(r.facilitadores?[T('Con ')+facLinks(r.facilitadores)]:[]).join(' · ');
+  const det=[cap(fD(r.fecha,{weekday:'long'})),T(hh(r.hora)),r.aporte].filter(Boolean).map(esc).concat(r.facilitadores?[T('Con ')+facLinks(r.facilitadores)]:[]).join(' · ');
   const btn=barras
     ?`<a class="btn btn-p btn-sm" href="${wa(T('Hola Juan Cruz, quiero ir al encuentro de Barras del ')+dm(r.fecha)+T(' en ')+[r.lugar,ciu(r)].filter(Boolean).join(', '))}" target="_blank" rel="noopener">${T('Quiero ir ✦')}</a>`
     :`<a class="btn btn-v btn-sm" href="${GRUPO}" target="_blank" rel="noopener">${T('Quiero ir')}</a>`;
