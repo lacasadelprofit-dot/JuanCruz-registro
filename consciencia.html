@@ -16,8 +16,9 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_AR">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="img_v2/logo_consciencia_180.png">
-<link rel="apple-touch-icon" href="img_v2/logo_consciencia_180.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/img_v2/logo_consciencia_48.png?v=2">
+<link rel="icon" type="image/png" sizes="180x180" href="/img_v2/logo_consciencia_180.png?v=2">
+<link rel="apple-touch-icon" href="/img_v2/logo_consciencia_180.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -211,6 +212,9 @@ body{background:#0E2620}
 @media(max-width:760px){.fv-flor{width:760px;height:760px;margin:-380px 0 0 -380px}.fv-cam{width:280px;height:560px;margin:-300px 0 0 -140px}.fv-luz{width:120px;height:120px;margin:-130px 0 0 -60px}}
 @media(prefers-reduced-motion:reduce){.fv-luz{animation:none}}
 .hdr,.ch,.consc,.ftr,section{position:relative;z-index:1}
+.consc .card,.pilar,.enc:not(.enc-dia),.consc .evento:not(#consProx .evento){background:rgba(20,52,42,.55)!important;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.galeria .gi img,.galeria2 .gi img{opacity:.86;transition:opacity .3s}
+.galeria .gi:hover img,.galeria2 .gi:hover img{opacity:1}
 .ch,.consc{background:transparent!important}
 .ch .lead,.consc .lead,.consc p{text-shadow:0 1px 12px rgba(14,38,32,.85)}
 .logo-pie{width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 0 18px rgba(217,181,94,.25)}
